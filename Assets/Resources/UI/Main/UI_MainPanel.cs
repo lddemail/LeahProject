@@ -11,6 +11,7 @@ namespace Main
         public GGraph m_bgTitle;
         public GGraph m_bgList;
         public GList m_mainList;
+        public GButton m_BtnAddHotel;
         public const string URL = "ui://ziofp0dshsyt0";
 
         public static UI_MainPanel CreateInstance()
@@ -26,6 +27,7 @@ namespace Main
             m_bgTitle = (GGraph)GetChildAt(1);
             m_bgList = (GGraph)GetChildAt(3);
             m_mainList = (GList)GetChildAt(4);
+            m_BtnAddHotel = (GButton)GetChildAt(5);
         }
     }
 }

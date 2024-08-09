@@ -5,9 +5,10 @@ namespace Main
 {
   public partial class UI_MainPanel
   {
-    public void ddd()
+    public void Init()
     {
+
     }
+
   }
 }
-

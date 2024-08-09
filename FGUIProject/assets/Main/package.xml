@@ -2,7 +2,6 @@
 <packageDescription id="ziofp0ds">
   <resources>
     <component id="hsyt0" name="MainPanel.xml" path="/" exported="true"/>
-    <component id="9stk0" name="Button1.xml" path="/Button/" exported="true"/>
     <image id="9stk5" name="n_btn_com_120px.png" path="/Texture/Button/" exported="true"/>
     <image id="9stk3" name="n_btn_com_60px.png" path="/Texture/Button/" exported="true"/>
     <image id="9stk4" name="n_btn_com_90px.png" path="/Texture/Button/" exported="true"/>
@@ -23,6 +22,122 @@
     <component id="eblsj" name="MainListItem.xml" path="/Components/"/>
     <font id="eblsw" name="SourceHanSerifCN-Light.ttf" path="/Fount/" renderMode="" samplePointSize="16"/>
     <font id="eblsx" name="SourceHanSerifCN-Bold.ttf" path="/Fount/" renderMode="" samplePointSize="16"/>
+    <component id="l2hcy" name="Button.xml" path="/Components/"/>
+    <image id="l2hcz" name="10_png.png" path="/Texture/"/>
+    <movieclip id="l2hc10" name="nlge1k.jta" path="/Texture/"/>
+    <image id="l2hc11" name="long_dead_png.png" path="/Texture/"/>
+    <image id="l2hc12" name="long_dead2_png.png" path="/Texture/"/>
+    <image id="l2hc13" name="loading.png.jpg" path="/Texture/"/>
+    <image id="l2hc14" name="k9.png" path="/Texture/"/>
+    <image id="l2hc15" name="k8.png" path="/Texture/"/>
+    <image id="l2hc16" name="k7.png" path="/Texture/"/>
+    <image id="l2hc17" name="k6.png" path="/Texture/"/>
+    <image id="l2hc18" name="k5.png" path="/Texture/"/>
+    <image id="l2hc19" name="k4.png" path="/Texture/"/>
+    <image id="l2hc1a" name="k36.png" path="/Texture/"/>
+    <image id="l2hc1b" name="k35.png" path="/Texture/"/>
+    <image id="l2hc1c" name="k34.png" path="/Texture/"/>
+    <image id="l2hc1d" name="k33.png" path="/Texture/"/>
+    <image id="l2hc1e" name="k32.png" path="/Texture/"/>
+    <image id="l2hc1f" name="k31.png" path="/Texture/"/>
+    <image id="l2hc1g" name="k30.png" path="/Texture/"/>
+    <image id="l2hc1h" name="k3.png" path="/Texture/"/>
+    <image id="l2hc1i" name="k29.png" path="/Texture/"/>
+    <image id="l2hc1j" name="k28.png" path="/Texture/"/>
+    <image id="l2hc1k" name="k27.png" path="/Texture/"/>
+    <image id="l2hc1l" name="k26.png" path="/Texture/"/>
+    <image id="l2hc1m" name="k25.png" path="/Texture/"/>
+    <image id="l2hc1n" name="k24.png" path="/Texture/"/>
+    <image id="l2hc1o" name="k23.png" path="/Texture/"/>
+    <image id="l2hc1p" name="k22.png" path="/Texture/"/>
+    <image id="l2hc1q" name="k21.png" path="/Texture/"/>
+    <image id="l2hc1r" name="p10_png.png" path="/Texture/"/>
+    <image id="l2hc1s" name="k20.png" path="/Texture/"/>
+    <image id="l2hc1t" name="p11_png.png" path="/Texture/"/>
+    <image id="l2hc1u" name="p13_png.png" path="/Texture/"/>
+    <image id="l2hc1v" name="start.png" path="/Texture/"/>
+    <image id="l2hc1w" name="Shape 1 copy 4.png" path="/Texture/"/>
+    <image id="l2hc1x" name="s9.png.jpg" path="/Texture/"/>
+    <image id="l2hc1y" name="s8.png.jpg" path="/Texture/"/>
+    <image id="l2hc1z" name="s7.png.jpg" path="/Texture/"/>
+    <image id="l2hc20" name="s6.png.jpg" path="/Texture/"/>
+    <image id="l2hc21" name="s5.png.jpg" path="/Texture/"/>
+    <image id="l2hc22" name="s4.png.jpg" path="/Texture/"/>
+    <image id="l2hc23" name="s3.png.jpg" path="/Texture/"/>
+    <image id="l2hc24" name="s2.png.jpg" path="/Texture/"/>
+    <image id="l2hc25" name="s10.png.jpg" path="/Texture/"/>
+    <image id="l2hc26" name="s1.png.jpg" path="/Texture/"/>
+    <swf id="l2hc2a" name="qtm01d.swf" path="/Texture/"/>
+    <image id="l2hc2b" name="plus_smile_png.png" path="/Texture/"/>
+    <movieclip id="l2hc2d" name="pet.jta" path="/Texture/"/>
+    <image id="l2hc2e" name="p9_png.png" path="/Texture/"/>
+    <image id="l2hc2f" name="p8_png.png" path="/Texture/"/>
+    <image id="l2hc2g" name="p3_png.png" path="/Texture/"/>
+    <image id="l2hc2h" name="p2_png.png" path="/Texture/"/>
+    <image id="l2hc2i" name="p1_png.png" path="/Texture/"/>
+    <image id="l2hc2j" name="p16_png.png" path="/Texture/"/>
+    <image id="l2hc2k" name="p15_png.png" path="/Texture/"/>
+    <image id="l2hc2l" name="p14_png.png" path="/Texture/"/>
+    <image id="l2hc2m" name="p12_png.png" path="/Texture/"/>
+    <image id="l2hc2n" name="k2.png" path="/Texture/"/>
+    <image id="l2hc2q" name="back btn.png" path="/Texture/"/>
+    <image id="l2hc2r" name="b7_png.png" path="/Texture/"/>
+    <image id="l2hc2s" name="b7(2)_png.png" path="/Texture/"/>
+    <image id="l2hc2t" name="b6_png.png" path="/Texture/"/>
+    <image id="l2hc2u" name="b5_png.png" path="/Texture/"/>
+    <image id="l2hc2v" name="b5.png" path="/Texture/"/>
+    <image id="l2hc2w" name="b4.png.jpg" path="/Texture/"/>
+    <image id="l2hc2x" name="b4.png" path="/Texture/"/>
+    <image id="l2hc2y" name="b3.png.jpg" path="/Texture/"/>
+    <image id="l2hc2z" name="b3.png" path="/Texture/"/>
+    <image id="l2hc30" name="b2.png.jpg" path="/Texture/"/>
+    <image id="l2hc31" name="b2.png" path="/Texture/"/>
+    <image id="l2hc32" name="b13_png.png" path="/Texture/"/>
+    <image id="l2hc33" name="b12_png.png" path="/Texture/"/>
+    <image id="l2hc34" name="b1.png.jpg" path="/Texture/"/>
+    <image id="l2hc36" name="angry_smile_png.png" path="/Texture/"/>
+    <image id="l2hc37" name="a8_png.png" path="/Texture/"/>
+    <image id="l2hc38" name="a4_png.png" path="/Texture/"/>
+    <image id="l2hc39" name="a3_png.png" path="/Texture/"/>
+    <image id="l2hc3a" name="a2_png.png" path="/Texture/"/>
+    <image id="l2hc3b" name="a1_png.png" path="/Texture/"/>
+    <image id="l2hc3c" name="a18_png.png" path="/Texture/"/>
+    <image id="l2hc3d" name="9_png.png" path="/Texture/"/>
+    <image id="l2hc3e" name="8_png.png" path="/Texture/"/>
+    <image id="l2hc3f" name="6_png.png" path="/Texture/"/>
+    <image id="l2hc3g" name="22.png" path="/Texture/"/>
+    <image id="l2hc3h" name="background.png" path="/Texture/"/>
+    <image id="l2hc3i" name="c1_png.png" path="/Texture/"/>
+    <image id="l2hc3j" name="c2_png.png" path="/Texture/"/>
+    <image id="l2hc3k" name="c3_png.png" path="/Texture/"/>
+    <image id="l2hc3l" name="k17.png" path="/Texture/"/>
+    <image id="l2hc3m" name="k16.jpg" path="/Texture/"/>
+    <image id="l2hc3n" name="k14.png" path="/Texture/"/>
+    <image id="l2hc3o" name="k13.png" path="/Texture/"/>
+    <image id="l2hc3p" name="k12.png" path="/Texture/"/>
+    <image id="l2hc3q" name="k11.png" path="/Texture/"/>
+    <image id="l2hc3r" name="k10.png" path="/Texture/"/>
+    <image id="l2hc3s" name="k1.png" path="/Texture/"/>
+    <image id="l2hc3t" name="k0.png" path="/Texture/"/>
+    <image id="l2hc3v" name="huawen2_png.png" path="/Texture/"/>
+    <image id="l2hc3w" name="huawen1_png.png" path="/Texture/"/>
+    <image id="l2hc3x" name="h9.png" path="/Texture/"/>
+    <image id="l2hc3y" name="VIP_png.png" path="/Texture/"/>
+    <image id="l2hc3z" name="h8.png" path="/Texture/"/>
+    <image id="l2hc40" name="h6.png" path="/Texture/"/>
+    <image id="l2hc41" name="h5.png" path="/Texture/"/>
+    <image id="l2hc42" name="h4.png" path="/Texture/"/>
+    <image id="l2hc43" name="h3.png" path="/Texture/"/>
+    <image id="l2hc44" name="h2.png" path="/Texture/"/>
+    <image id="l2hc45" name="h1.png" path="/Texture/"/>
+    <image id="l2hc46" name="h0.png" path="/Texture/"/>
+    <movieclip id="l2hc47" name="gz.jta" path="/Texture/"/>
+    <image id="l2hc48" name="full bar.png" path="/Texture/"/>
+    <image id="l2hc49" name="close_png.png" path="/Texture/"/>
+    <image id="l2hc4b" name="caiji2.png" path="/Texture/"/>
+    <image id="l2hc4c" name="caiji.png" path="/Texture/"/>
+    <image id="l2hc4d" name="h7.png" path="/Texture/"/>
+    <image id="l2hc4e" name="VtSeperator.jpg" path="/Texture/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

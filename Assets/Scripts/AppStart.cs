@@ -3,23 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mono.Data.Sqlite;
 using FairyGUI;
+using Main;
 
 public class AppStart : MonoBehaviour
 {
     private void Awake()
     {
+      AppConfig.Init();
       AppUtil.Init();
     }
     void Start()
     {
       AppData.Init();
-    TabContract con = new TabContract()
-    {
-      id = 2,
-      pIndex = 2,
-      name = "≤‚ ‘211",
-      val = "≤‚ ‘val211"
-    };
+      UIRoot.ins.Init();
+
     //AppUtil.Update2DB<TabContract>(con);
     //con.Insert2DB();
     //AppUtil.db.AddColumn<string>(AppConfig.tab_ContractData, "val");
@@ -27,6 +24,14 @@ public class AppStart : MonoBehaviour
 
     //AppUtil.ReadAll4DB<TabContract>(AppConfig.TabContract);
     //TabContract.ReadAll4DB();
+
+    StartCoroutine(RunApp());
+  }
+
+    private IEnumerator RunApp()
+    {
+       yield return null;
+
     }
 
     void Update()

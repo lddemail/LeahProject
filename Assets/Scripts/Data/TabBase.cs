@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TabBase
 {
-  public int id;
+  public int t_id;
 
 
 

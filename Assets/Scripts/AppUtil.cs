@@ -12,13 +12,7 @@ public class AppUtil
   public static SQLiteHelper db;
   public static void Init()
   {
-    string dbPath = AppConfig.GetDBPath();
-    string dir = Path.GetDirectoryName(dbPath);
-    if(!Directory.Exists(dir))
-    {
-      Directory.CreateDirectory(dir);
-    }
-    db = new SQLiteHelper(dbPath);
+    db = new SQLiteHelper(AppConfig.GetDBPath());
 
     AddFguiPackage("Main");
   }
@@ -111,7 +105,7 @@ public class AppUtil
   public static void Delete2DB<T>(T t)
   {
     TabBase tb = t as TabBase;
-    db.DeleteValues(t.GetType().Name, new string[] { "id", $"{tb.id}" });
+    db.DeleteValues(t.GetType().Name, new string[] { "id", $"{tb.t_id}" });
   }
 
 }

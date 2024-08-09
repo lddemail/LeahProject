@@ -95,6 +95,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\GObjectPool.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\MaterialManager.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GButton.cs" />
+    <Compile Include="Assets\Scripts\Data\TabHotel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\RectMesh.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GTreeNode.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\UIContentScaler.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\InputTextField.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Extensions\TextMeshPro\TMPTextFormat.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearDisplay.cs" />
+    <Compile Include="Assets\Scripts\Data\ProductData.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\DragDropManager.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GLabel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\StageEngine.cs" />
@@ -198,6 +200,7 @@
     <Compile Include="Assets\Scripts\View\UI_MainPanel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Filter\BlurFilter.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Gesture\PinchGesture.cs" />
+    <Compile Include="Assets\Scripts\View\UIRoot.cs" />
     <Compile Include="Assets\Scripts\Data\TabContract.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlLink.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\UBBParser.cs" />
