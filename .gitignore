@@ -1,0 +1,6 @@
+# Ignore the Library folder in Assets
+Library/
+Logs/
+OutPut/
+obj/
+.vs/

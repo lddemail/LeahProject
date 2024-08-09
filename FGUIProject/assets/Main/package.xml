@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="ziofp0ds">
+  <resources>
+    <component id="hsyt0" name="MainPanel.xml" path="/" exported="true"/>
+    <component id="9stk0" name="Button1.xml" path="/Button/" exported="true"/>
+    <image id="9stk5" name="n_btn_com_120px.png" path="/Texture/Button/" exported="true"/>
+    <image id="9stk3" name="n_btn_com_60px.png" path="/Texture/Button/" exported="true"/>
+    <image id="9stk4" name="n_btn_com_90px.png" path="/Texture/Button/" exported="true"/>
+    <image id="9stk8" name="n_btn_evt_120px.png" path="/Texture/Button/" exported="true"/>
+    <image id="9stk6" name="n_btn_evt_60px.png" path="/Texture/Button/" exported="true"/>
+    <image id="9stk7" name="n_btn_evt_90px.png" path="/Texture/Button/" exported="true"/>
+    <image id="9stkb" name="n_btn_f_120px.png" path="/Texture/Button/" exported="true"/>
+    <image id="9stk9" name="n_btn_f_60px.png" path="/Texture/Button/" exported="true"/>
+    <image id="9stka" name="n_btn_f_90px.png" path="/Texture/Button/" exported="true"/>
+    <image id="9stke" name="n_btn_vip_120px.png" path="/Texture/Button/" exported="true"/>
+    <image id="9stkc" name="n_btn_vip_60px.png" path="/Texture/Button/" exported="true"/>
+    <image id="9stkd" name="n_btn_vip_90px.png" path="/Texture/Button/" exported="true"/>
+    <image id="9stkh" name="n_btn_w_120px.png" path="/Texture/Button/" exported="true"/>
+    <image id="9stkf" name="n_btn_w_60px.png" path="/Texture/Button/" exported="true"/>
+    <image id="9stkg" name="n_btn_w_90px.png" path="/Texture/Button/" exported="true"/>
+    <image id="9stk1" name="bg_white.png" path="/Texture/Bg/" exported="true"/>
+    <image id="eblsi" name="grid_header_png.png" path="/Texture/" scale="9grid" scale9grid="50,5,100,10"/>
+    <component id="eblsj" name="MainListItem.xml" path="/Components/"/>
+    <font id="eblsw" name="SourceHanSerifCN-Light.ttf" path="/Fount/" renderMode="" samplePointSize="16"/>
+    <font id="eblsx" name="SourceHanSerifCN-Bold.ttf" path="/Fount/" renderMode="" samplePointSize="16"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>
