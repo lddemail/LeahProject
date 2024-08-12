@@ -64,6 +64,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\GLoader3D.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearIcon.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\BlendMode.cs" />
+    <Compile Include="Assets\Scripts\View\UIMain.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\Emoji.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Action\ControllerAction.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\DisplayObject.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Assets\Resources\UI\Main\UI_MainPanel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\XMLList.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Container.cs" />
+    <Compile Include="Assets\Scripts\Data\BarterData.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\MeshFactory.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\IUISource.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\FontManager.cs" />
@@ -134,6 +136,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\TypingEffect.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\XML.cs" />
     <Compile Include="Assets\Scripts\AppUtil.cs" />
+    <Compile Include="Assets\Scripts\View\UIBase.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\ScrollPane.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Gesture\LongPressGesture.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\RichTextField.cs" />
@@ -197,7 +200,6 @@
     <Compile Include="Assets\FairyGUI\Scripts\Event\EventContext.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\UIPanel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\UIConfig.cs" />
-    <Compile Include="Assets\Scripts\View\UI_MainPanel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Filter\BlurFilter.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Gesture\PinchGesture.cs" />
     <Compile Include="Assets\Scripts\View\UIRoot.cs" />
@@ -216,8 +218,10 @@
     <Compile Include="Assets\FairyGUI\Scripts\Extensions\WebGLTextInput\WebGLTextInput.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Shape.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlElement.cs" />
+    <Compile Include="Assets\Scripts\Data\AccountData.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\BaseFont.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\PlaneMesh.cs" />
+    <Compile Include="Assets\Scripts\Core\ExcelHelper.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GTextInput.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\FieldTypes.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearFontSize.cs" />
@@ -584,6 +588,10 @@
     </Reference>
     <Reference Include="Mono.Data.Sqlite">
       <HintPath>Assets\Plugins\Mono.Data.Sqlite.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>Assets\Plugins\EPPlus.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">

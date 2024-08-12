@@ -99,7 +99,7 @@ public class AppUtil
   /// <param name="t"></param>
   public static void Insert2DB<T>(T t)
   {
-    db.Insert<T>(t.GetType().Name, t);
+    db.Insert<T>(t);
   }
 
   public static void Delete2DB<T>(T t)
@@ -107,5 +107,55 @@ public class AppUtil
     TabBase tb = t as TabBase;
     db.DeleteValues(t.GetType().Name, new string[] { "id", $"{tb.t_id}" });
   }
+
+  public static int StringToTime(string dateString)
+  {
+    if (string.IsNullOrEmpty(dateString)) return 0;
+
+    if(dateString == "0") return 0;
+
+    string format = "yyyy/MM/dd";
+    dateString = dateString.Replace("0:00:00","").Trim();
+    string[] ary = dateString.Split("/");
+    try
+    {
+      if (ary[1].Length == 1 && ary[2].Length == 1)
+      {
+        format = "yyyy/M/d";
+      }
+      else if (ary[1].Length == 1)
+      {
+        format = "yyyy/M/dd";
+      }
+      else if (ary[2].Length == 1)
+      {
+        format = "yyyy/MM/d";
+      }
+      else
+      {
+        format = "yyyy/MM/dd";
+      }
+    }
+    catch(Exception ex)
+    {
+      Debug.Log(dateString + ex.ToString());
+    }
+
+    DateTime dateTime;
+    long unixTimestamp = 0;
+    // 尝试解析字符串为 DateTime 对象
+    if (DateTime.TryParseExact(dateString, format, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dateTime))
+    {
+      // 将 DateTime 转换为 Unix 时间戳
+      unixTimestamp = ((DateTimeOffset)dateTime).ToUnixTimeSeconds();
+      Debug.Log($"Unix Timestamp:{dateString}->{unixTimestamp}");
+    }
+    else
+    {
+      Debug.LogError($"error:Invalid date format:{dateString}");
+    }
+    return (int)unixTimestamp;
+  }
+
 
 }

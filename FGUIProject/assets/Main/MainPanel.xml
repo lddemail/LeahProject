@@ -15,7 +15,7 @@
       <item/>
     </list>
     <component id="n26_l2hc" name="BtnAddHotel" src="l2hcy" fileName="Components/Button.xml" xy="9,7" scale="1.5,1.5">
-      <Button title="导入酒店"/>
+      <Button title="导入Excel"/>
     </component>
   </displayList>
 </component>

@@ -236,12 +236,12 @@ public class SQLiteHelper
   /// <typeparam name="T"></typeparam>
   /// <param name="t"></param>
   /// <returns></returns>
-  public SqliteDataReader Insert<T>(string tabName, T t)
+  public SqliteDataReader Insert<T>(T t)
   {
     var type = typeof(T);
     var fields = type.GetFields();
-    //string sql = "INSERT INTO " + type.Name + " values (";
-    string sql = "INSERT INTO " + tabName + " values (";
+    string sql = "INSERT INTO " + type.Name + " values (";
+    //string sql = "INSERT INTO " + tabName + " values (";
 
     foreach (var field in fields)
     {
