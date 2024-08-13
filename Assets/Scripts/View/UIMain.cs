@@ -77,7 +77,8 @@ public class UIMain:UIBase
   private void MainItemRightClick(EventContext context)
   {
     GObject obj = context.sender as GObject;
-    Debug.Log(obj.data);
+    TabContract tc = obj.data as TabContract;
+    Debug.Log(tc.t_id);
   }
 
   public override void Show()
@@ -113,9 +114,9 @@ public class UIMain:UIBase
         foreach (TabContract contract in list)
         {
           AppUtil.Insert2DB<TabContract>(contract, "t_id");
-
-          AppUtil.Quit();
         }
+
+        AppUtil.Quit();
       }
     }
   }
