@@ -1,5 +1,5 @@
-﻿using FairyGUI;
-using Main;
+﻿using Basics;
+using FairyGUI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,15 +17,75 @@ public class UIMain:UIBase
 
   public override void Init()
   {
-    UIPanel.m_BtnAddHotel.onClick.Add(BtnAddHotelHandler);
+    UIPanel.m_BtnInputExcel.onClick.Add(BtnAddHotelHandler);
+
+    UIPanel.m_titleList.itemRenderer = TitleListRender;
+    UIPanel.m_titleList.enabled = false;
+
+    UIPanel.m_mainList.itemRenderer = MainListRender;
+    UIPanel.m_mainList.SetVirtual();
+  }
+
+  private void TitleListRender(int index, GObject item)
+  {
+    string title =  AppConfig.mainTitles[index];
+    var _item = item as UI_TitleLisItem;
+    _item.m_title.text = title;
+  }
+
+  private void MainListRender(int index, GObject item)
+  {
+    TabContract tabC = AppData.allTabContract[index];
+    var _item = item as UI_MainListItem;
+    _item.onRightClick.Add(MainItemRightClick);
+    _item.data = tabC;
+    for (int i=0;i< AppConfig.mainTitles.Count; i++)
+    {
+      string title = AppConfig.mainTitles[i];
+      object val = tabC.GetPropertyValue($"t_{title}");
+      string valStr = val.ToString();
+      switch (i)
+      {
+        case 0:
+          _item.m_t1.text = valStr;
+          break;
+        case 1:
+          _item.m_t2.text = valStr;
+          break;
+        case 2:
+          _item.m_t3.text = valStr;
+          break;
+        case 3:
+          _item.m_t4.text = valStr;
+          break;
+        case 4:
+          _item.m_t5.text = valStr;
+          break;
+        case 5:
+          _item.m_t6.text = valStr;
+          break;
+        case 6:
+          _item.m_t7.text = valStr;
+          break;
+        case 7:
+          _item.m_t8.text = valStr;
+          break;
+      }
+    }
+  }
+
+  private void MainItemRightClick(EventContext context)
+  {
+    GObject obj = context.sender as GObject;
+    Debug.Log(obj.data);
   }
 
   public override void Show()
   {
-    List<TabContract> allTabContract = AppData.allTabContract;
     //主界面展示项
+    UIPanel.m_titleList.numItems = AppConfig.mainTitles.Count;
 
-
+    UIPanel.m_mainList.numItems = AppData.allTabContract.Count;
   }
 
   public override void Hide()
@@ -52,7 +112,9 @@ public class UIMain:UIBase
         Debug.Log($"导入数据:{list.Count}条");
         foreach (TabContract contract in list)
         {
-          AppUtil.Insert2DB<TabContract>(contract);
+          AppUtil.Insert2DB<TabContract>(contract, "t_id");
+
+          AppUtil.Quit();
         }
       }
     }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1600,900">
+  <displayList>
+    <graph id="n41_p5s3" name="bg" xy="0,0" size="1600,900" type="rect" lineSize="0" fillColor="#ff999999"/>
+    <graph id="n28" name="n28" xy="0,40" size="1600,860" type="rect" lineColor="#49959595" fillColor="#ff233e43"/>
+    <image id="n29" name="n29" src="p5s357" fileName="images/grid_header_png.png" xy="0,40" size="1600,39"/>
+    <list id="n30" name="mainList" xy="0,85" size="1600,807" selectionMode="none" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," clipSoftness="0,20" defaultItem="ui://z3yueri4p5s36c">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n40_p5s3" name="BtnInputExcel" src="p5s36a" fileName="components/Button22.xml" xy="0,0">
+      <Button title="导入Excel"/>
+    </component>
+    <list id="n42_p5s3" name="titleList" xy="0,40" size="1600,40" layout="row" overflow="scroll" scroll="horizontal" scrollBar="hidden" defaultItem="ui://z3yueri4p5s36b">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+  </displayList>
+</component>

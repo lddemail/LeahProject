@@ -45,21 +45,14 @@ public class AppConfig
   }
 
   public static List<string> mainTitles = new List<string>() {
-    "t_hotelName",
-    "t_group",
-    "t_brand",
-    "t_province",
-    "t_city",
-    "t_originalFollowup",
-    "t_newSales",
-    "t_interiorNo",
-    "t_contractNo",
-    "t_payment",
-    "t_attribution",
-    "t_productsPrice",
-    "t_totalBarter",
-    "t_totalAccount",
-    "t_totalDebt"
+    "hotelName",
+    "group",
+    "brand",
+    "province",
+    "city",
+    "originalFollowup",
+    "newSales",
+    "interiorNo"
   };
 
   //Ê¡£¬ÊÐÇø

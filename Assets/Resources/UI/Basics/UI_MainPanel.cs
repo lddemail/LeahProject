@@ -1,0 +1,31 @@
+/** This is an automatically generated class by FairyGUI. Please do not modify it. **/
+
+using FairyGUI;
+using FairyGUI.Utils;
+
+namespace Basics
+{
+    public partial class UI_MainPanel : GComponent
+    {
+        public GGraph m_bg;
+        public GList m_mainList;
+        public GButton m_BtnInputExcel;
+        public GList m_titleList;
+        public const string URL = "ui://z3yueri4p5s369";
+
+        public static UI_MainPanel CreateInstance()
+        {
+            return (UI_MainPanel)UIPackage.CreateObject("Basics", "MainPanel");
+        }
+
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
+
+            m_bg = (GGraph)GetChildAt(0);
+            m_mainList = (GList)GetChildAt(3);
+            m_BtnInputExcel = (GButton)GetChildAt(4);
+            m_titleList = (GList)GetChildAt(5);
+        }
+    }
+}

@@ -403,11 +403,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024553ecf96a65649b929ee08c9214fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  packageName: Main
+  packageName: Basics
   componentName: MainPanel
   fitScreen: 0
   sortingOrder: 0
-  packagePath: UI/Main
+  packagePath: UI/Basics
   renderMode: 0
   renderCamera: {fileID: 0}
   position: {x: 0, y: 0, z: 0}
@@ -415,7 +415,7 @@ MonoBehaviour:
   rotation: {x: 0, y: 0, z: 0}
   fairyBatching: 0
   touchDisabled: 0
-  cachedUISize: {x: 1366, y: 768}
+  cachedUISize: {x: 1600, y: 900}
   hitTestMode: 0
   setNativeChildrenOrder: 0
 --- !u!1660057539 &9223372036854775807

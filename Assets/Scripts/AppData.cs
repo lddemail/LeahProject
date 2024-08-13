@@ -22,17 +22,9 @@ public class AppData
     isExist = AppUtil.db.CheckTabExists("TabContract");
     if(!isExist)
     {
-      AppUtil.db.CreateTable<TabContract>();
+      AppUtil.db.CreateTable<TabContract>("t_id");
       Debug.Log($"创建表:TabContract");
       
-    }
-
-    isExist = AppUtil.db.CheckTabExists("TabHotel");
-    if (!isExist)
-    {
-      AppUtil.db.CreateTable<TabHotel>();
-      Debug.Log($"创建表:TabHotel");
-      //写入默认数据
     }
   }
 

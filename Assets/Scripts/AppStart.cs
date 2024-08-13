@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mono.Data.Sqlite;
 using FairyGUI;
-using Main;
 
 public class AppStart : MonoBehaviour
 {

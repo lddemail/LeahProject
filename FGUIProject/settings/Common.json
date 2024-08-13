@@ -1,6 +1,6 @@
 {
-  "font": "ui://ziofp0ds9stk2",
-  "fontSize": 12,
+  "font": "ui://z3yueri4p5s367",
+  "fontSize": 16,
   "textColor": "#000000",
   "fontAdjustment": false,
   "colorScheme": [
@@ -13,8 +13,8 @@
     "默认字体"
   ],
   "scrollBars": {
-    "horizontal": "",
-    "vertical": "",
+    "horizontal": "ui://z3yueri4p5s35c",
+    "vertical": "ui://z3yueri4p5s35g",
     "defaultDisplay": "visible"
   },
   "tipsRes": "",

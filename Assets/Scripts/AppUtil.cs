@@ -14,7 +14,7 @@ public class AppUtil
   {
     db = new SQLiteHelper(AppConfig.GetDBPath());
 
-    AddFguiPackage("Main");
+    //AddFguiPackage("Main");
   }
 
   private static void AddFguiPackage(string name)
@@ -97,9 +97,9 @@ public class AppUtil
   /// </summary>
   /// <typeparam name="T"></typeparam>
   /// <param name="t"></param>
-  public static void Insert2DB<T>(T t)
+  public static void Insert2DB<T>(T t, string key = "")
   {
-    db.Insert<T>(t);
+    db.Insert<T>(t,key);
   }
 
   public static void Delete2DB<T>(T t)
@@ -156,5 +156,15 @@ public class AppUtil
     }
     return (int)unixTimestamp;
   }
-
+  /// <summary>
+  /// 退出app
+  /// </summary>
+  public static void Quit()
+  {
+#if UNITY_EDITOR
+    UnityEditor.EditorApplication.isPlaying = false;
+#else
+    Application.Quit();
+#endif
+  }
 }

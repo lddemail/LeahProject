@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="200,40">
+  <displayList>
+    <text id="n0_p5s3" name="title" xy="0,0" size="200,42" font="ui://z3yueri4p5s367" fontSize="26" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="0"/>
+  </displayList>
+</component>

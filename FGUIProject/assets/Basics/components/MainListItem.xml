@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1600,50" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <graph id="n2" name="n2" xy="0,0" size="1600,48" type="rect" lineColor="#ffccffff" fillColor="#0026498b">
+      <gearDisplay controller="button" pages="1,3"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <graph id="n3" name="n3" xy="0,0" size="1600,50" type="rect" lineColor="#ff7b98ac" fillColor="#b548797e">
+      <gearDisplay controller="button" pages="2"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <graph id="n4" name="n4" xy="0,49" size="1600,1" type="rect" lineSize="0" fillColor="#ff325b62">
+      <relation target="" sidePair="width-width"/>
+    </graph>
+    <component id="n7" name="cb" src="p5s3l" fileName="components/Button8.xml" xy="1,0">
+      <Button checked="true"/>
+    </component>
+    <text id="n5" name="t1" xy="62,10" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n9_p5s3" name="t2" xy="1262,10" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n10_p5s3" name="t3" xy="1462,10" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n11_p5s3" name="t4" xy="262,10" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n12_p5s3" name="t5" xy="462,10" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n13_p5s3" name="t6" xy="662,10" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n14_p5s3" name="t7" xy="862,10" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n15_p5s3" name="t8" xy="1062,10" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+  </displayList>
+  <Button mode="Radio"/>
+</component>

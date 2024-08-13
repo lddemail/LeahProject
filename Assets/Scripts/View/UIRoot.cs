@@ -1,5 +1,5 @@
+using Basics;
 using FairyGUI;
-using Main;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +29,7 @@ public class UIRoot : MonoBehaviour
 
   public void Init()
   {
-      MainBinder.BindAll();
+    BasicsBinder.BindAll();
       uiMain.Init();
   }
 }

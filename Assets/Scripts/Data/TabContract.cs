@@ -134,10 +134,8 @@ public class TabContract:TabBase
 
   public object GetPropertyValue(string propertyName)
   {
-    // 获取属性信息
-    PropertyInfo propertyInfo = this.GetType().GetProperty(propertyName);
-    // 获取属性值
-    return propertyInfo.GetValue(this);
+    FieldInfo field = this.GetType().GetField(propertyName);
+    return field.GetValue(this);
   }
 
 

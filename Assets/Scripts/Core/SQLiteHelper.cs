@@ -236,21 +236,38 @@ public class SQLiteHelper
   /// <typeparam name="T"></typeparam>
   /// <param name="t"></param>
   /// <returns></returns>
-  public SqliteDataReader Insert<T>(T t)
+  public SqliteDataReader Insert<T>(T t,string key)
   {
     var type = typeof(T);
     var fields = type.GetFields();
-    string sql = "INSERT INTO " + type.Name + " values (";
+    string sql = "INSERT INTO " + type.Name;
     //string sql = "INSERT INTO " + tabName + " values (";
 
+    sql += " (";
     foreach (var field in fields)
     {
       //通过反射得到对象的值
-      sql += "'" + type.GetField(field.Name).GetValue(t) + "',";
+      if (!string.IsNullOrEmpty(key) && field.Name != key)
+      {
+        sql += $"{field.Name},";
+        //sql += "'" + type.GetField(field.Name).GetValue(t) + "',";
+      }
+    }
+    sql = sql.TrimEnd(',') + ")";
+
+    sql += " values (";
+    foreach (var field in fields)
+    {
+      //通过反射得到对象的值
+      if (!string.IsNullOrEmpty(key) && field.Name != key)
+      {
+        sql += $"'{type.GetField(field.Name).GetValue(t)}',";
+        //sql += "'" + type.GetField(field.Name).GetValue(t) + "',";
+      }
     }
     sql = sql.TrimEnd(',') + ");";
 
-    Debug.Log("插入成功");
+    Debug.Log($"插入数据:{sql}");
     return ExecuteQuery(sql);
   }
 
@@ -393,7 +410,7 @@ public class SQLiteHelper
   /// 创建表(使用泛型)
   /// </summary>
   /// <typeparam name="T"></typeparam>
-  public void CreateTable<T>()
+  public void CreateTable<T>(string key="")
   {
     var type = typeof(T);
     string sql = string.Format("create Table {0}( ", type.Name);
@@ -402,7 +419,13 @@ public class SQLiteHelper
     var fields = type.GetFields();
     for (int i = 0; i < fields.Length; i++)
     {
-      sql += " " + fields[i].Name + " " + CS2DB(fields[i].FieldType) + ",";
+      sql += " " + fields[i].Name + " " + CS2DB(fields[i].FieldType);
+      if(!string.IsNullOrEmpty(key) && fields[i].Name == key)
+      {
+        sql += " PRIMARY KEY AUTOINCREMENT";
+        Debug.Log($"设置主键:{key}");
+      }
+      sql += ",";
     }
 
     //这里可以支持私有对象
