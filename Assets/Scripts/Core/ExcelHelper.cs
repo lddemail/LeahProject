@@ -1,4 +1,5 @@
 ﻿using OfficeOpenXml;
+using SFB;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -39,14 +40,18 @@ public class ExcelHelper
 {
     public static ExcelSheet ImportExcel()
     {
-        ExcelSheet es = null;
-        string path = EditorUtility.OpenFilePanelWithFilters("Load Excel", "", new string[] { "Excel", "xlsx" });
-        if (path.Length != 0)
-        {
+      var extensions = new[] {
+        new ExtensionFilter("Excel", "xlsx" ),
+      };
+
+      string[] paths = StandaloneFileBrowser.OpenFilePanel("Load Excel", "", extensions, false);
+      ExcelSheet es = null;
+      if (paths.Length != 0)
+      {
           es = new ExcelSheet();
-          es.Load(path,"合同清单");
-    }
-    return es;
+          es.Load(paths[0], "合同清单");
+      }
+     return es;
   }
 }
 

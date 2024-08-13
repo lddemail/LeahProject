@@ -132,6 +132,14 @@ public class TabContract:TabBase
     Debug.Log($"Compute:t_productsPrice={t_productsPrice} t_totalBarter={t_totalBarter} t_totalAccount={t_totalAccount} t_totalDebt={t_totalDebt}");
   }
 
+  public object GetPropertyValue(string propertyName)
+  {
+    // 获取属性信息
+    PropertyInfo propertyInfo = this.GetType().GetProperty(propertyName);
+    // 获取属性值
+    return propertyInfo.GetValue(this);
+  }
+
 
   private static string IsEmpty(string str)
   {

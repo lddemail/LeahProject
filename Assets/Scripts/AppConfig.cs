@@ -41,20 +41,60 @@ public class AppConfig
 
   public static void Init()
   {
-    InitHotleList();
+    InitProvinceDic();
   }
 
-  #region 酒店数据
-  public static List<TabHotel> hotelList = new List<TabHotel>();
-  public static void InitHotleList()
+  public static List<string> mainTitles = new List<string>() {
+    "t_hotelName",
+    "t_group",
+    "t_brand",
+    "t_province",
+    "t_city",
+    "t_originalFollowup",
+    "t_newSales",
+    "t_interiorNo",
+    "t_contractNo",
+    "t_payment",
+    "t_attribution",
+    "t_productsPrice",
+    "t_totalBarter",
+    "t_totalAccount",
+    "t_totalDebt"
+  };
+
+  //省，市区
+  public static Dictionary<string, List<string>> provinceDic = new Dictionary<string, List<string>>();
+  public static void InitProvinceDic()
   {
-    hotelList.Add(TabHotel.Create("Voco千岛湖阳光大酒店", "Local","", "浙江省", "杭州市"));
-    hotelList.Add(TabHotel.Create("常熟理文铂尔曼酒店", "Accor", "Pullman", "江苏省", "常熟市"));
-    hotelList.Add(TabHotel.Create("常州都喜天丽富都青枫苑酒店", "Local", "Pullman", "江苏省", "常州市"));
-    hotelList.Add(TabHotel.Create("常州富都大酒店", "Shangri-La", "Traders", "江苏省", "常州市"));
-    hotelList.Add(TabHotel.Create("常州金坛金沙科技金融中心万豪酒店", "Marriott", "", "江苏省", "常州市"));
-    hotelList.Add(TabHotel.Create("常州金坛金沙科技金融中心万豪酒店", "Marriott", "", "江苏省", "常州市"));
+    provinceDic.Add("上海市",new List<string>() { "上海市" });
+    provinceDic.Add("浙江省", new List<string>() {
+    "杭州市",
+    "宁波",
+    "温州",
+    "嘉兴",
+    "湖州",
+    "绍兴",
+    "金华",
+    "衢州",
+    "舟山",
+    "台州",
+    "丽水"
+    });
+    provinceDic.Add("江苏省", new List<string>() {
+    "南京市",
+    "苏州市",
+    "无锡市",
+    "镇江市",
+    "常州市",
+    "南通市",
+    "徐州市",
+    "盐城市",
+    "连云港市",
+    "泰州市",
+     "扬州市",
+    "淮安市",
+    "宿迁市"
+    });
   }
-  #endregion
 
 }

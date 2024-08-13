@@ -22,6 +22,9 @@ public class UIMain:UIBase
 
   public override void Show()
   {
+    List<TabContract> allTabContract = AppData.allTabContract;
+    //主界面展示项
+
 
   }
 
@@ -40,6 +43,7 @@ public class UIMain:UIBase
       foreach(int index in vals.Keys)
       {
         TabContract contract = TabContract.Create(index, vals[index]);
+        contract.Compute();
         list.Add(contract);
       }
 

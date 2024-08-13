@@ -5,7 +5,7 @@ using UnityEngine;
 public class AppData
 {
   /// <summary>
-  /// 所有清单数据
+  /// 所有定单数据
   /// </summary>
   public static List<TabContract> allTabContract = new List<TabContract>();
 

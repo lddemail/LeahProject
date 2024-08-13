@@ -9,7 +9,10 @@ public class AppStart : MonoBehaviour
 {
     private void Awake()
     {
-        AppConfig.Init();
+    Application.targetFrameRate = 60;
+    QualitySettings.vSyncCount = 0;
+
+    AppConfig.Init();
         AppUtil.Init();
  
     }
@@ -23,6 +26,7 @@ public class AppStart : MonoBehaviour
     private IEnumerator RunApp()
     {
         yield return null;
+       UIRoot.ins.uiMain.Show();
     }
 
     void Update()

@@ -92,6 +92,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\MeshFactory.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\IUISource.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\FontManager.cs" />
+    <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileTextMultiple.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\SelectionShape.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GGraph.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GObjectPool.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Utils\ToolSet.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\RegularPolygonMesh.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearXY.cs" />
+    <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserWindows.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\EllipseMesh.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearColor.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearLook.cs" />
@@ -165,7 +167,9 @@
     <Compile Include="Assets\Scripts\Data\ProductData.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\DragDropManager.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GLabel.cs" />
+    <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowser.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\StageEngine.cs" />
+    <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleSaveFileImage.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Stage.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\NAudioClip.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\VertexBuffer.cs" />
@@ -180,17 +184,22 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\GLoader.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Image.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearBase.cs" />
+    <Compile Include="Assets\StandaloneFileBrowser\IStandaloneFileBrowser.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Margin.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\AsyncCreationHelper.cs" />
+    <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserLinux.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GProgressBar.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Tween\EaseType.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\StageCamera.cs" />
+    <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleSaveFileText.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlSelect.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\ShaderConfig.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\TextField.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\PackageItem.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\ByteBuffer.cs" />
+    <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileText.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\PolygonMesh.cs" />
+    <Compile Include="Assets\StandaloneFileBrowser\Sample\BasicSample.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GImage.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\UIPainter.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlParseOptions.cs" />
@@ -202,6 +211,8 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\UIConfig.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Filter\BlurFilter.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Gesture\PinchGesture.cs" />
+    <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileImage.cs" />
+    <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserMac.cs" />
     <Compile Include="Assets\Scripts\View\UIRoot.cs" />
     <Compile Include="Assets\Scripts\Data\TabContract.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlLink.cs" />
@@ -217,13 +228,14 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\PixelHitTest.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Extensions\WebGLTextInput\WebGLTextInput.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Shape.cs" />
-    <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlElement.cs" />
     <Compile Include="Assets\Scripts\Data\AccountData.cs" />
+    <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlElement.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\BaseFont.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\PlaneMesh.cs" />
     <Compile Include="Assets\Scripts\Core\ExcelHelper.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GTextInput.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\FieldTypes.cs" />
+    <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserEditor.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearFontSize.cs" />
     <Compile Include="Assets\Resources\UI\Main\MainBinder.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Filter\ColorFilter.cs" />
@@ -240,8 +252,10 @@
   <ItemGroup>
     <None Include="Assets\FairyGUI\Resources\Shaders\FairyGUI-Text.shader" />
     <None Include="Assets\FairyGUI\Resources\Shaders\FairyGUI-Image.shader" />
+    <None Include="Assets\StandaloneFileBrowser\Plugins\Ookii.Dialogs.dll" />
     <None Include="Assets\FairyGUI\Resources\Shaders\AddOn\FairyGUI-BlurFilter.shader" />
     <None Include="Assets\FairyGUI\ReadMe - 5.1.0.txt" />
+    <None Include="Assets\StandaloneFileBrowser\Plugins\System.Windows.Forms.dll" />
     <None Include="Assets\FairyGUI\Resources\Shaders\FairyGUI-BMFont.shader" />
     <None Include="Assets\FairyGUI\Scripts\Extensions\TextMeshPro\Shaders\FairyGUI-TMP.shader" />
   </ItemGroup>
@@ -582,6 +596,14 @@
       <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>Assets\Plugins\EPPlus.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ookii.Dialogs">
+      <HintPath>Assets\StandaloneFileBrowser\Plugins\Ookii.Dialogs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
@@ -590,8 +612,8 @@
       <HintPath>Assets\Plugins\Mono.Data.Sqlite.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="EPPlus">
-      <HintPath>Assets\Plugins\EPPlus.dll</HintPath>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>Assets\StandaloneFileBrowser\Plugins\System.Windows.Forms.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">

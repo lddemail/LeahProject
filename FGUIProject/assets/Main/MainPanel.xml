@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="1366,768" bgColor="#ffff99">
+<component size="1600,900" bgColor="#ffff99">
   <displayList>
-    <graph id="n20_9stk" name="bg" xy="0,1" size="1366,768" type="rect" lineSize="0" fillColor="#ff9f9f9f">
+    <graph id="n20_9stk" name="bg" xy="0,1" size="1600,900" type="rect" lineSize="0" fillColor="#ff9f9f9f">
       <relation target="" sidePair="width-width,height-height"/>
     </graph>
-    <graph id="n21_ebls" name="bgTitle" xy="0,0" size="1366,50" type="rect" fillColor="#ff006699"/>
-    <image id="n22_ebls" name="n22" src="eblsi" fileName="Texture/grid_header_png.png" xy="0,52" size="1366,30"/>
-    <graph id="n23_ebls" name="bgList" xy="0,83" size="1366,685" type="rect" fillColor="#ff233e43"/>
-    <list id="n24_ebls" name="mainList" xy="0,89" size="1366,680" overflow="scroll" defaultItem="ui://ziofp0dseblsj">
+    <graph id="n21_ebls" name="bgTitle" xy="0,0" size="1600,50" type="rect" fillColor="#ff006699"/>
+    <image id="n22_ebls" name="n22" src="eblsi" fileName="Texture/grid_header_png.png" xy="0,52" size="1600,30"/>
+    <graph id="n23_ebls" name="bgList" xy="0,83" size="1600,815" type="rect" fillColor="#ff233e43"/>
+    <list id="n24_ebls" name="mainList" xy="0,89" size="1600,809" overflow="scroll" defaultItem="ui://ziofp0dseblsj">
       <item/>
       <item/>
       <item/>
