@@ -79,6 +79,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Event\InputEvent.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Event\EventListener.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\ShapeHitTest.cs" />
+    <Compile Include="Assets\Scripts\View\UITips.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Transition.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\DynamicFont.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\BitmapFont.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearColor.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearLook.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlImage.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_UIConfirm.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearText.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Controller.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\GoWrapper.cs" />
@@ -130,6 +132,7 @@
     <Compile Include="Assets\Scripts\Core\SQLiteHelper.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GList.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Event\EventDispatcher.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_Tips.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\ColliderHitTest.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GSlider.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Tween\TweenValue.cs" />
@@ -226,6 +229,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\NTexture.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\EMRenderSupport.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\IHitTest.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_Button5Copy.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Tween\GTweener.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\MovieClip.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlParser.cs" />
@@ -246,6 +250,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\GObject.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GComboBox.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Window.cs" />
+    <Compile Include="Assets\Scripts\View\UIConfirm.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GTextField.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\IHtmlPageContext.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\MeshColliderHitTest.cs" />

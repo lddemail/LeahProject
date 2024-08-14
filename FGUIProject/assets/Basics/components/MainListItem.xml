@@ -24,6 +24,13 @@
     <text id="n13_p5s3" name="t6" xy="662,10" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
     <text id="n14_p5s3" name="t7" xy="862,10" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
     <text id="n15_p5s3" name="t8" xy="1062,10" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+    <component id="n18_i6pi" name="BtnDetails" src="i6pi6e" fileName="components/Button10copy.xml" xy="637,-9" group="n20_i6pi">
+      <Button title="详情"/>
+    </component>
+    <component id="n19_i6pi" name="BtnDel" src="i6pi6e" fileName="components/Button10copy.xml" xy="800,-9" size="163,69" group="n20_i6pi">
+      <Button title="删除"/>
+    </component>
+    <group id="n20_i6pi" name="BtnGroup" xy="637,-9" size="326,69" visible="false" advanced="true" layout="hz" lineGap="2" excludeInvisibles="true"/>
   </displayList>
   <Button mode="Radio"/>
 </component>

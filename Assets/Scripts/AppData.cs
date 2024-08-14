@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 public class AppData
 {
@@ -9,11 +11,28 @@ public class AppData
   /// </summary>
   public static List<TabContract> allTabContract = new List<TabContract>();
 
+  private static Dictionary<string, int> hotelNamesDic = new Dictionary<string, int>();
   public static void Init()
   {
     CheckTab();
 
     allTabContract = AppUtil.ReadAll4DB<TabContract>();
+    if(allTabContract != null)
+    {
+      foreach(TabContract tc in allTabContract)
+      {
+        if(!hotelNamesDic.ContainsKey(tc.t_hotelName))
+        {
+          hotelNamesDic.Add(tc.t_hotelName, hotelNamesDic.Count -1);
+        }
+        tc.t_index = hotelNamesDic[tc.t_hotelName];
+      }
+
+      //OrderBy升序
+      //ThenBy降序
+      //allTabContract.OrderBy(x => x.t_index).ThenBy(x => x.t_index).ToList();
+      allTabContract.OrderBy(x => x.t_index).ToList();
+    }
   }
 
   private static void CheckTab()
@@ -22,7 +41,7 @@ public class AppData
     isExist = AppUtil.db.CheckTabExists("TabContract");
     if(!isExist)
     {
-      AppUtil.db.CreateTable<TabContract>("t_id");
+      AppUtil.db.CreateTable<TabContract>(AppConfig.tabKey);
       Debug.Log($"创建表:TabContract");
       
     }
@@ -33,12 +52,8 @@ public class AppData
   /// </summary>
   public static void AddTabContract(TabContract data)
   {
-    TabContract tab = allTabContract.Find(x => x.t_id == data.t_id);
-    if (tab == null)
-    {
-      allTabContract.Add(data);
-      AppUtil.Insert2DB<TabContract>(tab);
-    }
+    allTabContract.Add(data);
+    AppUtil.Insert2DB<TabContract>(data);
   }
   /// <summary>
   /// 删除一条清单

@@ -250,7 +250,6 @@ public class SQLiteHelper
       if (!string.IsNullOrEmpty(key) && field.Name != key)
       {
         sql += $"{field.Name},";
-        //sql += "'" + type.GetField(field.Name).GetValue(t) + "',";
       }
     }
     sql = sql.TrimEnd(',') + ")";
@@ -262,7 +261,6 @@ public class SQLiteHelper
       if (!string.IsNullOrEmpty(key) && field.Name != key)
       {
         sql += $"'{type.GetField(field.Name).GetValue(t)}',";
-        //sql += "'" + type.GetField(field.Name).GetValue(t) + "',";
       }
     }
     sql = sql.TrimEnd(',') + ");";

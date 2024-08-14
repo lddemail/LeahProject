@@ -25,7 +25,7 @@ public class AppStart : MonoBehaviour
     private IEnumerator RunApp()
     {
         yield return null;
-       UIRoot.ins.uiMain.Show();
+       UIRoot.ins.uiMain.Show(null);
     }
 
     void Update()

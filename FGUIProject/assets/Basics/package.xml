@@ -224,12 +224,15 @@
     <component id="p5s364" name="Main.xml" path="/"/>
     <component id="p5s365" name="WindowA.xml" path="/"/>
     <component id="p5s366" name="WindowB.xml" path="/"/>
-    <font id="p5s367" name="SourceHanSerifCN-Bold.ttf" path="/font/" renderMode="" samplePointSize="16"/>
-    <font id="p5s368" name="SourceHanSerifCN-Light.ttf" path="/font/" renderMode="" samplePointSize="16"/>
     <component id="p5s369" name="MainPanel.xml" path="/" exported="true"/>
     <component id="p5s36a" name="Button22.xml" path="/components/"/>
     <component id="p5s36b" name="TitleLisItem.xml" path="/components/"/>
     <component id="p5s36c" name="MainListItem.xml" path="/components/"/>
+    <component id="i6pi6d" name="Tips.xml" path="/" exported="true"/>
+    <component id="i6pi6e" name="Button10copy.xml" path="/components/"/>
+    <component id="i6pi6f" name="UIConfirm.xml" path="/" exported="true"/>
+    <component id="i6pi6g" name="Button5Copy.xml" path="/components/"/>
+    <image id="i6pi6h" name="bg_black.png" path="/images/" scale="9grid" scale9grid="8,8,16,16"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

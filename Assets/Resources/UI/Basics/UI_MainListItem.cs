@@ -16,6 +16,9 @@ namespace Basics
         public GTextField m_t6;
         public GTextField m_t7;
         public GTextField m_t8;
+        public GButton m_BtnDetails;
+        public GButton m_BtnDel;
+        public GGroup m_BtnGroup;
         public const string URL = "ui://z3yueri4p5s36c";
 
         public static UI_MainListItem CreateInstance()
@@ -36,6 +39,9 @@ namespace Basics
             m_t6 = (GTextField)GetChildAt(9);
             m_t7 = (GTextField)GetChildAt(10);
             m_t8 = (GTextField)GetChildAt(11);
+            m_BtnDetails = (GButton)GetChildAt(12);
+            m_BtnDel = (GButton)GetChildAt(13);
+            m_BtnGroup = (GGroup)GetChildAt(14);
         }
     }
 }

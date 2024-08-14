@@ -1,4 +1,5 @@
-﻿using Mono.Data.Sqlite;
+﻿using JetBrains.Annotations;
+using Mono.Data.Sqlite;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -99,6 +100,29 @@ public class TabContract:TabBase
   public float t_totalDebt;
 
 
+  public bool isAdvent(int day =0)
+  {
+    if (day == 0) return true;
+
+    int d = 3600 * 24 * day;
+    int unixTime = AppUtil.GetNowUnixTime();
+    List<ProductData> list = ProductData.DBStrToData(t_products);
+    if(list != null)
+    {
+      foreach(ProductData pd in list)
+      {
+        if(pd.tTime > 0)
+        {
+          int pT = pd.tTime - unixTime;
+          if (pT <= d)
+          {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
 
   public void Compute()
   {

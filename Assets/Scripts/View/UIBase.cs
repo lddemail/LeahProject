@@ -10,7 +10,7 @@ public class UIBase:MonoBehaviour
     }
 
 
-    public virtual void Show()
+    public virtual void Show(object obj=null)
     {
 
     }

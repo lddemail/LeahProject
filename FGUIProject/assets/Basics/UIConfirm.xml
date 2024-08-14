@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1600,900">
+  <displayList>
+    <graph id="n3_i6pi" name="n3" xy="0,0" size="1600,900" type="rect" lineSize="0" fillColor="#99cccccc"/>
+    <component id="n0_i6pi" name="BtnOk" src="i6pi6e" fileName="components/Button10copy.xml" xy="828,379">
+      <Button title="确认"/>
+    </component>
+    <component id="n1_i6pi" name="BtnClose" src="i6pi6g" fileName="components/Button5Copy.xml" xy="598,379">
+      <Button title="取消"/>
+    </component>
+  </displayList>
+</component>

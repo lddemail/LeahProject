@@ -80,7 +80,7 @@ public class AppUtil
     {
       string name = field.Name;
       object value = field.GetValue(t);
-      if(name == "id")
+      if(name == AppConfig.tabKey)
       {
         id = value;
       }
@@ -89,7 +89,7 @@ public class AppUtil
 
       Debug.Log($"Update2DB: {name}:{value}");
     }
-    db.UpdateValues(t.GetType().Name, keys.ToArray(), vals.ToArray(), "id", "=", $"{id}");
+    db.UpdateValues(t.GetType().Name, keys.ToArray(), vals.ToArray(), AppConfig.tabKey, "=", $"{id}");
   }
 
   /// <summary>
@@ -105,7 +105,7 @@ public class AppUtil
   public static void Delete2DB<T>(T t)
   {
     TabBase tb = t as TabBase;
-    db.DeleteValues(t.GetType().Name, new string[] { "id", $"{tb.t_id}" });
+    db.DeleteValues(t.GetType().Name, new string[] { AppConfig.tabKey, $"{tb.t_id}" });
   }
 
   public static int StringToTime(string dateString)
@@ -154,6 +154,21 @@ public class AppUtil
     {
       Debug.LogError($"error:Invalid date format:{dateString}");
     }
+    return (int)unixTimestamp;
+  }
+
+  /// <summary>
+  /// 获取当前系统时间时间戳秒
+  /// </summary>
+  /// <returns></returns>
+  public static int GetNowUnixTime()
+  {
+    DateTime now = DateTime.Now;
+    // 转换为 Unix 时间戳
+    DateTimeOffset dateTimeOffset = new DateTimeOffset(now);
+    long unixTimestamp = dateTimeOffset.ToUnixTimeSeconds();
+    // 输出 Unix 时间戳
+    Debug.Log("当前时间的 Unix 时间戳: " + unixTimestamp);
     return (int)unixTimestamp;
   }
   /// <summary>
