@@ -22,6 +22,16 @@ public class UIDetail : UIBase
   {
     UIPanel.m_BtnClose.onClick.Add(BtnCloseHandler);
     UIPanel.m_BtnSave.onClick.Add(BtnSaveHandler);
+
+    UIPanel.m_DetailList.itemRenderer = ItemRendererHandler;
+  }
+
+  private void ItemRendererHandler(int index, GObject item)
+  {
+    if(objectVals != null)
+    {
+      ObjectVal val = objectVals[index];
+    }
   }
 
   private void BtnSaveHandler(EventContext context)
@@ -34,6 +44,7 @@ public class UIDetail : UIBase
     Hide();
   }
 
+  List<ObjectVal> objectVals;
   TabContract tc;
   public override void Show(object obj = null)
   {
@@ -43,6 +54,13 @@ public class UIDetail : UIBase
     }
     UIPanel.visible = true;
 
+    if(tc != null)
+    {
+      objectVals = tc.GetObjectVals();
+    }
+
+    int count = objectVals == null ? 0: objectVals.Count;
+    UIPanel.m_DetailList.numItems = count;
   }
 
   public override void Hide()

@@ -9,6 +9,7 @@ namespace Basics
     {
         public GButton m_BtnClose;
         public GButton m_BtnSave;
+        public GList m_DetailList;
         public const string URL = "ui://z3yueri4i6pi6i";
 
         public static UI_UIDetail CreateInstance()
@@ -22,6 +23,7 @@ namespace Basics
 
             m_BtnClose = (GButton)GetChildAt(1);
             m_BtnSave = (GButton)GetChildAt(2);
+            m_DetailList = (GList)GetChildAt(3);
         }
     }
 }

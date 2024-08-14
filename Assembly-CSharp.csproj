@@ -115,6 +115,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearLook.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlImage.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_UIConfirm.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemLabel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearText.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Controller.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\GoWrapper.cs" />

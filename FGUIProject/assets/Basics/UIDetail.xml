@@ -8,5 +8,12 @@
     <component id="n2_i6pi" name="BtnSave" src="p5s36a" fileName="components/Button22.xml" xy="120,0">
       <Button title="保存"/>
     </component>
+    <list id="n3_ihug" name="DetailList" xy="0,50" size="1600,844" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," defaultItem="ui://z3yueri4ihug6j">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
   </displayList>
 </component>

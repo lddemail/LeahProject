@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using Mono.Data.Sqlite;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -98,6 +99,22 @@ public class TabContract:TabBase
   /// 欠款金额=(合同总额t_productsPrice-到账总额t_totalAccount)
   /// </summary>
   public float t_totalDebt;
+
+  
+  public List<ObjectVal> GetObjectVals()
+  {
+    List<ObjectVal> vals = new List<ObjectVal>();
+    FieldInfo[] fields = GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+    foreach (FieldInfo field in fields)
+    {
+      string name = field.Name;
+      object value = field.GetValue(this);
+      vals.Add(new ObjectVal(name, value));
+
+      Debug.Log($"GetFiledDic: {name}:{value}");
+    }
+    return vals;
+  }
 
 
   public bool isAdvent(int day =0)

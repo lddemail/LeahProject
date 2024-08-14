@@ -4,6 +4,18 @@ using System.Linq;
 using UnityEngine;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
+
+public struct ObjectVal
+{
+  public string name;
+  public object val;
+  public ObjectVal(string _name, object _val)
+  {
+    name = _name;
+    val = _val;
+  }
+}
+
 public class AppData
 {
   /// <summary>
