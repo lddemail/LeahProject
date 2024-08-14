@@ -97,6 +97,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\GObjectPool.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\MaterialManager.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GButton.cs" />
+    <Compile Include="Assets\Scripts\View\UIDetail.cs" />
     <Compile Include="Assets\Scripts\Data\TabHotel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\RectMesh.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GTreeNode.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Gesture\PinchGesture.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileImage.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserMac.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_UIDetail.cs" />
     <Compile Include="Assets\Scripts\View\UIRoot.cs" />
     <Compile Include="Assets\Scripts\Data\TabContract.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlLink.cs" />
@@ -258,14 +260,24 @@
     <Compile Include="Assets\FairyGUI\Scripts\Event\EventBridge.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Packages\System.Text.Encoding.CodePages.8.0.0\LICENSE.TXT" />
+    <None Include="Assets\Packages\System.Text.Encoding.CodePages.8.0.0\lib\netstandard2.0\System.Text.Encoding.CodePages.dll" />
     <None Include="Assets\FairyGUI\Resources\Shaders\FairyGUI-Text.shader" />
     <None Include="Assets\FairyGUI\Resources\Shaders\FairyGUI-Image.shader" />
     <None Include="Assets\StandaloneFileBrowser\Plugins\Ookii.Dialogs.dll" />
     <None Include="Assets\FairyGUI\Resources\Shaders\AddOn\FairyGUI-BlurFilter.shader" />
+    <None Include="Assets\Packages\System.Runtime.CompilerServices.Unsafe.6.0.0\useSharedDesignerContext.txt" />
+    <None Include="Assets\Packages\System.Runtime.CompilerServices.Unsafe.6.0.0\LICENSE.TXT" />
+    <None Include="Assets\Packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.xml" />
+    <None Include="Assets\Packages\System.Text.Encoding.CodePages.8.0.0\lib\netstandard2.0\System.Text.Encoding.CodePages.xml" />
     <None Include="Assets\FairyGUI\ReadMe - 5.1.0.txt" />
+    <None Include="Assets\Packages\System.Runtime.CompilerServices.Unsafe.6.0.0\THIRD-PARTY-NOTICES.TXT" />
     <None Include="Assets\StandaloneFileBrowser\Plugins\System.Windows.Forms.dll" />
+    <None Include="Assets\Packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll" />
     <None Include="Assets\FairyGUI\Resources\Shaders\FairyGUI-BMFont.shader" />
+    <None Include="Assets\Packages\System.Text.Encoding.CodePages.8.0.0\useSharedDesignerContext.txt" />
     <None Include="Assets\FairyGUI\Scripts\Extensions\TextMeshPro\Shaders\FairyGUI-TMP.shader" />
+    <None Include="Assets\Packages\System.Text.Encoding.CodePages.8.0.0\THIRD-PARTY-NOTICES.TXT" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -622,6 +634,14 @@
     </Reference>
     <Reference Include="System.Windows.Forms">
       <HintPath>Assets\StandaloneFileBrowser\Plugins\System.Windows.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages">
+      <HintPath>Assets\Packages\System.Text.Encoding.CodePages.8.0.0\lib\netstandard2.0\System.Text.Encoding.CodePages.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Assets\Packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">

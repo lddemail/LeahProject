@@ -22,6 +22,13 @@ public class AppConfig
     Debug.Log($"GetDBPath:{path}");
     return path;
   }
+  public static string GetLogPath()
+  {
+    string name = $"{productName}.log";
+    string path = Path.Combine(GetDataPath(), name);
+    Debug.Log($"GetLogPath:{path}");
+    return path;
+  }
   public static string GetDataPath()
   {
     if(string.IsNullOrEmpty(dataPath))

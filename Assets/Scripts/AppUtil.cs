@@ -10,10 +10,17 @@ using UnityEngine;
 public class AppUtil
 {
   public static SQLiteHelper db;
+  private static StreamWriter logWriter;
   public static void Init()
   {
     db = new SQLiteHelper(AppConfig.GetDBPath());
 
+    if(!Application.isEditor)
+    {
+      logWriter = new StreamWriter(AppConfig.GetLogPath(), true);
+      logWriter.AutoFlush = true;
+      logWriter.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} version:[{AppConfig.version}]");
+    }
     //AddFguiPackage("Main");
   }
 
@@ -181,5 +188,11 @@ public class AppUtil
 #else
     Application.Quit();
 #endif
+  }
+
+  public static void AddLog(string log)
+  {
+    if (logWriter == null) return;
+    logWriter.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} [{log}]");
   }
 }

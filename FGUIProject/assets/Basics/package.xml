@@ -233,6 +233,7 @@
     <component id="i6pi6f" name="UIConfirm.xml" path="/" exported="true"/>
     <component id="i6pi6g" name="Button5Copy.xml" path="/components/"/>
     <image id="i6pi6h" name="bg_black.png" path="/images/" scale="9grid" scale9grid="8,8,16,16"/>
+    <component id="i6pi6i" name="UIDetail.xml" path="/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

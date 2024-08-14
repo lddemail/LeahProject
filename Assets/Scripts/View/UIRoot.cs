@@ -31,11 +31,19 @@ public class UIRoot : MonoBehaviour
     get { _uiConfirm ??= new UIConfirm(transform); return _uiConfirm; }
   }
 
+  private UIDetail _uiDetail;
+  public UIDetail uiDetail
+  {
+    get { _uiDetail ??= new UIDetail(transform); return _uiDetail; }
+  }
+
+
   public void Init()
   {
     BasicsBinder.BindAll();
     uiMain.Init();
     uiTips.Init();
     uiConfirm.Init();
+    uiDetail.Init();
   }
 }

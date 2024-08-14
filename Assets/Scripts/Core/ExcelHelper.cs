@@ -254,16 +254,10 @@ public partial class ExcelSheet
 
   private void LoadFromXlsx(string fullPath, string sheetName)
   {
-    var index = fullPath.LastIndexOf("/", StringComparison.Ordinal);
-    var fileName = fullPath[(index + 1)..];
-    sheetName ??= fileName[..fileName.IndexOf(".", StringComparison.Ordinal)]; // 如果没有指定表名，则使用文件名
-
+    sheetName ??= Path.GetFileNameWithoutExtension(fullPath); // 如果没有指定表名，则使用文件名
     var fileInfo = new FileInfo(fullPath);
-
     using var package = new ExcelPackage(fileInfo);
-
     var sheet = package.Workbook.Worksheets[sheetName];
-
     if (sheet == null)
     { // 不存在表，则报错
       Debug.LogError($"ExcelSheet: Can't find sheet \"{sheetName}\" in file \"{fullPath}\"");

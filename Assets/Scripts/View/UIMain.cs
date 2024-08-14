@@ -37,6 +37,7 @@ public class UIMain:UIBase
   private void BtnAddHandler(EventContext context)
   {
     Debug.Log("添加数据");
+    UIRoot.ins.uiDetail.Show();
   }
 
   //显示全部/临期
@@ -131,6 +132,8 @@ public class UIMain:UIBase
     obj.m_BtnGroup.x = obj.displayObject.GlobalToLocal(context.inputEvent.position).x;
     obj.m_BtnDetails.onClick.Add(() => {
       Debug.Log($"详情:{tc.t_id}");
+      UIRoot.ins.uiDetail.Show(tc);
+      AppUtil.AddLog($"详情:{tc.t_id}");
     });
     obj.m_BtnDel.onClick.Add(() => {
       Debug.Log($"删除:{tc.t_id}");
@@ -163,19 +166,32 @@ public class UIMain:UIBase
 
   void BtnAddHotelHandler()
   {
-    ExcelSheet es = ExcelHelper.ImportExcel();
-    if(es != null)
+    List<TabContract> list = new List<TabContract>();
+    try
     {
-      List<TabContract> list = new List<TabContract>();
-      Dictionary<int, List<ObjVal>> vals = es.GetObjVal();
-      foreach(int index in vals.Keys)
+      ExcelSheet es = ExcelHelper.ImportExcel();
+      if (es != null)
       {
-        TabContract contract = TabContract.Create(index, vals[index]);
-        contract.Compute();
-        list.Add(contract);
+        Dictionary<int, List<ObjVal>> vals = es.GetObjVal();
+        foreach (int index in vals.Keys)
+        {
+          TabContract contract = TabContract.Create(index, vals[index]);
+          contract.Compute();
+          list.Add(contract);
+        }
       }
+    }
+    catch(Exception ex)
+    {
+      string error = $"读取Excel 失败:{ex.ToString()}";
+      Debug.LogError(error);
+      AppUtil.AddLog(error);
+      UIRoot.ins.uiTips.Show(error, 99);
+    }
 
-      if(list.Count > 0)
+    try
+    {
+      if (list.Count > 0)
       {
         Debug.Log($"导入数据:{list.Count}条");
         foreach (TabContract contract in list)
@@ -186,5 +202,13 @@ public class UIMain:UIBase
         AppUtil.Quit();
       }
     }
+    catch(Exception ex)
+    {
+      string error = $"导入失败:{ex.ToString()}";
+      Debug.LogError(error);
+      AppUtil.AddLog(error);
+      UIRoot.ins.uiTips.Show(error,99);
+    }
+
   }
 }

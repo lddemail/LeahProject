@@ -72,6 +72,11 @@
     <Compile Include="Assets\FairyGUI\Editor\UIPanelEditor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\NuGet\Editor\NuGetForUnity.PluginAPI.xml" />
+    <None Include="Assets\NuGet\Editor\NuGetForUnity.PluginAPI.dll" />
+    <None Include="Assets\NuGet\Editor\NugetForUnity.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.38f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
       <Private>False</Private>
@@ -474,6 +479,14 @@
     </Reference>
     <Reference Include="System.Windows.Forms">
       <HintPath>Assets\StandaloneFileBrowser\Plugins\System.Windows.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NuGetForUnity.PluginAPI">
+      <HintPath>Assets\NuGet\Editor\NuGetForUnity.PluginAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NugetForUnity">
+      <HintPath>Assets\NuGet\Editor\NugetForUnity.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework">

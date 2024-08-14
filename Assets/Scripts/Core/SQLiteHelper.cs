@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 
 
-
 #region demo
 //创建名为sqlite4unity的数据库
 //sql = new SQLiteHelper("data source=" + Application.dataPath + "/game.db");
@@ -266,6 +265,7 @@ public class SQLiteHelper
     sql = sql.TrimEnd(',') + ");";
 
     Debug.Log($"插入数据:{sql}");
+    AppUtil.AddLog($"插入数据:{sql}");
     return ExecuteQuery(sql);
   }
 
