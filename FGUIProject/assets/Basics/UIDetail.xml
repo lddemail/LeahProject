@@ -5,10 +5,19 @@
     <component id="n1_i6pi" name="BtnClose" src="p5s36a" fileName="components/Button22.xml" xy="0,0">
       <Button title="关闭"/>
     </component>
-    <component id="n2_i6pi" name="BtnSave" src="p5s36a" fileName="components/Button22.xml" xy="120,0">
+    <component id="n2_i6pi" name="BtnSave" src="p5s36a" fileName="components/Button22.xml" xy="125,0">
       <Button title="保存"/>
     </component>
-    <list id="n3_ihug" name="DetailList" xy="0,50" size="1600,844" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," defaultItem="ui://z3yueri4ihug6j">
+    <component id="n4_ldks" name="BtnAddProduct" src="p5s36a" fileName="components/Button22.xml" xy="250,0">
+      <Button title="添加产品"/>
+    </component>
+    <component id="n5_ldks" name="BtnAddBarter" src="p5s36a" fileName="components/Button22.xml" xy="500,0">
+      <Button title="添加到账"/>
+    </component>
+    <component id="n6_ldks" name="BtnAddAccount" src="p5s36a" fileName="components/Button22.xml" xy="375,0">
+      <Button title="添加消费"/>
+    </component>
+    <list id="n3_ihug" name="DetailList" xy="-1,49" size="1600,844" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," lineGap="5" defaultItem="ui://z3yueri4ihug6j" autoClearItems="true">
       <item/>
       <item/>
       <item/>

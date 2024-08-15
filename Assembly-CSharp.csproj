@@ -72,6 +72,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearSize.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\NGraphics.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\FillMesh.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemAccount.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Relations.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\XMLUtils.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Extensions\TextMeshPro\TMPFont.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Assets\Scripts\View\UIDetail.cs" />
     <Compile Include="Assets\Scripts\Data\TabHotel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\RectMesh.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemProduct.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GTreeNode.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\UIContentScaler.cs" />
     <Compile Include="Assets\Scripts\AppData.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\RichTextField.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_MainListItem.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Action\PlayTransitionAction.cs" />
+    <Compile Include="Assets\Scripts\View\UIDetailItemLabelExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Extensions\DragonBones\DragonBonesLoader.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\XMLIterator.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\LineMesh.cs" />
@@ -160,6 +163,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\GScrollBar.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GComponent.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\StraightLineMesh.cs" />
+    <Compile Include="Assets\Scripts\View\UIDetailItemProductExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\TextFormat.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\RelationItem.cs" />
     <Compile Include="Assets\Scripts\AppStart.cs" />
@@ -200,6 +204,7 @@
     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleSaveFileText.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_MainPanel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlSelect.cs" />
+    <Compile Include="Assets\Scripts\View\UITitleLisItemExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\ShaderConfig.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\TextField.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\PackageItem.cs" />
@@ -220,7 +225,9 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\UIConfig.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Filter\BlurFilter.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Gesture\PinchGesture.cs" />
+    <Compile Include="Assets\Scripts\View\UIDetailItemBarterExt.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileImage.cs" />
+    <Compile Include="Assets\Scripts\Data\DataBase.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserMac.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_UIDetail.cs" />
     <Compile Include="Assets\Scripts\View\UIRoot.cs" />
@@ -230,6 +237,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Gesture\RotationGesture.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearDisplay2.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\NTexture.cs" />
+    <Compile Include="Assets\Scripts\View\UIMainListItemExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\EMRenderSupport.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\IHitTest.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_Button5Copy.cs" />
@@ -243,10 +251,12 @@
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlElement.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\BaseFont.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\PlaneMesh.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemBarter.cs" />
     <Compile Include="Assets\Scripts\Core\ExcelHelper.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GTextInput.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\FieldTypes.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserEditor.cs" />
+    <Compile Include="Assets\Scripts\View\UIDetailItemAccountExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearFontSize.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Filter\ColorFilter.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Filter\IFilter.cs" />
@@ -617,6 +627,10 @@
       <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Text.Encoding.CodePages">
+      <HintPath>Assets\Packages\System.Text.Encoding.CodePages.8.0.0\lib\netstandard2.0\System.Text.Encoding.CodePages.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="EPPlus">
       <HintPath>Assets\Plugins\EPPlus.dll</HintPath>
       <Private>False</Private>
@@ -635,10 +649,6 @@
     </Reference>
     <Reference Include="System.Windows.Forms">
       <HintPath>Assets\StandaloneFileBrowser\Plugins\System.Windows.Forms.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Text.Encoding.CodePages">
-      <HintPath>Assets\Packages\System.Text.Encoding.CodePages.8.0.0\lib\netstandard2.0\System.Text.Encoding.CodePages.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">

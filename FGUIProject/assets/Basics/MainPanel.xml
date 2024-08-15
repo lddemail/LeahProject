@@ -13,7 +13,7 @@
     <component id="n46_i6pi" name="BtnAdd" src="p5s36a" fileName="components/Button22.xml" xy="240,0">
       <Button title="添加数据"/>
     </component>
-    <list id="n30" name="mainList" xy="1,85" size="1600,807" selectionMode="none" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," clipSoftness="0,20" defaultItem="ui://z3yueri4p5s36c">
+    <list id="n30" name="mainList" xy="1,85" size="1600,812" selectionMode="none" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," clipSoftness="0,20" defaultItem="ui://z3yueri4p5s36c">
       <item/>
       <item/>
       <item/>
@@ -30,10 +30,10 @@
       <item/>
       <item/>
     </list>
+    <component id="n48_i6pi" name="UIDetail" src="i6pi6i" fileName="UIDetail.xml" xy="0,0" visible="false"/>
     <component id="n45_i6pi" name="Tips" src="i6pi6d" fileName="Tips.xml" xy="400,400" visible="false" touchable="false">
       <relation target="" sidePair="center-center,middle-middle"/>
     </component>
     <component id="n47_i6pi" name="UIConfirm" src="i6pi6f" fileName="UIConfirm.xml" xy="0,0" visible="false"/>
-    <component id="n48_i6pi" name="UIDetail" src="i6pi6i" fileName="UIDetail.xml" xy="0,0" visible="false"/>
   </displayList>
 </component>

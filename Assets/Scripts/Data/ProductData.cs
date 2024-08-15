@@ -6,8 +6,7 @@ using UnityEngine;
 /// <summary>
 /// 产品
 /// </summary>
-[System.Serializable]
-public class ProductData
+public class ProductData: DataBase
 {
 
   /// <summary>
@@ -44,6 +43,11 @@ public class ProductData
     d.tTime = toTime;
     d.remark = remark;
     return d;
+  }
+
+  public bool IsSame(ProductData pd)
+  {
+    return name == pd.name && price == pd.price && fTime == pd.fTime && tTime == pd.tTime && remark == pd.remark;
   }
 
   public string ToStr()
@@ -120,7 +124,7 @@ public class ProductData
       for (int i = 0; i < pdList.Count; i++)
       {
         res += pdList[i].ToStr();
-        if (i < pdList.Count && i > 0)
+        if (i < pdList.Count-1)
         {
           res += "+";
         }

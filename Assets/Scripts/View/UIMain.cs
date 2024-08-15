@@ -69,53 +69,17 @@ public class UIMain:UIBase
   private void TitleListRender(int index, GObject item)
   {
     string title =  AppConfig.mainTitles[index];
-    var _item = item as UI_TitleLisItem;
-    _item.m_title.text = title;
+    var _item = item as UITitleLisItemExt;
+    _item.SetData(title);
   }
 
   private void MainListRender(int index, GObject item)
   {
     TabContract tabC = AppData.allTabContract[index];
-    var _item = item as UI_MainListItem;
-    _item.onRightClick.Add(MainItemRightClick);
-    _item.onRollOut.Add(MainItemRollOut);
-    _item.data = tabC;
-
-    
-
-    for (int i=0;i< AppConfig.mainTitles.Count; i++)
-    {
-      string title = AppConfig.mainTitles[i];
-      object val = tabC.GetPropertyValue($"t_{title}");
-      string valStr = val.ToString();
-      switch (i)
-      {
-        case 0:
-          _item.m_t1.text = valStr;
-          break;
-        case 1:
-          _item.m_t2.text = valStr;
-          break;
-        case 2:
-          _item.m_t3.text = valStr;
-          break;
-        case 3:
-          _item.m_t4.text = valStr;
-          break;
-        case 4:
-          _item.m_t5.text = valStr;
-          break;
-        case 5:
-          _item.m_t6.text = valStr;
-          break;
-        case 6:
-          _item.m_t7.text = valStr;
-          break;
-        case 7:
-          _item.m_t8.text = valStr;
-          break;
-      }
-    }
+    var _item = item as UIMainListItemExt;
+    _item.SetData(tabC);
+    _item.onRightClick.Set(MainItemRightClick);
+    _item.onRollOut.Set(MainItemRollOut);
   }
 
   private void MainItemRollOut(EventContext context)
@@ -129,16 +93,16 @@ public class UIMain:UIBase
     UI_MainListItem obj = context.sender as UI_MainListItem;
     TabContract tc = obj.data as TabContract;
     obj.m_BtnGroup.visible = true;
-    obj.m_BtnGroup.x = obj.displayObject.GlobalToLocal(context.inputEvent.position).x;
-    obj.m_BtnDetails.onClick.Add(() => {
+    obj.m_BtnGroup.x = obj.displayObject.GlobalToLocal(context.inputEvent.position).x-160;
+    obj.m_BtnDetails.onClick.Set(() => {
       Debug.Log($"详情:{tc.t_id}");
       UIRoot.ins.uiDetail.Show(tc);
-      AppUtil.AddLog($"详情:{tc.t_id}");
     });
-    obj.m_BtnDel.onClick.Add(() => {
+    obj.m_BtnDel.onClick.Set(() => {
       Debug.Log($"删除:{tc.t_id}");
       UIRoot.ins.uiConfirm.Show(tc, () => {
         _currTabContracts.Remove(tc);
+        AppData.DelTabContract(tc.t_id);
         RefreshUI();
       });
     });

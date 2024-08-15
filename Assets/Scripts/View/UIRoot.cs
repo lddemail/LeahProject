@@ -7,6 +7,17 @@ using UnityEngine.UIElements;
 
 public class UIRoot : MonoBehaviour
 {
+  public static void FguiBinder()
+  {
+    BasicsBinder.BindAll();
+    UIObjectFactory.SetPackageItemExtension(UI_DetailItemLabel.URL, typeof(UIDetailItemLabelExt));
+    UIObjectFactory.SetPackageItemExtension(UI_MainListItem.URL, typeof(UIMainListItemExt));
+    UIObjectFactory.SetPackageItemExtension(UI_TitleLisItem.URL, typeof(UITitleLisItemExt));
+    UIObjectFactory.SetPackageItemExtension(UI_DetailItemProduct.URL, typeof(UIDetailItemProductExt));
+    UIObjectFactory.SetPackageItemExtension(UI_DetailItemBarter.URL, typeof(UIDetailItemBarterExt));
+    UIObjectFactory.SetPackageItemExtension(UI_DetailItemAccount.URL, typeof(UIDetailItemAccountExt));
+  }
+
   public static UIRoot ins;
   private void Awake()
   {
@@ -40,7 +51,6 @@ public class UIRoot : MonoBehaviour
 
   public void Init()
   {
-    BasicsBinder.BindAll();
     uiMain.Init();
     uiTips.Init();
     uiConfirm.Init();

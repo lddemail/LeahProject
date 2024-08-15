@@ -80,4 +80,19 @@ public class AppData
     }
   }
 
+  /// <summary>
+  /// 从数据库拿数据覆盖本地
+  /// </summary>
+  public static void DBCoverLocalById(int id)
+  {
+    TabContract tab = allTabContract.Find(x => x.t_id == id);
+    if (tab != null)
+    {
+      TabContract tabDB =AppUtil.Read4DBById<TabContract>(id);
+      if(tabDB != null && tabDB.t_id > 0)
+      {
+        tab.Cover(tabDB);
+      }
+    }
+  }
 }

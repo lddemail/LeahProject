@@ -54,6 +54,7 @@ public class AppConfig
   }
 
   public static List<string> mainTitles = new List<string>() {
+    "id",
     "hotelName",
     "group",
     "brand",

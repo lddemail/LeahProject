@@ -33,18 +33,13 @@ public class UIConfirm : UIBase
 
   private void BtnOkHandler(EventContext context)
   {
-    if(tc != null)
-    {
-      AppData.DelTabContract(tc.t_id);
-    }
+
     OkCallBack?.Invoke();
     Hide();
   }
 
-  private TabContract tc;
   public override void Show(object obj = null)
   {
-    tc = obj as TabContract;
     UIPanel.visible = true;
   }
 

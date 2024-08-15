@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// 酒店消费明细
 /// </summary>
-public class BarterData
+public class BarterData: DataBase
 {
   /// <summary>
   /// 消费金额
@@ -29,6 +29,12 @@ public class BarterData
     d.remark = remark;
     return d;
   }
+
+  public bool IsSame(BarterData bd)
+  {
+    return barter == bd.barter && time == bd.time && remark == bd.remark;
+  }
+
   public string ToStr()
   {
     string res = $"barter:{barter},time:{time},remark:{remark}";
@@ -92,7 +98,7 @@ public class BarterData
       for (int i = 0; i < pdList.Count; i++)
       {
         res += pdList[i].ToStr();
-        if (i < pdList.Count && i > 0)
+        if (i < pdList.Count - 1)
         {
           res += "+";
         }

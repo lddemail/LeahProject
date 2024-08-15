@@ -72,6 +72,47 @@ public class AppUtil
     }
     return res;
   }
+
+  /// <summary>
+  /// 从DB读取覆盖本地
+  /// </summary>
+  /// <typeparam name="T"></typeparam>
+  /// <param name="tabName"></param>
+  /// <returns></returns>
+  public static T Read4DBById<T>(int id) where T : new()
+  {
+    T data = new T();
+    var Ttype = typeof(T);
+    SqliteDataReader reader = db.SelectData(Ttype.Name, new string[] { "*" }, new string[] { AppConfig.tabKey, id.ToString() });
+    while (reader.Read())
+    {
+      FieldInfo[] fields = data.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+      foreach (FieldInfo field in fields)
+      {
+        string name = field.Name;
+        Type type = field.FieldType;
+        object value = null;
+        if (type == typeof(int) || type == typeof(long))
+        {
+          value = reader.GetInt32(reader.GetOrdinal(name));
+        }
+        else if (type == typeof(double) || type == typeof(float))
+        {
+          value = reader.GetFloat(reader.GetOrdinal(name));
+        }
+        else
+        {
+          value = reader.GetString(reader.GetOrdinal(name));
+        }
+        if (value != null)
+        {
+          field.SetValue(data, value);
+          //Debug.Log($"{name}: {value}");
+        }
+      }
+    }
+    return data;
+  }
   /// <summary>
   /// 更新数据到DB
   /// </summary>
@@ -162,6 +203,18 @@ public class AppUtil
       Debug.LogError($"error:Invalid date format:{dateString}");
     }
     return (int)unixTimestamp;
+  }
+
+  public static string TimeToString(int timestamp)
+  {
+    if (timestamp == 0) return "0";
+    // 将时间戳转换为 DateTimeOffset
+    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(timestamp);
+    // 将 DateTimeOffset 转换为本地时间的 DateTime
+    DateTime dateTime = dateTimeOffset.LocalDateTime;
+    // 将 DateTime 转换为字符串
+    string dateString = dateTime.ToString("yyyy/MM/dd");
+    return dateString;
   }
 
   /// <summary>

@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using Mono.Data.Sqlite;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using System;
 using System.Collections;
@@ -100,11 +101,134 @@ public class TabContract:TabBase
   /// </summary>
   public float t_totalDebt;
 
-  
+
+  /// <summary>
+  /// 覆盖数据
+  /// </summary>
+  public void Cover(TabContract tc)
+  {
+    FieldInfo[] fields = GetFields();
+    foreach (FieldInfo field in fields)
+    {
+      string name = field.Name;
+      object valueDB = field.GetValue(tc);
+      if(valueDB != null)
+      {
+        field.SetValue(this, valueDB);
+      }
+    }
+    Debug.Log($"从DB覆盖到本地:{tc.t_id}");
+  }
+
+  /// <summary>
+  /// 删除一个产品
+  /// </summary>
+  /// <param name="pd"></param>
+  /// <returns></returns>
+  public bool RemProduct(ProductData pd)
+  {
+    List<ProductData> list = ProductData.DBStrToData(t_products);
+    ProductData rpd = list.Find(x => x.IsSame(pd) == true);
+    if(rpd != null)
+    {
+      list.Remove(rpd);
+      t_products = ProductData.ToDBStr(list);
+      Compute();
+      return true;
+    }
+    return false;
+  }
+  /// <summary>
+  /// 添加一个产品
+  /// </summary>
+  /// <param name="pd"></param>
+  /// <returns></returns>
+  public bool AddProduct(ProductData pd)
+  {
+    List<ProductData> list = ProductData.DBStrToData(t_products);
+    if (list == null) list = new List<ProductData>();
+    list.Add(pd);
+    t_products = ProductData.ToDBStr(list);
+    Compute();
+    return true;
+  }
+
+  /// <summary>
+  /// 添加一个消费
+  /// </summary>
+  /// <param name="db"></param>
+  /// <returns></returns>
+  public bool AddBarter(BarterData db)
+  {
+    List<BarterData> list = BarterData.DBStrToData(t_barter);
+    if (list == null) list = new List<BarterData>();
+    list.Add(db);
+    t_barter = BarterData.ToDBStr(list);
+    Compute();
+    return true;
+  }
+  /// <summary>
+  /// 删除一个消费
+  /// </summary>
+  /// <param name="db"></param>
+  /// <returns></returns>
+  public bool RemBarter(BarterData db)
+  {
+    List<BarterData> list = BarterData.DBStrToData(t_barter);
+    BarterData rpd = list.Find(x => x.IsSame(db) == true);
+    if (rpd != null)
+    {
+      list.Remove(rpd);
+      t_barter = BarterData.ToDBStr(list);
+      Compute();
+      return true;
+    }
+    return false;
+  }
+
+  /// <summary>
+  /// 添加一个到账
+  /// </summary>
+  /// <param name="db"></param>
+  /// <returns></returns>
+  public bool AddAccount(AccountData ad)
+  {
+    List<AccountData> list = AccountData.DBStrToData(t_accountRematk);
+    if (list == null) list = new List<AccountData>();
+    list.Add(ad);
+    t_accountRematk = AccountData.ToDBStr(list);
+    Compute();
+    return true;
+  }
+  /// <summary>
+  /// 删除一个到账
+  /// </summary>
+  /// <param name="db"></param>
+  /// <returns></returns>
+  public bool RemAccount(AccountData ad)
+  {
+    List<AccountData> list = AccountData.DBStrToData(t_accountRematk);
+    AccountData rpd = list.Find(x => x.IsSame(ad) == true);
+    if (rpd != null)
+    {
+      list.Remove(rpd);
+      t_accountRematk = AccountData.ToDBStr(list);
+      Compute();
+      return true;
+    }
+    return false;
+  }
+
+
+  private FieldInfo[] GetFields()
+  {
+    return GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+  }
+
   public List<ObjectVal> GetObjectVals()
   {
     List<ObjectVal> vals = new List<ObjectVal>();
-    FieldInfo[] fields = GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+    FieldInfo[] fields = GetFields();
     foreach (FieldInfo field in fields)
     {
       string name = field.Name;
@@ -116,7 +240,11 @@ public class TabContract:TabBase
     return vals;
   }
 
-
+  /// <summary>
+  /// 是否要到期
+  /// </summary>
+  /// <param name="day"></param>
+  /// <returns></returns>
   public bool isAdvent(int day =0)
   {
     if (day == 0) return true;

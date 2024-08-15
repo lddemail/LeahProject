@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// 到账明细
 /// </summary>
-public class AccountData
+public class AccountData:DataBase
 { 
   /// <summary>
    /// 金额
@@ -28,6 +28,10 @@ public class AccountData
     d.time = time;
     d.remark = remark;
     return d;
+  }
+  public bool IsSame(AccountData ad)
+  {
+    return barter == ad.barter && time == ad.time && remark == ad.remark;
   }
   public string ToStr()
   {
@@ -91,7 +95,7 @@ public class AccountData
       for (int i = 0; i < pdList.Count; i++)
       {
         res += pdList[i].ToStr();
-        if (i < pdList.Count && i > 0)
+        if (i < pdList.Count -1 )
         {
           res += "+";
         }

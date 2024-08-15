@@ -8,6 +8,7 @@ namespace Basics
     public partial class UI_DetailItemLabel : GComponent
     {
         public GTextField m_title;
+        public GTextInput m_InputLab;
         public const string URL = "ui://z3yueri4ihug6j";
 
         public static UI_DetailItemLabel CreateInstance()
@@ -20,6 +21,7 @@ namespace Basics
             base.ConstructFromXML(xml);
 
             m_title = (GTextField)GetChildAt(0);
+            m_InputLab = (GTextInput)GetChildAt(1);
         }
     }
 }

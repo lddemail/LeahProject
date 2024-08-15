@@ -8,20 +8,23 @@ public class AppStart : MonoBehaviour
 {
     private void Awake()
     {
-    // 注册代码页提供程序
-    System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+        // 注册代码页提供程序
+        System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
-    Application.targetFrameRate = 60;
-    QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 0;
 
-    AppConfig.Init();
+        AppConfig.Init();
         AppUtil.Init();
- 
+        UIRoot.FguiBinder();
+
+
     }
     void Start()
     {
-        AppData.Init();
         UIRoot.ins.Init();
+        AppData.Init();
+
         StartCoroutine(RunApp());
     }
 

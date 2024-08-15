@@ -8,6 +8,7 @@ namespace Basics
     public partial class UI_MainListItem : GButton
     {
         public GButton m_cb;
+        public GTextField m_t0;
         public GTextField m_t1;
         public GTextField m_t2;
         public GTextField m_t3;
@@ -31,17 +32,18 @@ namespace Basics
             base.ConstructFromXML(xml);
 
             m_cb = (GButton)GetChildAt(3);
-            m_t1 = (GTextField)GetChildAt(4);
-            m_t2 = (GTextField)GetChildAt(5);
-            m_t3 = (GTextField)GetChildAt(6);
-            m_t4 = (GTextField)GetChildAt(7);
-            m_t5 = (GTextField)GetChildAt(8);
-            m_t6 = (GTextField)GetChildAt(9);
-            m_t7 = (GTextField)GetChildAt(10);
-            m_t8 = (GTextField)GetChildAt(11);
-            m_BtnDetails = (GButton)GetChildAt(12);
-            m_BtnDel = (GButton)GetChildAt(13);
-            m_BtnGroup = (GGroup)GetChildAt(14);
+            m_t0 = (GTextField)GetChildAt(4);
+            m_t1 = (GTextField)GetChildAt(5);
+            m_t2 = (GTextField)GetChildAt(6);
+            m_t3 = (GTextField)GetChildAt(7);
+            m_t4 = (GTextField)GetChildAt(8);
+            m_t5 = (GTextField)GetChildAt(9);
+            m_t6 = (GTextField)GetChildAt(10);
+            m_t7 = (GTextField)GetChildAt(11);
+            m_t8 = (GTextField)GetChildAt(12);
+            m_BtnDetails = (GButton)GetChildAt(13);
+            m_BtnDel = (GButton)GetChildAt(14);
+            m_BtnGroup = (GGroup)GetChildAt(15);
         }
     }
 }

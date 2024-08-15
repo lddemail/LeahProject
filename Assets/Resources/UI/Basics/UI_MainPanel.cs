@@ -13,9 +13,9 @@ namespace Basics
         public GButton m_BtnAdd;
         public GList m_mainList;
         public GList m_titleList;
+        public UI_UIDetail m_UIDetail;
         public UI_Tips m_Tips;
         public UI_UIConfirm m_UIConfirm;
-        public UI_UIDetail m_UIDetail;
         public const string URL = "ui://z3yueri4p5s369";
 
         public static UI_MainPanel CreateInstance()
@@ -33,9 +33,9 @@ namespace Basics
             m_BtnAdd = (GButton)GetChildAt(5);
             m_mainList = (GList)GetChildAt(6);
             m_titleList = (GList)GetChildAt(7);
-            m_Tips = (UI_Tips)GetChildAt(8);
-            m_UIConfirm = (UI_UIConfirm)GetChildAt(9);
-            m_UIDetail = (UI_UIDetail)GetChildAt(10);
+            m_UIDetail = (UI_UIDetail)GetChildAt(8);
+            m_Tips = (UI_Tips)GetChildAt(9);
+            m_UIConfirm = (UI_UIConfirm)GetChildAt(10);
         }
     }
 }
