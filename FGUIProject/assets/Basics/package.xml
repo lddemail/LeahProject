@@ -238,6 +238,7 @@
     <component id="ldks6k" name="DetailItemProduct.xml" path="/" exported="true"/>
     <component id="ldks6l" name="DetailItemBarter.xml" path="/" exported="true"/>
     <component id="ldks6m" name="DetailItemAccount.xml" path="/" exported="true"/>
+    <component id="gvvv6n" name="ComboBoxCopy.xml" path="/components/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

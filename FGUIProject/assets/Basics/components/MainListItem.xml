@@ -16,8 +16,8 @@
     <component id="n7" name="cb" src="p5s3l" fileName="components/Button8.xml" xy="0,0">
       <Button checked="true"/>
     </component>
-    <text id="n21_gvvv" name="t0" xy="52,12" size="100,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
-    <text id="n5" name="t1" xy="152,11" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n21_gvvv" name="t0" xy="52,12" size="100,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="000"/>
+    <text id="n5" name="t1" xy="152,11" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="常州都喜天丽富都青枫苑酒店"/>
     <text id="n9_p5s3" name="t2" xy="352,10" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
     <text id="n10_p5s3" name="t3" xy="552,9" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
     <text id="n11_p5s3" name="t4" xy="752,8" size="200,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="0000000"/>

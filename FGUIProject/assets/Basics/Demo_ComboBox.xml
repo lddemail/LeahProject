@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1136,570">
   <displayList>
-    <component id="n1" name="n1" src="p5s31m" xy="83,64">
+    <component id="n1" name="n1" src="p5s31m" fileName="components/ComboBox.xml" xy="83,64">
       <ComboBox visibleItemCount="10">
         <item title="Item 1"/>
         <item title="Item 2"/>
@@ -13,7 +13,7 @@
         <item title="Item 8"/>
       </ComboBox>
     </component>
-    <component id="n4" name="n4" src="p5s31u" xy="258,137">
+    <component id="n4" name="n4" src="p5s31u" fileName="components/Dropdown.xml" xy="258,137">
       <ComboBox visibleItemCount="5">
         <item title="Item 1"/>
         <item title="Item 2"/>
@@ -24,7 +24,7 @@
         <item title="Item 7"/>
       </ComboBox>
     </component>
-    <component id="n5" name="n5" src="p5s31u" xy="80,141">
+    <component id="n5" name="n5" src="p5s31u" fileName="components/Dropdown.xml" xy="80,141">
       <ComboBox visibleItemCount="10">
         <item title="Item 1"/>
         <item title="Item 2"/>
@@ -35,7 +35,7 @@
         <item title="Item 7"/>
       </ComboBox>
     </component>
-    <component id="n6" name="n6" src="p5s31m" xy="256,66">
+    <component id="n6" name="n6" src="p5s31m" fileName="components/ComboBox.xml" xy="256,66" size="100,20" aspect="true">
       <ComboBox visibleItemCount="5">
         <item title="Item 1"/>
         <item title="Item 2"/>

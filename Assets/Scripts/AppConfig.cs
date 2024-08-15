@@ -66,11 +66,13 @@ public class AppConfig
   };
 
   //省，市区
-  public static Dictionary<string, List<string>> provinceDic = new Dictionary<string, List<string>>();
+
+  public static string[] provinceAry = new string[] { "上海市", "浙江省", "江苏省" };
+  public static Dictionary<string, List<string>> cityDic = new Dictionary<string, List<string>>();
   public static void InitProvinceDic()
   {
-    provinceDic.Add("上海市",new List<string>() { "上海市" });
-    provinceDic.Add("浙江省", new List<string>() {
+    cityDic.Add("上海市",new List<string>() { "上海市" });
+    cityDic.Add("浙江省", new List<string>() {
     "杭州市",
     "宁波",
     "温州",
@@ -83,7 +85,7 @@ public class AppConfig
     "台州",
     "丽水"
     });
-    provinceDic.Add("江苏省", new List<string>() {
+    cityDic.Add("江苏省", new List<string>() {
     "南京市",
     "苏州市",
     "无锡市",

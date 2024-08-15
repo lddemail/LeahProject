@@ -19,7 +19,7 @@
       <item/>
       <item/>
     </list>
-    <list id="n42_p5s3" name="titleList" xy="0,40" size="1600,40" layout="row" overflow="scroll" scroll="horizontal" scrollBar="hidden" defaultItem="ui://z3yueri4p5s36b">
+    <list id="n42_p5s3" name="titleList" xy="0,40" size="1600,40" layout="row" overflow="scroll" scroll="horizontal" scrollBar="hidden" defaultItem="ui://z3yueri4p5s36b" autoClearItems="true">
       <item/>
       <item/>
       <item/>
