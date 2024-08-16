@@ -54,20 +54,19 @@ public class AppConfig
   }
 
   public static List<string> mainTitles = new List<string>() {
-    "id",
-    "hotelName",
-    "group",
-    "brand",
-    "province",
-    "city",
-    "originalFollowup",
-    "newSales",
-    "interiorNo"
+    "t_id",
+    "t_hotelName",
+    "t_group",
+    "t_interiorNo",
+    "t_products",
+    "t_productsPrice",
+    "t_totalAccount",
+    "t_totalDebt"
   };
 
   //省，市区
-
-  public static string[] provinceAry = new string[] { "上海市", "浙江省", "江苏省" };
+  public static int selectProvinceIndex;
+  public static List<string> provinceList = new List<string> { "上海市", "浙江省", "江苏省" };
   public static Dictionary<string, List<string>> cityDic = new Dictionary<string, List<string>>();
   public static void InitProvinceDic()
   {

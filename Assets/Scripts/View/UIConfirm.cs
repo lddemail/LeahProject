@@ -40,6 +40,7 @@ public class UIConfirm : UIBase
 
   public override void Show(object obj = null)
   {
+    UIPanel.m_Message.text = obj.ToString();
     UIPanel.visible = true;
   }
 

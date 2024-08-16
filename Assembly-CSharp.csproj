@@ -94,6 +94,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\FontManager.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileTextMultiple.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\SelectionShape.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_ComboBoxPopupCopy.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GGraph.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GObjectPool.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\MaterialManager.cs" />
@@ -204,7 +205,6 @@
     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleSaveFileText.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_MainPanel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlSelect.cs" />
-    <Compile Include="Assets\Scripts\View\UITitleLisItemExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\ShaderConfig.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\TextField.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\PackageItem.cs" />
@@ -218,7 +218,6 @@
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlParseOptions.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\ZipReader.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\PopupMenu.cs" />
-    <Compile Include="Assets\Resources\UI\Basics\UI_TitleLisItem.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Tween\EaseManager.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Event\EventContext.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\UIPanel.cs" />
@@ -268,7 +267,6 @@
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\IHtmlPageContext.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\MeshColliderHitTest.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\HitTestContext.cs" />
-    <Compile Include="Assets\Resources\UI\Basics\UI_ComboBoxPopup.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Event\EventBridge.cs" />
   </ItemGroup>
   <ItemGroup>

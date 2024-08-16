@@ -9,6 +9,7 @@ namespace Basics
     {
         public GButton m_BtnOk;
         public UI_Button5Copy m_BtnClose;
+        public GTextField m_Message;
         public const string URL = "ui://z3yueri4i6pi6f";
 
         public static UI_UIConfirm CreateInstance()
@@ -22,6 +23,7 @@ namespace Basics
 
             m_BtnOk = (GButton)GetChildAt(1);
             m_BtnClose = (UI_Button5Copy)GetChildAt(2);
+            m_Message = (GTextField)GetChildAt(3);
         }
     }
 }

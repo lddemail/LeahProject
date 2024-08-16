@@ -72,27 +72,43 @@ public class UIDetail : UIBase
   private void BtnSaveHandler(EventContext context)
   {
     //入库
-  }
-
-  private void BtnCloseHandler(EventContext context)
-  {
-    if(tc != null && tc.t_id > 0)
+    if(isAddTab)
     {
-      AppData.DBCoverLocalById(tc.t_id);
+      AppData.AddTabContract(tc);
+      UIRoot.ins.uiTips.Show($"{tc.t_hotelName} 新增入库完成");
+    }
+    else
+    {
+      AppData.UpdateTabContract(tc);
+      UIRoot.ins.uiTips.Show($"{tc.t_hotelName} 数据库更新完成");
     }
     Hide();
   }
 
+  private void BtnCloseHandler(EventContext context)
+  {
+    UIRoot.ins.uiConfirm.Show($"如果没有点击保存所有修将被还原.", () => {
+      if (tc != null && tc.t_id > 0)
+      {
+        AppData.DBCoverLocalById(tc.t_id);
+      }
+      Hide();
+    });
+  }
+
   List<ObjectVal> objectVals;
   TabContract tc;
+  bool isAddTab = false;
   public override void Show(object obj = null)
   {
     if(obj != null)
     {
+      isAddTab = false;
       tc = obj as TabContract;
     }
     else
     {
+      isAddTab = true;
       tc = new TabContract();
     }
     UIPanel.visible = true;
@@ -224,7 +240,7 @@ public class UIDetail : UIBase
       m_BtnDel.visible = true;
       m_BtnDel.x = obj.displayObject.GlobalToLocal(context.inputEvent.position).x - 60;
       m_BtnDel.onClick.Set(() => {
-        UIRoot.ins.uiConfirm.Show(tc, () => {
+        UIRoot.ins.uiConfirm.Show($"确定要删除吗?", () => {
           RemoveData(obj.data);
         });
       });

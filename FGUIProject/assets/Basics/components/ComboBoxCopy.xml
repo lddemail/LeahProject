@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="100,30" extention="ComboBox">
-  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+<component size="100,30" extention="ComboBox" bgColor="#333333">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="3"/>
   <displayList>
-    <image id="n1" name="n1" src="p5s31n" fileName="images/c1_png.png" xy="0,0" size="100,30" aspect="true">
+    <image id="n1" name="n1" src="p5s31n" fileName="images/c1_png.png" xy="0,2" size="100,30" aspect="true">
       <gearDisplay controller="button" pages="0"/>
       <relation target="" sidePair="width-width,height-height"/>
     </image>
@@ -14,10 +14,12 @@
       <gearDisplay controller="button" pages="2"/>
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <text id="n4" name="title" xy="2,2" size="78,26" fontSize="12" color="#ffcc00" autoSize="none" text="">
+    <text id="n4" name="title" xy="2,2" size="76,29" fontSize="20" color="#ffffff" vAlign="middle" autoSize="none" text="">
       <relation target="" sidePair="width-width,height-height"/>
     </text>
-    <image id="n5" name="n5" src="p5s31q" fileName="images/b7(2)_png.png" xy="74,0" size="26,28" aspect="true"/>
+    <image id="n5" name="n5" src="p5s31q" fileName="images/b7(2)_png.png" xy="74,0" size="26,28" aspect="true">
+      <relation target="" sidePair="right-right"/>
+    </image>
   </displayList>
-  <ComboBox dropdown="ui://z3yueri4p5s31r"/>
+  <ComboBox dropdown="ui://z3yueri4phex6o"/>
 </component>

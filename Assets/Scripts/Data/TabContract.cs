@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Security.Cryptography;
 using UnityEngine;
 using static ExcelSheet;
 
@@ -21,58 +22,58 @@ public class TabContract:TabBase
   /// <summary>
   /// 酒店名字
   /// </summary>
-  public string t_hotelName;
+  public string t_hotelName ="";
   /// <summary>
   /// 酒店对应的集团
   /// </summary>
-  public string t_group;
+  public string t_group = "";
   /// <summary>
   /// 酒店品牌
   /// </summary>
-  public string t_brand;
+  public string t_brand = "";
 
   /// <summary>
   /// 省
   /// </summary>
-  public string t_province;
+  public string t_province = "";
 
   /// <summary>
   /// 市
   /// </summary>
-  public string t_city;
+  public string t_city = "";
   /// <summary>s
   /// 原FOLLOWUP
   /// </summary>
-  public string t_originalFollowup;
+  public string t_originalFollowup = "";
   /// <summary>
   /// 新SALES
   /// </summary>
-  public string t_newSales;
+  public string t_newSales = "";
   /// <summary>
   /// 合同内部编号
   /// </summary>
-  public string t_interiorNo;
+  public string t_interiorNo = "";
   /// <summary>
   /// 客户看的合同编号
   /// </summary>
-  public string t_contractNo;
+  public string t_contractNo = "";
   /// <summary>
   /// 合同约定的支付方式
   /// </summary>
-  public string t_payment;
+  public string t_payment = "";
   /// <summary>
   /// 签约的公司名
   /// </summary>
-  public string t_attribution;
+  public string t_attribution = "";
   /// <summary>
   /// 甲方合同签约名称
   /// </summary>
-  public string t_a_contract;
+  public string t_a_contract = "";
 
   /// <summary>
   /// 用户购买的产品列表(产品1+产品2)
   /// </summary>
-  public string t_products;
+  public string t_products = "";
   /// <summary>
   /// (合同总额)所有产品的总价格
   /// </summary>
@@ -81,7 +82,7 @@ public class TabContract:TabBase
   /// <summary>
   /// 酒店消费明细(时间,金额,备注)
   /// </summary>
-  public string t_barter;
+  public string t_barter = "";
   /// <summary>
   /// 酒店消费总额
   /// </summary>
@@ -90,7 +91,7 @@ public class TabContract:TabBase
   /// <summary>
   /// 到账明细(时间,金额,备注)
   /// </summary>
-  public string t_accountRematk;
+  public string t_accountRematk = "";
   /// <summary>
   /// 到账总额
   /// </summary>
@@ -245,10 +246,11 @@ public class TabContract:TabBase
   /// </summary>
   /// <param name="day"></param>
   /// <returns></returns>
-  public bool isAdvent(int day =0)
+  public bool isAdventTerm(int day =0)
   {
     if (day == 0) return true;
 
+    bool res = false;
     int d = 3600 * 24 * day;
     int unixTime = AppUtil.GetNowUnixTime();
     List<ProductData> list = ProductData.DBStrToData(t_products);
@@ -261,12 +263,24 @@ public class TabContract:TabBase
           int pT = pd.tTime - unixTime;
           if (pT <= d)
           {
-            return true;
+            res = true;
+            break;
           }
         }
       }
     }
-    return false;
+    return res;
+  }
+
+  public bool isHotelNameTerm(string name)
+  {
+    bool res = name == "ALL" || t_hotelName == name;
+    return res;
+  }
+  public bool isGroupTerm(string name)
+  {
+    bool res = name == "ALL" || t_group == name;
+    return res;
   }
 
   public void Compute()

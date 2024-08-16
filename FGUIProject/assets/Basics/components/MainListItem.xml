@@ -16,15 +16,14 @@
     <component id="n7" name="cb" src="p5s3l" fileName="components/Button8.xml" xy="0,0">
       <Button checked="true"/>
     </component>
-    <text id="n21_gvvv" name="t0" xy="52,12" size="100,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="000"/>
-    <text id="n5" name="t1" xy="152,11" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="常州都喜天丽富都青枫苑酒店"/>
-    <text id="n9_p5s3" name="t2" xy="352,10" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
-    <text id="n10_p5s3" name="t3" xy="552,9" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
-    <text id="n11_p5s3" name="t4" xy="752,8" size="200,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="0000000"/>
-    <text id="n12_p5s3" name="t5" xy="952,10" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
-    <text id="n13_p5s3" name="t6" xy="1152,9" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
-    <text id="n14_p5s3" name="t7" xy="1352,10" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
-    <text id="n15_p5s3" name="t8" xy="1552,9" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n21_gvvv" name="t_id" xy="52,9" size="100,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="000"/>
+    <text id="n5" name="t_hotelName" xy="162,9" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="常州都喜天丽富都青枫苑酒店"/>
+    <text id="n9_p5s3" name="t_group" xy="372,9" size="200,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n10_p5s3" name="t_interiorNo" xy="582,9" size="150,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n11_p5s3" name="t_products" xy="742,9" size="360,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="0000000"/>
+    <text id="n12_p5s3" name="t_productsPrice" xy="1112,9" size="150,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n13_p5s3" name="t_totalAccount" xy="1272,9" size="150,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n14_p5s3" name="t_totalDebt" xy="1432,9" size="150,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
     <component id="n18_i6pi" name="BtnDetails" src="i6pi6e" fileName="components/Button10copy.xml" xy="637,-9" group="n20_i6pi">
       <Button title="详情"/>
     </component>

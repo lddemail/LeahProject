@@ -228,7 +228,7 @@ public class AppUtil
     DateTimeOffset dateTimeOffset = new DateTimeOffset(now);
     long unixTimestamp = dateTimeOffset.ToUnixTimeSeconds();
     // 输出 Unix 时间戳
-    Debug.Log("当前时间的 Unix 时间戳: " + unixTimestamp);
+    //Debug.Log("当前时间的 Unix 时间戳: " + unixTimestamp);
     return (int)unixTimestamp;
   }
   /// <summary>

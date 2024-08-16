@@ -4,27 +4,30 @@
     <graph id="n41_p5s3" name="bg" xy="0,0" size="1600,900" type="rect" lineSize="0" fillColor="#ff999999"/>
     <graph id="n28" name="n28" xy="0,40" size="1600,860" type="rect" lineColor="#49959595" fillColor="#ff233e43"/>
     <image id="n29" name="n29" src="p5s357" fileName="images/grid_header_png.png" xy="0,40" size="1600,39"/>
-    <component id="n40_p5s3" name="BtnInputExcel" src="p5s36a" fileName="components/Button22.xml" xy="0,0">
+    <component id="n40_p5s3" name="BtnInputExcel" src="p5s36a" fileName="components/Button22.xml" xy="0,0" group="n49_phex">
       <Button title="导入Excel"/>
     </component>
-    <component id="n43_i6pi" name="BtnAllOrAdvent" src="p5s36a" fileName="components/Button22.xml" xy="120,0">
+    <component id="n43_i6pi" name="BtnAllOrAdvent" src="p5s36a" fileName="components/Button22.xml" xy="120,0" group="n49_phex">
       <Button title="临期(30)"/>
     </component>
-    <component id="n46_i6pi" name="BtnAdd" src="p5s36a" fileName="components/Button22.xml" xy="240,0">
+    <component id="n46_i6pi" name="BtnAdd" src="p5s36a" fileName="components/Button22.xml" xy="240,0" group="n49_phex">
       <Button title="添加数据"/>
     </component>
+    <group id="n49_phex" name="BtnGroup" xy="0,0" size="340,40" advanced="true" layout="hz" lineGap="5" colGap="20" excludeInvisibles="true"/>
+    <text id="n50_phex" name="title_id" xy="54,44" size="100,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="ID"/>
+    <component id="n52_phex" name="title_hotelName" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="164,44" size="200,32" group="n53_phex">
+      <ComboBox visibleItemCount="20"/>
+    </component>
+    <component id="n54_phex" name="title_group" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="374,44" size="200,32" group="n53_phex">
+      <ComboBox visibleItemCount="20"/>
+    </component>
+    <text id="n55_phex" name="title_interiorNo" xy="584,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="合同内部编号"/>
+    <text id="n56_phex" name="title_products" xy="744,44" size="360,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="产品列表"/>
+    <text id="n57_phex" name="title_productsPrice" xy="1114,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="产品总价格"/>
+    <text id="n58_phex" name="title_totalAccount" xy="1274,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="到账总额"/>
+    <text id="n59_phex" name="title_totalDebt" xy="1434,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="欠款金额"/>
+    <group id="n53_phex" name="TitleGroup" xy="54,44" size="1530,32"/>
     <list id="n30" name="mainList" xy="1,85" size="1600,812" selectionMode="none" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," clipSoftness="0,20" defaultItem="ui://z3yueri4p5s36c">
-      <item/>
-      <item/>
-      <item/>
-      <item/>
-    </list>
-    <list id="n42_p5s3" name="titleList" xy="0,40" size="1600,40" layout="row" overflow="scroll" scroll="horizontal" scrollBar="hidden" defaultItem="ui://z3yueri4p5s36b" autoClearItems="true">
-      <item/>
-      <item/>
-      <item/>
-      <item/>
-      <item/>
       <item/>
       <item/>
       <item/>

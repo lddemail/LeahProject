@@ -19,7 +19,9 @@ public class UIMain:UIBase
     get { return ui as UI_MainPanel; }
   }
 
-  List<TabContract> _currTabContracts;
+  List<TabContract> _currTabContracts = new List<TabContract>();
+  List<string> hotelNameList;
+  List<string> groupList;
 
   public override void Init()
   {
@@ -27,17 +29,52 @@ public class UIMain:UIBase
     UIPanel.m_BtnAllOrAdvent.onClick.Add(BtnAllOrAdventHandler);
     UIPanel.m_BtnAdd.onClick.Add(BtnAddHandler);
 
-    UIPanel.m_titleList.itemRenderer = TitleListRender;
-    UIPanel.m_titleList.enabled = false;
-
     UIPanel.m_mainList.itemRenderer = MainListRender;
     UIPanel.m_mainList.SetVirtual();
+
+    UIPanel.m_title_hotelName.onChanged.Add(Title_hotelNameChange);
+    UIPanel.m_title_group.onChanged.Add(Title_GroupChange);
+  }
+
+  private void Title_hotelNameChange(EventContext context)
+  {
+    hotelNameTerm = hotelNameList[UIPanel.m_title_hotelName.selectedIndex];
+    QueryByTerm();
+  }
+  private void Title_GroupChange(EventContext context)
+  {
+    groupTerm = groupList[UIPanel.m_title_group.selectedIndex];
+    QueryByTerm();
   }
 
   private void BtnAddHandler(EventContext context)
   {
     Debug.Log("添加数据");
     UIRoot.ins.uiDetail.Show();
+  }
+
+  int adventTerm = 30;
+  string hotelNameTerm = "ALL";
+  string groupTerm = "ALL";
+  //根据条件检索
+  private void QueryByTerm()
+  {
+    Debug.Log($"检索:{adventTerm} {hotelNameTerm} {groupTerm}");
+    _currTabContracts.Clear();
+    foreach(var tab in AppData.allTabContract)
+    {
+      bool isAdventTerm = tab.isAdventTerm(adventTerm);
+      bool isHotelNameTerm = tab.isHotelNameTerm(hotelNameTerm);
+      bool isGroupTerm = tab.isGroupTerm(groupTerm);
+      //Debug.Log($"检索2:{tab.t_id}:{isAdventTerm} {isHotelNameTerm} {isGroupTerm}");
+      if (isAdventTerm && isHotelNameTerm && isGroupTerm)
+      {
+        _currTabContracts.Add(tab);
+      }
+    }
+    int count = _currTabContracts == null ? 0 : _currTabContracts.Count;
+    UIRoot.ins.uiTips.Show($"检索到{count}条数据");
+    RefreshUI();
   }
 
   //显示全部/临期
@@ -48,34 +85,25 @@ public class UIMain:UIBase
     if (isAdvent30)
     {
       UIPanel.m_BtnAllOrAdvent.title = "临期(60)";
-      _currTabContracts = AppData.allTabContract.FindAll(x => x.isAdvent(60) == true);
+      adventTerm = 60;
     }
     else if(isAdvent60)
     {
       UIPanel.m_BtnAllOrAdvent.title = "全部";
-      _currTabContracts = AppData.allTabContract.FindAll(x => x.isAdvent() == true);
+      adventTerm = 0;
     }
     else
     {
       UIPanel.m_BtnAllOrAdvent.title = "临期(30)";
-      _currTabContracts = AppData.allTabContract.FindAll(x => x.isAdvent(30) == true);
+      adventTerm = 30;
     }
-    RefreshUI();
-    int count = _currTabContracts == null ? 0 : _currTabContracts.Count;
-    UIRoot.ins.uiTips.Show($"检索到{count}条数据");
+    QueryByTerm();
   }
 
-
-  private void TitleListRender(int index, GObject item)
-  {
-    string title =  AppConfig.mainTitles[index];
-    var _item = item as UITitleLisItemExt;
-    _item.SetData(title);
-  }
 
   private void MainListRender(int index, GObject item)
   {
-    TabContract tabC = AppData.allTabContract[index];
+    TabContract tabC = _currTabContracts[index];
     var _item = item as UIMainListItemExt;
     _item.SetData(tabC);
     _item.onRightClick.Set(MainItemRightClick);
@@ -100,7 +128,7 @@ public class UIMain:UIBase
     });
     obj.m_BtnDel.onClick.Set(() => {
       Debug.Log($"删除:{tc.t_id}");
-      UIRoot.ins.uiConfirm.Show(tc, () => {
+      UIRoot.ins.uiConfirm.Show($"确定要删除:{tc.t_hotelName}吗?", () => {
         _currTabContracts.Remove(tc);
         AppData.DelTabContract(tc.t_id);
         RefreshUI();
@@ -110,8 +138,15 @@ public class UIMain:UIBase
 
   public override void Show(object obj=null)
   {
-    //主界面展示项
-    UIPanel.m_titleList.numItems = AppConfig.mainTitles.Count;
+    hotelNameList = AppData.allTabContractFiels["t_hotelName"];
+    hotelNameList.Insert(0,"ALL");
+    UIPanel.m_title_hotelName.items = hotelNameList.ToArray();
+    UIPanel.m_title_hotelName.selectedIndex = 0;
+
+    groupList = AppData.allTabContractFiels["t_group"];
+    groupList.Insert(0, "ALL");
+    UIPanel.m_title_group.items = groupList.ToArray();
+    UIPanel.m_title_group.selectedIndex = 0;
 
     //UIPanel.m_mainList.numItems = AppData.allTabContract.Count;
     UIPanel.m_BtnAllOrAdvent.FireClick(true, true);

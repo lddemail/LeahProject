@@ -2,11 +2,12 @@
 <component size="1600,900">
   <displayList>
     <graph id="n3_i6pi" name="n3" xy="0,0" size="1600,900" type="rect" lineSize="0" fillColor="#99cccccc"/>
-    <component id="n0_i6pi" name="BtnOk" src="i6pi6e" fileName="components/Button10copy.xml" xy="828,379">
+    <component id="n0_i6pi" name="BtnOk" src="i6pi6e" fileName="components/Button10copy.xml" xy="828,414">
       <Button title="确认"/>
     </component>
-    <component id="n1_i6pi" name="BtnClose" src="i6pi6g" fileName="components/Button5Copy.xml" xy="598,379">
+    <component id="n1_i6pi" name="BtnClose" src="i6pi6g" fileName="components/Button5Copy.xml" xy="598,414">
       <Button title="取消"/>
     </component>
+    <text id="n4_phex" name="Message" xy="560,278" size="474,117" fontSize="30" color="#ffffff" autoSize="none" strokeColor="#000000" text="111"/>
   </displayList>
 </component>

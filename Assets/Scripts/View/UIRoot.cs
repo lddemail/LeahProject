@@ -12,7 +12,6 @@ public class UIRoot : MonoBehaviour
     BasicsBinder.BindAll();
     UIObjectFactory.SetPackageItemExtension(UI_DetailItemLabel.URL, typeof(UIDetailItemLabelExt));
     UIObjectFactory.SetPackageItemExtension(UI_MainListItem.URL, typeof(UIMainListItemExt));
-    UIObjectFactory.SetPackageItemExtension(UI_TitleLisItem.URL, typeof(UITitleLisItemExt));
     UIObjectFactory.SetPackageItemExtension(UI_DetailItemProduct.URL, typeof(UIDetailItemProductExt));
     UIObjectFactory.SetPackageItemExtension(UI_DetailItemBarter.URL, typeof(UIDetailItemBarterExt));
     UIObjectFactory.SetPackageItemExtension(UI_DetailItemAccount.URL, typeof(UIDetailItemAccountExt));

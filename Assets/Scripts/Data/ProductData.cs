@@ -82,7 +82,7 @@ public class ProductData: DataBase
             d.remark = ary2[1];
             break;
           default:
-            Debug.LogError($"{s} 没解析");
+            //Debug.LogError($"{s} 没解析");
             break;
         }
       }

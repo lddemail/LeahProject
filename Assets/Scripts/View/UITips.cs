@@ -28,7 +28,7 @@ public class UITips : UIBase
   {
     UIPanel.visible = true;
     UIPanel.m_title.text = obj.ToString();
-    Timers.inst.Add(1, 1, (object param) => {
+    Timers.inst.Add(3, 1, (object param) => {
       Hide();
     });
   }

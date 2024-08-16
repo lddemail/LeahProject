@@ -10,7 +10,6 @@ namespace Basics
         public GTextField m_title;
         public GTextInput m_InputLab;
         public GComboBox m_ComboxBox1;
-        public GComboBox m_ComboxBox2;
         public const string URL = "ui://z3yueri4ihug6j";
 
         public static UI_DetailItemLabel CreateInstance()
@@ -24,8 +23,7 @@ namespace Basics
 
             m_title = (GTextField)GetChildAt(0);
             m_InputLab = (GTextInput)GetChildAt(1);
-            m_ComboxBox1 = (GComboBox)GetChildAt(3);
-            m_ComboxBox2 = (GComboBox)GetChildAt(4);
+            m_ComboxBox1 = (GComboBox)GetChildAt(2);
         }
     }
 }
