@@ -19,6 +19,10 @@ public struct ObjectVal
 public class AppData
 {
   /// <summary>
+  /// 当前编辑的订单
+  /// </summary>
+  public static TabContract currTc;
+  /// <summary>
   /// 所有定单数据
   /// </summary>
   public static List<TabContract> allTabContract = new List<TabContract>();

@@ -92,9 +92,9 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\MeshFactory.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\IUISource.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\FontManager.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_ComboBoxPopupCopy.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileTextMultiple.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\SelectionShape.cs" />
-    <Compile Include="Assets\Resources\UI\Basics\UI_ComboBoxPopupCopy.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GGraph.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GObjectPool.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\MaterialManager.cs" />
@@ -201,6 +201,7 @@
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserLinux.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GProgressBar.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Tween\EaseType.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemCity.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\StageCamera.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleSaveFileText.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_MainPanel.cs" />
@@ -244,6 +245,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\MovieClip.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlParser.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\PixelHitTest.cs" />
+    <Compile Include="Assets\Scripts\View\UIDetailItemCityExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Extensions\WebGLTextInput\WebGLTextInput.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Shape.cs" />
     <Compile Include="Assets\Scripts\Data\AccountData.cs" />

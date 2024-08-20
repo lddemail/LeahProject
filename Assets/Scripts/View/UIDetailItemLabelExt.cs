@@ -39,7 +39,6 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
     m_InputLab.enabled = isEnabled;
 
     m_ComboxBox1.visible = true;
-    int selectIndex;
     switch (va.name)
     {
       case "t_hotelName":
@@ -51,21 +50,6 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
       case "t_a_contract":
         m_ComboxBox1.items = AppData.allTabContractFiels[va.name].ToArray();
         m_ComboxBox1.selectedIndex = 0;
-        break;
-      case "t_province":
-        m_ComboxBox1.items = AppConfig.provinceList.ToArray();
-        selectIndex = AppConfig.provinceList.FindIndex(x => x == m_InputLab.text);
-        if (selectIndex < 0) selectIndex = 0;
-        m_ComboxBox1.selectedIndex = selectIndex;
-        AppConfig.selectProvinceIndex = m_ComboxBox1.selectedIndex;
-        break;
-      case "t_city":
-        string province = AppConfig.provinceList[AppConfig.selectProvinceIndex];
-        List<string> _cityList = AppConfig.cityDic[province];
-        m_ComboxBox1.items = _cityList.ToArray();
-        selectIndex = _cityList.FindIndex(x => x == m_InputLab.text);
-        if (selectIndex < 0) selectIndex = 0;
-        m_ComboxBox1.selectedIndex = selectIndex;
         break;
       default:
         m_ComboxBox1.visible = false;

@@ -15,6 +15,7 @@ public class UIRoot : MonoBehaviour
     UIObjectFactory.SetPackageItemExtension(UI_DetailItemProduct.URL, typeof(UIDetailItemProductExt));
     UIObjectFactory.SetPackageItemExtension(UI_DetailItemBarter.URL, typeof(UIDetailItemBarterExt));
     UIObjectFactory.SetPackageItemExtension(UI_DetailItemAccount.URL, typeof(UIDetailItemAccountExt));
+    UIObjectFactory.SetPackageItemExtension(UI_DetailItemCity.URL, typeof(UIDetailItemCityExt));
   }
 
   public static UIRoot ins;

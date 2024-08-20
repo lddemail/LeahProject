@@ -32,10 +32,10 @@ public class UIDetail : UIBase
   /// <exception cref="NotImplementedException"></exception>
   private void BtnAddProductHandler(EventContext context)
   {
-    if (tc != null)
+    if (AppData.currTc != null)
     {
       ProductData pd = new ProductData();
-      tc.AddProduct(pd);
+      AppData.currTc.AddProduct(pd);
       RefreshUI();
     }
   }
@@ -46,10 +46,10 @@ public class UIDetail : UIBase
   /// <exception cref="NotImplementedException"></exception>
   private void BtnAddBarterHandler(EventContext context)
   {
-    if (tc != null)
+    if (AppData.currTc != null)
     {
       BarterData bd = new BarterData();
-      tc.AddBarter(bd);
+      AppData.currTc.AddBarter(bd);
       RefreshUI();
     }
   }
@@ -60,10 +60,10 @@ public class UIDetail : UIBase
   /// <exception cref="NotImplementedException"></exception>
   private void BtnAddAccountHandler(EventContext context)
   {
-    if (tc != null)
+    if (AppData.currTc != null)
     {
       AccountData ad = new AccountData();
-      tc.AddAccount(ad);
+      AppData.currTc.AddAccount(ad);
       RefreshUI();
     }
   }
@@ -74,42 +74,40 @@ public class UIDetail : UIBase
     //入库
     if(isAddTab)
     {
-      AppData.AddTabContract(tc);
-      UIRoot.ins.uiTips.Show($"{tc.t_hotelName} 新增入库完成");
+      AppData.AddTabContract(AppData.currTc);
+      UIRoot.ins.uiTips.Show($"{AppData.currTc.t_hotelName} 新增入库完成");
     }
     else
     {
-      AppData.UpdateTabContract(tc);
-      UIRoot.ins.uiTips.Show($"{tc.t_hotelName} 数据库更新完成");
+      AppData.UpdateTabContract(AppData.currTc);
+      UIRoot.ins.uiTips.Show($"{AppData.currTc.t_hotelName} 数据库更新完成");
     }
-    Hide();
   }
 
   private void BtnCloseHandler(EventContext context)
   {
     UIRoot.ins.uiConfirm.Show($"如果没有点击保存所有修将被还原.", () => {
-      if (tc != null && tc.t_id > 0)
+      if (AppData.currTc != null && AppData.currTc.t_id > 0)
       {
-        AppData.DBCoverLocalById(tc.t_id);
+        AppData.DBCoverLocalById(AppData.currTc.t_id);
       }
       Hide();
     });
   }
 
   List<ObjectVal> objectVals;
-  TabContract tc;
   bool isAddTab = false;
   public override void Show(object obj = null)
   {
     if(obj != null)
     {
       isAddTab = false;
-      tc = obj as TabContract;
+      AppData.currTc = obj as TabContract;
     }
     else
     {
       isAddTab = true;
-      tc = new TabContract();
+      AppData.currTc = new TabContract();
     }
     UIPanel.visible = true;
 
@@ -119,9 +117,9 @@ public class UIDetail : UIBase
   private void RefreshUI()
   {
     UIPanel.m_DetailList.RemoveChildrenToPool();
-    if (tc != null)
+    if (AppData.currTc != null)
     {
-      objectVals = tc.GetObjectVals();
+      objectVals = AppData.currTc.GetObjectVals();
       foreach (ObjectVal val in objectVals)
       {
         switch (val.name)
@@ -129,8 +127,12 @@ public class UIDetail : UIBase
           case "t_hotelName":
           case "t_group":
           case "t_brand":
+            AddDetailItemLabel(val);
+            break;
           case "t_province":
           case "t_city":
+            AddDetailItemCity(val);
+            break;
           case "t_originalFollowup":
           case "t_newSales":
           case "t_interiorNo":
@@ -168,6 +170,16 @@ public class UIDetail : UIBase
 
       }
     }
+  }
+
+  private UIDetailItemCityExt cityItem;
+  private void AddDetailItemCity(ObjectVal val)
+  {
+    if(cityItem == null)
+    {
+      cityItem = UIPanel.m_DetailList.AddItemFromPool(UI_DetailItemCity.URL) as UIDetailItemCityExt;
+    }
+    cityItem.SetData(val);
   }
 
   private void AddDetailItemLabel(ObjectVal val)
@@ -254,15 +266,15 @@ public class UIDetail : UIBase
     bool isOk = false;
     if (pd != null)
     {
-      isOk = tc.RemProduct(pd);
+      isOk = AppData.currTc.RemProduct(pd);
     }
     else if(bd != null)
     {
-      isOk = tc.RemBarter(bd);
+      isOk = AppData.currTc.RemBarter(bd);
     }
     else if (ad != null)
     {
-      isOk = tc.RemAccount(ad);
+      isOk = AppData.currTc.RemAccount(ad);
     }
     if(isOk)
     {
@@ -275,6 +287,7 @@ public class UIDetail : UIBase
   {
     UIPanel.m_DetailList.RemoveChildrenToPool();
     UIPanel.visible = false;
+    cityItem = null;
   }
 
 }

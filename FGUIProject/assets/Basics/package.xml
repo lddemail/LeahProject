@@ -240,6 +240,7 @@
     <component id="gvvv6n" name="ComboBoxCopy.xml" path="/components/"/>
     <component id="phex6o" name="ComboBoxPopupCopy.xml" path="/components/"/>
     <component id="phex6p" name="ComboBoxItemCopy.xml" path="/components/"/>
+    <component id="cfou6q" name="DetailItemCity.xml" path="/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>
