@@ -65,4 +65,16 @@ public class UIDetailItemCityExt : UI_DetailItemCity
         break;
     }
   }
+  public string GetProvince()
+  {
+    string province = AppConfig.provinceList[AppConfig.selectProvinceIndex];
+    return province;
+  }
+  public string GetCity()
+  {
+    string province = AppConfig.provinceList[AppConfig.selectProvinceIndex];
+    List<string> _cityList = AppConfig.cityDic[province];
+    string city = _cityList[m_ComboxBox2.selectedIndex];
+    return city;
+  }
 }

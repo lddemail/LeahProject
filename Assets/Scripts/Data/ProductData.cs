@@ -45,6 +45,13 @@ public class ProductData: DataBase
     return d;
   }
 
+  public bool isNull()
+  {
+    if (string.IsNullOrEmpty(name) || price <= 0 || fTime <= 0 || tTime <= 0) return true;
+
+    return false;
+  }
+
   public bool IsSame(ProductData pd)
   {
     return name == pd.name && price == pd.price && fTime == pd.fTime && tTime == pd.tTime && remark == pd.remark;

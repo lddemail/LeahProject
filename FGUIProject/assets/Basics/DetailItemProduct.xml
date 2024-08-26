@@ -3,7 +3,7 @@
   <displayList>
     <text id="n1_ldks" name="InputLabName" xy="48,8" size="150,32" fontSize="22" color="#ffffff" autoSize="none" bold="true" text="00000000" input="true"/>
     <image id="n4_ldks" name="n4" src="p5s352" fileName="images/k19.png" xy="0,1" size="46,46" aspect="true"/>
-    <text id="n6_ldks" name="InputLabPrice" xy="257,8" size="100,32" fontSize="22" color="#ffffff" autoSize="none" bold="true" text="000" input="true"/>
+    <text id="n6_ldks" name="InputLabPrice" xy="257,8" size="100,32" fontSize="22" color="#ffffff" autoSize="none" bold="true" text="0" input="true" restrict="[0-9]" keyboardType="4"/>
     <text id="n8_ldks" name="fTimeTxt" xy="359,8" size="102,32" fontSize="22" autoSize="none" bold="true" text="开始时间:"/>
     <text id="n7_ldks" name="InputLabfTime" xy="463,8" size="150,32" fontSize="22" color="#ffffff" autoSize="none" bold="true" text="0000:00:00" input="true"/>
     <text id="n9_ldks" name="tTimeTxt" xy="615,8" size="102,32" fontSize="22" autoSize="none" bold="true" text="到期时间:"/>

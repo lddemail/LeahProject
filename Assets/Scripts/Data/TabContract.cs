@@ -121,6 +121,41 @@ public class TabContract:TabBase
     Debug.Log($"从DB覆盖到本地:{tc.t_id}");
   }
 
+
+  /// <summary>
+  /// 覆盖数据
+  /// </summary>
+  public void CoverOVS(List<ObjectVal> ovs)
+  {
+    FieldInfo[] fields = GetFields();
+    foreach (FieldInfo field in fields)
+    {
+      string name = field.Name;
+      int index = ovs.FindIndex(x => x.name == name);
+      if(index>= 0)
+      {
+        Debug.Log($"CoverValue:{name}->{ovs[index].val}");
+        field.SetValue(this, ovs[index].val);
+      }
+    }
+
+  }
+
+  public object GetObjectVal(string name)
+  {
+    FieldInfo[] fields = GetFields();
+    foreach (FieldInfo field in fields)
+    {
+      string fieldName = field.Name;
+      if(fieldName == name)
+      {
+        object value = field.GetValue(this);
+        return value;
+      }
+    }
+    return null;
+  }
+
   /// <summary>
   /// 删除一个产品
   /// </summary>

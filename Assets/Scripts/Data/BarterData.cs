@@ -30,6 +30,13 @@ public class BarterData: DataBase
     return d;
   }
 
+  public bool isNull()
+  {
+    if (barter <= 0 || time <= 0) return true;
+
+    return false;
+  }
+
   public bool IsSame(BarterData bd)
   {
     return barter == bd.barter && time == bd.time && remark == bd.remark;

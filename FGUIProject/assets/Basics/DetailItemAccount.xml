@@ -3,7 +3,7 @@
   <displayList>
     <image id="n4_ldks" name="n4" src="p5s38" fileName="images/k26.png" xy="0,3" size="42,42" aspect="true"/>
     <text id="n14_ldks" name="barterTxt" xy="51,9" size="102,32" fontSize="22" autoSize="none" bold="true" text="到账金额:"/>
-    <text id="n6_ldks" name="InputLabBarter" xy="158,9" size="150,32" fontSize="22" color="#ffffff" autoSize="none" bold="true" text="000" input="true"/>
+    <text id="n6_ldks" name="InputLabBarter" xy="158,9" size="150,32" fontSize="22" color="#ffffff" autoSize="none" bold="true" text="0" input="true" restrict="[0-9]"/>
     <text id="n8_ldks" name="timeTxt" xy="313,9" size="102,32" fontSize="22" autoSize="none" bold="true" text="到账时间:"/>
     <text id="n7_ldks" name="InputLabTime" xy="420,9" size="150,32" fontSize="22" color="#ffffff" autoSize="none" bold="true" text="0000:00:00" input="true"/>
     <text id="n12_ldks" name="remarkTxt" xy="575,9" size="60,32" fontSize="22" autoSize="none" bold="true" text="备注:"/>

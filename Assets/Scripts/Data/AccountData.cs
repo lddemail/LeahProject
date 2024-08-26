@@ -23,11 +23,19 @@ public class AccountData:DataBase
 
   public static AccountData Crete(float barter, int time, string remark)
   {
+ 
+
     AccountData d = new AccountData();
     d.barter = barter;
     d.time = time;
     d.remark = remark;
     return d;
+  }
+  public bool isNull()
+  {
+    if (barter <= 0 || time <= 0) return true;
+
+    return false;
   }
   public bool IsSame(AccountData ad)
   {

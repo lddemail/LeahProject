@@ -69,10 +69,75 @@ public class UIDetail : UIBase
   }
 
 
+
+  /// <summary>
+  /// 更新所有数据
+  /// </summary>
+  private void UpdateData()
+  {
+    List<AccountData> adList = new List<AccountData>();
+    List<BarterData> bdList = new List<BarterData>();
+    List<ProductData> pddList = new List<ProductData>();
+    List<ObjectVal> obs = new List<ObjectVal>();
+    GObject[] gobs = UIPanel.m_DetailList.GetChildren();
+    foreach (GObject gob in gobs)
+    {
+      if (gob is UIDetailItemAccountExt)
+      {
+        UIDetailItemAccountExt Account = gob as UIDetailItemAccountExt;
+        AccountData ad = Account.GetAccountData();
+        if (!ad.isNull()) adList.Add(ad);
+      }
+      else if (gob is UIDetailItemBarterExt)
+      {
+        UIDetailItemBarterExt Barter = gob as UIDetailItemBarterExt;
+        BarterData bd = Barter.GetBarterData();
+        if (!bd.isNull()) bdList.Add(bd);
+      }
+      else if (gob is UIDetailItemCityExt)
+      {
+        UIDetailItemCityExt city = gob as UIDetailItemCityExt;
+        AppData.currTc.t_province = city.GetProvince();
+        AppData.currTc.t_city = city.GetCity();
+      }
+      else if (gob is UIDetailItemProductExt)
+      {
+        UIDetailItemProductExt Product = gob as UIDetailItemProductExt;
+        ProductData pd = Product.GetProductData();
+        if (!pd.isNull()) pddList.Add(pd);
+      }
+      else if (gob is UIDetailItemLabelExt)
+      {
+        UIDetailItemLabelExt label = gob as UIDetailItemLabelExt;
+        ObjectVal ov = label.GetOV();
+        switch (ov.name)
+        {
+           case "t_productsPrice":
+           case "t_totalBarter":
+           case "t_totalAccount":
+           case "t_totalDebt":
+            break;
+          default:
+            obs.Add(ov);
+            break;
+
+        }
+    
+      }
+    }
+    AppData.currTc.t_accountRematk = AccountData.ToDBStr(adList);
+    AppData.currTc.t_barter = BarterData.ToDBStr(bdList);
+    AppData.currTc.t_products = ProductData.ToDBStr(pddList);
+    AppData.currTc.CoverOVS(obs);
+    AppData.currTc.Compute();
+  
+  }
+
   private void BtnSaveHandler(EventContext context)
   {
+    UpdateData();
     //入库
-    if(isAddTab)
+    if (isAddTab)
     {
       AppData.AddTabContract(AppData.currTc);
       UIRoot.ins.uiTips.Show($"{AppData.currTc.t_hotelName} 新增入库完成");
@@ -112,6 +177,40 @@ public class UIDetail : UIBase
     UIPanel.visible = true;
 
     RefreshUI();
+  }
+
+  private void RefreshItemUI()
+  {
+    UpdateData();
+
+    GObject[] gobs = UIPanel.m_DetailList.GetChildren();
+    foreach (GObject gob in gobs)
+    {
+      if (gob is UIDetailItemAccountExt)
+      {
+        UIDetailItemAccountExt Account = gob as UIDetailItemAccountExt;
+        Account.RefreshUI();
+      }
+      else if (gob is UIDetailItemBarterExt)
+      {
+        UIDetailItemBarterExt Barter = gob as UIDetailItemBarterExt;
+        Barter.RefreshUI();
+      }
+      else if (gob is UIDetailItemCityExt)
+      {
+        UIDetailItemCityExt city = gob as UIDetailItemCityExt;
+      }
+      else if (gob is UIDetailItemProductExt)
+      {
+        UIDetailItemProductExt Product = gob as UIDetailItemProductExt;
+        Product.RefreshUI();
+      }
+      else if (gob is UIDetailItemLabelExt)
+      {
+        UIDetailItemLabelExt label = gob as UIDetailItemLabelExt;
+        label.RefreshUI();
+      }
+    }
   }
 
   private void RefreshUI()
@@ -198,9 +297,14 @@ public class UIDetail : UIBase
     {
       UIDetailItemProductExt item = UIPanel.m_DetailList.AddItemFromPool(UI_DetailItemProduct.URL) as UIDetailItemProductExt;
       item.SetData(pdd);
+      item.SetChangeCallBack(ProductChange);
       item.onRightClick.Set(MainItemRightClick);
       item.onRollOut.Set(MainItemRollOut);
     }
+  }
+  private void ProductChange()
+  {
+    RefreshItemUI();
   }
   /// <summary>
   /// 展示消费
@@ -213,11 +317,15 @@ public class UIDetail : UIBase
     {
       UIDetailItemBarterExt item = UIPanel.m_DetailList.AddItemFromPool(UI_DetailItemBarter.URL) as UIDetailItemBarterExt;
       item.SetData(d);
+      item.SetChangeCallBack(BarterChange);
       item.onRightClick.Set(MainItemRightClick);
       item.onRollOut.Set(MainItemRollOut);
     }
   }
-
+  private void BarterChange()
+  {
+    RefreshItemUI();
+  }
   /// <summary>
   /// 展示到账明细
   /// </summary>
@@ -228,9 +336,14 @@ public class UIDetail : UIBase
     {
       UIDetailItemAccountExt item = UIPanel.m_DetailList.AddItemFromPool(UI_DetailItemAccount.URL) as UIDetailItemAccountExt;
       item.SetData(d);
+      item.SetChangeCallBack(AccountChange);
       item.onRightClick.Set(MainItemRightClick);
       item.onRollOut.Set(MainItemRollOut);
     }
+  }
+  private void AccountChange()
+  {
+    RefreshItemUI();
   }
 
   private void MainItemRollOut(EventContext context)
