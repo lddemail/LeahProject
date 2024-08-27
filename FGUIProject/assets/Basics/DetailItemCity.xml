@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1550,32" bgColor="#33cc00">
   <displayList>
-    <text id="n0_ihug" name="title" xy="0,0" size="230,32" fontSize="22" autoSize="none" bold="true" text="t_originalFollowup:"/>
+    <text id="n0_ihug" name="title" xy="0,0" size="230,32" fontSize="22" align="right" autoSize="none" bold="true" text="t_originalFollowup:"/>
     <component id="n3_gvvv" name="ComboxBox1" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="235,0" size="200,30">
       <ComboBox visibleItemCount="20"/>
     </component>

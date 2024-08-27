@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1904
     height: 981
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Inspector
   m_RootView: {fileID: 9}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -40,9 +40,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 679
-    width: 1004
-    height: 252
+    y: 742
+    width: 868
+    height: 189
   m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 19}
@@ -67,8 +67,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1004
-    height: 613
+    width: 868
+    height: 678
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 18}
@@ -94,9 +94,9 @@ MonoBehaviour:
   - {fileID: 2}
   m_Position:
     serializedVersion: 2
-    x: 424
+    x: 560
     y: 0
-    width: 1004
+    width: 868
     height: 931
   m_MinSize: {x: 100, y: 150}
   m_MaxSize: {x: 8096, y: 24288}
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 150}
   m_MaxSize: {x: 32384, y: 24288}
   vertical: 0
-  controlID: 115
+  controlID: 60
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -198,7 +198,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 229
     y: 0
-    width: 195
+    width: 331
     height: 931
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 150}
   m_MaxSize: {x: 24288, y: 24288}
   vertical: 0
-  controlID: 116
+  controlID: 61
   draggingID: 0
 --- !u!114 &13
 MonoBehaviour:
@@ -321,9 +321,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 613
-    width: 1004
-    height: 66
+    y: 678
+    width: 868
+    height: 64
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
@@ -375,8 +375,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders:
-    - Assets/Scripts/View
+    m_Folders: []
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -546,7 +545,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1683
     y: 81
-    width: 193
+    width: 329
     height: 910
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -563,7 +562,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 16fbffff
+      m_ExpandedIDs: a454ffff305bffff0cb8ffff5eb8fffffeb9ffff16fbffffa2640000b0640000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -607,10 +606,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -1488
-    y: 694
-    width: 1002
-    height: 45
+    x: -1352
+    y: 759
+    width: 866
+    height: 43
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -639,7 +638,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 1
       snapOffset: {x: -141, y: 149}
-      snapOffsetDelta: {x: 0, y: -130}
+      snapOffsetDelta: {x: 0, y: -132}
       snapCorner: 1
       id: unity-grid-and-snap-toolbar
       index: 1
@@ -899,7 +898,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 48, y: 48}
-      snapOffsetDelta: {x: 0, y: -3}
+      snapOffsetDelta: {x: 0, y: -5}
       snapCorner: 0
       id: Scene View/Open Tile Palette
       index: 0
@@ -912,7 +911,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 48, y: 48}
-      snapOffsetDelta: {x: 0, y: -3}
+      snapOffsetDelta: {x: 0, y: -5}
       snapCorner: 0
       id: Scene View/Tilemap Focus
       index: 1
@@ -925,7 +924,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 48, y: 48}
-      snapOffsetDelta: {x: 0, y: -3}
+      snapOffsetDelta: {x: 0, y: -5}
       snapCorner: 0
       id: Scene View/Path
       index: 9
@@ -938,7 +937,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 48, y: 48}
-      snapOffsetDelta: {x: 0, y: -3}
+      snapOffsetDelta: {x: 0, y: -5}
       snapCorner: 0
       id: Scene View/TrailRenderer
       index: 10
@@ -1055,10 +1054,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -1488
+    x: -1352
     y: 81
-    width: 1002
-    height: 592
+    width: 866
+    height: 657
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1111,10 +1110,10 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 1002
-      height: 571
-    m_Scale: {x: 0.73352855, y: 0.73352855}
-    m_Translation: {x: 501, y: 285.5}
+      width: 866
+      height: 636
+    m_Scale: {x: 0.6339678, y: 0.6339678}
+    m_Translation: {x: 433.00003, y: 318}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -1122,12 +1121,12 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -683
-      y: -389.21457
+      y: -501.60275
       width: 1366
-      height: 778.42914
+      height: 1003.2055
     m_MinimalGUI: 1
-  m_defaultScale: 0.73352855
-  m_LastWindowPixelSize: {x: 1002, y: 592}
+  m_defaultScale: 0.6339678
+  m_LastWindowPixelSize: {x: 866, y: 657}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -1153,10 +1152,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -31576
-    y: -31291
-    width: 1002
-    height: 231
+    x: -1352
+    y: 823
+    width: 866
+    height: 168
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0

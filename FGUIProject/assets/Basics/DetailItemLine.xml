@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1550,32" bgColor="#33cc00">
+  <displayList>
+    <text id="n0_ihug" name="title" xy="660,0" size="230,32" fontSize="22" align="center" autoSize="none" bold="true" text="0"/>
+    <graph id="n2_gvvv" name="n2" xy="0,31" size="1550,2" type="rect" lineSize="0" fillColor="#ff00cc00"/>
+  </displayList>
+</component>

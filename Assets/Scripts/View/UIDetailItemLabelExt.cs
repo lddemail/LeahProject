@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 public class UIDetailItemLabelExt : UI_DetailItemLabel
 {
-
+  private string fieldName;
   public override void ConstructFromXML(XML xml)
   {
     base.ConstructFromXML(xml);
@@ -19,43 +19,40 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
 
   private void OnInputLabChange(EventContext context)
   {
-    ObjectVal va = (ObjectVal)data;
-    va.val = m_InputLab.text;
+    string val = m_InputLab.text;
+    if (!string.IsNullOrEmpty(val))
+    {
+      AppData.currTc.SetFieldVal(fieldName, val);
+      RefreshUI();
+    }
   }
 
   private void ComboxBox1ChangeHandler(EventContext context)
   {
-    m_InputLab.text = AppData.allTabContractFiels[m_title.text][m_ComboxBox1.selectedIndex];
-  }
-
-  public void SetData(ObjectVal va)
-  {
-    data = va;
-    RefreshUI();
-  }
-  public void RefreshUI()
-  {
-    ObjectVal va = (ObjectVal)data;
-    va.val = AppData.currTc.GetObjectVal(va.name);
-
-    m_title.text = va.name;
-    m_InputLab.text = va.val == null ? "" : va.val.ToString();
-
-    m_ComboxBox1.visible = true;
-    switch (va.name)
+    if (AppData.allTabContractFiels.ContainsKey(fieldName))
     {
-      case "t_hotelName":
-      case "t_group":
-      case "t_brand":
-      case "t_originalFollowup":
-      case "t_newSales":
-      case "t_payment":
-      case "t_a_contract":
-        m_InputLab.enabled = true;
-        m_ComboxBox1.visible = true;
-        m_ComboxBox1.items = AppData.allTabContractFiels[va.name].ToArray();
-        m_ComboxBox1.selectedIndex = 0;
-        break;
+      string val = AppData.allTabContractFiels[fieldName][m_ComboxBox1.selectedIndex];
+      AppData.currTc.SetFieldVal(fieldName, val);
+      RefreshUI();
+    }
+  }
+
+  public void SetData(string _fieldName)
+  {
+    fieldName = _fieldName;
+    m_title.text = fieldName;
+    if (AppData.allTabContractFiels.ContainsKey(fieldName))
+    {
+      m_ComboxBox1.visible = true;
+      m_ComboxBox1.items = AppData.allTabContractFiels[fieldName].ToArray();
+    }
+    else
+    {
+      m_ComboxBox1.visible = false;
+    }
+
+    switch (fieldName)
+    {
       case "t_productsPrice":
       case "t_totalBarter":
       case "t_totalAccount":
@@ -64,13 +61,28 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
         m_ComboxBox1.visible = false;
         break;
       default:
-        m_ComboxBox1.visible = false;
+        m_InputLab.enabled = true;
+        m_ComboxBox1.visible = true;
         break;
     }
+
+    RefreshUI();
   }
-  public ObjectVal GetOV()
+
+  public void RefreshUI()
   {
-    ObjectVal res = (ObjectVal)data;
-    return res;
+    if(fieldName == "t_totalDebt")
+    {
+      //欠款金额=(合同总额t_productsPrice-到账总额t_totalAccount)
+      object productsPrice = AppData.currTc.GetFieldVal("t_productsPrice");
+      object totalAccount = AppData.currTc.GetFieldVal("t_totalAccount");
+      float val = (float)productsPrice - (float)totalAccount;
+      m_InputLab.text = $"合同金额:{productsPrice} - 到账总额:{totalAccount} = 欠款金额:{val}";
+    }
+    else
+    {
+      object val1 = AppData.currTc.GetFieldVal(fieldName);
+      m_InputLab.text = val1 == null ? "" : val1.ToString();
+    }
   }
 }

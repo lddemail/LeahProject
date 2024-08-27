@@ -17,7 +17,7 @@
     <component id="n6_ldks" name="BtnAddAccount" src="p5s36a" fileName="components/Button22.xml" xy="512,0">
       <Button title="添加到账"/>
     </component>
-    <list id="n3_ihug" name="DetailList" xy="-1,49" size="1600,844" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," lineGap="5" defaultItem="ui://z3yueri4ihug6j" autoClearItems="true">
+    <list id="n3_ihug" name="DetailList" xy="-1,49" size="1600,844" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," lineGap="5" defaultItem="ui://z3yueri4ldks6k" autoClearItems="true">
       <item/>
       <item/>
       <item/>

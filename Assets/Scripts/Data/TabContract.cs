@@ -141,7 +141,13 @@ public class TabContract:TabBase
 
   }
 
-  public object GetObjectVal(string name)
+
+  /// <summary>
+  /// 根据属性名获取值
+  /// </summary>
+  /// <param name="name"></param>
+  /// <returns></returns>
+  public object GetFieldVal(string name)
   {
     FieldInfo[] fields = GetFields();
     foreach (FieldInfo field in fields)
@@ -154,6 +160,24 @@ public class TabContract:TabBase
       }
     }
     return null;
+  }
+  /// <summary>
+  /// 根据属性名设置值
+  /// </summary>
+  /// <param name="name"></param>
+  /// <returns></returns>
+  public void SetFieldVal(string name,object val)
+  {
+    FieldInfo[] fields = GetFields();
+    foreach (FieldInfo field in fields)
+    {
+      string fieldName = field.Name;
+      if (fieldName == name)
+      {
+        field.SetValue(this,val);
+        break;
+      }
+    }
   }
 
   /// <summary>

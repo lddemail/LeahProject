@@ -35,8 +35,8 @@ public class UIDetail : UIBase
     if (AppData.currTc != null)
     {
       ProductData pd = new ProductData();
-      AppData.currTc.AddProduct(pd);
-      RefreshUI();
+      AddDetailItemProduct().SetData(pd);
+      UpdateDataToTc(pd);
     }
   }
   /// <summary>
@@ -49,8 +49,8 @@ public class UIDetail : UIBase
     if (AppData.currTc != null)
     {
       BarterData bd = new BarterData();
-      AppData.currTc.AddBarter(bd);
-      RefreshUI();
+      AddDetailItemBarter().SetData(bd);
+      UpdateDataToTc(bd);
     }
   }
   /// <summary>
@@ -63,8 +63,8 @@ public class UIDetail : UIBase
     if (AppData.currTc != null)
     {
       AccountData ad = new AccountData();
-      AppData.currTc.AddAccount(ad);
-      RefreshUI();
+      AddDetailItemAccount().SetData(ad);
+      UpdateDataToTc(ad);
     }
   }
 
@@ -109,19 +109,19 @@ public class UIDetail : UIBase
       else if (gob is UIDetailItemLabelExt)
       {
         UIDetailItemLabelExt label = gob as UIDetailItemLabelExt;
-        ObjectVal ov = label.GetOV();
-        switch (ov.name)
-        {
-           case "t_productsPrice":
-           case "t_totalBarter":
-           case "t_totalAccount":
-           case "t_totalDebt":
-            break;
-          default:
-            obs.Add(ov);
-            break;
+        //ObjectVal ov = label.GetOV();
+        //switch (ov.name)
+        //{
+        //   case "t_productsPrice":
+        //   case "t_totalBarter":
+        //   case "t_totalAccount":
+        //   case "t_totalDebt":
+        //    break;
+        //  default:
+        //    obs.Add(ov);
+        //    break;
 
-        }
+        //}
     
       }
     }
@@ -176,7 +176,59 @@ public class UIDetail : UIBase
     }
     UIPanel.visible = true;
 
-    RefreshUI();
+    InitUI();
+  }
+
+
+  private UIDetailItemLineExt productLine;
+  private UIDetailItemLineExt barterLine;
+  private UIDetailItemLineExt accountLine;
+  private void InitUI()
+  {
+    UIPanel.m_DetailList.RemoveChildrenToPool();
+    if (AppData.currTc != null)
+    {
+      AddDetailItemTwoLabel("t_hotelName", "t_a_contract");
+
+      AddDetailItemTwoLabel("t_hotelName", "t_brand");
+
+      AddDetailItemCity("t_province", "t_city");
+
+      AddDetailItemTwoLabel("t_originalFollowup", "t_newSales");
+
+      AddDetailItemTwoLabel("t_interiorNo", "t_contractNo");
+
+      AddDetailItemTwoLabel("t_payment", "t_attribution");
+
+      AddDetailItemLabel("t_totalDebt");
+
+      //AddDetailItemLabel("t_productsPrice");
+      productLine = AddDetailItemLine("产品列表");
+      productLine.childIndex = UIPanel.m_DetailList.GetChildIndex(productLine);
+      List<ProductData> pdList = ProductData.DBStrToData(AppData.currTc.t_products);
+      foreach (ProductData pd in pdList)
+      {
+        AddDetailItemProduct().SetData(pd);
+      }
+     
+      barterLine = AddDetailItemLine("消费列表");
+      barterLine.childIndex = UIPanel.m_DetailList.GetChildIndex(barterLine);
+      List<BarterData> bdList = BarterData.DBStrToData(AppData.currTc.t_barter);
+      foreach (BarterData bd in bdList)
+      {
+        AddDetailItemBarter().SetData(bd);
+      }
+
+      accountLine = AddDetailItemLine("到账明细列表");
+      accountLine.childIndex = UIPanel.m_DetailList.GetChildIndex(accountLine);
+      List<AccountData> adList = AccountData.DBStrToData(AppData.currTc.t_accountRematk);
+      foreach (AccountData ad in adList)
+      {
+        AddDetailItemAccount().SetData(ad);
+      }
+    
+      //UIPanel.m_DetailList.ResizeToFit();
+    }
   }
 
   private void RefreshItemUI()
@@ -210,136 +262,136 @@ public class UIDetail : UIBase
         UIDetailItemLabelExt label = gob as UIDetailItemLabelExt;
         label.RefreshUI();
       }
+      else if (gob is UIDetailItemTwoLabelExt)
+      {
+        UIDetailItemTwoLabelExt twoLabel = gob as UIDetailItemTwoLabelExt;
+        twoLabel.RefreshUI();
+      }
     }
   }
 
   private void RefreshUI()
   {
-    UIPanel.m_DetailList.RemoveChildrenToPool();
-    if (AppData.currTc != null)
-    {
-      objectVals = AppData.currTc.GetObjectVals();
-      foreach (ObjectVal val in objectVals)
-      {
-        switch (val.name)
-        {
-          case "t_hotelName":
-          case "t_group":
-          case "t_brand":
-            AddDetailItemLabel(val);
-            break;
-          case "t_province":
-          case "t_city":
-            AddDetailItemCity(val);
-            break;
-          case "t_originalFollowup":
-          case "t_newSales":
-          case "t_interiorNo":
-          case "t_contractNo":
-          case "t_payment":
-          case "t_attribution":
-          case "t_a_contract":
-            AddDetailItemLabel(val);
-            break;
-          case "t_products":
-            AddDetailItemProduct(val);
-            break;
-          case "t_productsPrice":
-            AddDetailItemLabel(val);
-            break;
-          case "t_barter":
-            AddDetailItemBarter(val);
-            break;
-          case "t_totalBarter":
-            AddDetailItemLabel(val);
-            break;
-          case "t_accountRematk":
-            AddDetailItemAccount(val);
-            break;
-          case "t_totalAccount":
-            AddDetailItemLabel(val);
-            break;
-          case "t_totalDebt":
-            AddDetailItemLabel(val);
-            break;
-          default:
-            Debug.Log($"没有处理:{val.name}");
-            break;
-        }
-
-      }
-    }
   }
 
-  private UIDetailItemCityExt cityItem;
-  private void AddDetailItemCity(ObjectVal val)
+  private UIDetailItemLineExt AddDetailItemLine(string name)
   {
-    if(cityItem == null)
-    {
-      cityItem = UIPanel.m_DetailList.AddItemFromPool(UI_DetailItemCity.URL) as UIDetailItemCityExt;
-    }
-    cityItem.SetData(val);
+    UIDetailItemLineExt item = UIPanel.m_DetailList.AddItemFromPool(UIDetailItemLineExt.URL) as UIDetailItemLineExt;
+    item.SetData( name);
+    return item;
   }
 
-  private void AddDetailItemLabel(ObjectVal val)
+  private UIDetailItemCityExt AddDetailItemCity(string provinceName, string cityName)
+  {
+    UIDetailItemCityExt item = UIPanel.m_DetailList.AddItemFromPool(UI_DetailItemCity.URL) as UIDetailItemCityExt;
+    item.SetData(provinceName, cityName);
+    return item;
+  }
+
+  private UIDetailItemLabelExt AddDetailItemLabel(string name)
   {
     UIDetailItemLabelExt item = UIPanel.m_DetailList.AddItemFromPool(UI_DetailItemLabel.URL) as UIDetailItemLabelExt;
-    item.SetData(val);
+    item.SetData(name);
+    return item;
   }
- /// <summary>
- /// 展示产品
- /// </summary>
- /// <param name="val"></param>
-  private void AddDetailItemProduct(ObjectVal val)
+  private UIDetailItemTwoLabelExt AddDetailItemTwoLabel(string name1, string name2)
   {
-    List<ProductData> pddList = ProductData.DBStrToData(val.val.ToString());
-    foreach (ProductData pdd in pddList)
+    UIDetailItemTwoLabelExt item = UIPanel.m_DetailList.AddItemFromPool(UI_DetailItemTwoLabel.URL) as UIDetailItemTwoLabelExt;
+    item.SetData(name1, name2);
+    return item;
+  }
+
+  List<UIDetailItemProductExt> itemProductList = new List<UIDetailItemProductExt>();
+  private void AddToRemProductList(UIDetailItemProductExt item,bool isAdd)
+  {
+    if (isAdd)
     {
-      UIDetailItemProductExt item = UIPanel.m_DetailList.AddItemFromPool(UI_DetailItemProduct.URL) as UIDetailItemProductExt;
-      item.SetData(pdd);
-      item.SetChangeCallBack(ProductChange);
-      item.onRightClick.Set(MainItemRightClick);
-      item.onRollOut.Set(MainItemRollOut);
+      if (!itemProductList.Contains(item)) itemProductList.Add(item);
+    }
+    else
+    {
+      if (itemProductList.Contains(item)) itemProductList.Remove(item);
     }
   }
+  /// <summary>
+  /// 展示产品
+  /// </summary>
+  /// <param name="val"></param>
+  private UIDetailItemProductExt AddDetailItemProduct()
+  {
+    UIDetailItemProductExt item = UIPanel.m_DetailList.GetFromPool(UIDetailItemProductExt.URL) as UIDetailItemProductExt;
+    AddToRemProductList(item,true);
+    item.SetChangeCallBack(ProductChange);
+    item.onRightClick.Set(MainItemRightClick);
+    item.onRollOut.Set(MainItemRollOut);
+    UIPanel.m_DetailList.AddChildAt(item, productLine.childIndex + 1);
+    return item;
+
+  }
+
   private void ProductChange()
   {
     RefreshItemUI();
+  }
+
+  List<UIDetailItemBarterExt> itemBarterList = new List<UIDetailItemBarterExt>();
+  private void AddToRemBarterList(UIDetailItemBarterExt item,bool isAdd)
+  {
+    if (isAdd)
+    {
+      if (!itemBarterList.Contains(item)) itemBarterList.Add(item);
+    }
+    else
+    {
+      if (itemBarterList.Contains(item)) itemBarterList.Remove(item);
+    }
   }
   /// <summary>
   /// 展示消费
   /// </summary>
   /// <param name="val"></param>
-  private void AddDetailItemBarter(ObjectVal val)
+  private UIDetailItemBarterExt AddDetailItemBarter()
   {
-    List<BarterData> list = BarterData.DBStrToData(val.val.ToString());
-    foreach(BarterData d in list)
-    {
-      UIDetailItemBarterExt item = UIPanel.m_DetailList.AddItemFromPool(UI_DetailItemBarter.URL) as UIDetailItemBarterExt;
-      item.SetData(d);
-      item.SetChangeCallBack(BarterChange);
-      item.onRightClick.Set(MainItemRightClick);
-      item.onRollOut.Set(MainItemRollOut);
-    }
+    UIDetailItemBarterExt item = UIPanel.m_DetailList.GetFromPool(UIDetailItemBarterExt.URL) as UIDetailItemBarterExt;
+    AddToRemBarterList(item,true);
+    item.SetChangeCallBack(BarterChange);
+    item.onRightClick.Set(MainItemRightClick);
+    item.onRollOut.Set(MainItemRollOut);
+    UIPanel.m_DetailList.AddChildAt(item, barterLine.childIndex + 1);
+    return item;
   }
   private void BarterChange()
   {
     RefreshItemUI();
   }
+
+
+  List<UIDetailItemAccountExt> itemAccountList = new List<UIDetailItemAccountExt>();
+  private void AddToRemAccountList(UIDetailItemAccountExt item,bool isAdd)
+  {
+    if (isAdd)
+    {
+      if (!itemAccountList.Contains(item)) itemAccountList.Add(item);
+    }
+    else
+    {
+      if (itemAccountList.Contains(item)) itemAccountList.Remove(item);
+    }
+  }
   /// <summary>
   /// 展示到账明细
   /// </summary>
-  private void AddDetailItemAccount(ObjectVal val)
+  private UIDetailItemAccountExt AddDetailItemAccount()
   {
-    List<AccountData> list = AccountData.DBStrToData(val.val.ToString());
-    foreach (AccountData d in list)
-    {
-      UIDetailItemAccountExt item = UIPanel.m_DetailList.AddItemFromPool(UI_DetailItemAccount.URL) as UIDetailItemAccountExt;
-      item.SetData(d);
-      item.SetChangeCallBack(AccountChange);
-      item.onRightClick.Set(MainItemRightClick);
-      item.onRollOut.Set(MainItemRollOut);
-    }
+    UIDetailItemAccountExt item = UIPanel.m_DetailList.GetFromPool(UIDetailItemAccountExt.URL) as UIDetailItemAccountExt;
+    AddToRemAccountList(item,true);
+    item.SetChangeCallBack(AccountChange);
+    item.onRightClick.Set(MainItemRightClick);
+    item.onRollOut.Set(MainItemRollOut);
+    UIPanel.m_DetailList.AddChildAt(item, accountLine.childIndex + 1);
+    return item;
+
+
   }
   private void AccountChange()
   {
@@ -366,41 +418,65 @@ public class UIDetail : UIBase
       m_BtnDel.x = obj.displayObject.GlobalToLocal(context.inputEvent.position).x - 60;
       m_BtnDel.onClick.Set(() => {
         UIRoot.ins.uiConfirm.Show($"确定要删除吗?", () => {
-          RemoveData(obj.data);
+          RemoveItem(obj);
         });
       });
     }
   }
-  private void RemoveData(object data)
+
+  private void RemoveItem(GComponent obj)
   {
-    ProductData pd = data as ProductData;
-    BarterData bd = data as BarterData;
-    AccountData ad = data as AccountData;
-    bool isOk = false;
-    if (pd != null)
+    if (obj is UIDetailItemProductExt)
     {
-      isOk = AppData.currTc.RemProduct(pd);
+      AddToRemProductList(obj as UIDetailItemProductExt, false);
     }
-    else if(bd != null)
+    else if (obj is UIDetailItemBarterExt)
     {
-      isOk = AppData.currTc.RemBarter(bd);
+      AddToRemBarterList(obj as UIDetailItemBarterExt, false);
     }
-    else if (ad != null)
+    else if (obj is UIDetailItemAccountExt)
     {
-      isOk = AppData.currTc.RemAccount(ad);
+      AddToRemAccountList(obj as UIDetailItemAccountExt, false);
     }
-    if(isOk)
+    UpdateDataToTc(obj.data);
+    UIPanel.m_DetailList.RemoveChildToPool(obj);
+  }
+  private void UpdateDataToTc(object data)
+  {
+    if (data is ProductData)
     {
-      Debug.Log("删除刷新UI");
-      RefreshUI();
+      List<ProductData> pdList = new List<ProductData>();
+      foreach (UIDetailItemProductExt item in itemProductList)
+      {
+        pdList.Add(item.data as ProductData);
+      }
+      AppData.currTc.t_products = ProductData.ToDBStr(pdList);
+    }
+    else if (data is BarterData)
+    {
+      List<BarterData> bdList = new List<BarterData>();
+      foreach (UIDetailItemBarterExt item in itemBarterList)
+      {
+        bdList.Add(item.data as BarterData);
+      }
+      AppData.currTc.t_barter = BarterData.ToDBStr(bdList);
+    }
+    else if (data is AccountData)
+    {
+      List<AccountData> adList = new List<AccountData>();
+      foreach (UIDetailItemAccountExt item in itemAccountList)
+      {
+        adList.Add(item.data as AccountData);
+      }
+      AppData.currTc.t_accountRematk = AccountData.ToDBStr(adList);
     }
   }
+
 
   public override void Hide()
   {
     UIPanel.m_DetailList.RemoveChildrenToPool();
     UIPanel.visible = false;
-    cityItem = null;
   }
 
 }

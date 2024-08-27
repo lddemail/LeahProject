@@ -8,6 +8,8 @@ namespace Basics
     {
         public static void BindAll()
         {
+            UIObjectFactory.SetPackageItemExtension(UI_DetailItemTwoLabel.URL, typeof(UI_DetailItemTwoLabel));
+            UIObjectFactory.SetPackageItemExtension(UI_DetailItemLine.URL, typeof(UI_DetailItemLine));
             UIObjectFactory.SetPackageItemExtension(UI_DetailItemCity.URL, typeof(UI_DetailItemCity));
             UIObjectFactory.SetPackageItemExtension(UI_Tips.URL, typeof(UI_Tips));
             UIObjectFactory.SetPackageItemExtension(UI_UIConfirm.URL, typeof(UI_UIConfirm));

@@ -8,7 +8,8 @@ using System;
 
 public class UIDetailItemCityExt : UI_DetailItemCity
 {
-
+  private string provinceName;
+  private string cityName;
   public override void ConstructFromXML(XML xml)
   {
     base.ConstructFromXML(xml);
@@ -44,6 +45,24 @@ public class UIDetailItemCityExt : UI_DetailItemCity
     int selectIndex = _cityList.FindIndex(x => x == val);
     if (selectIndex < 0) selectIndex = 0;
     m_ComboxBox2.selectedIndex = selectIndex;
+  }
+
+  public void SetData(string _provinceName,string _cityName)
+  {
+    provinceName = _provinceName;
+    cityName = _cityName;
+    m_title.text = "省/市";
+
+
+    RefreshUI();
+  }
+  public void RefreshUI()
+  {
+    object obj1 = AppData.currTc.GetFieldVal(provinceName);
+    SetProvince(obj1 == null ? "": obj1.ToString());
+
+    object obj2 = AppData.currTc.GetFieldVal(cityName);
+    SetCity(obj2 == null ? "" : obj2.ToString());
   }
 
   public void SetData(ObjectVal va)

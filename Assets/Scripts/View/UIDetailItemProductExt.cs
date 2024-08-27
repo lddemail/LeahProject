@@ -22,30 +22,30 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
       m_InputLabPrice.text = "0";
     }  
 
-    ProductData pdd = (ProductData)data;
-    pdd.name = m_InputLabName.text;
-    pdd.price = float.Parse(m_InputLabPrice.text);
-    pdd.fTime = AppUtil.StringToTime(m_InputLabfTime.text);
-    pdd.tTime = AppUtil.StringToTime(m_InputLabtTime.text);
-    pdd.remark = m_InputLabRemark.text;
+    ProductData pd = (ProductData)data;
+    pd.name = m_InputLabName.text;
+    pd.price = float.Parse(m_InputLabPrice.text);
+    pd.fTime = AppUtil.StringToTime(m_InputLabfTime.text);
+    pd.tTime = AppUtil.StringToTime(m_InputLabtTime.text);
+    pd.remark = m_InputLabRemark.text;
 
     _changeCallBack?.Invoke();
   }
 
-  public void SetData(ProductData pdd)
+  public void SetData(ProductData pd)
   {
-    data = pdd;
+    data = pd;
     RefreshUI();
   }
 
   public void RefreshUI()
   {
-    ProductData pdd = (ProductData)data;
-    m_InputLabName.text = pdd.name;
-    m_InputLabPrice.text = pdd.price.ToString();
-    m_InputLabfTime.text = AppUtil.TimeToString(pdd.fTime);
-    m_InputLabtTime.text = AppUtil.TimeToString(pdd.tTime);
-    m_InputLabRemark.text = pdd.remark;
+    ProductData pd = (ProductData)data;
+    m_InputLabName.text = pd.name;
+    m_InputLabPrice.text = pd.price.ToString();
+    m_InputLabfTime.text = AppUtil.TimeToString(pd.fTime);
+    m_InputLabtTime.text = AppUtil.TimeToString(pd.tTime);
+    m_InputLabRemark.text = pd.remark;
   }
 
   private Action _changeCallBack;

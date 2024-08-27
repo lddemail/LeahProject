@@ -41,7 +41,8 @@ public class AppData
     allTabContractFiels.Add("t_originalFollowup", new List<string>());
     allTabContractFiels.Add("t_newSales", new List<string>());
     allTabContractFiels.Add("t_payment", new List<string>());
-    allTabContractFiels.Add("t_a_contract", new List<string>());
+    allTabContractFiels.Add("t_a_contract", new List<string>()); 
+    allTabContractFiels.Add("t_attribution", new List<string>());
 
     Dictionary<string, int> hotelNamesDic = new Dictionary<string, int>();
     allTabContract = AppUtil.ReadAll4DB<TabContract>();
@@ -62,6 +63,7 @@ public class AppData
         SetAllTabContractFiels("t_newSales", tc.t_newSales);
         SetAllTabContractFiels("t_payment", tc.t_payment);
         SetAllTabContractFiels("t_a_contract", tc.t_a_contract);
+        SetAllTabContractFiels("t_attribution", tc.t_attribution);
 
       }
 
