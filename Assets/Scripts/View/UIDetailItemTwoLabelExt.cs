@@ -71,6 +71,8 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
     {
       m_ComboxBox1.visible = true;
       m_ComboxBox1.items = AppData.allTabContractFiels[fieldName1].ToArray();
+      object val = AppData.currTc.GetFieldVal(fieldName1);
+      m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTabContractFiels[fieldName1], val.ToString());
     }
     else
     {
@@ -81,6 +83,8 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
     {
       m_ComboxBox2.visible = true;
       m_ComboxBox2.items = AppData.allTabContractFiels[fieldName2].ToArray();
+      object val = AppData.currTc.GetFieldVal(fieldName2);
+      m_ComboxBox2.selectedIndex = AppUtil.GetIndexByList(AppData.allTabContractFiels[fieldName2], val.ToString());
     }
     else
     {
@@ -93,6 +97,8 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
   {
     object val1 = AppData.currTc.GetFieldVal(fieldName1);
     m_InputLab1.text = val1 == null ? "" : val1.ToString();
+
+    Debug.Log(m_InputLab1.text);
 
     object val2 = AppData.currTc.GetFieldVal(fieldName2);
     m_InputLab2.text = val2 == null ? "" : val2.ToString();

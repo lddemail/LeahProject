@@ -56,10 +56,13 @@ public class UIMain:UIBase
   int adventTerm = 30;
   string hotelNameTerm = "ALL";
   string groupTerm = "ALL";
-  //根据条件检索
-  private void QueryByTerm()
+
+  /// <summary>
+  /// 根据条件检索
+  /// </summary>
+  public void QueryByTerm()
   {
-    Debug.Log($"检索:{adventTerm} {hotelNameTerm} {groupTerm}");
+
     _currTabContracts.Clear();
     foreach(var tab in AppData.allTabContract)
     {
@@ -74,6 +77,7 @@ public class UIMain:UIBase
     }
     int count = _currTabContracts == null ? 0 : _currTabContracts.Count;
     UIRoot.ins.uiTips.Show($"检索到{count}条数据");
+    Debug.Log($"检索条件 :{adventTerm} {hotelNameTerm} {groupTerm} 检索到{count}条数据");
     RefreshUI();
   }
 

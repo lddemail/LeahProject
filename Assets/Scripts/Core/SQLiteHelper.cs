@@ -155,6 +155,21 @@ public class SQLiteHelper
   }
 
   /// <summary>
+  /// 执行SQL命令返回是否成功
+  /// </summary>
+  /// <returns>The query.</returns>
+  /// <param name="queryString">SQL命令字符串</param>
+  public bool ExecuteNonQuery(string queryString)
+  {
+    dbCommand = dbConnection.CreateCommand();
+    dbCommand.CommandText = queryString;
+    // 执行插入操作
+    int rowsAffected = dbCommand.ExecuteNonQuery();
+    // 判断是否插入成功
+    return rowsAffected > 0;
+  }
+
+  /// <summary>
   /// 关闭数据库连接
   /// </summary>
   public void CloseConnection()
@@ -235,7 +250,7 @@ public class SQLiteHelper
   /// <typeparam name="T"></typeparam>
   /// <param name="t"></param>
   /// <returns></returns>
-  public SqliteDataReader Insert<T>(T t,string key)
+  public bool Insert<T>(T t,string key)
   {
     var type = typeof(T);
     var fields = type.GetFields();
@@ -266,7 +281,7 @@ public class SQLiteHelper
 
     Debug.Log($"插入数据:{sql}");
     AppUtil.AddLog($"插入数据:{sql}");
-    return ExecuteQuery(sql);
+    return ExecuteNonQuery(sql);
   }
 
 
@@ -374,7 +389,7 @@ public class SQLiteHelper
   /// <param name="tableName"></param>
   /// <param name="conditions">查询条件</param>
   /// <returns></returns>
-  public SqliteDataReader DeleteValues(string tableName, string[] conditions)
+  public bool DeleteValues(string tableName, string[] conditions)
   {
     string sql = "delete from " + tableName + " where (";
     for (int i = 0; i < conditions.Length - 1; i += 2)
@@ -383,7 +398,7 @@ public class SQLiteHelper
     }
     sql = sql.Substring(0, sql.Length - 4) + ");";
     Debug.Log($"删除数据:{sql}");
-    return ExecuteQuery(sql);
+    return ExecuteNonQuery(sql);
   }
 
   /// <summary>

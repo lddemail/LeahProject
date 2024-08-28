@@ -35,24 +35,23 @@ public class AppData
   public static void Init()
   {
     CheckTab();
-    allTabContractFiels.Add("t_hotelName",new List<string>());
-    allTabContractFiels.Add("t_group", new List<string>());
-    allTabContractFiels.Add("t_brand", new List<string>());
-    allTabContractFiels.Add("t_originalFollowup", new List<string>());
-    allTabContractFiels.Add("t_newSales", new List<string>());
-    allTabContractFiels.Add("t_payment", new List<string>());
-    allTabContractFiels.Add("t_a_contract", new List<string>()); 
-    allTabContractFiels.Add("t_attribution", new List<string>());
-
-    Dictionary<string, int> hotelNamesDic = new Dictionary<string, int>();
     allTabContract = AppUtil.ReadAll4DB<TabContract>();
-    if(allTabContract != null)
+    OrderAllTabContract();
+  }
+
+  /// <summary>
+  /// 排序总订单
+  /// </summary>
+  private static void OrderAllTabContract()
+  {
+    if (allTabContract != null)
     {
-      foreach(TabContract tc in allTabContract)
+      Dictionary<string, int> hotelNamesDic = new Dictionary<string, int>();
+      foreach (TabContract tc in allTabContract)
       {
-        if(!hotelNamesDic.ContainsKey(tc.t_hotelName))
+        if (!hotelNamesDic.ContainsKey(tc.t_hotelName))
         {
-          hotelNamesDic.Add(tc.t_hotelName, hotelNamesDic.Count -1);
+          hotelNamesDic.Add(tc.t_hotelName, hotelNamesDic.Count);
         }
         tc.t_index = hotelNamesDic[tc.t_hotelName];
 
@@ -70,9 +69,10 @@ public class AppData
       //OrderBy升序
       //ThenBy降序
       //allTabContract.OrderBy(x => x.t_index).ThenBy(x => x.t_index).ToList();
-      allTabContract.OrderBy(x => x.t_index).ToList();
+      allTabContract = allTabContract.OrderBy(x => x.t_index).ToList();
     }
   }
+
   private static void SetAllTabContractFiels(string keyName, string val)
   {
     if(!allTabContractFiels.ContainsKey(keyName))
@@ -110,8 +110,21 @@ public class AppData
   /// </summary>
   public static void AddTabContract(TabContract data)
   {
-    allTabContract.Add(data);
-    AppUtil.Insert2DB<TabContract>(data, AppConfig.tabKey);
+    string log = "";
+    bool isOk = AppUtil.Insert2DB<TabContract>(data, AppConfig.tabKey);
+    if(isOk)
+    {
+      allTabContract.Add(data);
+      OrderAllTabContract();
+      UIRoot.ins.uiMain.QueryByTerm();
+      log = $"{data.t_hotelName} 新增入库完成";
+    }
+    else
+    {
+      log = $"{data.t_hotelName} 入库失败";
+    }
+    Debug.Log(log);
+    UIRoot.ins.uiTips.Show(log);
   }
   /// <summary>
   /// 删除一条清单
@@ -121,8 +134,21 @@ public class AppData
     TabContract tab = allTabContract.Find(x => x.t_id == id);
     if(tab != null)
     {
-      allTabContract.Remove(tab);
-      AppUtil.Delete2DB<TabContract>(tab);
+      string log = "";
+      bool isOk = AppUtil.Delete2DB<TabContract>(tab);
+      if(isOk)
+      {
+        allTabContract.Remove(tab);
+        OrderAllTabContract();
+        UIRoot.ins.uiMain.QueryByTerm();
+        log = $"{tab.t_hotelName} 删除成功";
+      }
+      else
+      {
+        log = $"{tab.t_hotelName} 删除失败!";
+      }
+      Debug.Log(log);
+      UIRoot.ins.uiTips.Show(log);
     }
   }
 

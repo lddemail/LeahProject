@@ -145,15 +145,15 @@ public class AppUtil
   /// </summary>
   /// <typeparam name="T"></typeparam>
   /// <param name="t"></param>
-  public static void Insert2DB<T>(T t, string key = "")
+  public static bool Insert2DB<T>(T t, string key = "")
   {
-    db.Insert<T>(t,key);
+    return db.Insert<T>(t,key);
   }
 
-  public static void Delete2DB<T>(T t)
+  public static bool Delete2DB<T>(T t)
   {
     TabBase tb = t as TabBase;
-    db.DeleteValues(t.GetType().Name, new string[] { AppConfig.tabKey, $"{tb.t_id}" });
+    return db.DeleteValues(t.GetType().Name, new string[] { AppConfig.tabKey, $"{tb.t_id}" });
   }
 
   public static int StringToTime(string dateString)
@@ -247,5 +247,12 @@ public class AppUtil
   {
     if (logWriter == null) return;
     logWriter.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} [{log}]");
+  }
+
+  public static int GetIndexByList(List<string> list,string val)
+  {
+    int index = list.FindIndex(x => x == val);
+    if (index < 0) index = 0;
+    return index;
   }
 }

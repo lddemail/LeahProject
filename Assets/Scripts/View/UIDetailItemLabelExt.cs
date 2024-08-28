@@ -45,6 +45,8 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
     {
       m_ComboxBox1.visible = true;
       m_ComboxBox1.items = AppData.allTabContractFiels[fieldName].ToArray();
+      object val = AppData.currTc.GetFieldVal(fieldName);
+      m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTabContractFiels[fieldName], val.ToString());
     }
     else
     {

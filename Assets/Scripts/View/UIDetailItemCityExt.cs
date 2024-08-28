@@ -32,9 +32,7 @@ public class UIDetailItemCityExt : UI_DetailItemCity
   private void SetProvince(string val)
   {
     m_ComboxBox1.items = AppConfig.provinceList.ToArray();
-    int selectIndex = AppConfig.provinceList.FindIndex(x => x == val);
-    if (selectIndex < 0) selectIndex = 0;
-    m_ComboxBox1.selectedIndex = selectIndex;
+    m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppConfig.provinceList, val);
     AppConfig.selectProvinceIndex = m_ComboxBox1.selectedIndex;
   }
   private void SetCity(string val)
@@ -42,9 +40,7 @@ public class UIDetailItemCityExt : UI_DetailItemCity
     string province = AppConfig.provinceList[AppConfig.selectProvinceIndex];
     List<string> _cityList = AppConfig.cityDic[province];
     m_ComboxBox2.items = _cityList.ToArray();
-    int selectIndex = _cityList.FindIndex(x => x == val);
-    if (selectIndex < 0) selectIndex = 0;
-    m_ComboxBox2.selectedIndex = selectIndex;
+    m_ComboxBox2.selectedIndex = AppUtil.GetIndexByList(_cityList, val);
   }
 
   public void SetData(string _provinceName,string _cityName)
