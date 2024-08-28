@@ -84,7 +84,11 @@ public class UIDetail : UIBase
     //入库
     if (isAddTab)
     {
-      AppData.AddTabContract(AppData.currTc);
+      bool isOk = AppData.AddTabContract(AppData.currTc);
+      if(isOk)
+      {
+        Hide();
+      }
     }
     else
     {
@@ -179,47 +183,11 @@ public class UIDetail : UIBase
     GObject[] gobs = UIPanel.m_DetailList.GetChildren();
     foreach (GObject gob in gobs)
     {
-
       MethodInfo RefreshUI = gob.GetType().GetMethod("RefreshUI");
       if(RefreshUI != null)
       {
         RefreshUI.Invoke(gob,null);
       }
-
-      //if (gob is UIDetailItemAccountExt)
-      //{
-      //  UIDetailItemAccountExt Account = gob as UIDetailItemAccountExt;
-      //  Account.RefreshUI();
-      //}
-      //else if (gob is UIDetailItemBarterExt)
-      //{
-      //  UIDetailItemBarterExt Barter = gob as UIDetailItemBarterExt;
-      //  Barter.RefreshUI();
-      //}
-      //else if (gob is UIDetailItemCityExt)
-      //{
-      //  UIDetailItemCityExt city = gob as UIDetailItemCityExt;
-      //}
-      //else if (gob is UIDetailItemProductExt)
-      //{
-      //  UIDetailItemProductExt Product = gob as UIDetailItemProductExt;
-      //  Product.RefreshUI();
-      //}
-      //else if (gob is UIDetailItemLabelExt)
-      //{
-      //  UIDetailItemLabelExt label = gob as UIDetailItemLabelExt;
-      //  label.RefreshUI();
-      //}
-      //else if (gob is UIDetailItemTwoLabelExt)
-      //{
-      //  UIDetailItemTwoLabelExt twoLabel = gob as UIDetailItemTwoLabelExt;
-      //  twoLabel.RefreshUI();
-      //}
-      //else if (gob is UIDetailItemLineExt)
-      //{
-      //  UIDetailItemLineExt line = gob as UIDetailItemLineExt;
-      //  line.RefreshUI();
-      //}
     }
   }
 

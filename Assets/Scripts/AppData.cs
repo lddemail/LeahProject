@@ -108,16 +108,18 @@ public class AppData
   /// <summary>
   /// 添加一条清单
   /// </summary>
-  public static void AddTabContract(TabContract data)
+  public static bool AddTabContract(TabContract data)
   {
+    bool res = false;
     string log = "";
     bool isOk = AppUtil.Insert2DB<TabContract>(data, AppConfig.tabKey);
     if(isOk)
     {
       allTabContract.Add(data);
       OrderAllTabContract();
-      UIRoot.ins.uiMain.QueryByTerm();
+      EvtMgr.Dispatch(Evt.UpdateQuery);
       log = $"{data.t_hotelName} 新增入库完成";
+      res = true;
     }
     else
     {
@@ -125,31 +127,43 @@ public class AppData
     }
     Debug.Log(log);
     UIRoot.ins.uiTips.Show(log);
+    return res;
   }
   /// <summary>
   /// 删除一条清单
   /// </summary>
-  public static void DelTabContract(int id)
+  public static bool DelTabContract(int id)
   {
+    bool res = false;
     TabContract tab = allTabContract.Find(x => x.t_id == id);
     if(tab != null)
     {
       string log = "";
-      bool isOk = AppUtil.Delete2DB<TabContract>(tab);
-      if(isOk)
+      if(tab.t_id <= 0)
       {
-        allTabContract.Remove(tab);
-        OrderAllTabContract();
-        UIRoot.ins.uiMain.QueryByTerm();
-        log = $"{tab.t_hotelName} 删除成功";
+        log = $"数据id:{tab.t_id} 不正确 删除失败,如果是新加的数据需要从新打开软件才行";
       }
       else
       {
-        log = $"{tab.t_hotelName} 删除失败!";
+        bool isOk = AppUtil.Delete2DB<TabContract>(tab);
+        if (isOk)
+        {
+          allTabContract.Remove(tab);
+          OrderAllTabContract();
+          EvtMgr.Dispatch(Evt.UpdateQuery);
+          log = $"{tab.t_hotelName} 删除成功";
+          res = true;
+        }
+        else
+        {
+          log = $"{tab.t_hotelName} 删除失败!";
+        }
       }
+
       Debug.Log(log);
       UIRoot.ins.uiTips.Show(log);
     }
+    return res;
   }
 
   /// <summary>

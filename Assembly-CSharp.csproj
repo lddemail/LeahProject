@@ -117,6 +117,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\EllipseMesh.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearColor.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearLook.cs" />
+    <Compile Include="Assets\Scripts\Core\EvtMgr.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlImage.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_UIConfirm.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemLabel.cs" />
@@ -243,6 +244,7 @@
     <Compile Include="Assets\Scripts\View\UIMainListItemExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\EMRenderSupport.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\IHitTest.cs" />
+    <Compile Include="Assets\Scripts\Evt.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_Button5Copy.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemTwoLabel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Tween\GTweener.cs" />

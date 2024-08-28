@@ -28,12 +28,12 @@ public class UITips : UIBase
   {
     UIPanel.visible = true;
     UIPanel.m_title.text = obj.ToString();
-    Timers.inst.Add(3, 1, (object param) => {
+    Timers.inst.Add(5, 1, (object param) => {
       Hide();
     });
   }
 
-  public void Show(string text,float delayTime=1)
+  public void Show(string text,float delayTime=3)
   {
     UIPanel.visible = true;
     UIPanel.m_title.text = text;

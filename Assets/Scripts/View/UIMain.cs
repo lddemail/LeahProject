@@ -34,6 +34,8 @@ public class UIMain:UIBase
 
     UIPanel.m_title_hotelName.onChanged.Add(Title_hotelNameChange);
     UIPanel.m_title_group.onChanged.Add(Title_GroupChange);
+
+    EvtMgr.Add(Evt.UpdateQuery, QueryByTerm);
   }
 
   private void Title_hotelNameChange(EventContext context)
@@ -60,7 +62,7 @@ public class UIMain:UIBase
   /// <summary>
   /// 根据条件检索
   /// </summary>
-  public void QueryByTerm()
+  private void QueryByTerm()
   {
 
     _currTabContracts.Clear();
@@ -133,9 +135,12 @@ public class UIMain:UIBase
     obj.m_BtnDel.onClick.Set(() => {
       Debug.Log($"删除:{tc.t_id}");
       UIRoot.ins.uiConfirm.Show($"确定要删除:{tc.t_hotelName}吗?", () => {
-        _currTabContracts.Remove(tc);
-        AppData.DelTabContract(tc.t_id);
-        RefreshUI();
+        bool isOk = AppData.DelTabContract(tc.t_id);
+        if(isOk)
+        {
+          _currTabContracts.Remove(tc);
+          RefreshUI();
+        }
       });
     });
   }
