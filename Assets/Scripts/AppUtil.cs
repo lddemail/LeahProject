@@ -118,7 +118,7 @@ public class AppUtil
   /// </summary>
   /// <typeparam name="T"></typeparam>
   /// <param name="t"></param>
-  public static void Update2DB<T>(T t)
+  public static bool Update2DB<T>(T t)
   {
     List<string> keys = new List<string>();
     List<string> vals = new List<string>();
@@ -137,7 +137,7 @@ public class AppUtil
 
       Debug.Log($"Update2DB: {name}:{value}");
     }
-    db.UpdateValues(t.GetType().Name, keys.ToArray(), vals.ToArray(), AppConfig.tabKey, "=", $"{id}");
+    return db.UpdateValues(t.GetType().Name, keys.ToArray(), vals.ToArray(), AppConfig.tabKey, "=", $"{id}");
   }
 
   /// <summary>

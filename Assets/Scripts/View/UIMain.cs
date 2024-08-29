@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Reflection;
 using UnityEngine;
 using static ExcelSheet;
 
@@ -36,6 +37,27 @@ public class UIMain:UIBase
     UIPanel.m_title_group.onChanged.Add(Title_GroupChange);
 
     EvtMgr.Add(Evt.UpdateQuery, QueryByTerm);
+    EvtMgr.Add(Evt.UpdateMainItem, UpdateMainItem);
+  }
+
+  private void UpdateMainItem(EventContext context)
+  {
+    TabContract tc = context.data as TabContract;
+    if(tc != null)
+    {
+        GObject[] gobs = UIPanel.m_mainList.GetChildren();
+      foreach (GObject gob in gobs)
+      {
+        if(gob.data == context.data)
+        {
+          MethodInfo RefreshUI = gob.GetType().GetMethod("RefreshUI");
+          if (RefreshUI != null)
+          {
+            RefreshUI.Invoke(gob, null);
+          }
+        }
+      }
+    }
   }
 
   private void Title_hotelNameChange(EventContext context)
@@ -55,7 +77,7 @@ public class UIMain:UIBase
     UIRoot.ins.uiDetail.Show();
   }
 
-  int adventTerm = 30;
+  int adventTerm = 60;
   string hotelNameTerm = "ALL";
   string groupTerm = "ALL";
 
@@ -86,22 +108,20 @@ public class UIMain:UIBase
   //显示全部/临期
   private void BtnAllOrAdventHandler(EventContext context)
   {
-    bool isAdvent30 = UIPanel.m_BtnAllOrAdvent.title.Contains("临期(30)");
-    bool isAdvent60 =  UIPanel.m_BtnAllOrAdvent.title.Contains("临期(60)");
-    if (isAdvent30)
+    if(adventTerm == 0)
+    {
+      UIPanel.m_BtnAllOrAdvent.title = "临期(30)";
+      adventTerm = 30;
+    }
+    else if(adventTerm == 30)
     {
       UIPanel.m_BtnAllOrAdvent.title = "临期(60)";
       adventTerm = 60;
     }
-    else if(isAdvent60)
+    else
     {
       UIPanel.m_BtnAllOrAdvent.title = "全部";
       adventTerm = 0;
-    }
-    else
-    {
-      UIPanel.m_BtnAllOrAdvent.title = "临期(30)";
-      adventTerm = 30;
     }
     QueryByTerm();
   }

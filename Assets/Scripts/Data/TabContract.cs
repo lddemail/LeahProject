@@ -149,15 +149,10 @@ public class TabContract:TabBase
   /// <returns></returns>
   public object GetFieldVal(string name)
   {
-    FieldInfo[] fields = GetFields();
-    foreach (FieldInfo field in fields)
+    FieldInfo field = this.GetType().GetField(name);
+    if(field != null)
     {
-      string fieldName = field.Name;
-      if(fieldName == name)
-      {
-        object value = field.GetValue(this);
-        return value;
-      }
+      return field.GetValue(this);
     }
     return null;
   }
@@ -373,13 +368,6 @@ public class TabContract:TabBase
 
     Debug.Log($"Compute:t_productsPrice={t_productsPrice} t_totalBarter={t_totalBarter} t_totalAccount={t_totalAccount} t_totalDebt={t_totalDebt}");
   }
-
-  public object GetPropertyValue(string propertyName)
-  {
-    FieldInfo field = this.GetType().GetField(propertyName);
-    return field.GetValue(this);
-  }
-
 
   private static string IsEmpty(string str)
   {

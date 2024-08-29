@@ -7,7 +7,7 @@ namespace Basics
 {
     public partial class UI_MainListItem : GButton
     {
-        public GButton m_cb;
+        public GButton m_selectBtn;
         public GTextField m_t_id;
         public GTextField m_t_hotelName;
         public GTextField m_t_group;
@@ -30,7 +30,7 @@ namespace Basics
         {
             base.ConstructFromXML(xml);
 
-            m_cb = (GButton)GetChildAt(3);
+            m_selectBtn = (GButton)GetChildAt(3);
             m_t_id = (GTextField)GetChildAt(4);
             m_t_hotelName = (GTextField)GetChildAt(5);
             m_t_group = (GTextField)GetChildAt(6);

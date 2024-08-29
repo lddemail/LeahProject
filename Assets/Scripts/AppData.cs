@@ -97,12 +97,27 @@ public class AppData
   }
 
   /// <summary>
-  /// 跟新一条清单
+  /// 更新一条清单
   /// </summary>
   /// <param name="data"></param>
-  public static void UpdateTabContract(TabContract data)
+  public static bool UpdateTabContract(TabContract data)
   {
-    AppUtil.Update2DB<TabContract>(data);
+    bool res = false;
+    string log = "";
+    bool isOk = AppUtil.Update2DB<TabContract>(data);
+    if(isOk)
+    {
+      log = $"{data.t_id} 更新成功";
+      res = true;
+      EvtMgr.Dispatch(Evt.UpdateMainItem, data);
+    }
+    else
+    {
+      log = $"{data.t_id} 更新失败!";
+    }
+    Debug.Log(log);
+    UIRoot.ins.uiTips.Show(log);
+    return res;
   }
 
   /// <summary>
@@ -118,12 +133,12 @@ public class AppData
       allTabContract.Add(data);
       OrderAllTabContract();
       EvtMgr.Dispatch(Evt.UpdateQuery);
-      log = $"{data.t_hotelName} 新增入库完成";
+      log = $"{data.t_id} 新增入库完成";
       res = true;
     }
     else
     {
-      log = $"{data.t_hotelName} 入库失败";
+      log = $"{data.t_id} 入库失败";
     }
     Debug.Log(log);
     UIRoot.ins.uiTips.Show(log);
@@ -151,12 +166,12 @@ public class AppData
           allTabContract.Remove(tab);
           OrderAllTabContract();
           EvtMgr.Dispatch(Evt.UpdateQuery);
-          log = $"{tab.t_hotelName} 删除成功";
+          log = $"{tab.t_id} 删除成功";
           res = true;
         }
         else
         {
-          log = $"{tab.t_hotelName} 删除失败!";
+          log = $"{tab.t_id} 删除失败!";
         }
       }
 

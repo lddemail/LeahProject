@@ -8,6 +8,7 @@ using System;
 
 public class UIDetailItemCityExt : UI_DetailItemCity
 {
+  private int selectProvinceIndex;
   private string provinceName;
   private string cityName;
   public override void ConstructFromXML(XML xml)
@@ -20,12 +21,24 @@ public class UIDetailItemCityExt : UI_DetailItemCity
 
   private void ComboxBox1ChangeHandler(EventContext context)
   {
-    AppConfig.selectProvinceIndex = m_ComboxBox1.selectedIndex;
-    SetCity("");
+    selectProvinceIndex = m_ComboxBox1.selectedIndex;
+    string province = AppConfig.provinceList[selectProvinceIndex];
+    if(!string.IsNullOrEmpty(province))
+    {
+      AppData.currTc.SetFieldVal(provinceName, province);
+      string city = AppConfig.cityDic[province][0];
+      SetCity(city);
+      AppData.currTc.SetFieldVal(cityName, city);
+    }
   }
   private void ComboxBox2ChangeHandler(EventContext context)
   {
- 
+    string province = AppConfig.provinceList[selectProvinceIndex];
+    string city = AppConfig.cityDic[province][m_ComboxBox2.selectedIndex];
+    if(!string.IsNullOrEmpty(city))
+    {
+      AppData.currTc.SetFieldVal(cityName, city);
+    }
   }
 
 
@@ -33,11 +46,11 @@ public class UIDetailItemCityExt : UI_DetailItemCity
   {
     m_ComboxBox1.items = AppConfig.provinceList.ToArray();
     m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppConfig.provinceList, val);
-    AppConfig.selectProvinceIndex = m_ComboxBox1.selectedIndex;
+    selectProvinceIndex = m_ComboxBox1.selectedIndex;
   }
   private void SetCity(string val)
   {
-    string province = AppConfig.provinceList[AppConfig.selectProvinceIndex];
+    string province = AppConfig.provinceList[selectProvinceIndex];
     List<string> _cityList = AppConfig.cityDic[province];
     m_ComboxBox2.items = _cityList.ToArray();
     m_ComboxBox2.selectedIndex = AppUtil.GetIndexByList(_cityList, val);
@@ -61,33 +74,14 @@ public class UIDetailItemCityExt : UI_DetailItemCity
     SetCity(obj2 == null ? "" : obj2.ToString());
   }
 
-  public void SetData(ObjectVal va)
-  {
-    data = va;
-    m_title.text = "省/市";
-
-    string val = va.val == null ? "" : va.val.ToString();
-
-    switch (va.name)
-    {
-      case "t_province":
-        SetProvince(val);
-        break;
-      case "t_city":
-        SetCity(val);
-        break;
-      default:
-        break;
-    }
-  }
   public string GetProvince()
   {
-    string province = AppConfig.provinceList[AppConfig.selectProvinceIndex];
+    string province = AppConfig.provinceList[selectProvinceIndex];
     return province;
   }
   public string GetCity()
   {
-    string province = AppConfig.provinceList[AppConfig.selectProvinceIndex];
+    string province = AppConfig.provinceList[selectProvinceIndex];
     List<string> _cityList = AppConfig.cityDic[province];
     string city = _cityList[m_ComboxBox2.selectedIndex];
     return city;

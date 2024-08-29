@@ -294,7 +294,7 @@ public class SQLiteHelper
   /// <param name="colValues">字段名相应的数据</param>
   /// <param name="key">关键字</param>
   /// <param name="value">关键字相应的值</param>
-  public SqliteDataReader UpdateValues(string tableName, string[] colNames, string[] colValues, string key, string operation, string value)
+  public bool UpdateValues(string tableName, string[] colNames, string[] colValues, string key, string operation, string value)
   {
     //当字段名称和字段数值不正确应时引发异常
     if (colNames.Length != colValues.Length)
@@ -309,7 +309,7 @@ public class SQLiteHelper
     }
     queryString += " WHERE " + key + operation + value;
     Debug.Log($"更新数据:{queryString}");
-    return ExecuteQuery(queryString);
+    return ExecuteNonQuery(queryString);
     //return null;
   }
 
@@ -320,7 +320,7 @@ public class SQLiteHelper
   /// <param name="values">需要修改的数据</param>
   /// <param name="conditions">修改的条件</param>
   /// <returns></returns>
-  public SqliteDataReader UpdateValues(string tableName, string[] values, string[] conditions)
+  public bool UpdateValues(string tableName, string[] values, string[] conditions)
   {
     string sql = "update " + tableName + " set ";
     for (int i = 0; i < values.Length - 1; i += 2)
@@ -333,8 +333,8 @@ public class SQLiteHelper
       sql += conditions[i] + "='" + conditions[i + 1] + "' and ";
     }
     sql = sql.Substring(0, sql.Length - 4) + ");";
-    Debug.Log("更新成功");
-    return ExecuteQuery(sql);
+    Debug.Log($"更新数据:{sql}");
+    return ExecuteNonQuery(sql);
   }
 
   /// <summary>

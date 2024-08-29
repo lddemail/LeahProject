@@ -65,7 +65,6 @@ public class AppConfig
   };
 
   //省，市区
-  public static int selectProvinceIndex;
   public static List<string> provinceList = new List<string> { "上海市", "浙江省", "江苏省" };
   public static Dictionary<string, List<string>> cityDic = new Dictionary<string, List<string>>();
   public static void InitProvinceDic()

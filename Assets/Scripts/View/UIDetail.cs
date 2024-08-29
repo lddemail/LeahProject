@@ -81,19 +81,19 @@ public class UIDetail : UIBase
 
   private void BtnSaveHandler(EventContext context)
   {
+    bool isOk = false;
     //入库
     if (isAddTab)
     {
-      bool isOk = AppData.AddTabContract(AppData.currTc);
-      if(isOk)
-      {
-        Hide();
-      }
+      isOk = AppData.AddTabContract(AppData.currTc);
     }
     else
     {
-      AppData.UpdateTabContract(AppData.currTc);
-      UIRoot.ins.uiTips.Show($"{AppData.currTc.t_hotelName} 数据库更新完成");
+      isOk = AppData.UpdateTabContract(AppData.currTc);
+    }
+    if (isOk)
+    {
+      Hide();
     }
   }
 
