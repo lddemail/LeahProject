@@ -13,8 +13,12 @@ using static ExcelSheet;
 /// <summary>
 /// 合同清单
 /// </summary>
-public class TabContract:TabBase
+public class TabContract
 {
+  /// <summary>
+  /// 唯一id
+  /// </summary>
+  public int t_id;
   /// <summary>
   /// 排序用
   /// </summary>
@@ -315,10 +319,21 @@ public class TabContract:TabBase
         if(pd.tTime > 0)
         {
           int pT = pd.tTime - unixTime;
-          if (pT <= d)
+          if(day < 0)//过期 
           {
-            res = true;
-            break;
+            if (pT < 0)
+            {
+              res = true;
+              break;
+            }
+          }
+          else 
+          {
+            if (pT >= 0 && pT <= d)
+            {
+              res = true;
+              break;
+            }
           }
         }
       }

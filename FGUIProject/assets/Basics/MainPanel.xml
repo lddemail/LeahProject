@@ -7,13 +7,16 @@
     <component id="n40_p5s3" name="BtnInputExcel" src="p5s36a" fileName="components/Button22.xml" xy="0,0" group="n49_phex">
       <Button title="导入Excel"/>
     </component>
-    <component id="n43_i6pi" name="BtnAllOrAdvent" src="p5s36a" fileName="components/Button22.xml" xy="120,0" group="n49_phex">
-      <Button title="临期(30)"/>
+    <component id="n60_pdgk" name="BtnSavexcel" src="p5s36a" fileName="components/Button22.xml" xy="120,0" group="n49_phex">
+      <Button title="导出Excel"/>
     </component>
-    <component id="n46_i6pi" name="BtnAdd" src="p5s36a" fileName="components/Button22.xml" xy="240,0" group="n49_phex">
+    <component id="n61_pdgk" name="BtnAdvent" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="240,0" size="124,38" group="n49_phex" aspect="true">
+      <ComboBox visibleItemCount="10"/>
+    </component>
+    <component id="n46_i6pi" name="BtnAdd" src="p5s36a" fileName="components/Button22.xml" xy="384,0" group="n49_phex">
       <Button title="添加数据"/>
     </component>
-    <group id="n49_phex" name="BtnGroup" xy="0,0" size="340,40" advanced="true" layout="hz" lineGap="5" colGap="20" excludeInvisibles="true"/>
+    <group id="n49_phex" name="BtnGroup" xy="0,0" size="484,40" advanced="true" layout="hz" lineGap="5" colGap="20" excludeInvisibles="true"/>
     <text id="n50_phex" name="title_id" xy="54,44" size="100,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="ID"/>
     <component id="n52_phex" name="title_hotelName" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="164,44" size="200,32" group="n53_phex">
       <ComboBox visibleItemCount="20"/>

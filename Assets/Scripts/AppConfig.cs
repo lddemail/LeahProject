@@ -100,4 +100,6 @@ public class AppConfig
     });
   }
 
+  //临期选项
+  public static List<string> adventBtns = new List<string> { "全部显示","已过期" ,"30天到期","60天到期","90天到期" };
 }

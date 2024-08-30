@@ -127,7 +127,6 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\Tree\TreeNode.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlPageContext.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Tween\TweenManager.cs" />
-    <Compile Include="Assets\Scripts\Data\TabBase.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\IColorGear.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\UpdateContext.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\UIPackage.cs" />

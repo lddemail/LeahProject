@@ -44,7 +44,7 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
     m_InputLabName.text = pd.name;
     m_InputLabPrice.text = pd.price.ToString();
     m_InputLabfTime.text = AppUtil.TimeToString(pd.fTime);
-    m_InputLabtTime.text = AppUtil.TimeToString(pd.tTime);
+    m_InputLabtTime.text = $"{AppUtil.TimeToString(pd.tTime)}({pd.GetAdventStr()})";
     m_InputLabRemark.text = pd.remark;
   }
 

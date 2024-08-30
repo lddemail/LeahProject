@@ -170,6 +170,29 @@ public class SQLiteHelper
   }
 
   /// <summary>
+  /// 插入专用
+  /// </summary>
+  /// <param name="queryString"></param>
+  /// <returns></returns>
+  public bool InsertExecuteNonQuery(string queryString,out long lastId)
+  {
+    dbCommand = dbConnection.CreateCommand();
+    dbCommand.CommandText = queryString;
+    // 执行插入操作
+    int rowsAffected = dbCommand.ExecuteNonQuery();
+    // 判断是否插入成功
+    bool isOK = rowsAffected > 0;
+    lastId = -1;
+    if (isOK)
+    {
+      //获取最近插入的行的主键值
+      dbCommand.CommandText = "SELECT last_insert_rowid()";
+      lastId = (long)dbCommand.ExecuteScalar();
+    }
+    return isOK;
+  }
+
+  /// <summary>
   /// 关闭数据库连接
   /// </summary>
   public void CloseConnection()
@@ -250,7 +273,7 @@ public class SQLiteHelper
   /// <typeparam name="T"></typeparam>
   /// <param name="t"></param>
   /// <returns></returns>
-  public bool Insert<T>(T t,string key)
+  public bool Insert<T>(T t,string key,out long lastId)
   {
     var type = typeof(T);
     var fields = type.GetFields();
@@ -279,9 +302,11 @@ public class SQLiteHelper
     }
     sql = sql.TrimEnd(',') + ");";
 
-    Debug.Log($"插入数据:{sql}");
-    AppUtil.AddLog($"插入数据:{sql}");
-    return ExecuteNonQuery(sql);
+    bool isOk = InsertExecuteNonQuery(sql, out lastId);
+    string log = $"插入数据:lastId:{lastId}  {sql}";
+    Debug.Log(log);
+    AppUtil.AddLog(log);
+    return isOk;
   }
 
 

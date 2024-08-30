@@ -27,8 +27,13 @@ public class UIMain:UIBase
   public override void Init()
   {
     UIPanel.m_BtnInputExcel.onClick.Add(BtnAddHotelHandler);
-    UIPanel.m_BtnAllOrAdvent.onClick.Add(BtnAllOrAdventHandler);
+    UIPanel.m_BtnSavexcel.onClick.Add(BtnSaveExcelHandler);
     UIPanel.m_BtnAdd.onClick.Add(BtnAddHandler);
+
+
+    UIPanel.m_BtnAdvent.items = AppConfig.adventBtns.ToArray();
+    UIPanel.m_BtnAdvent.onChanged.Add(BtnAdventChange);
+    UIPanel.m_BtnAdvent.selectedIndex = 0;
 
     UIPanel.m_mainList.itemRenderer = MainListRender;
     UIPanel.m_mainList.SetVirtual();
@@ -40,21 +45,42 @@ public class UIMain:UIBase
     EvtMgr.Add(Evt.UpdateMainItem, UpdateMainItem);
   }
 
+  private void BtnAdventChange(EventContext context)
+  {
+    switch(UIPanel.m_BtnAdvent.selectedIndex)
+    {
+      case 1: //过期
+        adventTerm = -1;
+        break;
+      case 2:
+        adventTerm = 30;
+        break;
+      case 3:
+        adventTerm = 60;
+        break;
+      case 4:
+        adventTerm = 90;
+        break;
+      default:
+        adventTerm = 0;
+        break;
+    }
+    QueryByTerm();
+  }
+
   private void UpdateMainItem(EventContext context)
   {
     TabContract tc = context.data as TabContract;
     if(tc != null)
     {
-        GObject[] gobs = UIPanel.m_mainList.GetChildren();
+      GObject[] gobs = UIPanel.m_mainList.GetChildren();
       foreach (GObject gob in gobs)
       {
         if(gob.data == context.data)
         {
           MethodInfo RefreshUI = gob.GetType().GetMethod("RefreshUI");
-          if (RefreshUI != null)
-          {
-            RefreshUI.Invoke(gob, null);
-          }
+          RefreshUI?.Invoke(gob, null);
+          break;
         }
       }
     }
@@ -77,7 +103,7 @@ public class UIMain:UIBase
     UIRoot.ins.uiDetail.Show();
   }
 
-  int adventTerm = 60;
+  int adventTerm = 0;
   string hotelNameTerm = "ALL";
   string groupTerm = "ALL";
 
@@ -105,34 +131,13 @@ public class UIMain:UIBase
     RefreshUI();
   }
 
-  //显示全部/临期
-  private void BtnAllOrAdventHandler(EventContext context)
-  {
-    if(adventTerm == 0)
-    {
-      UIPanel.m_BtnAllOrAdvent.title = "临期(30)";
-      adventTerm = 30;
-    }
-    else if(adventTerm == 30)
-    {
-      UIPanel.m_BtnAllOrAdvent.title = "临期(60)";
-      adventTerm = 60;
-    }
-    else
-    {
-      UIPanel.m_BtnAllOrAdvent.title = "全部";
-      adventTerm = 0;
-    }
-    QueryByTerm();
-  }
-
-
   private void MainListRender(int index, GObject item)
   {
     TabContract tabC = _currTabContracts[index];
     var _item = item as UIMainListItemExt;
     _item.SetData(tabC);
     _item.onRightClick.Set(MainItemRightClick);
+    _item.onClick.Set(MainItemDoubleClick);
     _item.onRollOut.Set(MainItemRollOut);
   }
 
@@ -140,6 +145,20 @@ public class UIMain:UIBase
   {
     UI_MainListItem obj = context.sender as UI_MainListItem;
     obj.m_BtnGroup.visible = false;
+  }
+
+  private float _lastClickTime = 0f;
+  private void MainItemDoubleClick(EventContext context)
+  {
+    float currentTime = Time.time;
+    if (currentTime - _lastClickTime < 0.25f)
+    {
+      UI_MainListItem obj = context.sender as UI_MainListItem;
+      TabContract tc = obj.data as TabContract;
+      Debug.Log($"双击详情:{tc.t_id}");
+      UIRoot.ins.uiDetail.Show(tc);
+    }
+    _lastClickTime = currentTime;
   }
 
   private void MainItemRightClick(EventContext context)
@@ -178,7 +197,7 @@ public class UIMain:UIBase
     UIPanel.m_title_group.selectedIndex = 0;
 
     //UIPanel.m_mainList.numItems = AppData.allTabContract.Count;
-    UIPanel.m_BtnAllOrAdvent.FireClick(true, true);
+    QueryByTerm();
   }
 
   private void RefreshUI()
@@ -190,6 +209,30 @@ public class UIMain:UIBase
   public override void Hide()
   {
 
+  }
+
+  void BtnSaveExcelHandler()
+  {
+    List<TabContract> list = new List<TabContract>();
+    UIMainListItemExt item;
+    GObject[] gobs = UIPanel.m_mainList.GetChildren();
+    foreach (GObject gob in gobs)
+    {
+      item = gob as UIMainListItemExt;
+      if(item != null)
+      {
+        if (item.isSelect) list.Add(item.data as TabContract);
+      }
+    }
+    try
+    {
+      ExcelHelper.SaveToExcel(list);
+      UIRoot.ins.uiTips.Show($"导出:{list.Count}条合同完成");
+    }
+    catch(Exception ex)
+    {
+      UIRoot.ins.uiTips.Show($"导出失败:{ex.ToString()}");
+    }
   }
 
   void BtnAddHotelHandler()
@@ -224,7 +267,7 @@ public class UIMain:UIBase
         Debug.Log($"导入数据:{list.Count}条");
         foreach (TabContract contract in list)
         {
-          AppUtil.Insert2DB<TabContract>(contract, AppConfig.tabKey);
+          AppUtil.Insert2DB<TabContract>(contract, AppConfig.tabKey, out long lastId);
         }
 
         AppUtil.Quit();

@@ -4,8 +4,9 @@ using UnityEngine;
 /// <summary>
 /// 酒店表
 /// </summary>
-public class TabHotel : TabBase
+public class TabHotel
 {
+  public int t_id;
   /// <summary>
   /// 酒店名字
   /// </summary>

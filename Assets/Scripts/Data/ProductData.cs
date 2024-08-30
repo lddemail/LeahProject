@@ -25,7 +25,7 @@ public class ProductData: DataBase
   public int fTime;
 
   /// <summary>
-  /// 开始时间
+  /// 结束时间
   /// </summary>
   public int tTime;
 
@@ -44,6 +44,26 @@ public class ProductData: DataBase
     d.remark = remark;
     return d;
   }
+
+  /// <summary>
+  /// 到期状态
+  /// </summary>
+  /// <param name="day"></param>
+  /// <returns></returns>
+  public string GetAdventStr()
+  {
+    int unixTime = AppUtil.GetNowUnixTime();
+    int pT = tTime - unixTime;
+    if(pT < 0)
+    {
+      return "过期";
+    }
+    else {
+      int d = AppUtil.GetDayByUnixTime(pT);
+      return $"{d}天内到期";
+    }
+  }
+
 
   public bool isNull()
   {

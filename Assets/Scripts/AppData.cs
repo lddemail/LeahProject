@@ -127,9 +127,10 @@ public class AppData
   {
     bool res = false;
     string log = "";
-    bool isOk = AppUtil.Insert2DB<TabContract>(data, AppConfig.tabKey);
+    bool isOk = AppUtil.Insert2DB<TabContract>(data, AppConfig.tabKey,out long lastId);
     if(isOk)
     {
+      if(lastId >= 0) data.t_id = (int)lastId;
       allTabContract.Add(data);
       OrderAllTabContract();
       EvtMgr.Dispatch(Evt.UpdateQuery);

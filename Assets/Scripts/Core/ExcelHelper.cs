@@ -11,7 +11,6 @@ using UnityEngine;
 using static ExcelSheet;
 
 #region demo
-//private ExcelSheet _sheet = new ExcelSheet();
 //var sheet = new ExcelSheet("test");
 //sheet.Load("test");
 //sheet[0, 0] = "1"; // 第一行第一列赋值为 1
@@ -19,6 +18,7 @@ using static ExcelSheet;
 //sheet.Save("test", "Sheet1", ExcelSheet.FileFormat.Csv);
 
 //存:
+//private ExcelSheet _sheet = new ExcelSheet();
 //_sheet[0, 0] = "Hello World";
 //_sheet[1, 2] = "123";
 //_sheet.Save("test");
@@ -52,6 +52,31 @@ public class ExcelHelper
           es.Load(paths[0], "合同清单");
       }
      return es;
+  }
+
+  public static void SaveToExcel(List<TabContract> list)
+  {
+    if (list == null || list.Count == 0) return;
+
+    string time = DateTime.Now.ToString("yyyy_MM_dd");
+    string defName = $"LP_{time}";
+    string path = StandaloneFileBrowser.SaveFilePanel("导出Excel","", defName, "xlsx");
+    Debug.Log(path);
+    List<ObjectVal> objs;
+    ExcelSheet _sheet = new ExcelSheet();
+    for (int i = 0; i < list.Count; i++)
+    {
+      objs = list[i].GetObjectVals();
+      for (int k = 0; k < objs.Count; k++)
+      {
+        if (i == 0)
+        {
+          _sheet[0, k] = objs[k].name;
+        }
+        _sheet[i + 1, k] = objs[k].val.ToString();
+      }
+    }
+    _sheet.Save(path, "合同清单");
   }
 }
 
@@ -196,9 +221,12 @@ public partial class ExcelSheet
   }
   private void SaveAsXlsx(string fullPath, string sheetName)
   {
-    var index = fullPath.LastIndexOf("/", StringComparison.Ordinal);
-    var fileName = fullPath[(index + 1)..];
-    sheetName ??= fileName[..fileName.IndexOf(".", StringComparison.Ordinal)]; // 如果没有指定表名，则使用文件名
+    sheetName ??= Path.GetFileNameWithoutExtension(fullPath); // 如果没有指定表名，则使用文件名
+    var directory = Path.GetDirectoryName(fullPath);
+    if (!Directory.Exists(directory))
+    { // 如果文件所在的目录不存在，则先创建目录
+      Directory.CreateDirectory(directory);
+    }
 
     var fileInfo = new FileInfo(fullPath);
     using var package = new ExcelPackage(fileInfo);

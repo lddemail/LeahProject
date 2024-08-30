@@ -145,14 +145,14 @@ public class AppUtil
   /// </summary>
   /// <typeparam name="T"></typeparam>
   /// <param name="t"></param>
-  public static bool Insert2DB<T>(T t, string key = "")
+  public static bool Insert2DB<T>(T t, string key,out long lastId)
   {
-    return db.Insert<T>(t,key);
+    return db.Insert<T>(t,key,out lastId);
   }
 
   public static bool Delete2DB<T>(T t)
   {
-    TabBase tb = t as TabBase;
+    TabContract tb = t as TabContract;
     return db.DeleteValues(t.GetType().Name, new string[] { AppConfig.tabKey, $"{tb.t_id}" });
   }
 
@@ -231,6 +231,20 @@ public class AppUtil
     //Debug.Log("当前时间的 Unix 时间戳: " + unixTimestamp);
     return (int)unixTimestamp;
   }
+
+  /// <summary>
+  /// 时间戳转成成天
+  /// </summary>
+  /// <returns></returns>
+  public static int GetDayByUnixTime(int time)
+  {
+    int dayTime = 3600 * 24;
+    if (time <= dayTime) return 1;
+
+    float fTime = (float)time / dayTime;
+    int res = (int)Math.Ceiling(fTime);
+    return res;
+  }
   /// <summary>
   /// 退出app
   /// </summary>
@@ -255,4 +269,5 @@ public class AppUtil
     if (index < 0) index = 0;
     return index;
   }
+
 }
