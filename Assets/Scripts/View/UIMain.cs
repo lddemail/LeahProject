@@ -23,6 +23,7 @@ public class UIMain:UIBase
   List<TabContract> _currTabContracts = new List<TabContract>();
   List<string> hotelNameList;
   List<string> groupList;
+  List<string> productList;
 
   public override void Init()
   {
@@ -40,6 +41,7 @@ public class UIMain:UIBase
 
     UIPanel.m_title_hotelName.onChanged.Add(Title_hotelNameChange);
     UIPanel.m_title_group.onChanged.Add(Title_GroupChange);
+    UIPanel.m_title_product.onChanged.Add(Title_ProductChange);
 
     EvtMgr.Add(Evt.UpdateQuery, QueryByTerm);
     EvtMgr.Add(Evt.UpdateMainItem, UpdateMainItem);
@@ -78,7 +80,7 @@ public class UIMain:UIBase
       {
         if(gob.data == context.data)
         {
-          MethodInfo RefreshUI = gob.GetType().GetMethod("RefreshUI");
+          MethodInfo RefreshUI = gob.GetType().GetMethod(AppConfig.RefreshUI);
           RefreshUI?.Invoke(gob, null);
           break;
         }
@@ -96,6 +98,11 @@ public class UIMain:UIBase
     groupTerm = groupList[UIPanel.m_title_group.selectedIndex];
     QueryByTerm();
   }
+  private void Title_ProductChange(EventContext context)
+  {
+    productTerm = productList[UIPanel.m_title_product.selectedIndex];
+    QueryByTerm();
+  }
 
   private void BtnAddHandler(EventContext context)
   {
@@ -104,8 +111,9 @@ public class UIMain:UIBase
   }
 
   int adventTerm = 0;
-  string hotelNameTerm = "ALL";
-  string groupTerm = "ALL";
+  string hotelNameTerm = AppConfig.ALL;
+  string groupTerm = AppConfig.ALL;
+  string productTerm = AppConfig.ALL;
 
   /// <summary>
   /// 根据条件检索
@@ -119,15 +127,15 @@ public class UIMain:UIBase
       bool isAdventTerm = tab.isAdventTerm(adventTerm);
       bool isHotelNameTerm = tab.isHotelNameTerm(hotelNameTerm);
       bool isGroupTerm = tab.isGroupTerm(groupTerm);
-      //Debug.Log($"检索2:{tab.t_id}:{isAdventTerm} {isHotelNameTerm} {isGroupTerm}");
-      if (isAdventTerm && isHotelNameTerm && isGroupTerm)
+      bool isProductTerm = tab.isProductTerm(groupTerm);
+      if (isAdventTerm && isHotelNameTerm && isGroupTerm && isProductTerm)
       {
         _currTabContracts.Add(tab);
       }
     }
     int count = _currTabContracts == null ? 0 : _currTabContracts.Count;
     UIRoot.ins.uiTips.Show($"检索到{count}条数据");
-    Debug.Log($"检索条件 :{adventTerm} {hotelNameTerm} {groupTerm} 检索到{count}条数据");
+    Debug.Log($"检索条件 :{adventTerm},{hotelNameTerm},{groupTerm},{productTerm} 检索到{count}条数据");
     RefreshUI();
   }
 
@@ -186,15 +194,20 @@ public class UIMain:UIBase
 
   public override void Show(object obj=null)
   {
-    hotelNameList = AppData.allTabContractFiels["t_hotelName"];
-    hotelNameList.Insert(0,"ALL");
+    hotelNameList = AppData.allTabContractFiels[AppConfig.t_hotelName];
+    hotelNameList.Insert(0, AppConfig.ALL);
     UIPanel.m_title_hotelName.items = hotelNameList.ToArray();
     UIPanel.m_title_hotelName.selectedIndex = 0;
 
-    groupList = AppData.allTabContractFiels["t_group"];
-    groupList.Insert(0, "ALL");
+    groupList = AppData.allTabContractFiels[AppConfig.t_group];
+    groupList.Insert(0, AppConfig.ALL);
     UIPanel.m_title_group.items = groupList.ToArray();
     UIPanel.m_title_group.selectedIndex = 0;
+
+    productList = AppData.allTabContractFiels[AppConfig.t_products];
+    productList.Insert(0, AppConfig.ALL);
+    UIPanel.m_title_product.items = productList.ToArray();
+    UIPanel.m_title_product.selectedIndex = 0;
 
     //UIPanel.m_mainList.numItems = AppData.allTabContract.Count;
     QueryByTerm();

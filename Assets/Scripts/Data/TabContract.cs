@@ -180,13 +180,23 @@ public class TabContract
   }
 
   /// <summary>
+  /// 获取产品列表
+  /// </summary>
+  /// <returns></returns>
+  public List<ProductData> GetProductList()
+  {
+    List<ProductData> list = ProductData.DBStrToData(t_products);
+    return list;
+  }
+
+  /// <summary>
   /// 删除一个产品
   /// </summary>
   /// <param name="pd"></param>
   /// <returns></returns>
   public bool RemProduct(ProductData pd)
   {
-    List<ProductData> list = ProductData.DBStrToData(t_products);
+    List<ProductData> list = GetProductList();
     ProductData rpd = list.Find(x => x.IsSame(pd) == true);
     if(rpd != null)
     {
@@ -204,7 +214,7 @@ public class TabContract
   /// <returns></returns>
   public bool AddProduct(ProductData pd)
   {
-    List<ProductData> list = ProductData.DBStrToData(t_products);
+    List<ProductData> list = GetProductList();
     if (list == null) list = new List<ProductData>();
     list.Add(pd);
     t_products = ProductData.ToDBStr(list);
@@ -311,8 +321,8 @@ public class TabContract
     bool res = false;
     int d = 3600 * 24 * day;
     int unixTime = AppUtil.GetNowUnixTime();
-    List<ProductData> list = ProductData.DBStrToData(t_products);
-    if(list != null)
+    List<ProductData> list = GetProductList();
+    if (list != null)
     {
       foreach(ProductData pd in list)
       {
@@ -343,12 +353,22 @@ public class TabContract
 
   public bool isHotelNameTerm(string name)
   {
-    bool res = name == "ALL" || t_hotelName == name;
+    bool res = name == AppConfig.ALL || t_hotelName == name;
     return res;
   }
   public bool isGroupTerm(string name)
   {
-    bool res = name == "ALL" || t_group == name;
+    bool res = name == AppConfig.ALL || t_group == name;
+    return res;
+  }
+  /// <summary>
+  /// 是否包含该产品
+  /// </summary>
+  /// <param name="name"></param>
+  /// <returns></returns>
+  public bool isProductTerm(string name)
+  {
+    bool res = name == AppConfig.ALL || t_products.Contains(name);
     return res;
   }
 
@@ -356,7 +376,7 @@ public class TabContract
   {
     // (合同总额)所有产品的总价格
     t_productsPrice = 0;
-    List<ProductData> pddList = ProductData.DBStrToData(t_products);
+    List<ProductData> pddList = GetProductList();
     foreach (ProductData pdd in pddList)
     {
       t_productsPrice += pdd.price;

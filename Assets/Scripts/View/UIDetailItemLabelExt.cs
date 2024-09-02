@@ -40,7 +40,7 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
   public void SetData(string _fieldName)
   {
     fieldName = _fieldName;
-    m_title.text = fieldName;
+    m_title.text = AppConfig.fieldsNameDic[fieldName];
     if (AppData.allTabContractFiels.ContainsKey(fieldName))
     {
       m_ComboxBox1.visible = true;

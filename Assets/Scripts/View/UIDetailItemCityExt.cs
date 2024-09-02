@@ -60,8 +60,7 @@ public class UIDetailItemCityExt : UI_DetailItemCity
   {
     provinceName = _provinceName;
     cityName = _cityName;
-    m_title.text = "省/市";
-
+    m_title.text = $"{AppConfig.fieldsNameDic[provinceName]}/{AppConfig.fieldsNameDic[cityName]}";
 
     RefreshUI();
   }

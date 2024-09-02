@@ -136,21 +136,21 @@ public class UIDetail : UIBase
     UIPanel.m_DetailList.RemoveChildrenToPool();
     if (AppData.currTc != null)
     {
-      AddDetailItemTwoLabel("t_hotelName", "t_brand");
+      AddDetailItemTwoLabel(AppConfig.t_hotelName, AppConfig.t_brand);
 
-      AddDetailItemLabel("t_a_contract");
+      AddDetailItemLabel(AppConfig.t_a_contract);
 
-      AddDetailItemCity("t_province", "t_city");
+      AddDetailItemCity(AppConfig.t_province, "t_city");
 
-      AddDetailItemTwoLabel("t_originalFollowup", "t_newSales");
+      AddDetailItemTwoLabel(AppConfig.t_originalFollowup, AppConfig.t_newSales);
 
-      AddDetailItemTwoLabel("t_interiorNo", "t_contractNo");
+      AddDetailItemTwoLabel(AppConfig.t_interiorNo, AppConfig.t_contractNo);
 
-      AddDetailItemTwoLabel("t_payment", "t_attribution");
+      AddDetailItemTwoLabel(AppConfig.t_payment, AppConfig.t_attribution);
 
-      AddDetailItemLabel("t_totalDebt");
+      AddDetailItemLabel(AppConfig.t_totalDebt);
 
-      productLine = AddDetailItemLine("t_productsPrice");
+      productLine = AddDetailItemLine(AppConfig.t_productsPrice);
       productLine.childIndex = UIPanel.m_DetailList.GetChildIndex(productLine);
       List<ProductData> pdList = ProductData.DBStrToData(AppData.currTc.t_products);
       foreach (ProductData pd in pdList)
@@ -158,7 +158,7 @@ public class UIDetail : UIBase
         AddDetailItemProduct().SetData(pd);
       }
      
-      barterLine = AddDetailItemLine("t_totalBarter");
+      barterLine = AddDetailItemLine(AppConfig.t_totalBarter);
       barterLine.childIndex = UIPanel.m_DetailList.GetChildIndex(barterLine);
       List<BarterData> bdList = BarterData.DBStrToData(AppData.currTc.t_barter);
       foreach (BarterData bd in bdList)
@@ -166,7 +166,7 @@ public class UIDetail : UIBase
         AddDetailItemBarter().SetData(bd);
       }
 
-      accountLine = AddDetailItemLine("t_totalAccount");
+      accountLine = AddDetailItemLine(AppConfig.t_totalAccount);
       accountLine.childIndex = UIPanel.m_DetailList.GetChildIndex(accountLine);
       List<AccountData> adList = AccountData.DBStrToData(AppData.currTc.t_accountRematk);
       foreach (AccountData ad in adList)
@@ -183,7 +183,7 @@ public class UIDetail : UIBase
     GObject[] gobs = UIPanel.m_DetailList.GetChildren();
     foreach (GObject gob in gobs)
     {
-      MethodInfo RefreshUI = gob.GetType().GetMethod("RefreshUI");
+      MethodInfo RefreshUI = gob.GetType().GetMethod(AppConfig.RefreshUI);
       if(RefreshUI != null)
       {
         RefreshUI.Invoke(gob,null);

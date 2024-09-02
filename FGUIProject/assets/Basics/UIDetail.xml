@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="1600,900">
+<component size="1920,1080">
   <displayList>
-    <graph id="n0_i6pi" name="n0" xy="0,0" size="1600,900" type="rect" fillColor="#ff999999"/>
+    <graph id="n0_i6pi" name="n0" xy="0,0" size="1920,1080" type="rect" fillColor="#ff999999"/>
     <component id="n1_i6pi" name="BtnClose" src="p5s36a" fileName="components/Button22.xml" xy="0,0">
       <Button title="关闭"/>
     </component>
@@ -17,7 +17,7 @@
     <component id="n6_ldks" name="BtnAddAccount" src="p5s36a" fileName="components/Button22.xml" xy="512,0">
       <Button title="添加到账"/>
     </component>
-    <list id="n3_ihug" name="DetailList" xy="-1,49" size="1600,844" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," lineGap="5" defaultItem="ui://z3yueri4ldks6k" autoClearItems="true">
+    <list id="n3_ihug" name="DetailList" xy="-1,49" size="1920,1024" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," lineGap="5" defaultItem="ui://z3yueri4ldks6k" autoClearItems="true">
       <item/>
       <item/>
       <item/>

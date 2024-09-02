@@ -1,43 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="1600,900">
+<component size="1920,1080">
   <displayList>
-    <graph id="n41_p5s3" name="bg" xy="0,0" size="1600,900" type="rect" lineSize="0" fillColor="#ff999999"/>
-    <graph id="n28" name="n28" xy="0,40" size="1600,860" type="rect" lineColor="#49959595" fillColor="#ff233e43"/>
-    <image id="n29" name="n29" src="p5s357" fileName="images/grid_header_png.png" xy="0,40" size="1600,39"/>
-    <component id="n40_p5s3" name="BtnInputExcel" src="p5s36a" fileName="components/Button22.xml" xy="0,0" group="n49_phex">
+    <graph id="n41_p5s3" name="bg" xy="0,0" size="1920,1080" type="rect" lineSize="0" fillColor="#ff999999"/>
+    <graph id="n28" name="n28" xy="0,40" size="1920,1038" type="rect" lineColor="#49959595" fillColor="#ff233e43"/>
+    <image id="n29" name="n29" src="p5s357" fileName="images/grid_header_png.png" xy="0,40" size="1920,39"/>
+    <component id="n40_p5s3" name="BtnInputExcel" src="p5s36a" fileName="components/Button22.xml" xy="0,0" size="165,40" group="n49_phex">
       <Button title="导入Excel"/>
     </component>
-    <component id="n60_pdgk" name="BtnSavexcel" src="p5s36a" fileName="components/Button22.xml" xy="120,0" group="n49_phex">
+    <component id="n60_pdgk" name="BtnSavexcel" src="p5s36a" fileName="components/Button22.xml" xy="190,0" size="165,40" group="n49_phex">
       <Button title="导出Excel"/>
     </component>
-    <component id="n61_pdgk" name="BtnAdvent" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="240,0" size="124,38" group="n49_phex" aspect="true">
+    <component id="n61_pdgk" name="BtnAdvent" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="380,0" size="204,38" group="n49_phex" aspect="true">
       <ComboBox visibleItemCount="10"/>
     </component>
-    <component id="n46_i6pi" name="BtnAdd" src="p5s36a" fileName="components/Button22.xml" xy="384,0" group="n49_phex">
-      <Button title="添加数据"/>
+    <component id="n46_i6pi" name="BtnAdd" src="p5s36a" fileName="components/Button22.xml" xy="609,0" size="165,40" group="n49_phex">
+      <Button title="添加合同"/>
     </component>
-    <group id="n49_phex" name="BtnGroup" xy="0,0" size="484,40" advanced="true" layout="hz" lineGap="5" colGap="20" excludeInvisibles="true"/>
+    <group id="n49_phex" name="BtnGroup" xy="0,0" size="774,40"/>
     <text id="n50_phex" name="title_id" xy="54,44" size="100,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="ID"/>
-    <component id="n52_phex" name="title_hotelName" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="164,44" size="200,32" group="n53_phex">
+    <component id="n52_phex" name="title_hotelName" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="174,44" size="200,32" group="n53_phex">
       <ComboBox visibleItemCount="20"/>
     </component>
-    <component id="n54_phex" name="title_group" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="374,44" size="200,32" group="n53_phex">
+    <component id="n54_phex" name="title_group" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="394,44" size="200,32" group="n53_phex">
       <ComboBox visibleItemCount="20"/>
     </component>
-    <text id="n55_phex" name="title_interiorNo" xy="584,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="合同内部编号"/>
-    <text id="n56_phex" name="title_products" xy="744,44" size="360,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="产品列表"/>
-    <text id="n57_phex" name="title_productsPrice" xy="1114,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="产品总价格"/>
-    <text id="n58_phex" name="title_totalAccount" xy="1274,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="到账总额"/>
-    <text id="n59_phex" name="title_totalDebt" xy="1434,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="欠款金额"/>
-    <group id="n53_phex" name="TitleGroup" xy="54,44" size="1530,32"/>
-    <list id="n30" name="mainList" xy="1,85" size="1600,812" selectionMode="none" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," clipSoftness="0,20" defaultItem="ui://z3yueri4p5s36c">
+    <text id="n55_phex" name="title_interiorNo" xy="614,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="合同内部编号"/>
+    <component id="n62_sejq" name="title_product" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="982,44" size="200,32" group="n53_phex">
+      <ComboBox visibleItemCount="20"/>
+    </component>
+    <text id="n57_phex" name="title_productsPrice" xy="1425,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="产品总价格"/>
+    <text id="n58_phex" name="title_totalAccount" xy="1590,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="到账总额"/>
+    <text id="n59_phex" name="title_totalDebt" xy="1750,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="欠款金额"/>
+    <group id="n53_phex" name="TitleGroup" xy="54,44" size="1846,32"/>
+    <list id="n30" name="mainList" xy="1,85" size="1920,990" selectionMode="none" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," clipSoftness="0,20" defaultItem="ui://z3yueri4p5s36c">
       <item/>
       <item/>
       <item/>
       <item/>
     </list>
     <component id="n48_i6pi" name="UIDetail" src="i6pi6i" fileName="UIDetail.xml" xy="0,0" visible="false"/>
-    <component id="n45_i6pi" name="Tips" src="i6pi6d" fileName="Tips.xml" xy="400,400" visible="false" touchable="false">
+    <component id="n45_i6pi" name="Tips" src="i6pi6d" fileName="Tips.xml" xy="560,490" visible="false" touchable="false">
       <relation target="" sidePair="center-center,middle-middle"/>
     </component>
     <component id="n47_i6pi" name="UIConfirm" src="i6pi6f" fileName="UIConfirm.xml" xy="0,0" visible="false"/>

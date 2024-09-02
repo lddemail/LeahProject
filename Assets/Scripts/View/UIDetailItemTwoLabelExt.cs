@@ -64,8 +64,8 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
     fieldName1 = _fieldName1;
     fieldName2 = _fieldName2;
 
-    m_title1.text = fieldName1;
-    m_title2.text = fieldName2;
+    m_title1.text = AppConfig.fieldsNameDic[fieldName1];
+    m_title2.text = AppConfig.fieldsNameDic[fieldName2];
 
     if (AppData.allTabContractFiels.ContainsKey(fieldName1))
     {

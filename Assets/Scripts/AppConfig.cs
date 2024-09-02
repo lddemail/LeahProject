@@ -53,6 +53,26 @@ public class AppConfig
     InitProvinceDic();
   }
 
+  public static string ALL = "全部";
+  public static string t_products = "t_products";
+  public static string t_group = "t_group";
+  public static string t_hotelName = "t_hotelName";
+  public static string t_brand = "t_brand";
+  public static string t_newSales = "t_newSales";
+  public static string t_payment = "t_payment";
+  public static string t_attribution = "t_attribution";
+  public static string t_a_contract = "t_a_contract";
+  public static string t_originalFollowup = "t_a_contract";
+  public static string t_province = "t_province";
+  public static string t_interiorNo = "t_interiorNo";
+  public static string t_contractNo = "t_contractNo";
+  public static string t_totalDebt = "t_totalDebt";
+  public static string t_productsPrice = "t_productsPrice";
+  public static string t_totalBarter = "t_totalBarter";
+  public static string t_totalAccount = "t_totalAccount";
+
+  public static string RefreshUI = "RefreshUI";
+
   public static List<string> mainTitles = new List<string>() {
     "t_id",
     "t_hotelName",
@@ -102,4 +122,29 @@ public class AppConfig
 
   //临期选项
   public static List<string> adventBtns = new List<string> { "全部显示","已过期" ,"30天到期","60天到期","90天到期" };
+
+  //合同字段转中文
+  public static Dictionary<string, string> fieldsNameDic = new Dictionary<string, string>
+  {
+    { "t_id","ID"},
+    { "t_hotelName","酒店名字"},
+    { "t_group","酒店集团"},
+    { "t_brand","酒店品牌"},
+    { "t_province","省"},
+    { "t_city","市"},
+    { "t_originalFollowup","原FOLLOWUP"},
+    { "t_newSales","新SALES"},
+    { "t_interiorNo","内部编号"},
+    { "t_contractNo","外部编号"},
+    { "t_payment","支付方式"},
+    { "t_attribution","签约公司"},
+    { "t_a_contract","甲方名称"},
+    { "t_products","产品列表"},
+    { "t_productsPrice","合同总额"},
+    { "t_barter","消费明细"},
+    { "t_totalBarter","消费总额"},
+    { "t_accountRematk","到账明细"},
+    { "t_totalAccount","到账总额"},
+    { "t_totalDebt","欠款金额"}
+  };
 }

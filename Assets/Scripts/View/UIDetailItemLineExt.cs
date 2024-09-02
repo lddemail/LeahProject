@@ -23,16 +23,17 @@ public class UIDetailItemLineExt : UI_DetailItemLine
   public void RefreshUI()
   {
     object obj = AppData.currTc.GetFieldVal(fieldName);
+    string configFieldName = AppConfig.fieldsNameDic[fieldName];
     switch (fieldName)
     {
       case "t_productsPrice": //产品总额
-        m_title.text = $"产品列表: 总金额:{obj}";
+        m_title.text = $"{configFieldName}: 总金额:{obj}";
         break;
       case "t_totalBarter": //酒店消费
-        m_title.text = $"酒店消费列表: 总金额:{obj}";
+        m_title.text = $"{configFieldName}: 总金额:{obj}";
         break;
       case "t_totalAccount": //到账
-        m_title.text = $"到账列表: 总金额:{obj}";
+        m_title.text = $"{configFieldName}: 总金额:{obj}";
         break;
     }
   }

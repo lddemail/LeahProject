@@ -12,12 +12,11 @@ namespace Basics
         public GButton m_BtnSavexcel;
         public GComboBox m_BtnAdvent;
         public GButton m_BtnAdd;
-        public GGroup m_BtnGroup;
         public GTextField m_title_id;
         public GComboBox m_title_hotelName;
         public GComboBox m_title_group;
         public GTextField m_title_interiorNo;
-        public GTextField m_title_products;
+        public GComboBox m_title_product;
         public GTextField m_title_productsPrice;
         public GTextField m_title_totalAccount;
         public GTextField m_title_totalDebt;
@@ -41,19 +40,18 @@ namespace Basics
             m_BtnSavexcel = (GButton)GetChildAt(4);
             m_BtnAdvent = (GComboBox)GetChildAt(5);
             m_BtnAdd = (GButton)GetChildAt(6);
-            m_BtnGroup = (GGroup)GetChildAt(7);
-            m_title_id = (GTextField)GetChildAt(8);
-            m_title_hotelName = (GComboBox)GetChildAt(9);
-            m_title_group = (GComboBox)GetChildAt(10);
-            m_title_interiorNo = (GTextField)GetChildAt(11);
-            m_title_products = (GTextField)GetChildAt(12);
-            m_title_productsPrice = (GTextField)GetChildAt(13);
-            m_title_totalAccount = (GTextField)GetChildAt(14);
-            m_title_totalDebt = (GTextField)GetChildAt(15);
-            m_mainList = (GList)GetChildAt(16);
-            m_UIDetail = (UI_UIDetail)GetChildAt(17);
-            m_Tips = (UI_Tips)GetChildAt(18);
-            m_UIConfirm = (UI_UIConfirm)GetChildAt(19);
+            m_title_id = (GTextField)GetChildAt(7);
+            m_title_hotelName = (GComboBox)GetChildAt(8);
+            m_title_group = (GComboBox)GetChildAt(9);
+            m_title_interiorNo = (GTextField)GetChildAt(10);
+            m_title_product = (GComboBox)GetChildAt(11);
+            m_title_productsPrice = (GTextField)GetChildAt(12);
+            m_title_totalAccount = (GTextField)GetChildAt(13);
+            m_title_totalDebt = (GTextField)GetChildAt(14);
+            m_mainList = (GList)GetChildAt(15);
+            m_UIDetail = (UI_UIDetail)GetChildAt(16);
+            m_Tips = (UI_Tips)GetChildAt(17);
+            m_UIConfirm = (UI_UIConfirm)GetChildAt(18);
         }
     }
 }

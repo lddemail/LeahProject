@@ -55,15 +55,20 @@ public class AppData
         }
         tc.t_index = hotelNamesDic[tc.t_hotelName];
 
-        SetAllTabContractFiels("t_hotelName", tc.t_hotelName);
-        SetAllTabContractFiels("t_group", tc.t_group);
-        SetAllTabContractFiels("t_brand", tc.t_brand);
-        SetAllTabContractFiels("t_originalFollowup", tc.t_originalFollowup);
-        SetAllTabContractFiels("t_newSales", tc.t_newSales);
-        SetAllTabContractFiels("t_payment", tc.t_payment);
-        SetAllTabContractFiels("t_a_contract", tc.t_a_contract);
-        SetAllTabContractFiels("t_attribution", tc.t_attribution);
+        SetAllTabContractFiels(AppConfig.t_hotelName, tc.t_hotelName);
+        SetAllTabContractFiels(AppConfig.t_group, tc.t_group);
+        SetAllTabContractFiels(AppConfig.t_brand, tc.t_brand);
+        SetAllTabContractFiels(AppConfig.t_originalFollowup, tc.t_originalFollowup);
+        SetAllTabContractFiels(AppConfig.t_newSales, tc.t_newSales);
+        SetAllTabContractFiels(AppConfig.t_payment, tc.t_payment);
+        SetAllTabContractFiels(AppConfig.t_a_contract, tc.t_a_contract);
+        SetAllTabContractFiels(AppConfig.t_attribution, tc.t_attribution);
 
+        List<ProductData> pdList = tc.GetProductList();
+        foreach (ProductData pd in pdList)
+        {
+          SetAllTabContractFiels(AppConfig.t_products, pd.name);
+        }
       }
 
       //OrderBy升序
