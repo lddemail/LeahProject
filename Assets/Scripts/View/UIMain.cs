@@ -239,8 +239,10 @@ public class UIMain:UIBase
     }
     try
     {
-      ExcelHelper.SaveToExcel(list);
-      UIRoot.ins.uiTips.Show($"导出:{list.Count}条合同完成");
+      if(ExcelHelper.SaveToExcel(list))
+      {
+        UIRoot.ins.uiTips.Show($"导出:{list.Count}条合同完成");
+      }
     }
     catch(Exception ex)
     {

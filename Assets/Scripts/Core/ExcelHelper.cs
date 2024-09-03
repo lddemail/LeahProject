@@ -54,13 +54,15 @@ public class ExcelHelper
      return es;
   }
 
-  public static void SaveToExcel(List<TabContract> list)
+  public static bool SaveToExcel(List<TabContract> list)
   {
-    if (list == null || list.Count == 0) return;
+    if (list == null || list.Count == 0) return false;
 
     string time = DateTime.Now.ToString("yyyy_MM_dd");
     string defName = $"LP_{time}";
     string path = StandaloneFileBrowser.SaveFilePanel("导出Excel","", defName, "xlsx");
+    if (string.IsNullOrEmpty(path)) return false;
+
     Debug.Log(path);
     List<ObjectVal> objs;
     ExcelSheet _sheet = new ExcelSheet();
@@ -77,6 +79,8 @@ public class ExcelHelper
       }
     }
     _sheet.Save(path, "合同清单");
+
+    return true;
   }
 }
 
