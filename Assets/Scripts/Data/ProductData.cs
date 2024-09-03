@@ -52,6 +52,7 @@ public class ProductData: DataBase
   /// <returns></returns>
   public string GetAdventStr()
   {
+    if (tTime <= 0) return "";
     int unixTime = AppUtil.GetNowUnixTime();
     int pT = tTime - unixTime;
     if(pT < 0)

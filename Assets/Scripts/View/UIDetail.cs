@@ -93,7 +93,9 @@ public class UIDetail : UIBase
     }
     if (isOk)
     {
-      Hide();
+      Timers.inst.Add(0.5f, 1, (object param) => {
+        Hide();
+      });
     }
   }
 
