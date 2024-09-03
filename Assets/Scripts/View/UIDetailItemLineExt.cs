@@ -26,13 +26,13 @@ public class UIDetailItemLineExt : UI_DetailItemLine
     string configFieldName = AppConfig.fieldsNameDic[fieldName];
     switch (fieldName)
     {
-      case "t_productsPrice": //产品总额
+      case AppConfig.t_productsPrice: //产品总额
         m_title.text = $"{configFieldName}:{obj}";
         break;
-      case "t_totalBarter": //酒店消费
+      case AppConfig.t_totalBarter: //酒店消费
         m_title.text = $"{configFieldName}:{obj}";
         break;
-      case "t_totalAccount": //到账
+      case AppConfig.t_totalAccount: //到账
         m_title.text = $"{configFieldName}:{obj}";
         break;
     }
