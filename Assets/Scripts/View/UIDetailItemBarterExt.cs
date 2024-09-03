@@ -11,17 +11,17 @@ public class UIDetailItemBarterExt : UI_DetailItemBarter
   public override void ConstructFromXML(XML xml)
   {
     base.ConstructFromXML(xml);
-    m_InputLabBarter.onChanged.Set(OnChangeCallBack);
+    m_InputLabBarter.m_InputLab.onChanged.Set(OnChangeCallBack);
   }
   private void OnChangeCallBack(EventContext context)
   {
-    if (string.IsNullOrEmpty(m_InputLabBarter.text))
+    if (string.IsNullOrEmpty(m_InputLabBarter.m_InputLab.text))
     {
-      m_InputLabBarter.text = "0";
+      m_InputLabBarter.m_InputLab.text = "0";
     }
 
     BarterData bd = data as BarterData;
-    bd.barter = float.Parse(m_InputLabBarter.text);
+    bd.barter = float.Parse(m_InputLabBarter.m_InputLab.text);
     bd.time = AppUtil.StringToTime(m_InputLabTime.text);
     bd.remark = m_InputLabRemark.text;
 
@@ -30,15 +30,19 @@ public class UIDetailItemBarterExt : UI_DetailItemBarter
   public void SetData(BarterData bd)
   {
     data = bd;
+
+    m_InputLabBarter.m_Title.text = "消费金额";
+    m_InputLabTime.m_Title.text = "消费日期";
+
     RefreshUI();
   }
 
   public void RefreshUI()
   {
     BarterData bd = data as BarterData;
-    m_InputLabBarter.text = bd.barter.ToString();
-    m_InputLabTime.text = AppUtil.TimeToString(bd.time);
-    m_InputLabRemark.text = bd.remark;
+    m_InputLabBarter.m_InputLab.text = bd.barter.ToString();
+    m_InputLabTime.m_InputLab.text = AppUtil.TimeToString(bd.time);
+    m_InputLabRemark.m_InputLab.text = bd.remark;
   }
 
   private Action _changeCallBack;

@@ -7,12 +7,9 @@ namespace Basics
 {
     public partial class UI_DetailItemAccount : GComponent
     {
-        public GTextField m_barterTxt;
-        public GTextInput m_InputLabBarter;
-        public GTextField m_timeTxt;
-        public GTextInput m_InputLabTime;
-        public GTextField m_remarkTxt;
-        public GTextInput m_InputLabRemark;
+        public UI_InputNumLabelComp m_InputLabBarter;
+        public UI_InputTimeLabelComp m_InputLabTime;
+        public UI_InputDescLabelComp m_InputLabRemark;
         public GButton m_BtnDel;
         public const string URL = "ui://z3yueri4ldks6m";
 
@@ -25,13 +22,10 @@ namespace Basics
         {
             base.ConstructFromXML(xml);
 
-            m_barterTxt = (GTextField)GetChildAt(1);
-            m_InputLabBarter = (GTextInput)GetChildAt(2);
-            m_timeTxt = (GTextField)GetChildAt(3);
-            m_InputLabTime = (GTextInput)GetChildAt(4);
-            m_remarkTxt = (GTextField)GetChildAt(5);
-            m_InputLabRemark = (GTextInput)GetChildAt(6);
-            m_BtnDel = (GButton)GetChildAt(7);
+            m_InputLabBarter = (UI_InputNumLabelComp)GetChildAt(0);
+            m_InputLabTime = (UI_InputTimeLabelComp)GetChildAt(1);
+            m_InputLabRemark = (UI_InputDescLabelComp)GetChildAt(2);
+            m_BtnDel = (GButton)GetChildAt(3);
         }
     }
 }

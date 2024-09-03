@@ -162,29 +162,40 @@ public class AppUtil
 
     if(dateString == "0") return 0;
 
-    string format = "yyyy/MM/dd";
+    string format = "yyyy-MM-dd";
     dateString = dateString.Replace("0:00:00","").Trim();
     string[] ary = dateString.Split("/");
     try
     {
-      if (ary[1].Length == 1 && ary[2].Length == 1)
+      if (ary.Length > 0)
       {
-        format = "yyyy/M/d";
-      }
-      else if (ary[1].Length == 1)
-      {
-        format = "yyyy/M/dd";
-      }
-      else if (ary[2].Length == 1)
-      {
-        format = "yyyy/MM/d";
+        if (ary[1].Length == 1 && ary[2].Length == 1)
+        {
+          format = "yyyy/M/d";
+        }
+        else if (ary[1].Length == 1)
+        {
+          format = "yyyy/M/dd";
+        }
+        else if (ary[2].Length == 1)
+        {
+          format = "yyyy/MM/d";
+        }
+        else
+        {
+          format = "yyyy/MM/dd";
+        }
       }
       else
       {
-        format = "yyyy/MM/dd";
+        ary = dateString.Split("-");
+        if(ary.Length > 0)
+        {
+          format = "yyyy-MM-dd";
+        }
       }
     }
-    catch(Exception ex)
+    catch (Exception ex)
     {
       Debug.Log(dateString + ex.ToString());
     }
@@ -213,7 +224,7 @@ public class AppUtil
     // 将 DateTimeOffset 转换为本地时间的 DateTime
     DateTime dateTime = dateTimeOffset.LocalDateTime;
     // 将 DateTime 转换为字符串
-    string dateString = dateTime.ToString("yyyy/MM/dd");
+    string dateString = dateTime.ToString("yyyy-MM-dd");
     return dateString;
   }
 
@@ -268,6 +279,20 @@ public class AppUtil
     int index = list.FindIndex(x => x == val);
     if (index < 0) index = 0;
     return index;
+  }
+
+  public static bool GetInputLabEnabled(string fieldName)
+  {
+    switch (fieldName)
+    {
+      case AppConfig.t_productsPrice:
+      case AppConfig.t_totalBarter:
+      case AppConfig.t_totalAccount:
+      case AppConfig.t_totalDebt:
+        return false;
+      default:
+        return true;
+    }
   }
 
 }

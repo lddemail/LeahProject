@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="580,40">
+  <controller name="c1" pages="0,,1," selected="1"/>
+  <displayList>
+    <graph id="n3_h63l" name="n3" xy="100,0" size="280,40" type="rect">
+      <gearDisplay controller="c1" pages="0,1"/>
+      <gearXY controller="c1" pages="1" values="100,0,0.172,0" default="301,0,0.519,0" positionsInPercent="true"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <text id="n1_h63l" name="Title" xy="0,4" size="98,32" fontSize="22" align="right" vAlign="middle" autoSize="none" bold="true" text="0000:"/>
+    <component id="n4_h63l" name="ComboxBox1" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="101,0" size="200,36">
+      <gearDisplay controller="c1" pages="0"/>
+      <ComboBox visibleItemCount="10"/>
+    </component>
+    <text id="n2_h63l" name="InputLab" xy="100,4" size="280,32" fontSize="22" color="#333333" vAlign="middle" ubb="true" autoSize="none" bold="true" text="0" input="true" prompt="0">
+      <gearDisplay controller="c1" pages="0,1"/>
+      <gearXY controller="c1" pages="1" values="100,4,0.172,0.1" default="301,4,0.519,0.1" positionsInPercent="true"/>
+    </text>
+  </displayList>
+</component>

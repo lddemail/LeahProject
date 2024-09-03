@@ -53,25 +53,43 @@ public class AppConfig
     InitProvinceDic();
   }
 
-  public static string ALL = "全部";
-  public static string t_products = "t_products";
-  public static string t_group = "t_group";
-  public static string t_hotelName = "t_hotelName";
-  public static string t_brand = "t_brand";
-  public static string t_newSales = "t_newSales";
-  public static string t_payment = "t_payment";
-  public static string t_attribution = "t_attribution";
-  public static string t_a_contract = "t_a_contract";
-  public static string t_originalFollowup = "t_a_contract";
-  public static string t_province = "t_province";
-  public static string t_interiorNo = "t_interiorNo";
-  public static string t_contractNo = "t_contractNo";
-  public static string t_totalDebt = "t_totalDebt";
-  public static string t_productsPrice = "t_productsPrice";
-  public static string t_totalBarter = "t_totalBarter";
-  public static string t_totalAccount = "t_totalAccount";
+  public const string ALL = "全部";
+  /// <summary> 用户购买的产品列表(产品1+产品2) </summary>
+  public const string t_products = "t_products";
+  /// <summary> 酒店对应的集团 </summary>
+  public const string t_group = "t_group";
+  /// <summary> 酒店名字 </summary>
+  public const string t_hotelName = "t_hotelName";
+  /// <summary> 酒店品牌 </summary>
+  public const string t_brand = "t_brand";
+  /// <summary> 原FOLLOWUP </summary>
+  public const string t_originalFollowup = "t_originalFollowup";
+  /// <summary> 新SALES </summary>
+  public const string t_newSales = "t_newSales";
+  /// <summary> 合同约定的支付方式 </summary>
+  public const string t_payment = "t_payment";
+  /// <summary> 签约的公司名 </summary>
+  public const string t_attribution = "t_attribution";
+  /// <summary> 甲方合同签约名称 </summary>
+  public const string t_a_contract = "t_a_contract";
+  /// <summary> 省 </summary>
+  public const string t_province = "t_province";
+  /// <summary> 市 </summary>
+  public const string t_city = "t_city";
+  /// <summary> 合同内部编号 </summary>
+  public const string t_interiorNo = "t_interiorNo";
+  /// <summary> 客户看的合同编号 </summary>
+  public const string t_contractNo = "t_contractNo";
+  /// <summary> 欠款金额=(合同总额t_productsPrice-到账总额t_totalAccount) </summary>
+  public const string t_totalDebt = "t_totalDebt";
+  /// <summary>  (合同总额)所有产品的总价格 </summary>
+  public const string t_productsPrice = "t_productsPrice";
+  /// <summary> 酒店消费总额 </summary>
+  public const string t_totalBarter = "t_totalBarter";
+  /// <summary> 到账总额 </summary>
+  public const string t_totalAccount = "t_totalAccount";
 
-  public static string RefreshUI = "RefreshUI";
+  public const string RefreshUI = "RefreshUI";
 
   public static List<string> mainTitles = new List<string>() {
     "t_id",

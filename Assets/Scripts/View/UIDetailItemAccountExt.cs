@@ -11,17 +11,17 @@ public class UIDetailItemAccountExt : UI_DetailItemAccount
   public override void ConstructFromXML(XML xml)
   {
     base.ConstructFromXML(xml);
-    m_InputLabBarter.onChanged.Set(OnChangeCallBack);
+    m_InputLabBarter.m_InputLab.onChanged.Set(OnChangeCallBack);
   }
   private void OnChangeCallBack(EventContext context)
   {
-    if (string.IsNullOrEmpty(m_InputLabBarter.text))
+    if (string.IsNullOrEmpty(m_InputLabBarter.m_InputLab.text))
     {
-      m_InputLabBarter.text = "0";
+      m_InputLabBarter.m_InputLab.text = "0";
     }
 
     AccountData ad = data as AccountData;
-    ad.barter = float.Parse(m_InputLabBarter.text);
+    ad.barter = float.Parse(m_InputLabBarter.m_InputLab.text);
     ad.time = AppUtil.StringToTime(m_InputLabTime.text);
     ad.remark = m_InputLabRemark.text;
 
@@ -36,15 +36,19 @@ public class UIDetailItemAccountExt : UI_DetailItemAccount
   public void SetData(AccountData ad)
   {
     data = ad;
+
+    m_InputLabBarter.m_Title.text = "到账金额";
+    m_InputLabTime.m_Title.text = "到账日期";
+
     RefreshUI();
   }
 
   public void RefreshUI()
   {
     AccountData ad = data as AccountData;
-    m_InputLabBarter.text = ad.barter.ToString();
-    m_InputLabTime.text = AppUtil.TimeToString(ad.time);
-    m_InputLabRemark.text = ad.remark;
+    m_InputLabBarter.m_InputLab.text = ad.barter.ToString();
+    m_InputLabTime.m_InputLab.text = AppUtil.TimeToString(ad.time);
+    m_InputLabRemark.m_InputLab.text = ad.remark;
   }
 
   public AccountData GetAccountData()

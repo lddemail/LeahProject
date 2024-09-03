@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="1535,50">
+<component size="1920,50">
   <displayList>
-    <text id="n1_ldks" name="InputLabName" xy="48,8" size="150,32" fontSize="20" color="#ffffff" autoSize="none" bold="true" text="00000000" input="true"/>
-    <image id="n4_ldks" name="n4" src="p5s352" fileName="images/k19.png" xy="0,1" size="46,46" aspect="true"/>
-    <text id="n6_ldks" name="InputLabPrice" xy="257,8" size="100,32" fontSize="20" color="#ffffff" autoSize="none" bold="true" text="0" input="true" restrict="[0-9]" keyboardType="4"/>
-    <text id="n8_ldks" name="fTimeTxt" xy="359,8" size="92,32" fontSize="20" autoSize="none" bold="true" text="开始时间:"/>
-    <text id="n7_ldks" name="InputLabfTime" xy="452,8" size="137,32" fontSize="20" color="#ffffff" autoSize="none" bold="true" text="0000:00:00" input="true" restrict="^\d{4}/(0[1-9]|1[0-2])/(0[1-9]|[12]\d|3[01])$&#xD;&#xA;"/>
-    <text id="n9_ldks" name="tTimeTxt" xy="590,8" size="92,32" fontSize="20" autoSize="none" bold="true" text="到期时间:"/>
-    <text id="n10_ldks" name="InputLabtTime" xy="683,8" size="247,32" fontSize="20" color="#ffffff" autoSize="none" bold="true" text="000" input="true" restrict="^\d{4}/(0[1-9]|1[0-2])/(0[1-9]|[12]\d|3[01])$&#xD;&#xA;"/>
-    <text id="n12_ldks" name="remarkTxt" xy="932,8" size="50,32" fontSize="20" autoSize="none" bold="true" text="备注:"/>
-    <text id="n11_ldks" name="InputLabRemark" xy="985,8" size="550,32" fontSize="20" color="#ffffff" autoSize="none" bold="true" text="000" input="true"/>
-    <image id="n13_ldks" name="n13" src="p5s38" fileName="images/k26.png" xy="200,6" size="55,36" aspect="true"/>
-    <component id="n14_ldks" name="BtnDel" src="i6pi6e" fileName="components/Button10copy.xml" xy="717,0" size="118,50" aspect="true" visible="false">
+    <component id="n21_h63l" name="InputLabName" src="h63l6w" fileName="InputStrLabelComp.xml" xy="0,4"/>
+    <component id="n20_h63l" name="InputLabPrice" src="h63l6v" fileName="InputNumLabelComp.xml" xy="301,4"/>
+    <component id="n18_h63l" name="InputLabfTime" src="h63l6u" fileName="InputTimeLabelComp.xml" xy="543,4"/>
+    <component id="n19_h63l" name="InputLabtTime" src="h63l6u" fileName="InputTimeLabelComp.xml" xy="785,4"/>
+    <text id="n23_h63l" name="AdventLab" xy="1027,8" size="150,32" fontSize="22" color="#ffffff" align="center" ubb="true" autoSize="none" bold="true" text="[color=#FF0000](0天后过期)[/color]"/>
+    <component id="n22_h63l" name="InputLabRemark" src="h63l6x" fileName="InputDescLabelComp.xml" xy="1178,4"/>
+    <component id="n14_ldks" name="BtnDel" src="i6pi6e" fileName="components/Button10copy.xml" xy="717,4" size="118,50" aspect="true" visible="false">
       <Button title="删除"/>
     </component>
   </displayList>

@@ -13,13 +13,13 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
   {
     base.ConstructFromXML(xml);
 
-    m_ComboxBox1.onChanged.Set(ComboxBox1ChangeHandler);
-    m_InputLab.onChanged.Set(OnInputLabChange);
+    m_InputCombox1.m_ComboxBox1.onChanged.Set(ComboxBox1ChangeHandler);
+    m_InputCombox1.m_InputLab.onChanged.Set(OnInputLabChange);
   }
 
   private void OnInputLabChange(EventContext context)
   {
-    string val = m_InputLab.text;
+    string val = m_InputCombox1.m_InputLab.text;
     if (!string.IsNullOrEmpty(val))
     {
       AppData.currTc.SetFieldVal(fieldName, val);
@@ -31,7 +31,7 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
   {
     if (AppData.allTabContractFiels.ContainsKey(fieldName))
     {
-      string val = AppData.allTabContractFiels[fieldName][m_ComboxBox1.selectedIndex];
+      string val = AppData.allTabContractFiels[fieldName][m_InputCombox1.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName, val);
       RefreshUI();
     }
@@ -40,51 +40,40 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
   public void SetData(string _fieldName)
   {
     fieldName = _fieldName;
-    m_title.text = AppConfig.fieldsNameDic[fieldName];
+    m_InputCombox1.m_Title.text = AppConfig.fieldsNameDic[fieldName];
     if (AppData.allTabContractFiels.ContainsKey(fieldName))
     {
-      m_ComboxBox1.visible = true;
-      m_ComboxBox1.items = AppData.allTabContractFiels[fieldName].ToArray();
+      m_InputCombox1.m_c1.SetSelectedIndex(0);
+      m_InputCombox1.m_ComboxBox1.items = AppData.allTabContractFiels[fieldName].ToArray();
       object val = AppData.currTc.GetFieldVal(fieldName);
-      m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTabContractFiels[fieldName], val.ToString());
+      m_InputCombox1.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTabContractFiels[fieldName], val.ToString());
     }
     else
     {
-      m_ComboxBox1.visible = false;
+      m_InputCombox1.m_c1.SetSelectedIndex(1);
     }
 
-    switch (fieldName)
-    {
-      case "t_productsPrice":
-      case "t_totalBarter":
-      case "t_totalAccount":
-      case "t_totalDebt":
-        m_InputLab.enabled = false;
-        m_ComboxBox1.visible = false;
-        break;
-      default:
-        m_InputLab.enabled = true;
-        m_ComboxBox1.visible = true;
-        break;
-    }
+    bool isEnabled = AppUtil.GetInputLabEnabled(fieldName);
+    m_InputCombox1.m_InputLab.enabled = isEnabled;
+    m_InputCombox1.m_ComboxBox1.visible = isEnabled;
 
     RefreshUI();
   }
 
   public void RefreshUI()
   {
-    if(fieldName == "t_totalDebt")
+    if(fieldName == AppConfig.t_totalDebt)
     {
       //欠款金额=(合同总额t_productsPrice-到账总额t_totalAccount)
-      object productsPrice = AppData.currTc.GetFieldVal("t_productsPrice");
-      object totalAccount = AppData.currTc.GetFieldVal("t_totalAccount");
+      object productsPrice = AppData.currTc.GetFieldVal(AppConfig.t_productsPrice);
+      object totalAccount = AppData.currTc.GetFieldVal(AppConfig.t_totalAccount);
       float val = (float)productsPrice - (float)totalAccount;
-      m_InputLab.text = $"合同金额:{productsPrice} - 到账总额:{totalAccount} = 欠款金额:{val}";
+      m_InputCombox1.m_InputLab.text = $"合同金额:{productsPrice} - 到账总额:{totalAccount} = 欠款金额:{val}";
     }
     else
     {
       object val1 = AppData.currTc.GetFieldVal(fieldName);
-      m_InputLab.text = val1 == null ? "" : val1.ToString();
+      m_InputCombox1.m_InputLab.text = val1 == null ? "" : val1.ToString();
     }
   }
 }

@@ -27,13 +27,13 @@ public class UIDetailItemLineExt : UI_DetailItemLine
     switch (fieldName)
     {
       case "t_productsPrice": //产品总额
-        m_title.text = $"{configFieldName}: 总金额:{obj}";
+        m_title.text = $"{configFieldName}:{obj}";
         break;
       case "t_totalBarter": //酒店消费
-        m_title.text = $"{configFieldName}: 总金额:{obj}";
+        m_title.text = $"{configFieldName}:{obj}";
         break;
       case "t_totalAccount": //到账
-        m_title.text = $"{configFieldName}: 总金额:{obj}";
+        m_title.text = $"{configFieldName}:{obj}";
         break;
     }
   }

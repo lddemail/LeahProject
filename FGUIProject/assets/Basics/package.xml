@@ -243,6 +243,12 @@
     <component id="cfou6q" name="DetailItemCity.xml" path="/" exported="true"/>
     <component id="7t4l6r" name="DetailItemTwoLabel.xml" path="/" exported="true"/>
     <component id="7t4l6t" name="DetailItemLine.xml" path="/" exported="true"/>
+    <component id="h63l6u" name="InputTimeLabelComp.xml" path="/" exported="true"/>
+    <component id="h63l6v" name="InputNumLabelComp.xml" path="/" exported="true"/>
+    <component id="h63l6w" name="InputStrLabelComp.xml" path="/" exported="true"/>
+    <component id="h63l6x" name="InputDescLabelComp.xml" path="/" exported="true"/>
+    <component id="h63l6y" name="DetailItemThreeLabel.xml" path="/" exported="true"/>
+    <component id="h63l70" name="InputComboxLabelComp.xml" path="/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

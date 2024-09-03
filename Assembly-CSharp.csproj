@@ -89,6 +89,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Utils\XMLList.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Container.cs" />
     <Compile Include="Assets\Scripts\Data\BarterData.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_InputTimeLabelComp.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\MeshFactory.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\IUISource.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\FontManager.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Utils\ToolSet.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\RegularPolygonMesh.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearXY.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_InputComboxLabelComp.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserWindows.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\EllipseMesh.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearColor.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearText.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Controller.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\GoWrapper.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_InputDescLabelComp.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Tree\TreeNode.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlPageContext.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Tween\TweenManager.cs" />
@@ -139,6 +142,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\GList.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Event\EventDispatcher.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_Tips.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemThreeLabel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\ColliderHitTest.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GSlider.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Tween\TweenValue.cs" />
@@ -180,8 +184,10 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\GLabel.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowser.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\StageEngine.cs" />
+    <Compile Include="Assets\Scripts\View\UIDetailItemThreeLabelExt.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleSaveFileImage.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Stage.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_InputStrLabelComp.cs" />
     <Compile Include="Assets\Scripts\View\UIDetailItemLineExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\NAudioClip.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\VertexBuffer.cs" />
@@ -226,6 +232,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Event\EventContext.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\UIPanel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\UIConfig.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_InputNumLabelComp.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Filter\BlurFilter.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Gesture\PinchGesture.cs" />
     <Compile Include="Assets\Scripts\View\UIDetailItemBarterExt.cs" />

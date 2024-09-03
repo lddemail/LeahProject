@@ -5,16 +5,17 @@ using FairyGUI.Utils;
 
 namespace Basics
 {
-    public partial class UI_DetailItemTwoLabel : GComponent
+    public partial class UI_DetailItemThreeLabel : GComponent
     {
         public UI_InputComboxLabelComp m_InputCombox1;
         public UI_InputComboxLabelComp m_InputCombox2;
+        public UI_InputComboxLabelComp m_InputCombox3;
         public GGraph m_line;
-        public const string URL = "ui://z3yueri47t4l6r";
+        public const string URL = "ui://z3yueri4h63l6y";
 
-        public static UI_DetailItemTwoLabel CreateInstance()
+        public static UI_DetailItemThreeLabel CreateInstance()
         {
-            return (UI_DetailItemTwoLabel)UIPackage.CreateObject("Basics", "DetailItemTwoLabel");
+            return (UI_DetailItemThreeLabel)UIPackage.CreateObject("Basics", "DetailItemThreeLabel");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -23,7 +24,8 @@ namespace Basics
 
             m_InputCombox1 = (UI_InputComboxLabelComp)GetChildAt(0);
             m_InputCombox2 = (UI_InputComboxLabelComp)GetChildAt(1);
-            m_line = (GGraph)GetChildAt(2);
+            m_InputCombox3 = (UI_InputComboxLabelComp)GetChildAt(2);
+            m_line = (GGraph)GetChildAt(3);
         }
     }
 }

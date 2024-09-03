@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="1550,32" bgColor="#33cc00">
+<component size="1920,50" bgColor="#33cc00">
   <displayList>
-    <text id="n0_ihug" name="title1" xy="0,0" size="220,32" fontSize="22" align="right" autoSize="none" bold="true" text="t_originalFollowup:"/>
-    <component id="n3_gvvv" name="ComboxBox1" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="221,0" size="200,30">
-      <ComboBox visibleItemCount="20"/>
-    </component>
-    <text id="n1_ihug" name="InputLab1" xy="422,0" size="330,32" fontSize="22" color="#ffffff" autoSize="none" bold="true" text="111" input="true"/>
-    <text id="n4_7t4l" name="title2" xy="794,0" size="220,32" fontSize="22" align="right" autoSize="none" bold="true" text="t_originalFollowup:"/>
-    <component id="n5_7t4l" name="ComboxBox2" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="1015,0" size="200,30">
-      <ComboBox visibleItemCount="20"/>
-    </component>
-    <text id="n6_7t4l" name="InputLab2" xy="1216,0" size="330,32" fontSize="22" color="#ffffff" autoSize="none" bold="true" text="111" input="true"/>
-    <graph id="n2_gvvv" name="n2" xy="0,31" size="1550,2" type="rect" lineSize="0" fillColor="#ff00cc00"/>
+    <component id="n11_h63l" name="InputCombox1" src="h63l70" fileName="InputComboxLabelComp.xml" xy="0,4"/>
+    <component id="n9_h63l" name="InputCombox2" src="h63l70" fileName="InputComboxLabelComp.xml" xy="630,4"/>
+    <graph id="n2_gvvv" name="line" xy="0,49" size="1920,2" visible="false" type="rect" lineSize="0" fillColor="#ff00cc00"/>
   </displayList>
 </component>

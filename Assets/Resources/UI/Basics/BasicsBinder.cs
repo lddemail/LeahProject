@@ -11,6 +11,12 @@ namespace Basics
             UIObjectFactory.SetPackageItemExtension(UI_DetailItemTwoLabel.URL, typeof(UI_DetailItemTwoLabel));
             UIObjectFactory.SetPackageItemExtension(UI_DetailItemLine.URL, typeof(UI_DetailItemLine));
             UIObjectFactory.SetPackageItemExtension(UI_DetailItemCity.URL, typeof(UI_DetailItemCity));
+            UIObjectFactory.SetPackageItemExtension(UI_InputTimeLabelComp.URL, typeof(UI_InputTimeLabelComp));
+            UIObjectFactory.SetPackageItemExtension(UI_InputNumLabelComp.URL, typeof(UI_InputNumLabelComp));
+            UIObjectFactory.SetPackageItemExtension(UI_InputStrLabelComp.URL, typeof(UI_InputStrLabelComp));
+            UIObjectFactory.SetPackageItemExtension(UI_InputDescLabelComp.URL, typeof(UI_InputDescLabelComp));
+            UIObjectFactory.SetPackageItemExtension(UI_DetailItemThreeLabel.URL, typeof(UI_DetailItemThreeLabel));
+            UIObjectFactory.SetPackageItemExtension(UI_InputComboxLabelComp.URL, typeof(UI_InputComboxLabelComp));
             UIObjectFactory.SetPackageItemExtension(UI_Tips.URL, typeof(UI_Tips));
             UIObjectFactory.SetPackageItemExtension(UI_UIConfirm.URL, typeof(UI_UIConfirm));
             UIObjectFactory.SetPackageItemExtension(UI_Button5Copy.URL, typeof(UI_Button5Copy));

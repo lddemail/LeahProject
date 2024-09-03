@@ -136,19 +136,15 @@ public class UIDetail : UIBase
     UIPanel.m_DetailList.RemoveChildrenToPool();
     if (AppData.currTc != null)
     {
-      AddDetailItemTwoLabel(AppConfig.t_hotelName, AppConfig.t_brand);
+      AddDetailItemThreeLabel(AppConfig.t_hotelName, AppConfig.t_brand,AppConfig.t_attribution);
 
       AddDetailItemLabel(AppConfig.t_a_contract);
 
-      AddDetailItemCity(AppConfig.t_province, "t_city");
+      AddDetailItemThreeLabel(AppConfig.t_originalFollowup, AppConfig.t_newSales, AppConfig.t_payment);
 
-      AddDetailItemTwoLabel(AppConfig.t_originalFollowup, AppConfig.t_newSales);
+      AddDetailItemCity(AppConfig.t_province, AppConfig.t_city);
 
-      AddDetailItemTwoLabel(AppConfig.t_interiorNo, AppConfig.t_contractNo);
-
-      AddDetailItemTwoLabel(AppConfig.t_payment, AppConfig.t_attribution);
-
-      AddDetailItemLabel(AppConfig.t_totalDebt);
+      AddDetailItemThreeLabel(AppConfig.t_interiorNo, AppConfig.t_contractNo, AppConfig.t_totalDebt);
 
       productLine = AddDetailItemLine(AppConfig.t_productsPrice);
       productLine.childIndex = UIPanel.m_DetailList.GetChildIndex(productLine);
@@ -219,6 +215,12 @@ public class UIDetail : UIBase
   {
     UIDetailItemTwoLabelExt item = UIPanel.m_DetailList.AddItemFromPool(UIDetailItemTwoLabelExt.URL) as UIDetailItemTwoLabelExt;
     item.SetData(name1, name2);
+    return item;
+  }
+  private UIDetailItemThreeLabelExt AddDetailItemThreeLabel(string name1, string name2, string name3)
+  {
+    UIDetailItemThreeLabelExt item = UIPanel.m_DetailList.AddItemFromPool(UIDetailItemThreeLabelExt.URL) as UIDetailItemThreeLabelExt;
+    item.SetData(name1, name2, name3);
     return item;
   }
 
