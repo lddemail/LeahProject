@@ -83,6 +83,11 @@ public class ProductData: DataBase
     string res = $"name:{name},price:{price},fTime:{fTime},tTime:{tTime},remark:{remark}";
     return res;
   }
+  public string ToExportStr()
+  {
+    string res = $"name:{name},price:{price},fTime:{AppUtil.TimeToString(fTime)},tTime:{AppUtil.TimeToString(tTime)},remark:{remark}";
+    return res;
+  }
   public static ProductData Prase(string str)
   {
     if(!string.IsNullOrEmpty(str))

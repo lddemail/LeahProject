@@ -8,7 +8,7 @@ using UnityEngine;
 public class AppConfig
 {
   public static string productName = "LP";
-  public static string version = "1.0";
+  public static string version = "1.1";
 
   public static string tabKey = "t_id";
 
@@ -52,6 +52,8 @@ public class AppConfig
   {
     InitProvinceDic();
   }
+
+  public const string t_index = "t_index";
 
   public const string ALL = "全部";
   /// <summary> 用户购买的产品列表(产品1+产品2) </summary>

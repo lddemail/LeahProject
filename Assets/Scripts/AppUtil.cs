@@ -218,7 +218,7 @@ public class AppUtil
 
   public static string TimeToString(int timestamp)
   {
-    if (timestamp == 0) return "0";
+    if (timestamp <= 0) return "0";
     // 将时间戳转换为 DateTimeOffset
     DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(timestamp);
     // 将 DateTimeOffset 转换为本地时间的 DateTime

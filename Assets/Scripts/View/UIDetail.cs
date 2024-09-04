@@ -91,12 +91,12 @@ public class UIDetail : UIBase
     {
       isOk = AppData.UpdateTabContract(AppData.currTc);
     }
-    if (isOk)
-    {
-      Timers.inst.Add(0.5f, 1, (object param) => {
-        Hide();
-      });
-    }
+    //if (isOk)
+    //{
+    //  Timers.inst.Add(0.5f, 1, (object param) => {
+    //    Hide();
+    //  });
+    //}
   }
 
   private void BtnCloseHandler(EventContext context)

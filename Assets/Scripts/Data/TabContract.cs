@@ -108,6 +108,70 @@ public class TabContract
 
 
   /// <summary>
+  /// 导出格式
+  /// </summary>
+  /// <returns></returns>
+  public List<ObjectVal> GetExportObjs()
+  {
+    List<ObjectVal> vals = new List<ObjectVal>();
+
+    string name = "";
+    string value = "";
+    FieldInfo[] fields = GetFields();
+    foreach (FieldInfo field in fields)
+    {
+      name = field.Name;
+      value = "";
+      switch (name)
+      {
+        case "t_products":
+          List<ProductData> pdList = GetProductList();
+          for(int i=0;i< pdList.Count;i++)
+          {
+            value += pdList[0].ToExportStr();
+            if (i < pdList.Count - 1)
+            {
+              value += "+";
+            }
+          }
+          break;
+        case "t_barter":
+          List<BarterData> btList = GetBarterList();
+          for (int i = 0; i < btList.Count; i++)
+          {
+            value += btList[0].ToExportStr();
+            if (i < btList.Count - 1)
+            {
+              value += "+";
+            }
+          }
+          break;
+        case "t_accountRematk":
+          List<AccountData> adList = GetAccountList();
+          for (int i = 0; i < adList.Count; i++)
+          {
+            value += adList[0].ToExportStr();
+            if (i < adList.Count - 1)
+            {
+              value += "+";
+            }
+          }
+          break;
+        default:
+          object valueDB = field.GetValue(this);
+          value = valueDB == null ? "" : valueDB.ToString();
+          break;
+      }
+      if(name != AppConfig.t_index)
+      {
+        vals.Add(new ObjectVal(name, value));
+      }
+    }
+
+    return vals;
+  }
+
+  /// <summary>
   /// 覆盖数据
   /// </summary>
   public void Cover(TabContract tc)
@@ -222,6 +286,11 @@ public class TabContract
     return true;
   }
 
+  public List<BarterData> GetBarterList()
+  {
+    List<BarterData> list = BarterData.DBStrToData(t_barter);
+    return list;
+  }
   /// <summary>
   /// 添加一个消费
   /// </summary>
@@ -229,7 +298,7 @@ public class TabContract
   /// <returns></returns>
   public bool AddBarter(BarterData db)
   {
-    List<BarterData> list = BarterData.DBStrToData(t_barter);
+    List<BarterData> list = GetBarterList();
     if (list == null) list = new List<BarterData>();
     list.Add(db);
     t_barter = BarterData.ToDBStr(list);
@@ -243,7 +312,7 @@ public class TabContract
   /// <returns></returns>
   public bool RemBarter(BarterData db)
   {
-    List<BarterData> list = BarterData.DBStrToData(t_barter);
+    List<BarterData> list = GetBarterList();
     BarterData rpd = list.Find(x => x.IsSame(db) == true);
     if (rpd != null)
     {
@@ -254,7 +323,11 @@ public class TabContract
     }
     return false;
   }
-
+  public List<AccountData> GetAccountList()
+  {
+    List<AccountData> list = AccountData.DBStrToData(t_accountRematk);
+    return list;
+  }
   /// <summary>
   /// 添加一个到账
   /// </summary>
@@ -262,7 +335,7 @@ public class TabContract
   /// <returns></returns>
   public bool AddAccount(AccountData ad)
   {
-    List<AccountData> list = AccountData.DBStrToData(t_accountRematk);
+    List<AccountData> list = GetAccountList();
     if (list == null) list = new List<AccountData>();
     list.Add(ad);
     t_accountRematk = AccountData.ToDBStr(list);
@@ -276,7 +349,7 @@ public class TabContract
   /// <returns></returns>
   public bool RemAccount(AccountData ad)
   {
-    List<AccountData> list = AccountData.DBStrToData(t_accountRematk);
+    List<AccountData> list = GetAccountList();
     AccountData rpd = list.Find(x => x.IsSame(ad) == true);
     if (rpd != null)
     {

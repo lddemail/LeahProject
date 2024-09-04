@@ -68,7 +68,7 @@ public class ExcelHelper
     ExcelSheet _sheet = new ExcelSheet();
     for (int i = 0; i < list.Count; i++)
     {
-      objs = list[i].GetObjectVals();
+      objs = list[i].GetExportObjs();
       for (int k = 0; k < objs.Count; k++)
       {
         if (i == 0)

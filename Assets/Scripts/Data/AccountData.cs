@@ -46,6 +46,11 @@ public class AccountData:DataBase
     string res = $"barter:{barter},time:{time},remark:{remark}";
     return res;
   }
+  public string ToExportStr()
+  {
+    string res = $"barter:{barter},time:{AppUtil.TimeToString(time)},remark:{remark}";
+    return res;
+  }
   public static AccountData Prase(string str)
   {
     if (!string.IsNullOrEmpty(str))
