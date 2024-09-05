@@ -2,8 +2,6 @@
 using FairyGUI;
 using FairyGUI.Utils;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 public class UIMainListItemExt : UI_MainListItem
 {
@@ -31,10 +29,20 @@ public class UIMainListItemExt : UI_MainListItem
       {
         List<ProductData> pdList = tabC.GetProductList();
         string products = "";
+        EmProductType ptype = EmProductType.None;
         foreach (ProductData pd in pdList)
         {
-          products += $"{pd.name}:{pd.price}:({pd.GetAdventStr()})+";
-          gText.text = products;
+          products += pd.ToMainShowStr();
+          if(pd.GetProductType(out int day) == EmProductType.Warning)
+          {
+            ptype = EmProductType.Warning;
+          }
+        }
+        gText.text = products;
+        if(ptype == EmProductType.Warning)
+        {
+          //反向替换酒店名字为警告颜色
+          (GetChild(AppConfig.t_hotelName) as GTextField).text = AppUtil.GetColorStrByType(ptype,tabC.t_hotelName);
         }
       }
       else

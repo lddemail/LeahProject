@@ -194,6 +194,11 @@ public class UIMain:UIBase
 
   public override void Show(object obj=null)
   {
+    if(AppData.allTabContractFiels.Count == 0)
+    {
+      UIRoot.ins.uiTips.Show($"没有合同数据");
+      return;
+    }
     hotelNameList = AppData.allTabContractFiels[AppConfig.t_hotelName];
     hotelNameList.Insert(0, AppConfig.ALL);
     UIPanel.m_title_hotelName.items = hotelNameList.ToArray();
@@ -252,48 +257,66 @@ public class UIMain:UIBase
 
   void BtnAddHotelHandler()
   {
-    List<TabContract> list = new List<TabContract>();
+    string log = "";
+    TabContract tabc = null;
+    List <TabContract> list = new List<TabContract>();
     try
     {
       ExcelSheet es = ExcelHelper.ImportExcel();
       if (es != null)
       {
+        log = $"开始读取Excel";
+        Debug.Log(log);
         Dictionary<int, List<ObjVal>> vals = es.GetObjVal();
         foreach (int index in vals.Keys)
         {
-          TabContract contract = TabContract.Create(index, vals[index]);
-          contract.Compute();
-          list.Add(contract);
+          tabc = TabContract.Create(index, vals[index]);
+          tabc.Compute();
+          list.Add(tabc);
         }
       }
     }
     catch(Exception ex)
     {
-      string error = $"读取Excel 失败:{ex.ToString()}";
-      Debug.LogError(error);
-      AppUtil.AddLog(error);
-      UIRoot.ins.uiTips.Show(error, 99);
+      log = $"读取Excel 失败:{ex.ToString()}";
+      if (tabc != null)
+      {
+        log = $"读取Excel {tabc.t_hotelName} {tabc.t_interiorNo} 失败:{ex.ToString()}";
+      }
+      Debug.LogError(log);
+      AppUtil.AddLog(log);
+      UIRoot.ins.uiTips.Show(log, 99);
+      return;
     }
+
 
     try
     {
       if (list.Count > 0)
       {
-        Debug.Log($"导入数据:{list.Count}条");
+
+        log = $"读取到数据:{list.Count}条 开始导入数据库导入完成后会自动关闭";
+        Debug.Log(log);
+        UIRoot.ins.uiTips.Show(log, 99);
         foreach (TabContract contract in list)
         {
           AppUtil.Insert2DB<TabContract>(contract, AppConfig.tabKey, out long lastId);
         }
 
-        AppUtil.Quit();
+        log = $"导入数据完成即将关闭";
+        Debug.Log(log);
+        UIRoot.ins.uiTips.Show(log, 99);
+        Timers.inst.Add(1f, 1, (object param) => {
+          AppUtil.Quit();
+        });
       }
     }
     catch(Exception ex)
     {
-      string error = $"导入失败:{ex.ToString()}";
-      Debug.LogError(error);
-      AppUtil.AddLog(error);
-      UIRoot.ins.uiTips.Show(error,99);
+      log = $"导入数据库失败:{ex.ToString()}";
+      Debug.LogError(log);
+      AppUtil.AddLog(log);
+      UIRoot.ins.uiTips.Show(log, 99);
     }
 
   }

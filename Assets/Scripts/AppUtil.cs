@@ -23,6 +23,18 @@ public class AppUtil
     }
     //AddFguiPackage("Main");
   }
+  /// <summary>
+  /// 删除数据文件
+  /// </summary>
+  public static void DelDB()
+  {
+    string path = AppConfig.GetDBPath();
+    if(File.Exists(path))
+    {
+      File.Delete(path);
+      Debug.Log("删除数据库:"+ path);
+    }
+  }
 
   private static void AddFguiPackage(string name)
   {
@@ -197,7 +209,11 @@ public class AppUtil
     }
     catch (Exception ex)
     {
-      Debug.Log(dateString + ex.ToString());
+      string log = $"{dateString} 数据不符合规范";
+      Debug.Log(log + ex.ToString());
+      AddLog(log);
+      UIRoot.ins.uiTips.Show(log);
+      throw new Exception(log);
     }
 
     DateTime dateTime;
@@ -295,4 +311,31 @@ public class AppUtil
     }
   }
 
+  /// <summary>
+  /// 转成十六进制颜色
+  /// </summary>
+  /// <param name="color"></param>
+  /// <param name="str"></param>
+  /// <returns></returns>
+  public static string GetUBBColorStr(Color color,string str)
+  {
+    // 将 Color 结构体转换为 0-255 范围内的 RGB 值
+    int r = Mathf.RoundToInt(color.r * 255);
+    int g = Mathf.RoundToInt(color.g * 255);
+    int b = Mathf.RoundToInt(color.b * 255);
+    // 转换为十六进制字符串并格式化为 UBB 语法
+    return $"[color=#{r:X2}{g:X2}{b:X2}]{str}[/color]";
+  }
+  public static string GetColorStrByType(EmProductType type,string str)
+  {
+    switch (type)
+    {
+      case EmProductType.Expire:
+        return GetUBBColorStr(Color.red, str);
+      case EmProductType.Warning:
+        return GetUBBColorStr(Color.yellow, str);
+      default:
+        return str;
+    }
+  }
 }

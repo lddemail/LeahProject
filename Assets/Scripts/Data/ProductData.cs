@@ -52,17 +52,45 @@ public class ProductData: DataBase
   /// <returns></returns>
   public string GetAdventStr()
   {
-    if (tTime <= 0) return "";
+    EmProductType type = GetProductType(out int day);
+    switch(type)
+    {
+      case EmProductType.Expire:
+        return AppUtil.GetColorStrByType(type, "过期");
+      case EmProductType.Warning:
+        return AppUtil.GetColorStrByType(type, $"{day}天内到期");
+      default:
+        return AppUtil.GetUBBColorStr(Color.green,$"{day}天内到期");
+    }
+  }
+
+  /// <summary>
+  /// 产品状态
+  /// </summary>
+  /// <returns></returns>
+  public EmProductType GetProductType(out int day)
+  {
+    day = 0;
+    if (tTime <= 0)
+    {
+      return EmProductType.Expire;
+    }
     int unixTime = AppUtil.GetNowUnixTime();
     int pT = tTime - unixTime;
-    if(pT < 0)
+    if (pT < 0)
     {
-      return "过期";
+      return EmProductType.Expire;
     }
-    else {
+    else
+    {
       int d = AppUtil.GetDayByUnixTime(pT);
-      return $"{d}天内到期";
+      day = d;
+      if (d <= 90)
+      {
+        return EmProductType.Warning;
+      }
     }
+    return EmProductType.None;
   }
 
 
@@ -86,6 +114,11 @@ public class ProductData: DataBase
   public string ToExportStr()
   {
     string res = $"name:{name},price:{price},fTime:{AppUtil.TimeToString(fTime)},tTime:{AppUtil.TimeToString(tTime)},remark:{remark}";
+    return res;
+  }
+  public string ToMainShowStr()
+  {
+    string res = $"{name}:{price}:{GetAdventStr()}+";
     return res;
   }
   public static ProductData Prase(string str)

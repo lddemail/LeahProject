@@ -16,6 +16,22 @@ public struct ObjectVal
   }
 }
 
+/// <summary>
+/// 产品状态
+/// </summary>
+public enum EmProductType
+{
+  None,
+  /// <summary>
+  /// 过期
+  /// </summary>
+  Expire,
+  /// <summary>
+  /// 警告
+  /// </summary>
+  Warning,
+}
+
 public class AppData
 {
   /// <summary>

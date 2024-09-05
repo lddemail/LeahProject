@@ -17,13 +17,13 @@
       <Button checked="true"/>
     </component>
     <text id="n21_gvvv" name="t_id" xy="52,9" size="100,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="000"/>
-    <text id="n5" name="t_hotelName" xy="162,9" size="230,32" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="常州都喜天丽富都青枫苑酒店"/>
-    <text id="n9_p5s3" name="t_group" xy="397,9" size="200,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
-    <text id="n10_p5s3" name="t_interiorNo" xy="596,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
-    <text id="n11_p5s3" name="t_products" xy="756,9" size="660,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="0000000"/>
-    <text id="n12_p5s3" name="t_productsPrice" xy="1434,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
-    <text id="n13_p5s3" name="t_totalAccount" xy="1594,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
-    <text id="n14_p5s3" name="t_totalDebt" xy="1754,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n5" name="t_hotelName" xy="162,9" size="230,32" fontSize="22" color="#ffffff" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="常州都喜天丽富都青枫苑酒店"/>
+    <text id="n9_p5s3" name="t_group" xy="397,9" size="200,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n10_p5s3" name="t_interiorNo" xy="596,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n11_p5s3" name="t_products" xy="756,9" size="660,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="0000000"/>
+    <text id="n12_p5s3" name="t_productsPrice" xy="1434,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n13_p5s3" name="t_totalAccount" xy="1593,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n14_p5s3" name="t_totalDebt" xy="1754,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
     <component id="n18_i6pi" name="BtnDetails" src="i6pi6e" fileName="components/Button10copy.xml" xy="637,-9" group="n20_i6pi">
       <Button title="详情"/>
     </component>
