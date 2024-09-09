@@ -19,6 +19,11 @@ public class UIRoot : MonoBehaviour
     UIObjectFactory.SetPackageItemExtension(UI_DetailItemAccount.URL, typeof(UIDetailItemAccountExt));
     UIObjectFactory.SetPackageItemExtension(UI_DetailItemCity.URL, typeof(UIDetailItemCityExt));
     UIObjectFactory.SetPackageItemExtension(UI_DetailItemLine.URL, typeof(UIDetailItemLineExt));
+    UIObjectFactory.SetPackageItemExtension(UI_InputTimeLabelComp.URL, typeof(UI_InputTimeLabelCompExt)); 
+    UIObjectFactory.SetPackageItemExtension(UI_InputNumLabelComp.URL, typeof(UI_InputNumLabelCompExt)); 
+    UIObjectFactory.SetPackageItemExtension(UI_InputDescLabelComp.URL, typeof(UI_InputDescLabelCompExt)); 
+    UIObjectFactory.SetPackageItemExtension(UI_InputStrLabelComp.URL, typeof(UI_InputStrLabelCompExt)); 
+    UIObjectFactory.SetPackageItemExtension(UI_InputComboxLabelComp.URL, typeof(UI_InputComboxLabelCompExt));
   }
 
   public static UIRoot ins;

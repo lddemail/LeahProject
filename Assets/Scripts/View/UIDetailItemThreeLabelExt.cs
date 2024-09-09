@@ -97,39 +97,39 @@ public class UIDetailItemThreeLabelExt : UI_DetailItemThreeLabel
 
     if (AppData.allTabContractFiels.ContainsKey(fieldName1))
     {
-      m_InputCombox1.m_c1.SetSelectedIndex(0);
+      (m_InputCombox1 as UI_InputComboxLabelCompExt).Set_cPosIndex(0);
       m_InputCombox1.m_ComboxBox1.items = AppData.allTabContractFiels[fieldName1].ToArray();
       object val = AppData.currTc.GetFieldVal(fieldName1);
       m_InputCombox1.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTabContractFiels[fieldName1], val.ToString());
     }
     else
     {
-      m_InputCombox1.m_c1.SetSelectedIndex(1);
+      (m_InputCombox1 as UI_InputComboxLabelCompExt).Set_cPosIndex(1);
     }
 
     if (AppData.allTabContractFiels.ContainsKey(fieldName2))
     {
-      m_InputCombox2.m_c1.SetSelectedIndex(0);
+      (m_InputCombox2 as UI_InputComboxLabelCompExt).Set_cPosIndex(0);
       m_InputCombox2.m_ComboxBox1.items = AppData.allTabContractFiels[fieldName2].ToArray();
       object val = AppData.currTc.GetFieldVal(fieldName2);
       m_InputCombox2.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTabContractFiels[fieldName2], val.ToString());
     }
     else
     {
-      m_InputCombox2.m_c1.SetSelectedIndex(1);
+      (m_InputCombox2 as UI_InputComboxLabelCompExt).Set_cPosIndex(1);
     }
  
 
     if (AppData.allTabContractFiels.ContainsKey(fieldName3))
     {
-      m_InputCombox3.m_c1.SetSelectedIndex(0);
+      (m_InputCombox3 as UI_InputComboxLabelCompExt).Set_cPosIndex(0);
       m_InputCombox3.m_ComboxBox1.items = AppData.allTabContractFiels[fieldName3].ToArray();
       object val = AppData.currTc.GetFieldVal(fieldName3);
       m_InputCombox3.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTabContractFiels[fieldName3], val.ToString());
     }
     else
     {
-      m_InputCombox3.m_c1.SetSelectedIndex(1);
+      (m_InputCombox3 as UI_InputComboxLabelCompExt).Set_cPosIndex(1);
     }
 
   

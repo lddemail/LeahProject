@@ -7,6 +7,7 @@ namespace Basics
 {
     public partial class UI_InputStrLabelComp : GComponent
     {
+        public Controller m_c1;
         public GTextField m_Title;
         public GTextInput m_InputLab;
         public const string URL = "ui://z3yueri4h63l6w";
@@ -20,6 +21,7 @@ namespace Basics
         {
             base.ConstructFromXML(xml);
 
+            m_c1 = GetControllerAt(0);
             m_Title = (GTextField)GetChildAt(1);
             m_InputLab = (GTextInput)GetChildAt(2);
         }

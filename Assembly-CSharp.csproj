@@ -113,6 +113,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\CaptureCamera.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\ToolSet.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\RegularPolygonMesh.cs" />
+    <Compile Include="Assets\Scripts\View\UI_InputNumLabelCompExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearXY.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_InputComboxLabelComp.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserWindows.cs" />
@@ -181,6 +182,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearDisplay.cs" />
     <Compile Include="Assets\Scripts\Data\ProductData.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\DragDropManager.cs" />
+    <Compile Include="Assets\Scripts\View\UI_InputComboxLabelCompExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GLabel.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowser.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\StageEngine.cs" />
@@ -216,6 +218,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlSelect.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\ShaderConfig.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\TextField.cs" />
+    <Compile Include="Assets\Scripts\View\UI_InputDescLabelCompExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\PackageItem.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\ByteBuffer.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileText.cs" />
@@ -246,6 +249,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Utils\UBBParser.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Gesture\RotationGesture.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearDisplay2.cs" />
+    <Compile Include="Assets\Scripts\View\UI_InputStrLabelCompExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\NTexture.cs" />
     <Compile Include="Assets\Scripts\View\UIMainListItemExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\EMRenderSupport.cs" />
@@ -266,6 +270,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\PlaneMesh.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemBarter.cs" />
     <Compile Include="Assets\Scripts\Core\ExcelHelper.cs" />
+    <Compile Include="Assets\Scripts\View\UI_InputTimeLabelCompExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GTextInput.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\FieldTypes.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserEditor.cs" />

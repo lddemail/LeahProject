@@ -7,7 +7,7 @@ namespace Basics
 {
     public partial class UI_InputComboxLabelComp : GComponent
     {
-        public Controller m_c1;
+        public Controller m_cPos;
         public GTextField m_Title;
         public GComboBox m_ComboxBox1;
         public GTextInput m_InputLab;
@@ -22,7 +22,7 @@ namespace Basics
         {
             base.ConstructFromXML(xml);
 
-            m_c1 = GetControllerAt(0);
+            m_cPos = GetControllerAt(0);
             m_Title = (GTextField)GetChildAt(1);
             m_ComboxBox1 = (GComboBox)GetChildAt(2);
             m_InputLab = (GTextInput)GetChildAt(3);
