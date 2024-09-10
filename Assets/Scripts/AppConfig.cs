@@ -53,6 +53,17 @@ public class AppConfig
     InitProvinceDic();
   }
 
+  /// <summary>
+  /// 临期下拉配置
+  /// </summary>
+  public static Dictionary<int, int> adventSelectDic = new Dictionary<int, int>() {
+      { 0,0},//全部
+      { 1,-1},//过期
+      { 2,30},
+      { 3,60},
+      { 4,90},
+  };
+
   //选中提示背景色 #CCCCCC
   public static Color selectBgColor = new Color(0.8f, 0.8f, 0.8f,1f);
 

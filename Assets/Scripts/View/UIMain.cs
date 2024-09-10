@@ -49,24 +49,7 @@ public class UIMain:UIBase
 
   private void BtnAdventChange(EventContext context)
   {
-    switch(UIPanel.m_BtnAdvent.selectedIndex)
-    {
-      case 1: //过期
-        adventTerm = -1;
-        break;
-      case 2:
-        adventTerm = 30;
-        break;
-      case 3:
-        adventTerm = 60;
-        break;
-      case 4:
-        adventTerm = 90;
-        break;
-      default:
-        adventTerm = 0;
-        break;
-    }
+    AppConfig.adventSelectDic.TryGetValue(UIPanel.m_BtnAdvent.selectedIndex,out adventTerm);
     QueryByTerm();
   }
 
@@ -114,6 +97,37 @@ public class UIMain:UIBase
   string hotelNameTerm = AppConfig.ALL;
   string groupTerm = AppConfig.ALL;
   string productTerm = AppConfig.ALL;
+
+
+  /// <summary>
+  /// 设置查询条件查询
+  /// </summary>
+  /// <param name="_adventTerm"></param>
+  /// <param name="_hotelNameTerm"></param>
+  /// <param name="_groupTerm"></param>
+  /// <param name="_productTerm"></param>
+  public void SetQuery(int _adventTerm, string _hotelNameTerm, string _groupTerm, string _productTerm)
+  {
+    adventTerm = _adventTerm;
+    foreach(int key in AppConfig.adventSelectDic.Keys)
+    {
+      if (AppConfig.adventSelectDic[key] == adventTerm)
+      {
+        UIPanel.m_BtnAdvent.selectedIndex = key;
+        break;
+      }
+    }
+
+    hotelNameTerm = _hotelNameTerm;
+    UIPanel.m_title_hotelName.selectedIndex = hotelNameList.FindIndex(x => x == hotelNameTerm);
+
+    groupTerm = _groupTerm;
+    UIPanel.m_title_group.selectedIndex = groupList.FindIndex(x => x == groupTerm);
+
+    productTerm = _productTerm;
+    UIPanel.m_title_product.selectedIndex = productList.FindIndex(x => x == productTerm);
+    QueryByTerm();
+  }
 
   /// <summary>
   /// 根据条件检索
@@ -214,8 +228,17 @@ public class UIMain:UIBase
     UIPanel.m_title_product.items = productList.ToArray();
     UIPanel.m_title_product.selectedIndex = 0;
 
-    //UIPanel.m_mainList.numItems = AppData.allTabContract.Count;
     QueryByTerm();
+
+    //弹窗提示临期
+    int day = 90;
+    int count = AppData.GetTabAdventCount(day);
+    if(count > 0)
+    {
+      UIRoot.ins.uiConfirm.Show($"有{count}份合同将在{day}天内到期或已过期.点击确定查看这些合同", () => {
+        SetQuery(day,AppConfig.ALL,AppConfig.ALL,AppConfig.ALL);
+      });
+    }
   }
 
   private void RefreshUI()

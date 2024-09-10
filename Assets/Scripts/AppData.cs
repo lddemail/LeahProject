@@ -118,6 +118,23 @@ public class AppData
   }
 
   /// <summary>
+  /// 临期数据个数(包含过期)
+  /// </summary>
+  public static int GetTabAdventCount(int day)
+  {
+    int res = 0;
+    foreach (var tab in allTabContract)
+    {
+      bool isAdventTerm = tab.isAdventTerm(day);
+      if (isAdventTerm)
+      {
+        res++;
+      }
+    }
+    return res;
+  }
+
+  /// <summary>
   /// 更新一条清单
   /// </summary>
   /// <param name="data"></param>
