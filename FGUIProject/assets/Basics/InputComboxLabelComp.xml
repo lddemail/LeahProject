@@ -2,7 +2,7 @@
 <component size="580,40">
   <controller name="cPos" pages="0,,1," selected="0"/>
   <displayList>
-    <graph id="n3_h63l" name="n3" xy="301,0" size="280,40" type="rect">
+    <graph id="n3_h63l" name="InputBg" xy="301,0" size="280,40" type="rect">
       <gearDisplay controller="cPos" pages="0,1"/>
       <gearXY controller="cPos" pages="1" values="100,0,0.172,0" default="301,0,0.519,0" positionsInPercent="true"/>
       <relation target="" sidePair="width-width,height-height"/>

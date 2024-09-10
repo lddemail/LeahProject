@@ -112,8 +112,8 @@
     <Compile Include="Assets\FairyGUI\Scripts\Tween\GPath.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\CaptureCamera.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\ToolSet.cs" />
-    <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\RegularPolygonMesh.cs" />
     <Compile Include="Assets\Scripts\View\UI_InputNumLabelCompExt.cs" />
+    <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\RegularPolygonMesh.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearXY.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_InputComboxLabelComp.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserWindows.cs" />

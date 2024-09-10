@@ -53,6 +53,9 @@ public class AppConfig
     InitProvinceDic();
   }
 
+  //选中提示背景色 #CCCCCC
+  public static Color selectBgColor = new Color(0.8f, 0.8f, 0.8f,1f);
+
   public const string t_index = "t_index";
 
   public const string ALL = "全部";
