@@ -17,20 +17,20 @@
       <Button title="添加合同"/>
     </component>
     <group id="n49_phex" name="BtnGroup" xy="0,0" size="774,40"/>
-    <text id="n50_phex" name="title_id" xy="54,44" size="100,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="ID"/>
+    <text id="n50_phex" name="title_id" xy="54,44" size="100,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="ID"/>
     <component id="n52_phex" name="title_hotelName" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="174,44" size="200,32" group="n53_phex">
       <ComboBox visibleItemCount="20"/>
     </component>
     <component id="n54_phex" name="title_group" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="394,44" size="200,32" group="n53_phex">
       <ComboBox visibleItemCount="20"/>
     </component>
-    <text id="n55_phex" name="title_interiorNo" xy="614,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="合同内部编号"/>
+    <text id="n55_phex" name="title_interiorNo" xy="614,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="合同内部编号"/>
     <component id="n62_sejq" name="title_product" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="982,44" size="200,32" group="n53_phex">
       <ComboBox visibleItemCount="20"/>
     </component>
-    <text id="n57_phex" name="title_productsPrice" xy="1425,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="产品总价格"/>
-    <text id="n58_phex" name="title_totalAccount" xy="1590,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="到账总额"/>
-    <text id="n59_phex" name="title_totalDebt" xy="1750,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="欠款金额"/>
+    <text id="n57_phex" name="title_productsPrice" xy="1425,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="产品总价格"/>
+    <text id="n58_phex" name="title_totalAccount" xy="1590,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="到账总额"/>
+    <text id="n59_phex" name="title_totalDebt" xy="1750,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="欠款金额"/>
     <group id="n53_phex" name="TitleGroup" xy="54,44" size="1846,32"/>
     <list id="n30" name="mainList" xy="1,85" size="1920,990" selectionMode="none" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," clipSoftness="0,20" defaultItem="ui://z3yueri4p5s36c">
       <item/>

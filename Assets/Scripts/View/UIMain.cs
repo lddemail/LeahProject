@@ -235,7 +235,8 @@ public class UIMain:UIBase
     int count = AppData.GetTabAdventCount(day);
     if(count > 0)
     {
-      UIRoot.ins.uiConfirm.Show($"有{count}份合同将在{day}天内到期或已过期.点击确定查看这些合同", () => {
+      string message = AppUtil.GetColorStrByType(EmProductType.Warning,$"{count}份合同将在{day}天");
+      UIRoot.ins.uiConfirm.Show($"有{message}内到期或已过期.点击确定查看这些合同", () => {
         SetQuery(day,AppConfig.ALL,AppConfig.ALL,AppConfig.ALL);
       });
     }
