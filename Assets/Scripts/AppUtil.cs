@@ -338,4 +338,54 @@ public class AppUtil
         return str;
     }
   }
+
+  /// <summary>
+  /// 写入txt
+  /// </summary>
+  /// <param name="list"></param>
+  public static void WriteToTxt(string name,List<string> list)
+  {
+    if (list == null) return;
+
+    List<string> saveList = new List<string>();
+    foreach(string str in list)
+    {
+      if(!string.IsNullOrEmpty(str) && str != "0" && !saveList.Contains(str))
+      {
+        saveList.Add(str);
+      }
+    }
+
+    string dataPath = AppConfig.GetDataPath();
+    string targetPath = Path.Combine(dataPath, name);
+    File.WriteAllLines(targetPath, saveList.ToArray());
+  }
+
+  /// <summary>
+  /// 读取txt
+  /// </summary>
+  /// <param name="name"></param>
+  /// <returns></returns>
+  public static List<string> ReadFromTxt(string name)
+  {
+    List<string> res = new List<string>();
+    string dataPath = AppConfig.GetDataPath();
+    string targetPath = Path.Combine(dataPath, name);
+    if (File.Exists(targetPath))
+    {
+      string[] lines = File.ReadAllLines(targetPath);
+      if (lines != null && lines.Length > 0)
+      {
+        foreach (string line in lines)
+        {
+          if(!string.IsNullOrEmpty(line))
+          {
+            if (!res.Contains(line)) res.Add(line);
+          }
+        }
+      }
+    }
+    return res;
+  }
+
 }

@@ -9,6 +9,8 @@ using System.Collections.Generic;
 public class UIDetailItemLabelExt : UI_DetailItemLabel
 {
   private string fieldName;
+  private string template1;
+
   public override void ConstructFromXML(XML xml)
   {
     base.ConstructFromXML(xml);
@@ -29,28 +31,30 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
 
   private void ComboxBox1ChangeHandler(EventContext context)
   {
-    if (AppData.allTabContractFiels.ContainsKey(fieldName))
+    if (isHaveTeml1)
     {
-      string val = AppData.allTabContractFiels[fieldName][m_InputCombox1.m_ComboxBox1.selectedIndex];
+      string val = AppData.allTemplates[template1][m_InputCombox1.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName, val);
       RefreshUI();
     }
   }
 
-  public void SetData(string _fieldName)
+  bool isHaveTeml1;
+  public void SetData(string _fieldName, string _template1)
   {
     fieldName = _fieldName;
+    template1 = _template1;
+
+    isHaveTeml1 = !string.IsNullOrEmpty(template1);
+
     m_InputCombox1.m_Title.text = AppConfig.fieldsNameDic[fieldName];
-    if (AppData.allTabContractFiels.ContainsKey(fieldName))
+
+    (m_InputCombox1 as UI_InputComboxLabelCompExt).Set_cPosIndex(isHaveTeml1 ? 0 : 1);
+    if (isHaveTeml1)
     {
-      (m_InputCombox1 as UI_InputComboxLabelCompExt).Set_cPosIndex(0);
-      m_InputCombox1.m_ComboxBox1.items = AppData.allTabContractFiels[fieldName].ToArray();
+      m_InputCombox1.m_ComboxBox1.items = AppData.allTemplates[template1].ToArray();
       object val = AppData.currTc.GetFieldVal(fieldName);
-      m_InputCombox1.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTabContractFiels[fieldName], val.ToString());
-    }
-    else
-    {
-      (m_InputCombox1 as UI_InputComboxLabelCompExt).Set_cPosIndex(1);
+      m_InputCombox1.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTemplates[template1], val.ToString());
     }
 
     bool isEnabled = AppUtil.GetInputLabEnabled(fieldName);

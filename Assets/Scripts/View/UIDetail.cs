@@ -138,15 +138,15 @@ public class UIDetail : UIBase
     UIPanel.m_DetailList.RemoveChildrenToPool();
     if (AppData.currTc != null)
     {
-      AddDetailItemThreeLabel(AppConfig.t_hotelName, AppConfig.t_brand,AppConfig.t_attribution);
-
-      AddDetailItemLabel(AppConfig.t_a_contract);
-
-      AddDetailItemThreeLabel(AppConfig.t_originalFollowup, AppConfig.t_newSales, AppConfig.t_payment);
+      AddDetailItemThreeLabel(AppConfig.t_hotelName,AppConfig.HotelTemplateName, AppConfig.t_brand, AppConfig.HotelBrandTemplateName, AppConfig.t_group, AppConfig.HotelGroupTemplateName);
 
       AddDetailItemCity(AppConfig.t_province, AppConfig.t_city);
 
-      AddDetailItemThreeLabel(AppConfig.t_interiorNo, AppConfig.t_contractNo, AppConfig.t_totalDebt);
+      AddDetailItemLabel(AppConfig.t_a_contract,"");
+
+      AddDetailItemThreeLabel(AppConfig.t_attribution, "", AppConfig.t_newSales, "",AppConfig.t_payment, AppConfig.PaymentTemplateName);
+
+      AddDetailItemThreeLabel(AppConfig.t_interiorNo, "", AppConfig.t_contractNo, "", AppConfig.t_totalDebt,"" );
 
       productLine = AddDetailItemLine(AppConfig.t_productsPrice);
       productLine.childIndex = UIPanel.m_DetailList.GetChildIndex(productLine);
@@ -207,22 +207,22 @@ public class UIDetail : UIBase
     return item;
   }
 
-  private UIDetailItemLabelExt AddDetailItemLabel(string name)
+  private UIDetailItemLabelExt AddDetailItemLabel(string name1, string template1)
   {
     UIDetailItemLabelExt item = UIPanel.m_DetailList.AddItemFromPool(UIDetailItemLabelExt.URL) as UIDetailItemLabelExt;
-    item.SetData(name);
+    item.SetData(name1, template1);
     return item;
   }
-  private UIDetailItemTwoLabelExt AddDetailItemTwoLabel(string name1, string name2)
+  private UIDetailItemTwoLabelExt AddDetailItemTwoLabel(string name1, string template1, string name2, string template2)
   {
     UIDetailItemTwoLabelExt item = UIPanel.m_DetailList.AddItemFromPool(UIDetailItemTwoLabelExt.URL) as UIDetailItemTwoLabelExt;
-    item.SetData(name1, name2);
+    item.SetData(name1, template1, name2, template2);
     return item;
   }
-  private UIDetailItemThreeLabelExt AddDetailItemThreeLabel(string name1, string name2, string name3)
+  private UIDetailItemThreeLabelExt AddDetailItemThreeLabel(string name1, string template1,string name2, string template2, string name3, string template3)
   {
     UIDetailItemThreeLabelExt item = UIPanel.m_DetailList.AddItemFromPool(UIDetailItemThreeLabelExt.URL) as UIDetailItemThreeLabelExt;
-    item.SetData(name1, name2, name3);
+    item.SetData(name1,template1,name2, template2, name3, template3);
     return item;
   }
 

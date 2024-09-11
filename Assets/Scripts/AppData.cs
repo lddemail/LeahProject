@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -48,8 +49,24 @@ public class AppData
   /// </summary>
   public static Dictionary<string, List<string>> allTabContractFiels = new Dictionary<string, List<string>>();
 
+  /// <summary>
+  /// 模版
+  /// </summary>
+  public static Dictionary<string, List<string>> allTemplates = new Dictionary<string, List<string>>() {
+    { AppConfig.ProductTemplateName,new List<string>()},
+    { AppConfig.HotelTemplateName,new List<string>()},
+    { AppConfig.HotelGroupTemplateName,new List<string>()},
+    { AppConfig.HotelBrandTemplateName,new List<string>()},
+    { AppConfig.PaymentTemplateName,new List<string>()},
+  };
+
   public static void Init()
   {
+    foreach(string templateName in allTemplates.Keys)
+    {
+      allTemplates[templateName].AddRange(AppUtil.ReadFromTxt(templateName));
+    }
+
     CheckTab();
     allTabContract = AppUtil.ReadAll4DB<TabContract>();
     OrderAllTabContract();
@@ -91,6 +108,13 @@ public class AppData
       //ThenBy降序
       //allTabContract.OrderBy(x => x.t_index).ThenBy(x => x.t_index).ToList();
       allTabContract = allTabContract.OrderBy(x => x.t_index).ToList();
+
+      //模版
+      //AppUtil.WriteToTxt(AppConfig.ProductTemplateName, allTabContractFiels[AppConfig.t_products]);
+      //AppUtil.WriteToTxt(AppConfig.HotelTemplateName, allTabContractFiels[AppConfig.t_hotelName]);
+      //AppUtil.WriteToTxt(AppConfig.HotelGroupTemplateName, allTabContractFiels[AppConfig.t_group]);
+      //AppUtil.WriteToTxt(AppConfig.HotelBrandTemplateName, allTabContractFiels[AppConfig.t_brand]);
+      //AppUtil.WriteToTxt(AppConfig.PaymentTemplateName, allTabContractFiels[AppConfig.t_payment]);
     }
   }
 

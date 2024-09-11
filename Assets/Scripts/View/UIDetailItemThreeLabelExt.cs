@@ -11,6 +11,11 @@ public class UIDetailItemThreeLabelExt : UI_DetailItemThreeLabel
   private string fieldName1;
   private string fieldName2;
   private string fieldName3;
+
+  private string template1;
+  private string template2;
+  private string template3;
+
   public override void ConstructFromXML(XML xml)
   {
     base.ConstructFromXML(xml);
@@ -53,9 +58,9 @@ public class UIDetailItemThreeLabelExt : UI_DetailItemThreeLabel
   }
   private void ComboxBox1ChangeHandler(EventContext context)
   {
-    if (AppData.allTabContractFiels.ContainsKey(fieldName1))
+    if (isHaveTeml1)
     {
-      string val = AppData.allTabContractFiels[fieldName1][m_InputCombox1.m_ComboxBox1.selectedIndex];
+      string val = AppData.allTemplates[template1][m_InputCombox1.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName1, val);
       RefreshUI();
     }
@@ -63,28 +68,39 @@ public class UIDetailItemThreeLabelExt : UI_DetailItemThreeLabel
   }
   private void ComboxBox2ChangeHandler(EventContext context)
   {
-    if (AppData.allTabContractFiels.ContainsKey(fieldName2))
+    if (isHaveTeml2)
     {
-      string val = AppData.allTabContractFiels[fieldName2][m_InputCombox2.m_ComboxBox1.selectedIndex];
+      string val = AppData.allTemplates[template2][m_InputCombox2.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName2, val);
       RefreshUI();
     }
   }
   private void ComboxBox3ChangeHandler(EventContext context)
   {
-    if (AppData.allTabContractFiels.ContainsKey(fieldName3))
+    if (isHaveTeml3)
     {
-      string val = AppData.allTabContractFiels[fieldName3][m_InputCombox3.m_ComboxBox1.selectedIndex];
+      string val = AppData.allTemplates[template3][m_InputCombox3.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName3, val);
       RefreshUI();
     }
   }
 
-  public void SetData(string _fieldName1, string _fieldName2, string _fieldName3)
+  bool isHaveTeml1;
+  bool isHaveTeml2;
+  bool isHaveTeml3;
+  public void SetData(string _fieldName1,string _template1, string _fieldName2, string _template2, string _fieldName3, string _template3)
   {
     fieldName1 = _fieldName1;
     fieldName2 = _fieldName2;
     fieldName3 = _fieldName3;
+
+    template1 = _template1;
+    template2 = _template2;
+    template3 = _template3;
+
+    isHaveTeml1 = !string.IsNullOrEmpty(template1);
+    isHaveTeml2 = !string.IsNullOrEmpty(template2);
+    isHaveTeml3 = !string.IsNullOrEmpty(template3);
 
     m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
     m_InputCombox2.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName2);
@@ -95,44 +111,29 @@ public class UIDetailItemThreeLabelExt : UI_DetailItemThreeLabel
     m_InputCombox3.m_Title.text = AppConfig.fieldsNameDic[fieldName3];
 
 
-    if (AppData.allTabContractFiels.ContainsKey(fieldName1))
+    (m_InputCombox1 as UI_InputComboxLabelCompExt).Set_cPosIndex(isHaveTeml1 ? 0 : 1);
+    if(isHaveTeml1)
     {
-      (m_InputCombox1 as UI_InputComboxLabelCompExt).Set_cPosIndex(0);
-      m_InputCombox1.m_ComboxBox1.items = AppData.allTabContractFiels[fieldName1].ToArray();
+      m_InputCombox1.m_ComboxBox1.items = AppData.allTemplates[template1].ToArray();
       object val = AppData.currTc.GetFieldVal(fieldName1);
-      m_InputCombox1.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTabContractFiels[fieldName1], val.ToString());
-    }
-    else
-    {
-      (m_InputCombox1 as UI_InputComboxLabelCompExt).Set_cPosIndex(1);
+      m_InputCombox1.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTemplates[template1], val.ToString());
     }
 
-    if (AppData.allTabContractFiels.ContainsKey(fieldName2))
+    (m_InputCombox2 as UI_InputComboxLabelCompExt).Set_cPosIndex(isHaveTeml2 ? 0 : 1);
+    if (isHaveTeml2)
     {
-      (m_InputCombox2 as UI_InputComboxLabelCompExt).Set_cPosIndex(0);
-      m_InputCombox2.m_ComboxBox1.items = AppData.allTabContractFiels[fieldName2].ToArray();
+      m_InputCombox2.m_ComboxBox1.items = AppData.allTemplates[template2].ToArray();
       object val = AppData.currTc.GetFieldVal(fieldName2);
-      m_InputCombox2.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTabContractFiels[fieldName2], val.ToString());
+      m_InputCombox2.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTemplates[template2], val.ToString());
     }
-    else
-    {
-      (m_InputCombox2 as UI_InputComboxLabelCompExt).Set_cPosIndex(1);
-    }
- 
 
-    if (AppData.allTabContractFiels.ContainsKey(fieldName3))
+    (m_InputCombox3 as UI_InputComboxLabelCompExt).Set_cPosIndex(isHaveTeml3 ? 0 : 1);
+    if (isHaveTeml3)
     {
-      (m_InputCombox3 as UI_InputComboxLabelCompExt).Set_cPosIndex(0);
-      m_InputCombox3.m_ComboxBox1.items = AppData.allTabContractFiels[fieldName3].ToArray();
+      m_InputCombox3.m_ComboxBox1.items = AppData.allTemplates[template3].ToArray();
       object val = AppData.currTc.GetFieldVal(fieldName3);
-      m_InputCombox3.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTabContractFiels[fieldName3], val.ToString());
+      m_InputCombox3.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTemplates[template3], val.ToString());
     }
-    else
-    {
-      (m_InputCombox3 as UI_InputComboxLabelCompExt).Set_cPosIndex(1);
-    }
-
-  
 
     RefreshUI();
   }

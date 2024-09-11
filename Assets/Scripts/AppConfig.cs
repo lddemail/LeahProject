@@ -64,12 +64,14 @@ public class AppConfig
       { 4,90},
   };
 
+
   //选中提示背景色 #CCCCCC
   public static Color selectBgColor = new Color(0.8f, 0.8f, 0.8f,1f);
 
   public const string t_index = "t_index";
 
   public const string ALL = "全部";
+  public const string t_id = "t_id";
   /// <summary> 用户购买的产品列表(产品1+产品2) </summary>
   public const string t_products = "t_products";
   /// <summary> 酒店对应的集团 </summary>
@@ -106,20 +108,39 @@ public class AppConfig
   public const string t_totalAccount = "t_totalAccount";
 
   public const string RefreshUI = "RefreshUI";
+  public const string ProductTemplateName = "产品模版.txt";
+  public const string HotelTemplateName = "酒店模版.txt";
+  public const string HotelGroupTemplateName = "酒店集团模版.txt";
+  public const string HotelBrandTemplateName = "酒店品牌模版.txt";
+  public const string PaymentTemplateName = "支付方式模版.txt";
 
   public static List<string> mainTitles = new List<string>() {
-    "t_id",
-    "t_hotelName",
-    "t_group",
-    "t_interiorNo",
-    "t_products",
-    "t_productsPrice",
-    "t_totalAccount",
-    "t_totalDebt"
+    t_id,
+    t_hotelName,
+    t_group,
+    t_interiorNo,
+    t_products,
+    t_productsPrice,
+    t_totalAccount,
+    t_totalDebt
   };
 
   //省，市区
-  public static List<string> provinceList = new List<string> { "上海市", "浙江省", "江苏省" };
+  private static List<string> _provinceList;
+  public static List<string> provinceList
+  {
+    get { 
+      if(_provinceList == null)
+      {
+        _provinceList = new List<string>();
+        foreach (string key in cityDic.Keys)
+        {
+          _provinceList.Add(key);
+        }
+      }
+      return _provinceList;
+    }
+  }
   public static Dictionary<string, List<string>> cityDic = new Dictionary<string, List<string>>();
   public static void InitProvinceDic()
   {
