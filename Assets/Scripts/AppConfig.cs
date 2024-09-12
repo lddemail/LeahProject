@@ -113,6 +113,7 @@ public class AppConfig
   public const string HotelGroupTemplateName = "酒店集团模版.txt";
   public const string HotelBrandTemplateName = "酒店品牌模版.txt";
   public const string PaymentTemplateName = "支付方式模版.txt";
+  public const string SignedTemplateName = "签约公司模版.txt";
 
   public static List<string> mainTitles = new List<string>() {
     t_id,

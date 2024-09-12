@@ -217,6 +217,8 @@ public class TabContract
   /// <returns></returns>
   public object GetFieldVal(string name)
   {
+    if (name == AppConfig.t_newSales) return "Leah Zhang";
+
     FieldInfo field = this.GetType().GetField(name);
     if(field != null)
     {

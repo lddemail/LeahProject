@@ -380,7 +380,7 @@ public class AppUtil
         {
           if(!string.IsNullOrEmpty(line))
           {
-            if (!res.Contains(line)) res.Add(line);
+            if (!res.Contains(line)) res.Add(line.Trim());
           }
         }
       }

@@ -144,7 +144,7 @@ public class UIDetail : UIBase
 
       AddDetailItemLabel(AppConfig.t_a_contract,"");
 
-      AddDetailItemThreeLabel(AppConfig.t_attribution, "", AppConfig.t_newSales, "",AppConfig.t_payment, AppConfig.PaymentTemplateName);
+      AddDetailItemThreeLabel(AppConfig.t_attribution, AppConfig.SignedTemplateName, AppConfig.t_newSales, "",AppConfig.t_payment, AppConfig.PaymentTemplateName);
 
       AddDetailItemThreeLabel(AppConfig.t_interiorNo, "", AppConfig.t_contractNo, "", AppConfig.t_totalDebt,"" );
 

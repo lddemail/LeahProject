@@ -58,6 +58,7 @@ public class AppData
     { AppConfig.HotelGroupTemplateName,new List<string>()},
     { AppConfig.HotelBrandTemplateName,new List<string>()},
     { AppConfig.PaymentTemplateName,new List<string>()},
+    { AppConfig.SignedTemplateName,new List<string>()}
   };
 
   public static void Init()
@@ -109,12 +110,13 @@ public class AppData
       //allTabContract.OrderBy(x => x.t_index).ThenBy(x => x.t_index).ToList();
       allTabContract = allTabContract.OrderBy(x => x.t_index).ToList();
 
-      //模版
+      //制作模版
       //AppUtil.WriteToTxt(AppConfig.ProductTemplateName, allTabContractFiels[AppConfig.t_products]);
       //AppUtil.WriteToTxt(AppConfig.HotelTemplateName, allTabContractFiels[AppConfig.t_hotelName]);
       //AppUtil.WriteToTxt(AppConfig.HotelGroupTemplateName, allTabContractFiels[AppConfig.t_group]);
       //AppUtil.WriteToTxt(AppConfig.HotelBrandTemplateName, allTabContractFiels[AppConfig.t_brand]);
       //AppUtil.WriteToTxt(AppConfig.PaymentTemplateName, allTabContractFiels[AppConfig.t_payment]);
+      //AppUtil.WriteToTxt(AppConfig.SignedTemplateName, allTabContractFiels[AppConfig.t_attribution]);
     }
   }
 
