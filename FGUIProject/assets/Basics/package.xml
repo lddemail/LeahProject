@@ -32,7 +32,7 @@
     <component id="p5s3s" name="Checkbox.xml" path="/components/"/>
     <image id="p5s3t" name="b4.png.jpg" path="/images/"/>
     <image id="p5s3u" name="b1.png.jpg" path="/images/"/>
-    <image id="p5s3v" name="b3.png.jpg" path="/images/"/>
+    <image id="p5s3v" name="b3.png.jpg" path="/images/" scale="9grid" scale9grid="3,3,6,6"/>
     <image id="p5s3w" name="b2.png.jpg" path="/images/"/>
     <component id="p5s3x" name="OnOffButton.xml" path="/components/"/>
     <image id="p5s3y" name="b12_png.png" path="/images/"/>
@@ -191,7 +191,7 @@
     <image id="p5s357" name="grid_header_png.png" path="/images/" scale="9grid" scale9grid="50,5,100,10"/>
     <image id="p5s358" name="Shape 1 copy 4.png" path="/images/"/>
     <image id="p5s359" name="radial.png" path="/images/" scale=""/>
-    <component id="p5s35a" name="PopupMenu.xml" path="/popupmenu/" exported="true"/>
+    <component id="p5s35a" name="PopupMenu.xml" path="/popupmenu/"/>
     <component id="p5s35b" name="PopupMenuItem.xml" path="/popupmenu/"/>
     <component id="p5s35c" name="ScrollBar_HZ.xml" path="/scrollbars/" exported="true"/>
     <component id="p5s35d" name="ScrollUpButton.xml" path="/scrollbars/"/>
@@ -249,6 +249,8 @@
     <component id="h63l6x" name="InputDescLabelComp.xml" path="/" exported="true"/>
     <component id="h63l6y" name="DetailItemThreeLabel.xml" path="/" exported="true"/>
     <component id="h63l70" name="InputComboxLabelComp.xml" path="/" exported="true"/>
+    <component id="rrp474" name="MainPopupMenu.xml" path="/popupmenu/" exported="true"/>
+    <component id="rrp475" name="MainPopupMenuItem.xml" path="/popupmenu/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

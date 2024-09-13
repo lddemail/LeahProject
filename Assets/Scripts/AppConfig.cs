@@ -134,6 +134,13 @@ public class AppConfig
   public const string SalesTemplateName = "Sales模版.txt";
   public const string A_SignedTemplateName = "甲方签约公司模版.txt";
 
+
+  public const string Inport_Excel = "导入Excel";
+  public const string Expot_Excel = "导出Excel";
+  public const string Update_Template = "刷新模版";
+  public const string Details = "详情";
+  public const string Delete = "删除";
+
   public static List<string> mainTitles = new List<string>() {
     t_id,
     t_hotelName,

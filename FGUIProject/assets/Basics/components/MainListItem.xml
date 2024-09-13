@@ -24,13 +24,6 @@
     <text id="n12_p5s3" name="t_productsPrice" xy="1434,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
     <text id="n13_p5s3" name="t_totalAccount" xy="1593,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
     <text id="n14_p5s3" name="t_totalDebt" xy="1754,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
-    <component id="n18_i6pi" name="BtnDetails" src="i6pi6e" fileName="components/Button10copy.xml" xy="637,-9" group="n20_i6pi">
-      <Button title="详情"/>
-    </component>
-    <component id="n19_i6pi" name="BtnDel" src="i6pi6e" fileName="components/Button10copy.xml" xy="800,-9" size="163,69" group="n20_i6pi">
-      <Button title="删除"/>
-    </component>
-    <group id="n20_i6pi" name="BtnGroup" xy="637,-9" size="326,69" visible="false" advanced="true" layout="hz" lineGap="2" excludeInvisibles="true"/>
   </displayList>
   <Button mode="Radio"/>
 </component>

@@ -5,14 +5,14 @@ using FairyGUI.Utils;
 
 namespace Basics
 {
-    public partial class UI_PopupMenu : GComponent
+    public partial class UI_MainPopupMenu : GComponent
     {
         public GList m_list;
-        public const string URL = "ui://z3yueri4p5s35a";
+        public const string URL = "ui://z3yueri4rrp474";
 
-        public static UI_PopupMenu CreateInstance()
+        public static UI_MainPopupMenu CreateInstance()
         {
-            return (UI_PopupMenu)UIPackage.CreateObject("Basics", "PopupMenu");
+            return (UI_MainPopupMenu)UIPackage.CreateObject("Basics", "MainPopupMenu");
         }
 
         public override void ConstructFromXML(XML xml)

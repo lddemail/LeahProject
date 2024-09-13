@@ -65,14 +65,27 @@ public class AppData
 
   public static void Init()
   {
-    foreach(string tempName in allTemplates.Keys)
-    {
-      allTemplates[tempName].AddRange(AppUtil.ReadFromTxt(tempName));
-    }
-
+    ReadAllTemplates();
     CheckTab();
     allTabContract = AppUtil.ReadAll4DB<TabContract>();
     OrderAllTabContract();
+  }
+
+  /// <summary>
+  /// 读取全部模版
+  /// </summary>
+  public static void ReadAllTemplates()
+  {
+    foreach (string tempName in allTemplates.Keys)
+    {
+      allTemplates[tempName].Clear();
+      List<string> _tempList = AppUtil.ReadFromTxt(tempName);
+      if (_tempList.Count > 2)
+      {
+        _tempList.Sort((x, y) => AppUtil.CompareFirstTwoCharacters(x, y));
+      }
+      allTemplates[tempName].AddRange(_tempList);
+    }
   }
 
   /// <summary>

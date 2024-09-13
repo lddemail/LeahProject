@@ -136,7 +136,6 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\GRichTextField.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\CompositeMesh.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Event\IEventDispatcher.cs" />
-    <Compile Include="Assets\Resources\UI\Basics\UI_PopupMenu.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Tween\GTween.cs" />
     <Compile Include="Assets\Scripts\Core\SQLiteHelper.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GList.cs" />
@@ -193,11 +192,13 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\NAudioClip.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\VertexBuffer.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\RectHitTest.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_MainPopupMenu.cs" />
     <Compile Include="Assets\Scripts\AppConfig.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Gesture\SwipeGesture.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlInput.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Extensions\Spine\SpineLoader.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\IKeyboard.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_MainPopupMenuItem.cs" />
     <Compile Include="Assets\Resources\UI\Basics\BasicsBinder.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\RTLSupport.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\RoundedRectMesh.cs" />
@@ -225,7 +226,6 @@
     <Compile Include="Assets\Scripts\View\UIDetailItemTwoLabelExt.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\BasicSample.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GImage.cs" />
-    <Compile Include="Assets\Resources\UI\Basics\UI_PopupMenuItem.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\UIPainter.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlParseOptions.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\ZipReader.cs" />

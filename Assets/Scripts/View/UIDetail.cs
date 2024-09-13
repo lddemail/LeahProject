@@ -317,17 +317,14 @@ public class UIDetail : UIBase
   private void MainItemRightClick(EventContext context)
   {
     GComponent obj = context.sender as GComponent;
-    GObject m_BtnDel = obj.GetChild("BtnDel");
-    if(m_BtnDel != null)
-    {
-      m_BtnDel.visible = true;
-      m_BtnDel.x = obj.displayObject.GlobalToLocal(context.inputEvent.position).x - 60;
-      m_BtnDel.onClick.Set(() => {
-        UIRoot.ins.uiConfirm.Show($"确定要删除吗?", () => {
-          RemoveItem(obj);
-        });
+    PopupMenu pop = new PopupMenu();
+    pop.AddItem(AppConfig.Delete, () => {
+      UIRoot.ins.uiConfirm.Show($"确定要删除吗?", () =>
+      {
+        RemoveItem(obj);
       });
-    }
+    });
+    pop.Show();
   }
 
   private void RemoveItem(GComponent obj)

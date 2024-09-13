@@ -397,4 +397,32 @@ public class AppUtil
     return res;
   }
 
+  /// <summary>
+  /// 按照前2个汉字相同的规则排序
+  /// </summary>
+  /// <param name="x"></param>
+  /// <param name="y"></param>
+  /// <returns></returns>
+  public static int CompareFirstTwoCharacters(string x, string y)
+  {
+    if (string.IsNullOrEmpty(x) || string.IsNullOrEmpty(y))
+    {
+      return string.Compare(x, y, StringComparison.Ordinal);
+    }
+
+    // 获取前两个字符
+    string firstTwoCharsX = x.Length >= 2 ? x.Substring(0, 2) : x;
+    string firstTwoCharsY = y.Length >= 2 ? y.Substring(0, 2) : y;
+
+    // 先比较前两个字符
+    int result = string.Compare(firstTwoCharsX, firstTwoCharsY, StringComparison.Ordinal);
+    if (result != 0)
+    {
+      return result;
+    }
+
+    // 如果前两个字符相同，再比较整个字符串
+    return string.Compare(x, y, StringComparison.Ordinal);
+  }
+
 }

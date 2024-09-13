@@ -22,6 +22,11 @@ namespace FairyGUI
         public bool hideOnClickItem;
         public bool autoSize;
 
+        /// <summary>
+        /// 扩展的参数
+        /// </summary>
+        public Action actionExt;
+
         const string EVENT_TYPE = "PopupMenuItemClick";
 
         public PopupMenu()

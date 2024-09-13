@@ -4,19 +4,16 @@
     <graph id="n41_p5s3" name="bg" xy="0,0" size="1920,1080" type="rect" lineSize="0" fillColor="#ff999999"/>
     <graph id="n28" name="n28" xy="0,40" size="1920,1038" type="rect" lineColor="#49959595" fillColor="#ff233e43"/>
     <image id="n29" name="n29" src="p5s357" fileName="images/grid_header_png.png" xy="0,40" size="1920,39"/>
-    <component id="n40_p5s3" name="BtnInputExcel" src="p5s36a" fileName="components/Button22.xml" xy="0,0" size="165,40" group="n49_phex">
-      <Button title="导入Excel"/>
+    <component id="n40_p5s3" name="BtnMainPop" src="p5s36a" fileName="components/Button22.xml" xy="0,0" size="160,40" group="n49_phex">
+      <Button title="菜单"/>
     </component>
-    <component id="n60_pdgk" name="BtnSavexcel" src="p5s36a" fileName="components/Button22.xml" xy="190,0" size="165,40" group="n49_phex">
-      <Button title="导出Excel"/>
-    </component>
-    <component id="n61_pdgk" name="BtnAdvent" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="380,0" size="204,38" group="n49_phex" aspect="true">
+    <component id="n61_pdgk" name="BtnAdvent" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="175,0" size="204,38" group="n49_phex" aspect="true">
       <ComboBox visibleItemCount="10"/>
     </component>
-    <component id="n46_i6pi" name="BtnAdd" src="p5s36a" fileName="components/Button22.xml" xy="609,0" size="165,40" group="n49_phex">
+    <component id="n46_i6pi" name="BtnAdd" src="p5s36a" fileName="components/Button22.xml" xy="394,0" size="165,40" group="n49_phex">
       <Button title="添加合同"/>
     </component>
-    <group id="n49_phex" name="BtnGroup" xy="0,0" size="774,40"/>
+    <group id="n49_phex" name="BtnGroup" xy="0,0" size="559,40"/>
     <text id="n50_phex" name="title_id" xy="54,44" size="100,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="ID"/>
     <component id="n52_phex" name="title_hotelName" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="174,44" size="200,32" group="n53_phex">
       <ComboBox visibleItemCount="20"/>

@@ -25,10 +25,20 @@ public class UIMain:UIBase
   List<string> groupList;
   List<string> productList;
 
+  PopupMenu mainPop;
+  PopupMenu itemPop;
   public override void Init()
   {
-    UIPanel.m_BtnInputExcel.onClick.Add(BtnAddHotelHandler);
-    UIPanel.m_BtnSavexcel.onClick.Add(BtnSaveExcelHandler);
+    mainPop = new PopupMenu();
+    mainPop.AddItem(AppConfig.Inport_Excel, _clickMenu);
+    mainPop.AddItem(AppConfig.Expot_Excel, _clickMenu);
+    mainPop.AddItem(AppConfig.Update_Template, _clickMenu);
+
+    itemPop = new PopupMenu();
+
+    UIPanel.m_BtnMainPop.onClick.Add(() => {
+      mainPop.Show(UIPanel.m_BtnMainPop);
+    });
     UIPanel.m_BtnAdd.onClick.Add(BtnAddHandler);
 
 
@@ -45,8 +55,24 @@ public class UIMain:UIBase
 
     EventMgr.Add(AppConfig.UpdateQuery, QueryByTerm);
     EventMgr.Add(AppConfig.UpdateMainItem, UpdateMainItem);
-  }
 
+  }
+  private void _clickMenu(EventContext context)
+  {
+    GObject itemObject = (GObject)context.data;
+    switch(itemObject.text)
+    {
+      case AppConfig.Inport_Excel:
+        BtnAddHotelHandler();
+        break;
+      case AppConfig.Expot_Excel:
+        BtnSaveExcelHandler();
+        break;
+      case AppConfig.Update_Template:
+        AppData.ReadAllTemplates();
+        break;
+    }
+  }
   private void BtnAdventChange(EventContext context)
   {
     AppConfig.adventSelectDic.TryGetValue(UIPanel.m_BtnAdvent.selectedIndex,out adventTerm);
@@ -165,8 +191,7 @@ public class UIMain:UIBase
 
   private void MainItemRollOut(EventContext context)
   {
-    UI_MainListItem obj = context.sender as UI_MainListItem;
-    obj.m_BtnGroup.visible = false;
+    //UI_MainListItem obj = context.sender as UI_MainListItem;
   }
 
   private float _lastClickTime = 0f;
@@ -187,23 +212,22 @@ public class UIMain:UIBase
   {
     UI_MainListItem obj = context.sender as UI_MainListItem;
     TabContract tc = obj.data as TabContract;
-    obj.m_BtnGroup.visible = true;
-    obj.m_BtnGroup.x = obj.displayObject.GlobalToLocal(context.inputEvent.position).x-160;
-    obj.m_BtnDetails.onClick.Set(() => {
-      Debug.Log($"详情:{tc.t_id}");
-      UIRoot.ins.uiDetail.Show(tc);
+    itemPop.ClearItems();
+    itemPop.AddItem(AppConfig.Details, () => {
+      UIRoot.ins.uiDetail.Show(tc);//详情
     });
-    obj.m_BtnDel.onClick.Set(() => {
-      Debug.Log($"删除:{tc.t_id}");
-      UIRoot.ins.uiConfirm.Show($"确定要删除:{tc.t_hotelName}吗?", () => {
+    itemPop.AddItem(AppConfig.Delete, () => {
+      UIRoot.ins.uiConfirm.Show($"确定要删除:ID:{tc.t_id}:{tc.t_hotelName}吗?", () =>
+      {
         bool isOk = AppData.DelTabContract(tc.t_id);
-        if(isOk)
+        if (isOk)
         {
           _currTabContracts.Remove(tc);
           RefreshUI();
         }
       });
     });
+    itemPop.Show();
   }
 
   public override void Show(object obj=null)

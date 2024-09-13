@@ -25,11 +25,11 @@ namespace Basics
             UIObjectFactory.SetPackageItemExtension(UI_DetailItemProduct.URL, typeof(UI_DetailItemProduct));
             UIObjectFactory.SetPackageItemExtension(UI_DetailItemBarter.URL, typeof(UI_DetailItemBarter));
             UIObjectFactory.SetPackageItemExtension(UI_DetailItemAccount.URL, typeof(UI_DetailItemAccount));
-            UIObjectFactory.SetPackageItemExtension(UI_PopupMenu.URL, typeof(UI_PopupMenu));
-            UIObjectFactory.SetPackageItemExtension(UI_PopupMenuItem.URL, typeof(UI_PopupMenuItem));
             UIObjectFactory.SetPackageItemExtension(UI_MainPanel.URL, typeof(UI_MainPanel));
             UIObjectFactory.SetPackageItemExtension(UI_MainListItem.URL, typeof(UI_MainListItem));
             UIObjectFactory.SetPackageItemExtension(UI_ComboBoxPopupCopy.URL, typeof(UI_ComboBoxPopupCopy));
+            UIObjectFactory.SetPackageItemExtension(UI_MainPopupMenu.URL, typeof(UI_MainPopupMenu));
+            UIObjectFactory.SetPackageItemExtension(UI_MainPopupMenuItem.URL, typeof(UI_MainPopupMenuItem));
         }
     }
 }
