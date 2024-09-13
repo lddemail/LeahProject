@@ -19,6 +19,7 @@ public class UIDetail : UIBase
   }
 
   private Dictionary<EmItemType, List<GComponent>> _itemDic = new Dictionary<EmItemType, List<GComponent>>();
+  PopupMenu itemPop = new PopupMenu();
 
   public UIDetail(Transform tf)
   {
@@ -306,25 +307,25 @@ public class UIDetail : UIBase
 
   private void MainItemRollOut(EventContext context)
   {
-    GComponent obj = context.sender as GComponent;
-    GObject m_BtnDel = obj.GetChild("BtnDel");
-    if(m_BtnDel != null)
-    {
-      m_BtnDel.visible = false;
-    }
+    //GComponent obj = context.sender as GComponent;
+    //GObject m_BtnDel = obj.GetChild("BtnDel");
+    //if(m_BtnDel != null)
+    //{
+    //  m_BtnDel.visible = false;
+    //}
   }
 
   private void MainItemRightClick(EventContext context)
   {
     GComponent obj = context.sender as GComponent;
-    PopupMenu pop = new PopupMenu();
-    pop.AddItem(AppConfig.Delete, () => {
+    itemPop.ClearItems();
+    itemPop.AddItem(AppConfig.Delete, () => {
       UIRoot.ins.uiConfirm.Show($"确定要删除吗?", () =>
       {
         RemoveItem(obj);
       });
     });
-    pop.Show();
+    itemPop.Show();
   }
 
   private void RemoveItem(GComponent obj)
