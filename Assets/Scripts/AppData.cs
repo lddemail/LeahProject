@@ -58,14 +58,16 @@ public class AppData
     { AppConfig.HotelGroupTemplateName,new List<string>()},
     { AppConfig.HotelBrandTemplateName,new List<string>()},
     { AppConfig.PaymentTemplateName,new List<string>()},
-    { AppConfig.SignedTemplateName,new List<string>()}
+    { AppConfig.SignedTemplateName,new List<string>()},
+    { AppConfig.SalesTemplateName,new List<string>()},
+    { AppConfig.A_SignedTemplateName,new List<string>()}
   };
 
   public static void Init()
   {
-    foreach(string templateName in allTemplates.Keys)
+    foreach(string tempName in allTemplates.Keys)
     {
-      allTemplates[templateName].AddRange(AppUtil.ReadFromTxt(templateName));
+      allTemplates[tempName].AddRange(AppUtil.ReadFromTxt(tempName));
     }
 
     CheckTab();
@@ -117,6 +119,7 @@ public class AppData
       //AppUtil.WriteToTxt(AppConfig.HotelBrandTemplateName, allTabContractFiels[AppConfig.t_brand]);
       //AppUtil.WriteToTxt(AppConfig.PaymentTemplateName, allTabContractFiels[AppConfig.t_payment]);
       //AppUtil.WriteToTxt(AppConfig.SignedTemplateName, allTabContractFiels[AppConfig.t_attribution]);
+      //AppUtil.WriteToTxt(AppConfig.A_SignedTemplateName, allTabContractFiels[AppConfig.t_a_contract]);
     }
   }
 
@@ -173,7 +176,7 @@ public class AppData
     {
       log = $"{data.t_id} 更新成功";
       res = true;
-      EvtMgr.Dispatch(Evt.UpdateMainItem, data);
+      EventMgr.Dispatch(AppConfig.UpdateMainItem, data);
     }
     else
     {
@@ -197,7 +200,7 @@ public class AppData
       if(lastId >= 0) data.t_id = (int)lastId;
       allTabContract.Add(data);
       OrderAllTabContract();
-      EvtMgr.Dispatch(Evt.UpdateQuery);
+      EventMgr.Dispatch(AppConfig.UpdateQuery);
       log = $"{data.t_id} 新增入库完成";
       res = true;
     }
@@ -230,7 +233,7 @@ public class AppData
         {
           allTabContract.Remove(tab);
           OrderAllTabContract();
-          EvtMgr.Dispatch(Evt.UpdateQuery);
+          EventMgr.Dispatch(AppConfig.UpdateQuery);
           log = $"{tab.t_id} 删除成功";
           res = true;
         }

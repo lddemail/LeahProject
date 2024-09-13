@@ -305,6 +305,13 @@ public class AppUtil
       case AppConfig.t_totalBarter:
       case AppConfig.t_totalAccount:
       case AppConfig.t_totalDebt:
+      case AppConfig.t_hotelName:
+      case AppConfig.t_brand:
+      case AppConfig.t_attribution:
+      case AppConfig.t_payment:
+      case AppConfig.t_group:
+      case AppConfig.t_newSales:
+      case AppConfig.t_a_contract:
         return false;
       default:
         return true;
@@ -350,14 +357,16 @@ public class AppUtil
     List<string> saveList = new List<string>();
     foreach(string str in list)
     {
-      if(!string.IsNullOrEmpty(str) && str != "0" && !saveList.Contains(str))
+      if(!string.IsNullOrEmpty(str))
       {
-        saveList.Add(str);
+        string _str = str.Trim();
+        if (_str != "0" && !saveList.Contains(_str))
+        {
+          saveList.Add(_str);
+        }
       }
     }
-
-    string dataPath = AppConfig.GetDataPath();
-    string targetPath = Path.Combine(dataPath, name);
+    string targetPath = AppConfig.GetTemplatePath(name);
     File.WriteAllLines(targetPath, saveList.ToArray());
   }
 
@@ -369,8 +378,7 @@ public class AppUtil
   public static List<string> ReadFromTxt(string name)
   {
     List<string> res = new List<string>();
-    string dataPath = AppConfig.GetDataPath();
-    string targetPath = Path.Combine(dataPath, name);
+    string targetPath = AppConfig.GetTemplatePath(name);
     if (File.Exists(targetPath))
     {
       string[] lines = File.ReadAllLines(targetPath);
@@ -380,7 +388,8 @@ public class AppUtil
         {
           if(!string.IsNullOrEmpty(line))
           {
-            if (!res.Contains(line)) res.Add(line.Trim());
+            string _line = line.Trim();
+            if(!res.Contains(_line)) res.Add(_line);
           }
         }
       }

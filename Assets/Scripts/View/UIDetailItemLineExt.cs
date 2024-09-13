@@ -8,7 +8,6 @@ using System;
 public class UIDetailItemLineExt : UI_DetailItemLine
 {
   private string fieldName;
-  public int childIndex;
   public override void ConstructFromXML(XML xml)
   {
     base.ConstructFromXML(xml);

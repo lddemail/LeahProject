@@ -8,13 +8,18 @@ using System.Collections.Generic;
 
 public class UIDetailItemThreeLabelExt : UI_DetailItemThreeLabel
 {
+  //字段名
   private string fieldName1;
   private string fieldName2;
   private string fieldName3;
-
+  //模版名
   private string template1;
   private string template2;
   private string template3;
+  //模版数据
+  private List<string> templateList1;
+  private List<string> templateList2;
+  private List<string> templateList3;
 
   public override void ConstructFromXML(XML xml)
   {
@@ -58,9 +63,9 @@ public class UIDetailItemThreeLabelExt : UI_DetailItemThreeLabel
   }
   private void ComboxBox1ChangeHandler(EventContext context)
   {
-    if (isHaveTeml1)
+    if (templateList1 != null)
     {
-      string val = AppData.allTemplates[template1][m_InputCombox1.m_ComboxBox1.selectedIndex];
+      string val = templateList1[m_InputCombox1.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName1, val);
       RefreshUI();
     }
@@ -68,26 +73,23 @@ public class UIDetailItemThreeLabelExt : UI_DetailItemThreeLabel
   }
   private void ComboxBox2ChangeHandler(EventContext context)
   {
-    if (isHaveTeml2)
+    if (templateList2 != null)
     {
-      string val = AppData.allTemplates[template2][m_InputCombox2.m_ComboxBox1.selectedIndex];
+      string val = templateList2[m_InputCombox2.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName2, val);
       RefreshUI();
     }
   }
   private void ComboxBox3ChangeHandler(EventContext context)
   {
-    if (isHaveTeml3)
+    if (templateList3 != null)
     {
-      string val = AppData.allTemplates[template3][m_InputCombox3.m_ComboxBox1.selectedIndex];
+      string val = templateList3[m_InputCombox3.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName3, val);
       RefreshUI();
     }
   }
 
-  bool isHaveTeml1;
-  bool isHaveTeml2;
-  bool isHaveTeml3;
   public void SetData(string _fieldName1,string _template1, string _fieldName2, string _template2, string _fieldName3, string _template3)
   {
     fieldName1 = _fieldName1;
@@ -98,42 +100,23 @@ public class UIDetailItemThreeLabelExt : UI_DetailItemThreeLabel
     template2 = _template2;
     template3 = _template3;
 
-    isHaveTeml1 = !string.IsNullOrEmpty(template1);
-    isHaveTeml2 = !string.IsNullOrEmpty(template2);
-    isHaveTeml3 = !string.IsNullOrEmpty(template3);
+    templateList1 = string.IsNullOrEmpty(template1) ? null : AppData.allTemplates[template1];
+    templateList2 = string.IsNullOrEmpty(template2) ? null : AppData.allTemplates[template2];
+    templateList3 = string.IsNullOrEmpty(template3) ? null : AppData.allTemplates[template3];
 
     m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
     m_InputCombox2.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName2);
     m_InputCombox3.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName3);
 
-    m_InputCombox1.m_Title.text = AppConfig.fieldsNameDic[fieldName1];
-    m_InputCombox2.m_Title.text = AppConfig.fieldsNameDic[fieldName2];
-    m_InputCombox3.m_Title.text = AppConfig.fieldsNameDic[fieldName3];
+    object val = AppData.currTc.GetFieldVal(fieldName1);
+    (m_InputCombox1 as UI_InputComboxLabelCompExt).SetData(AppConfig.fieldsNameDic[fieldName1],templateList1, val.ToString());
 
+    val = AppData.currTc.GetFieldVal(fieldName2);
+    (m_InputCombox2 as UI_InputComboxLabelCompExt).SetData(AppConfig.fieldsNameDic[fieldName2],templateList2, val.ToString());
 
-    (m_InputCombox1 as UI_InputComboxLabelCompExt).Set_cPosIndex(isHaveTeml1 ? 0 : 1);
-    if(isHaveTeml1)
-    {
-      m_InputCombox1.m_ComboxBox1.items = AppData.allTemplates[template1].ToArray();
-      object val = AppData.currTc.GetFieldVal(fieldName1);
-      m_InputCombox1.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTemplates[template1], val.ToString());
-    }
+    val = AppData.currTc.GetFieldVal(fieldName3);
+    (m_InputCombox3 as UI_InputComboxLabelCompExt).SetData(AppConfig.fieldsNameDic[fieldName3],templateList3, val.ToString());
 
-    (m_InputCombox2 as UI_InputComboxLabelCompExt).Set_cPosIndex(isHaveTeml2 ? 0 : 1);
-    if (isHaveTeml2)
-    {
-      m_InputCombox2.m_ComboxBox1.items = AppData.allTemplates[template2].ToArray();
-      object val = AppData.currTc.GetFieldVal(fieldName2);
-      m_InputCombox2.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTemplates[template2], val.ToString());
-    }
-
-    (m_InputCombox3 as UI_InputComboxLabelCompExt).Set_cPosIndex(isHaveTeml3 ? 0 : 1);
-    if (isHaveTeml3)
-    {
-      m_InputCombox3.m_ComboxBox1.items = AppData.allTemplates[template3].ToArray();
-      object val = AppData.currTc.GetFieldVal(fieldName3);
-      m_InputCombox3.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTemplates[template3], val.ToString());
-    }
 
     RefreshUI();
   }
@@ -147,7 +130,6 @@ public class UIDetailItemThreeLabelExt : UI_DetailItemThreeLabel
 
     if (fieldName3 == AppConfig.t_totalDebt)
     {
-      m_InputCombox3.m_InputLab.enabled = false;
       //欠款金额=(合同总额t_productsPrice-到账总额t_totalAccount)
       object productsPrice = AppData.currTc.GetFieldVal(AppConfig.t_productsPrice);
       object totalAccount = AppData.currTc.GetFieldVal(AppConfig.t_totalAccount);
@@ -156,7 +138,6 @@ public class UIDetailItemThreeLabelExt : UI_DetailItemThreeLabel
     }
     else
     {
-      m_InputCombox3.m_InputLab.enabled = false;
       object val3 = AppData.currTc.GetFieldVal(fieldName3);
       m_InputCombox3.m_InputLab.text = val3 == null ? "" : val3.ToString();
     }

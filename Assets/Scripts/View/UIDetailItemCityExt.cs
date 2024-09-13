@@ -8,6 +8,11 @@ using System;
 
 public class UIDetailItemCityExt : UI_DetailItemCity
 {
+  private string fieldName1;
+  private string template1;
+  //模版数据
+  private List<string> templateList1;
+
   private int selectProvinceIndex;
   private string provinceName;
   private string cityName;
@@ -17,8 +22,20 @@ public class UIDetailItemCityExt : UI_DetailItemCity
 
     m_ComboxBox1.onChanged.Add(ComboxBox1ChangeHandler);
     m_ComboxBox2.onChanged.Add(ComboxBox2ChangeHandler);
-  }
 
+    m_InputCombox1.m_ComboxBox1.onChanged.Add(InputComboxBox1ChangeHandler);
+    m_InputCombox1.m_ComboxBox1.width = m_InputCombox1.m_ComboxBox1.width + 250;
+    m_InputCombox1.m_InputBg.width = m_InputCombox1.m_InputBg.width + 400;
+  }
+  private void InputComboxBox1ChangeHandler(EventContext context)
+  {
+    if (templateList1 != null)
+    {
+      string val = templateList1[m_InputCombox1.m_ComboxBox1.selectedIndex];
+      AppData.currTc.SetFieldVal(fieldName1, val);
+      RefreshUI();
+    }
+  }
   private void ComboxBox1ChangeHandler(EventContext context)
   {
     selectProvinceIndex = m_ComboxBox1.selectedIndex;
@@ -56,11 +73,22 @@ public class UIDetailItemCityExt : UI_DetailItemCity
     m_ComboxBox2.selectedIndex = AppUtil.GetIndexByList(_cityList, val);
   }
 
-  public void SetData(string _provinceName,string _cityName)
+  public void SetData(string _provinceName,string _cityName, string _fieldName1, string _template1)
   {
     provinceName = _provinceName;
     cityName = _cityName;
     m_title.text = $"{AppConfig.fieldsNameDic[provinceName]}/{AppConfig.fieldsNameDic[cityName]}";
+
+    fieldName1 = _fieldName1;
+
+    template1 = _template1;
+
+    templateList1 = string.IsNullOrEmpty(template1) ? null : AppData.allTemplates[template1];
+
+    m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
+
+    object val = AppData.currTc.GetFieldVal(fieldName1);
+    (m_InputCombox1 as UI_InputComboxLabelCompExt).SetData(AppConfig.fieldsNameDic[fieldName1], templateList1, val.ToString());
 
     RefreshUI();
   }
@@ -71,6 +99,9 @@ public class UIDetailItemCityExt : UI_DetailItemCity
 
     object obj2 = AppData.currTc.GetFieldVal(cityName);
     SetCity(obj2 == null ? "" : obj2.ToString());
+
+    object val1 = AppData.currTc.GetFieldVal(fieldName1);
+    m_InputCombox1.m_InputLab.text = val1 == null ? "" : val1.ToString();
   }
 
   public string GetProvince()

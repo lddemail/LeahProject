@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="241,40">
-  <controller name="c1" pages="0,,1," selected="1"/>
+<component size="235,40">
+  <controller name="c1" pages="0,,1," selected="0"/>
   <displayList>
-    <graph id="n3_h63l" name="n3" xy="98,0" size="143,40" type="rect" fillColor="#ffcccccc">
+    <text id="n1_h63l" name="Title" xy="0,4" size="98,32" fontSize="22" align="center" vAlign="middle" bold="true" text="开始时间:"/>
+    <graph id="n3_h63l" name="n3" xy="95,0" size="137,40" type="rect">
       <gearDisplay controller="c1" pages="0,1"/>
       <gearColor controller="c1" pages="1" values="#cccccc" default="#ffffff"/>
       <relation target="" sidePair="width-width,height-height"/>
     </graph>
-    <text id="n1_h63l" name="Title" xy="0,4" size="98,32" fontSize="22" align="center" vAlign="middle" bold="true" text="开始时间:"/>
-    <text id="n2_h63l" name="InputLab" xy="99,4" size="140,32" fontSize="22" color="#333333" vAlign="middle" ubb="true" autoSize="none" bold="true" text="" input="true" prompt="0000-00-00" restrict="[0-9-]"/>
+    <text id="n2_h63l" name="InputLab" xy="95,4" size="138,32" fontSize="22" color="#333333" vAlign="middle" ubb="true" autoSize="none" bold="true" text="" input="true" prompt="0000-00-00" restrict="[0-9-]"/>
   </displayList>
 </component>

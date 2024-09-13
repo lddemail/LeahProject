@@ -1,20 +1,16 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using FairyGUI;
 
-public class EvtMgr : EventDispatcher
+public class EventMgr : EventDispatcher
 {
-
-
-
-  private static EvtMgr ins;
+  private static EventMgr ins;
   private static bool isInit = false;
   public static void Init()
   {
     if (isInit) return;
 
     isInit = true;
-    ins = new EvtMgr();
+    ins = new EventMgr();
   }
 
   /// <summary>

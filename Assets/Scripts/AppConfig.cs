@@ -29,6 +29,15 @@ public class AppConfig
     Debug.Log($"GetLogPath:{path}");
     return path;
   }
+  /// <summary>
+  /// 获取模版路径
+  /// </summary>
+  /// <returns></returns>
+  public static string GetTemplatePath(string name)
+  {
+    string path = Path.Combine(GetDataPath(), name);
+    return path;
+  }
   public static string GetDataPath()
   {
     if(string.IsNullOrEmpty(dataPath))
@@ -64,9 +73,13 @@ public class AppConfig
       { 4,90},
   };
 
-
   //选中提示背景色 #CCCCCC
-  public static Color selectBgColor = new Color(0.8f, 0.8f, 0.8f,1f);
+  public static Color selectBgColor = new Color(0.8f, 0.8f, 0.8f, 1f);
+
+  #region 事件
+  public const string UpdateQuery = "UpdateQuery";//主界面从新查询
+  public const string UpdateMainItem = "UpdateMainItem";//更细主界面一条数据
+  #endregion
 
   public const string t_index = "t_index";
 
@@ -103,9 +116,13 @@ public class AppConfig
   /// <summary>  (合同总额)所有产品的总价格 </summary>
   public const string t_productsPrice = "t_productsPrice";
   /// <summary> 酒店消费总额 </summary>
-  public const string t_totalBarter = "t_totalBarter";
+  public const string t_totalBarter = "t_totalBarter"; 
+  /// <summary> 消费明细 </summary>
+  public const string t_barter = "t_barter"; 
   /// <summary> 到账总额 </summary>
   public const string t_totalAccount = "t_totalAccount";
+  /// <summary> 到账明细</summary>
+  public const string t_accountRematk = "t_accountRematk";
 
   public const string RefreshUI = "RefreshUI";
   public const string ProductTemplateName = "产品模版.txt";
@@ -114,6 +131,8 @@ public class AppConfig
   public const string HotelBrandTemplateName = "酒店品牌模版.txt";
   public const string PaymentTemplateName = "支付方式模版.txt";
   public const string SignedTemplateName = "签约公司模版.txt";
+  public const string SalesTemplateName = "Sales模版.txt";
+  public const string A_SignedTemplateName = "甲方签约公司模版.txt";
 
   public static List<string> mainTitles = new List<string>() {
     t_id,
@@ -182,25 +201,25 @@ public class AppConfig
   //合同字段转中文
   public static Dictionary<string, string> fieldsNameDic = new Dictionary<string, string>
   {
-    { "t_id","ID"},
-    { "t_hotelName","酒店名字"},
-    { "t_group","酒店集团"},
-    { "t_brand","酒店品牌"},
-    { "t_province","省"},
-    { "t_city","市"},
-    { "t_originalFollowup","原FOLLOWUP"},
-    { "t_newSales","新SALES"},
-    { "t_interiorNo","内部编号"},
-    { "t_contractNo","外部编号"},
-    { "t_payment","支付方式"},
-    { "t_attribution","签约公司"},
-    { "t_a_contract","甲方名称"},
-    { "t_products","产品列表"},
-    { "t_productsPrice","合同总额"},
-    { "t_barter","消费明细"},
-    { "t_totalBarter","消费总额"},
-    { "t_accountRematk","到账明细"},
-    { "t_totalAccount","到账总额"},
-    { "t_totalDebt","欠款金额"}
+    { t_id,"ID"},
+    { t_hotelName,"酒店名字"},
+    { t_group,"酒店集团"},
+    { t_brand,"酒店品牌"},
+    { t_province,"省"},
+    { t_city,"市"},
+    { t_originalFollowup,"原FOLLOWUP"},
+    { t_newSales,"新SALES"},
+    { t_interiorNo,"内部编号"},
+    { t_contractNo,"外部编号"},
+    { t_payment,"支付方式"},
+    { t_attribution,"签约公司"},
+    { t_a_contract,"甲方名称"},
+    { t_products,"产品列表"},
+    { t_productsPrice,"合同总额"},
+    { t_barter,"消费明细"},
+    { t_totalBarter,"消费总额"},
+    { t_accountRematk,"到账明细"},
+    { t_totalAccount,"到账总额"},
+    { t_totalDebt,"欠款金额"}
   };
 }

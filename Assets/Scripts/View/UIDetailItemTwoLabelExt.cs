@@ -14,6 +14,9 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
 
   private string template1;
   private string template2;
+  //模版数据
+  private List<string> templateList1;
+  private List<string> templateList2;
 
   public override void ConstructFromXML(XML xml)
   {
@@ -46,26 +49,23 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
   }
   private void ComboxBox1ChangeHandler(EventContext context)
   {
-    if(isHaveTeml1)
+    if(templateList1 != null)
     {
-      string val = AppData.allTemplates[template1][m_InputCombox1.m_ComboxBox1.selectedIndex];
+      string val = templateList1[m_InputCombox1.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName1, val);
       RefreshUI();
     }
- 
   }
   private void ComboxBox2ChangeHandler(EventContext context)
   {
-    if (isHaveTeml2)
+    if (templateList2 != null)
     {
-      string val = AppData.allTemplates[template2][m_InputCombox2.m_ComboxBox1.selectedIndex];
+      string val = templateList2[m_InputCombox2.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName2, val);
       RefreshUI();
     }
   }
 
-  bool isHaveTeml1;
-  bool isHaveTeml2;
   public void SetData(string _fieldName1, string _template1, string _fieldName2, string _template2)
   {
     fieldName1 = _fieldName1;
@@ -74,31 +74,17 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
     template1 = _template1;
     template2 = _template2;
 
-    isHaveTeml1 = !string.IsNullOrEmpty(template1);
-    isHaveTeml2 = !string.IsNullOrEmpty(template2);
+    templateList1 = string.IsNullOrEmpty(template1) ? null : AppData.allTemplates[template1];
+    templateList2 = string.IsNullOrEmpty(template2) ? null : AppData.allTemplates[template2];
 
     m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
     m_InputCombox2.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName2);
 
-    m_InputCombox1.m_Title.text = AppConfig.fieldsNameDic[fieldName1];
-    m_InputCombox2.m_Title.text = AppConfig.fieldsNameDic[fieldName2];
+    object val = AppData.currTc.GetFieldVal(fieldName1);
+    (m_InputCombox1 as UI_InputComboxLabelCompExt).SetData(AppConfig.fieldsNameDic[fieldName1],templateList1, val.ToString());
 
-
-    (m_InputCombox1 as UI_InputComboxLabelCompExt).Set_cPosIndex(isHaveTeml1 ? 0 : 1);
-    if (isHaveTeml1)
-    {
-      m_InputCombox1.m_ComboxBox1.items = AppData.allTemplates[template1].ToArray();
-      object val = AppData.currTc.GetFieldVal(fieldName1);
-      m_InputCombox1.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTemplates[template1], val.ToString());
-    }
-
-    (m_InputCombox2 as UI_InputComboxLabelCompExt).Set_cPosIndex(isHaveTeml2 ? 0 : 1);
-    if (isHaveTeml2)
-    {
-      m_InputCombox2.m_ComboxBox1.items = AppData.allTemplates[template2].ToArray();
-      object val = AppData.currTc.GetFieldVal(fieldName2);
-      m_InputCombox2.m_ComboxBox1.selectedIndex = AppUtil.GetIndexByList(AppData.allTemplates[template2], val.ToString());
-    }
+    val = AppData.currTc.GetFieldVal(fieldName2);
+    (m_InputCombox2 as UI_InputComboxLabelCompExt).SetData(AppConfig.fieldsNameDic[fieldName2],templateList2, val.ToString());
 
     RefreshUI();
   }

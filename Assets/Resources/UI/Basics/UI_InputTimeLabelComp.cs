@@ -22,7 +22,7 @@ namespace Basics
             base.ConstructFromXML(xml);
 
             m_c1 = GetControllerAt(0);
-            m_Title = (GTextField)GetChildAt(1);
+            m_Title = (GTextField)GetChildAt(0);
             m_InputLab = (GTextInput)GetChildAt(2);
         }
     }

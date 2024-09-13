@@ -43,8 +43,8 @@ public class UIMain:UIBase
     UIPanel.m_title_group.onChanged.Add(Title_GroupChange);
     UIPanel.m_title_product.onChanged.Add(Title_ProductChange);
 
-    EvtMgr.Add(Evt.UpdateQuery, QueryByTerm);
-    EvtMgr.Add(Evt.UpdateMainItem, UpdateMainItem);
+    EventMgr.Add(AppConfig.UpdateQuery, QueryByTerm);
+    EventMgr.Add(AppConfig.UpdateMainItem, UpdateMainItem);
   }
 
   private void BtnAdventChange(EventContext context)

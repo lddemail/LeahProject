@@ -10,8 +10,8 @@ namespace Basics
         public GButton m_BtnClose;
         public GButton m_BtnSave;
         public GButton m_BtnAddProduct;
-        public GButton m_BtnAddBarter;
         public GButton m_BtnAddAccount;
+        public GButton m_BtnAddBarter;
         public GList m_DetailList;
         public const string URL = "ui://z3yueri4i6pi6i";
 
@@ -27,8 +27,8 @@ namespace Basics
             m_BtnClose = (GButton)GetChildAt(1);
             m_BtnSave = (GButton)GetChildAt(2);
             m_BtnAddProduct = (GButton)GetChildAt(3);
-            m_BtnAddBarter = (GButton)GetChildAt(4);
-            m_BtnAddAccount = (GButton)GetChildAt(5);
+            m_BtnAddAccount = (GButton)GetChildAt(4);
+            m_BtnAddBarter = (GButton)GetChildAt(5);
             m_DetailList = (GList)GetChildAt(6);
         }
     }

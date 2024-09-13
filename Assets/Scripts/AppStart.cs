@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Mono.Data.Sqlite;
-using FairyGUI;
 
 public class AppStart : MonoBehaviour
 {
@@ -12,19 +9,15 @@ public class AppStart : MonoBehaviour
         System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         Screen.SetResolution(1920, 1080, false); // false 表示窗口模式
 
-
-    Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60;
         QualitySettings.vSyncCount = 0;
 
-        EvtMgr.Init();
+        EventMgr.Init();
         AppConfig.Init();
         AppUtil.Init();
         UIRoot.FguiBinder();
-
-
-
     }
-  void Start()
+    void Start()
     {
         UIRoot.ins.Init();
         AppData.Init();
@@ -35,7 +28,7 @@ public class AppStart : MonoBehaviour
     private IEnumerator RunApp()
     {
         yield return null;
-       UIRoot.ins.uiMain.Show(null);
+        UIRoot.ins.uiMain.Show(null);
     }
 
     void Update()

@@ -7,7 +7,7 @@ namespace Basics
 {
     public partial class UI_DetailItemProduct : GComponent
     {
-        public UI_InputStrLabelComp m_InputLabName;
+        public UI_InputComboxLabelComp m_InputComboxName;
         public UI_InputNumLabelComp m_InputLabPrice;
         public UI_InputTimeLabelComp m_InputLabfTime;
         public UI_InputTimeLabelComp m_InputLabtTime;
@@ -25,7 +25,7 @@ namespace Basics
         {
             base.ConstructFromXML(xml);
 
-            m_InputLabName = (UI_InputStrLabelComp)GetChildAt(0);
+            m_InputComboxName = (UI_InputComboxLabelComp)GetChildAt(0);
             m_InputLabPrice = (UI_InputNumLabelComp)GetChildAt(1);
             m_InputLabfTime = (UI_InputTimeLabelComp)GetChildAt(2);
             m_InputLabtTime = (UI_InputTimeLabelComp)GetChildAt(3);
