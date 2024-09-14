@@ -16,8 +16,8 @@
     <component id="n7" name="selectBtn" src="p5s3l" fileName="components/Button8.xml" xy="0,0">
       <Button checked="true"/>
     </component>
-    <text id="n21_gvvv" name="t_id" xy="52,9" size="90,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="000"/>
-    <text id="n5" name="t_hotelName" xy="149,9" size="268,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="常州都喜天丽富都青枫苑酒店"/>
+    <text id="n21_gvvv" name="t_id" xy="52,9" size="66,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="000"/>
+    <text id="n5" name="t_hotelName" xy="122,9" size="297,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="常州都喜天丽富都青枫苑酒店"/>
     <text id="n9_p5s3" name="t_group" xy="426,9" size="160,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
     <text id="n10_p5s3" name="t_interiorNo" xy="596,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
     <text id="n11_p5s3" name="t_products" xy="756,9" size="660,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="0000000"/>

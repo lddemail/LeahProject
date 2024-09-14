@@ -97,9 +97,13 @@ public class UIMain:UIBase
     if (string.IsNullOrEmpty(hotelNameTerm)) hotelNameTerm = AppConfig.ALL;
     QueryByTerm();
   }
+
+  /// <summary>
+  /// 添加数据
+  /// </summary>
+  /// <param name="context"></param>
   private void BtnAddHandler(EventContext context)
   {
-    Debug.Log("添加数据");
     UIRoot.ins.uiDetail.Show();
   }
 

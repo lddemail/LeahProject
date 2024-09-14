@@ -11,11 +11,11 @@
       <Button title="添加合同"/>
     </component>
     <group id="n49_phex" name="BtnGroup" xy="0,0" size="335,40"/>
-    <text id="n50_phex" name="title_id" xy="54,44" size="100,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="ID"/>
-    <graph id="n65_rrp4" name="title_hotelNameBg" xy="165,41" size="236,40" group="n53_phex" type="rect">
+    <text id="n50_phex" name="title_id" xy="54,44" size="66,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="ID"/>
+    <graph id="n65_rrp4" name="title_hotelNameBg" xy="150,41" size="246,40" group="n53_phex" type="rect">
       <relation target="" sidePair="width-width,height-height"/>
     </graph>
-    <text id="n66_rrp4" name="title_hotelName" xy="165,45" size="236,32" group="n53_phex" fontSize="22" vAlign="middle" ubb="true" autoSize="none" bold="true" text="" input="true"/>
+    <text id="n66_rrp4" name="title_hotelName" xy="150,45" size="246,32" group="n53_phex" fontSize="22" vAlign="middle" ubb="true" autoSize="none" bold="true" text="" input="true"/>
     <text id="n67_rrp4" name="title_group" xy="440,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="酒店集团"/>
     <text id="n55_phex" name="title_interiorNo" xy="614,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="合同内部编号"/>
     <component id="n62_sejq" name="title_product" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="982,44" size="200,32" group="n53_phex">
