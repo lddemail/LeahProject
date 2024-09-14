@@ -31,20 +31,27 @@ public class UI_InputComboxLabelCompExt : UI_InputComboxLabelComp
     m_cPos.SetSelectedIndex(index);
   }
 
+  private List<string> templateList1;
   public void SetData(string title,List<string> itemList,string val)
   {
     m_Title.text = title;
     Set_cPosIndex(itemList != null ? 0 : 1);
-    if(itemList != null)
+    templateList1 = itemList;
+    if(templateList1 != null)
     {
-      m_ComboxBox1.items = itemList.ToArray();
+      m_ComboxBox1.items = templateList1.ToArray();
       int index = 0;
-      if(!string.IsNullOrEmpty(val))
+      if (!string.IsNullOrEmpty(val))
       {
-        index = AppUtil.GetIndexByList(itemList, val);
+        index = AppUtil.GetIndexByList(templateList1, val);
       }
       m_ComboxBox1.selectedIndex = index;
-      m_InputLab.text = itemList[index];
+      m_InputLab.text = templateList1[index];
     }
+    RefreshUI();
+  }
+  public void RefreshUI()
+  {
+
   }
 }

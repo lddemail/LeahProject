@@ -176,10 +176,11 @@ public class AppUtil
 
     string format = "yyyy-MM-dd";
     dateString = dateString.Replace("0:00:00","").Trim();
-    string[] ary = dateString.Split("/");
     try
     {
-      if (ary.Length > 0)
+      bool isOldType = dateString.Contains("/");
+      string[] ary = dateString.Split("/");
+      if (isOldType && ary.Length > 0)
       {
         if (ary[1].Length == 1 && ary[2].Length == 1)
         {
@@ -227,7 +228,11 @@ public class AppUtil
     }
     else
     {
-      Debug.LogError($"error:Invalid date format:{dateString}");
+      string log = $"{dateString} 数据不符合规范";
+      Debug.Log(log);
+      AddLog(log);
+      UIRoot.ins.uiTips.Show(log);
+      throw new Exception(log);
     }
     return (int)unixTimestamp;
   }

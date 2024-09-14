@@ -37,9 +37,9 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
     ProductData pd = (ProductData)data;
     pd.name = m_InputComboxName.m_InputLab.text;
     pd.price = float.Parse(m_InputLabPrice.m_InputLab.text);
-    pd.fTime = AppUtil.StringToTime(m_InputLabfTime.text);
-    pd.tTime = AppUtil.StringToTime(m_InputLabtTime.text);
-    pd.remark = m_InputLabRemark.text;
+    pd.fTime = AppUtil.StringToTime(m_InputLabfTime.m_InputLab.text);
+    pd.tTime = AppUtil.StringToTime(m_InputLabtTime.m_InputLab.text);
+    pd.remark = m_InputLabRemark.m_InputLab.text;
 
     _changeCallBack?.Invoke();
   }
@@ -48,12 +48,20 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
   {
     data = pd;
     templateList1 = AppData.allTemplates[AppConfig.ProductTemplateName];
+    if(string.IsNullOrEmpty(pd.name) && templateList1 != null && templateList1.Count > 0)
+    {
+      pd.name = templateList1[0];
+    }
     (m_InputComboxName as UI_InputComboxLabelCompExt).SetData("产品名字:",templateList1, pd.name);
     m_InputComboxName.m_InputLab.enabled = false;
 
     m_InputLabPrice.m_Title.text = "价格:";
     m_InputLabfTime.m_Title.text = "开始日期:";
     m_InputLabtTime.m_Title.text = "结束日期:";
+
+    if (pd.fTime < 1) pd.fTime = AppUtil.GetNowUnixTime();
+
+    if (pd.tTime < 1) pd.tTime = pd.fTime;
 
     RefreshUI();
   }

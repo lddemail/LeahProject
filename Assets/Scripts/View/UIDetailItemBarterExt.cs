@@ -22,8 +22,8 @@ public class UIDetailItemBarterExt : UI_DetailItemBarter
 
     BarterData bd = data as BarterData;
     bd.barter = float.Parse(m_InputLabBarter.m_InputLab.text);
-    bd.time = AppUtil.StringToTime(m_InputLabTime.text);
-    bd.remark = m_InputLabRemark.text;
+    bd.time = AppUtil.StringToTime(m_InputLabTime.m_InputLab.text);
+    bd.remark = m_InputLabRemark.m_InputLab.text;
 
     _changeCallBack?.Invoke();
   }
@@ -33,6 +33,8 @@ public class UIDetailItemBarterExt : UI_DetailItemBarter
 
     m_InputLabBarter.m_Title.text = "消费金额";
     m_InputLabTime.m_Title.text = "消费日期";
+
+    if (bd.time < 1) bd.time = AppUtil.GetNowUnixTime();
 
     RefreshUI();
   }

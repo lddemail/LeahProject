@@ -22,8 +22,8 @@ public class UIDetailItemAccountExt : UI_DetailItemAccount
 
     AccountData ad = data as AccountData;
     ad.barter = float.Parse(m_InputLabBarter.m_InputLab.text);
-    ad.time = AppUtil.StringToTime(m_InputLabTime.text);
-    ad.remark = m_InputLabRemark.text;
+    ad.time = AppUtil.StringToTime(m_InputLabTime.m_InputLab.text);
+    ad.remark = m_InputLabRemark.m_InputLab.text;
 
     _changeCallBack?.Invoke();
   }
@@ -39,6 +39,8 @@ public class UIDetailItemAccountExt : UI_DetailItemAccount
 
     m_InputLabBarter.m_Title.text = "到账金额";
     m_InputLabTime.m_Title.text = "到账日期";
+
+    if (ad.time < 1) ad.time = AppUtil.GetNowUnixTime();
 
     RefreshUI();
   }

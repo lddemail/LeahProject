@@ -48,13 +48,24 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
 
     templateList1 = string.IsNullOrEmpty(template1) ? null : AppData.allTemplates[template1];
 
-    object val = AppData.currTc.GetFieldVal(fieldName1);
-    (m_InputCombox1 as UI_InputComboxLabelCompExt).SetData(AppConfig.fieldsNameDic[fieldName1],templateList1, val.ToString());
-
-    m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1); 
+    m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
     m_InputCombox1.m_ComboxBox1.visible = m_InputCombox1.m_InputLab.enabled;
 
+    InitInputCombox(m_InputCombox1, fieldName1, templateList1);
+
     RefreshUI();
+  }
+
+  private void InitInputCombox(GComponent item, string fieldName, List<string> templateList)
+  {
+    UI_InputComboxLabelCompExt itemExt = item as UI_InputComboxLabelCompExt;
+    object val = AppData.currTc.GetFieldVal(fieldName);
+    if (templateList != null && templateList.Count > 0 && string.IsNullOrEmpty(val.ToString()))
+    {
+      val = templateList[0];
+      AppData.currTc.SetFieldVal(fieldName, val);
+    }
+    itemExt.SetData(AppConfig.fieldsNameDic[fieldName], templateList, val.ToString());
   }
 
   public void RefreshUI()

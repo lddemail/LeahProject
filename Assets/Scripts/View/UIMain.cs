@@ -70,6 +70,7 @@ public class UIMain:UIBase
         break;
       case AppConfig.Update_Template:
         AppData.ReadAllTemplates();
+        UIRoot.ins.uiTips.Show($"模版刷新成功");
         break;
     }
   }
