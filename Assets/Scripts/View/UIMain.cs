@@ -21,8 +21,6 @@ public class UIMain:UIBase
   }
 
   List<TabContract> _currTabContracts = new List<TabContract>();
-  List<string> hotelNameList;
-  List<string> groupList;
   List<string> productList;
 
   PopupMenu mainPop;
@@ -42,16 +40,11 @@ public class UIMain:UIBase
     UIPanel.m_BtnAdd.onClick.Add(BtnAddHandler);
 
 
-    UIPanel.m_BtnAdvent.items = AppConfig.adventBtns.ToArray();
-    UIPanel.m_BtnAdvent.onChanged.Add(BtnAdventChange);
-    UIPanel.m_BtnAdvent.selectedIndex = 0;
-
     UIPanel.m_mainList.itemRenderer = MainListRender;
     UIPanel.m_mainList.SetVirtual();
 
-    UIPanel.m_title_hotelName.onChanged.Add(Title_hotelNameChange);
-    UIPanel.m_title_group.onChanged.Add(Title_GroupChange);
     UIPanel.m_title_product.onChanged.Add(Title_ProductChange);
+    UIPanel.m_title_hotelName.onChanged.Add(Title_HotelNameChange);
 
     EventMgr.Add(AppConfig.UpdateQuery, QueryByTerm);
     EventMgr.Add(AppConfig.UpdateMainItem, UpdateMainItem);
@@ -74,11 +67,6 @@ public class UIMain:UIBase
         break;
     }
   }
-  private void BtnAdventChange(EventContext context)
-  {
-    AppConfig.adventSelectDic.TryGetValue(UIPanel.m_BtnAdvent.selectedIndex,out adventTerm);
-    QueryByTerm();
-  }
 
   private void UpdateMainItem(EventContext context)
   {
@@ -98,22 +86,17 @@ public class UIMain:UIBase
     }
   }
 
-  private void Title_hotelNameChange(EventContext context)
-  {
-    hotelNameTerm = hotelNameList[UIPanel.m_title_hotelName.selectedIndex];
-    QueryByTerm();
-  }
-  private void Title_GroupChange(EventContext context)
-  {
-    groupTerm = groupList[UIPanel.m_title_group.selectedIndex];
-    QueryByTerm();
-  }
   private void Title_ProductChange(EventContext context)
   {
-    productTerm = productList[UIPanel.m_title_product.selectedIndex];
+    AppConfig.adventSelectDic.TryGetValue(UIPanel.m_title_product.selectedIndex, out adventTerm);
     QueryByTerm();
   }
-
+  private void Title_HotelNameChange(EventContext context)
+  {
+    hotelNameTerm = UIPanel.m_title_hotelName.text;
+    if (string.IsNullOrEmpty(hotelNameTerm)) hotelNameTerm = AppConfig.ALL;
+    QueryByTerm();
+  }
   private void BtnAddHandler(EventContext context)
   {
     Debug.Log("添加数据");
@@ -122,8 +105,6 @@ public class UIMain:UIBase
 
   int adventTerm = 0;
   string hotelNameTerm = AppConfig.ALL;
-  string groupTerm = AppConfig.ALL;
-  string productTerm = AppConfig.ALL;
 
 
   /// <summary>
@@ -131,29 +112,19 @@ public class UIMain:UIBase
   /// </summary>
   /// <param name="_adventTerm"></param>
   /// <param name="_hotelNameTerm"></param>
-  /// <param name="_groupTerm"></param>
-  /// <param name="_productTerm"></param>
-  public void SetQuery(int _adventTerm, string _hotelNameTerm, string _groupTerm, string _productTerm)
+  public void SetQuery(int _adventTerm, string _hotelNameTerm)
   {
     adventTerm = _adventTerm;
     foreach(int key in AppConfig.adventSelectDic.Keys)
     {
       if (AppConfig.adventSelectDic[key] == adventTerm)
       {
-        UIPanel.m_BtnAdvent.selectedIndex = key;
+        UIPanel.m_title_product.selectedIndex = key;
         break;
       }
     }
 
     hotelNameTerm = _hotelNameTerm;
-    UIPanel.m_title_hotelName.selectedIndex = hotelNameList.FindIndex(x => x == hotelNameTerm);
-
-    groupTerm = _groupTerm;
-    UIPanel.m_title_group.selectedIndex = groupList.FindIndex(x => x == groupTerm);
-
-    productTerm = _productTerm;
-    UIPanel.m_title_product.selectedIndex = productList.FindIndex(x => x == productTerm);
-    QueryByTerm();
   }
 
   /// <summary>
@@ -166,20 +137,20 @@ public class UIMain:UIBase
     foreach(var tab in AppData.allTabContract)
     {
       bool isAdventTerm = tab.isAdventTerm(adventTerm);
-      bool isHotelNameTerm = tab.isHotelNameTerm(hotelNameTerm);
-      bool isGroupTerm = tab.isGroupTerm(groupTerm);
-      bool isProductTerm = tab.isProductTerm(groupTerm);
-      if (isAdventTerm && isHotelNameTerm && isGroupTerm && isProductTerm)
+      bool isHotelNameTerm = tab.isDimHotelNameTerm(hotelNameTerm);
+      //bool isGroupTerm = tab.isGroupTerm(groupTerm);
+      //bool isProductTerm = tab.isProductTerm(groupTerm);
+      if (isAdventTerm && isHotelNameTerm)
       {
         _currTabContracts.Add(tab);
       }
     }
     int count = _currTabContracts == null ? 0 : _currTabContracts.Count;
     UIRoot.ins.uiTips.Show($"检索到{count}条数据");
-    Debug.Log($"检索条件 :{adventTerm},{hotelNameTerm},{groupTerm},{productTerm} 检索到{count}条数据");
+    Debug.Log($"检索条件 :{adventTerm},{hotelNameTerm} 检索到{count}条数据");
     RefreshUI();
   }
-
+   
   private void MainListRender(int index, GObject item)
   {
     TabContract tabC = _currTabContracts[index];
@@ -238,19 +209,8 @@ public class UIMain:UIBase
       UIRoot.ins.uiTips.Show($"没有合同数据");
       return;
     }
-    hotelNameList = AppData.allTabContractFiels[AppConfig.t_hotelName];
-    hotelNameList.Insert(0, AppConfig.ALL);
-    UIPanel.m_title_hotelName.items = hotelNameList.ToArray();
-    UIPanel.m_title_hotelName.selectedIndex = 0;
 
-    groupList = AppData.allTabContractFiels[AppConfig.t_group];
-    groupList.Insert(0, AppConfig.ALL);
-    UIPanel.m_title_group.items = groupList.ToArray();
-    UIPanel.m_title_group.selectedIndex = 0;
-
-    productList = AppData.allTabContractFiels[AppConfig.t_products];
-    productList.Insert(0, AppConfig.ALL);
-    UIPanel.m_title_product.items = productList.ToArray();
+    UIPanel.m_title_product.items = AppConfig.adventBtns.ToArray();
     UIPanel.m_title_product.selectedIndex = 0;
 
     QueryByTerm();
@@ -262,7 +222,7 @@ public class UIMain:UIBase
     {
       string message = AppUtil.GetColorStrByType(EmProductType.Warning,$"{count}份合同将在{day}天");
       UIRoot.ins.uiConfirm.Show($"有{message}内到期或已过期.点击确定查看这些合同", () => {
-        SetQuery(day,AppConfig.ALL,AppConfig.ALL,AppConfig.ALL);
+        SetQuery(day,AppConfig.ALL);
       });
     }
   }

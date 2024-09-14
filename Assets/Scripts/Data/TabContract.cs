@@ -426,6 +426,22 @@ public class TabContract
     return res;
   }
 
+  /// <summary>
+  /// 模糊匹配酒店名字
+  /// </summary>
+  /// <param name="name"></param>
+  /// <returns></returns>
+  public bool isDimHotelNameTerm(string name)
+  {
+    bool res = name == AppConfig.ALL || t_hotelName.Contains(name);
+    return res;
+  }
+
+  /// <summary>
+  /// 全匹配酒店名字
+  /// </summary>
+  /// <param name="name"></param>
+  /// <returns></returns>
   public bool isHotelNameTerm(string name)
   {
     bool res = name == AppConfig.ALL || t_hotelName == name;

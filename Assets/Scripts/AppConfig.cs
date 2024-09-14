@@ -202,7 +202,9 @@ public class AppConfig
     });
   }
 
-  //临期选项
+  /// <summary>
+  /// 临期选项
+  /// </summary>
   public static List<string> adventBtns = new List<string> { "全部显示","已过期" ,"30天到期","60天到期","90天到期" };
 
   //合同字段转中文

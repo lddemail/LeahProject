@@ -9,11 +9,11 @@ namespace Basics
     {
         public GGraph m_bg;
         public GButton m_BtnMainPop;
-        public GComboBox m_BtnAdvent;
         public GButton m_BtnAdd;
         public GTextField m_title_id;
-        public GComboBox m_title_hotelName;
-        public GComboBox m_title_group;
+        public GGraph m_title_hotelNameBg;
+        public GTextInput m_title_hotelName;
+        public GTextField m_title_group;
         public GTextField m_title_interiorNo;
         public GComboBox m_title_product;
         public GTextField m_title_productsPrice;
@@ -36,11 +36,11 @@ namespace Basics
 
             m_bg = (GGraph)GetChildAt(0);
             m_BtnMainPop = (GButton)GetChildAt(3);
-            m_BtnAdvent = (GComboBox)GetChildAt(4);
-            m_BtnAdd = (GButton)GetChildAt(5);
-            m_title_id = (GTextField)GetChildAt(6);
-            m_title_hotelName = (GComboBox)GetChildAt(7);
-            m_title_group = (GComboBox)GetChildAt(8);
+            m_BtnAdd = (GButton)GetChildAt(4);
+            m_title_id = (GTextField)GetChildAt(5);
+            m_title_hotelNameBg = (GGraph)GetChildAt(6);
+            m_title_hotelName = (GTextInput)GetChildAt(7);
+            m_title_group = (GTextField)GetChildAt(8);
             m_title_interiorNo = (GTextField)GetChildAt(9);
             m_title_product = (GComboBox)GetChildAt(10);
             m_title_productsPrice = (GTextField)GetChildAt(11);
