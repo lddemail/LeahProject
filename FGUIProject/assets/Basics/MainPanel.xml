@@ -16,13 +16,11 @@
       <relation target="" sidePair="width-width,height-height"/>
     </graph>
     <text id="n66_rrp4" name="title_hotelName" xy="150,45" size="246,32" group="n53_phex" fontSize="22" vAlign="middle" ubb="true" autoSize="none" bold="true" text="" input="true"/>
-    <text id="n67_rrp4" name="title_group" xy="440,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="酒店集团"/>
-    <text id="n55_phex" name="title_interiorNo" xy="614,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="合同内部编号"/>
+    <text id="n55_phex" name="title_interiorNo" xy="429,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="合同内部编号"/>
     <component id="n62_sejq" name="title_product" src="gvvv6n" fileName="components/ComboBoxCopy.xml" xy="982,44" size="200,32" group="n53_phex">
       <ComboBox visibleItemCount="20"/>
     </component>
-    <text id="n57_phex" name="title_productsPrice" xy="1425,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="产品总价格"/>
-    <text id="n58_phex" name="title_totalAccount" xy="1590,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="到账总额"/>
+    <text id="n57_phex" name="title_productsPrice" xy="1599,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="产品总价格"/>
     <text id="n59_phex" name="title_totalDebt" xy="1750,44" size="150,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="欠款金额"/>
     <group id="n53_phex" name="TitleGroup" xy="54,41" size="1846,40"/>
     <list id="n30" name="mainList" xy="1,85" size="1920,990" selectionMode="none" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," clipSoftness="0,20" defaultItem="ui://z3yueri4p5s36c">

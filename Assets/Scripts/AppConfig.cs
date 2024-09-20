@@ -142,15 +142,16 @@ public class AppConfig
   public const string Delete = "删除";
   public const string SalesContract = "销售合同";
   public const string Split_1 = "|";
-
+  public const string Expired = "过期";
+  /// <summary>
+  /// 主界面显示字段
+  /// </summary>
   public static List<string> mainTitles = new List<string>() {
     t_id,
     t_hotelName,
-    t_group,
     t_interiorNo,
     t_products,
     t_productsPrice,
-    t_totalAccount,
     t_totalDebt
   };
 

@@ -17,15 +17,13 @@
       <Button checked="true"/>
     </component>
     <text id="n21_gvvv" name="t_id" xy="52,9" size="66,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="000"/>
-    <graph id="n23_jvya" name="t_hotelName_bg" xy="122,9" size="297,32" type="rect" lineSize="0" fillColor="#03ffffff"/>
+    <graph id="n23_jvya" name="t_hotelName_bg" xy="122,9" size="297,32" type="rect" lineSize="0" fillColor="#0026498b"/>
     <text id="n5" name="t_hotelName" xy="122,9" size="297,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="常州都喜天丽富都青枫苑酒店"/>
-    <text id="n9_p5s3" name="t_group" xy="426,9" size="160,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
-    <text id="n10_p5s3" name="t_interiorNo" xy="596,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
-    <graph id="n22_jvya" name="t_products_bg" xy="756,9" size="660,32" type="rect" lineSize="0" fillColor="#03ffffff"/>
-    <text id="n11_p5s3" name="t_products" xy="756,9" size="660,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="0000000"/>
-    <text id="n12_p5s3" name="t_productsPrice" xy="1434,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
-    <text id="n13_p5s3" name="t_totalAccount" xy="1593,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
-    <text id="n14_p5s3" name="t_totalDebt" xy="1754,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n10_p5s3" name="t_interiorNo" xy="431,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
+    <graph id="n22_jvya" name="t_products_bg" xy="589,9" size="1012,32" type="rect" lineSize="0" fillColor="#0026498b"/>
+    <text id="n11_p5s3" name="t_products" xy="589,9" size="1012,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="0000000"/>
+    <text id="n12_p5s3" name="t_productsPrice" xy="1605,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
+    <text id="n14_p5s3" name="t_totalDebt" xy="1764,9" size="150,32" fontSize="22" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" singleLine="true" text="Name"/>
   </displayList>
   <Button mode="Radio"/>
 </component>

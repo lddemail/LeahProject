@@ -56,7 +56,7 @@ public class ProductData: DataBase
     switch(type)
     {
       case EmProductType.Expire:
-        return AppUtil.GetColorStrByType(type, "过期");
+        return AppUtil.GetColorStrByType(type, AppConfig.Expired);
       case EmProductType.Warning:
         return AppUtil.GetColorStrByType(type, $"{day}天到期");
       default:
@@ -126,7 +126,8 @@ public class ProductData: DataBase
     {
       return name;
     }
-    string res = $"{name}:{GetAdventStr()}";
+    string _timeStr = AppUtil.GetUBBColorStr("#CCFF00", $"{AppUtil.TimeToString(fTime)}>{AppUtil.TimeToString(tTime)}");
+    string res = $"{name}:{_timeStr}:{GetAdventStr()}";
     return res;
   }
   public static ProductData Prase(string str)

@@ -380,6 +380,34 @@ public class TabContract
   }
 
   /// <summary>
+  /// 获取距离当前时间最近的产品
+  /// </summary>
+  /// <returns></returns>
+  public ProductData GetRecentlyPD()
+  {
+    ProductData resPD = null;
+    List<ProductData> list = GetProductList();
+    if (list != null)
+    {
+      int unixTime = AppUtil.GetNowUnixTime();
+      int time = 0;
+      foreach (ProductData pd in list)
+      {
+        if (pd.tTime >= 0)
+        {
+          int pT = pd.tTime - unixTime;
+          if(time == 0 || pT <= time)
+          {
+            time = pT;
+            resPD = pd;
+          }
+        }
+      }
+    }
+    return resPD;
+  }
+
+  /// <summary>
   /// 是否要到期
   /// </summary>
   /// <param name="day"></param>
@@ -392,12 +420,12 @@ public class TabContract
     if (t_products.Contains(AppConfig.SalesContract)) return false;
 
     bool res = false;
-    int d = 3600 * 24 * day;
-    int unixTime = AppUtil.GetNowUnixTime();
     List<ProductData> list = GetProductList();
     if (list != null)
     {
-      foreach(ProductData pd in list)
+      int d = 3600 * 24 * day;
+      int unixTime = AppUtil.GetNowUnixTime();
+      foreach (ProductData pd in list)
       {
         if(pd.tTime > 0)
         {

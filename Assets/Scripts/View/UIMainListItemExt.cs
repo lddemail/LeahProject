@@ -27,23 +27,24 @@ public class UIMainListItemExt : UI_MainListItem
       GTextField gText = GetChild(title) as GTextField;
       if(title == AppConfig.t_products)
       {
-        List<ProductData> pdList = tabC.GetProductList();
         string products = "";
-        EmProductType ptype = EmProductType.None;
-        foreach (ProductData pd in pdList)
+        ProductData pd = tabC.GetRecentlyPD();
+        if(pd != null)
         {
-          products += $"{pd.ToMainShowStr()}|";
-          if (pd.GetProductType(out int day) == EmProductType.Warning)
+          EmProductType ptype = pd.GetProductType(out int day);
+          if (ptype == EmProductType.Warning || ptype == EmProductType.Expire)
           {
-            ptype = EmProductType.Warning;
+            //反向替换酒店名字为警告颜色
+            (GetChild(AppConfig.t_hotelName) as GTextField).text = AppUtil.GetColorStrByType(ptype, tabC.t_hotelName);
+          }
+          products = pd.ToMainShowStr();
+          int pdCount = tabC.GetProductList().Count;
+          if (pdCount > 1)
+          {
+            products += $"(还有{pdCount}个产品未显示)";
           }
         }
         gText.text = products;
-        if (ptype == EmProductType.Warning)
-        {
-          //反向替换酒店名字为警告颜色
-          (GetChild(AppConfig.t_hotelName) as GTextField).text = AppUtil.GetColorStrByType(ptype, tabC.t_hotelName);
-        }
       }
       else
       {

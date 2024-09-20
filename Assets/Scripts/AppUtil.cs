@@ -323,6 +323,11 @@ public class AppUtil
     }
   }
 
+  public static string GetUBBColorStr(string color, string str)
+  {
+    return $"[color={color}]{str}[/color]";
+  }
+
   /// <summary>
   /// 转成十六进制颜色
   /// </summary>
