@@ -100,9 +100,11 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
   {
     object val1 = AppData.currTc.GetFieldVal(fieldName1);
     m_InputCombox1.m_InputLab.text = val1 == null ? "" : val1.ToString();
+    m_InputCombox1.m_InputBg.tooltips = m_InputCombox1.m_InputLab.text;
 
     object val2 = AppData.currTc.GetFieldVal(fieldName2);
     m_InputCombox2.m_InputLab.text = val2 == null ? "" : val2.ToString();
+    m_InputCombox2.m_InputBg.tooltips = m_InputCombox2.m_InputLab.text;
   }
 
 }

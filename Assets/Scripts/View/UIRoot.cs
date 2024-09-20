@@ -60,6 +60,7 @@ public class UIRoot : MonoBehaviour
   public void Init()
   {
     UIConfig.popupMenu = "ui://Basics/MainPopupMenu";
+    UIConfig.tooltipsWin = "ui://Basics/TipsLab";
     uiMain.Init();
     uiTips.Init();
     uiConfirm.Init();

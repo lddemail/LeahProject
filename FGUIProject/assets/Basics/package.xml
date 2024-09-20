@@ -251,6 +251,7 @@
     <component id="h63l70" name="InputComboxLabelComp.xml" path="/" exported="true"/>
     <component id="rrp474" name="MainPopupMenu.xml" path="/popupmenu/" exported="true"/>
     <component id="rrp475" name="MainPopupMenuItem.xml" path="/popupmenu/"/>
+    <component id="jvya76" name="TipsLab.xml" path="/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

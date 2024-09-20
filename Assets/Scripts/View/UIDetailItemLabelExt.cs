@@ -83,5 +83,6 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
       object val1 = AppData.currTc.GetFieldVal(fieldName1);
       m_InputCombox1.m_InputLab.text = val1 == null ? "" : val1.ToString();
     }
+    m_InputCombox1.m_InputBg.tooltips = m_InputCombox1.m_InputLab.text;
   }
 }

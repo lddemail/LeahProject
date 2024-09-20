@@ -71,6 +71,9 @@ public class ProductData: DataBase
   public EmProductType GetProductType(out int day)
   {
     day = 0;
+      //包含销售合同的不用处理是否到期
+    if (name.Contains(AppConfig.SalesContract)) return EmProductType.None;
+
     if (tTime <= 0)
     {
       return EmProductType.Expire;
@@ -118,7 +121,12 @@ public class ProductData: DataBase
   }
   public string ToMainShowStr()
   {
-    string res = $"{name}:{GetAdventStr()}+";
+    if (string.IsNullOrEmpty(name)) name = "";
+    if (name.Contains(AppConfig.SalesContract))
+    {
+      return name;
+    }
+    string res = $"{name}:{GetAdventStr()}";
     return res;
   }
   public static ProductData Prase(string str)
@@ -163,12 +171,17 @@ public class ProductData: DataBase
     return json;
   }
 
+  /// <summary>
+  /// 数据库格式转成字符串
+  /// </summary>
+  /// <param name="str"></param>
+  /// <returns></returns>
   public static List<ProductData> DBStrToData(string str)
   {
     List<ProductData> res = new List<ProductData>();
     if(!string.IsNullOrEmpty(str))
     {
-      string[] ary = str.Split("+");
+      string[] ary = str.Split(AppConfig.Split_1);
       foreach(string str2 in ary)
       {
         ProductData d = ProductData.Prase(str2);
@@ -182,6 +195,11 @@ public class ProductData: DataBase
     return res;
   }
 
+  /// <summary>
+  /// 转成数据库格式
+  /// </summary>
+  /// <param name="pdList"></param>
+  /// <returns></returns>
   public static string ToDBStr(List<ProductData> pdList)
   {
     string res = "";
@@ -192,7 +210,7 @@ public class ProductData: DataBase
         res += pdList[i].ToStr();
         if (i < pdList.Count-1)
         {
-          res += "+";
+          res += AppConfig.Split_1;
         }
       }
     }

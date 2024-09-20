@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="580,40">
+<component size="600,40">
   <controller name="cPos" pages="0,,1," selected="0"/>
   <displayList>
-    <graph id="n3_h63l" name="InputBg" xy="301,-1" size="279,40" type="rect">
+    <graph id="n3_h63l" name="InputBg" xy="301,-1" size="299,40" type="rect">
       <gearDisplay controller="cPos" pages="0,1"/>
       <gearXY controller="cPos" pages="0,1" values="301,-1,0.519,-0.025|100,0,0.172,0" positionsInPercent="true"/>
       <relation target="n4_h63l" sidePair="left-right"/>
@@ -13,7 +13,7 @@
       <gearDisplay controller="cPos" pages="0"/>
       <ComboBox visibleItemCount="10"/>
     </component>
-    <text id="n2_h63l" name="InputLab" xy="303,4" size="277,32" fontSize="22" color="#333333" vAlign="middle" ubb="true" autoSize="none" bold="true" text="0" input="true" prompt="0">
+    <text id="n2_h63l" name="InputLab" xy="303,4" size="297,32" fontSize="22" color="#333333" vAlign="middle" ubb="true" autoSize="none" bold="true" text="0" input="true" prompt="0">
       <gearDisplay controller="cPos" pages="0,1"/>
       <gearXY controller="cPos" pages="0,1" values="304,4,0.524,0.1|100,4,0.172,0.1" positionsInPercent="true"/>
       <relation target="n4_h63l" sidePair="left-right"/>

@@ -32,17 +32,17 @@ public class UIMainListItemExt : UI_MainListItem
         EmProductType ptype = EmProductType.None;
         foreach (ProductData pd in pdList)
         {
-          products += pd.ToMainShowStr();
-          if(pd.GetProductType(out int day) == EmProductType.Warning)
+          products += $"{pd.ToMainShowStr()}|";
+          if (pd.GetProductType(out int day) == EmProductType.Warning)
           {
             ptype = EmProductType.Warning;
           }
         }
         gText.text = products;
-        if(ptype == EmProductType.Warning)
+        if (ptype == EmProductType.Warning)
         {
           //反向替换酒店名字为警告颜色
-          (GetChild(AppConfig.t_hotelName) as GTextField).text = AppUtil.GetColorStrByType(ptype,tabC.t_hotelName);
+          (GetChild(AppConfig.t_hotelName) as GTextField).text = AppUtil.GetColorStrByType(ptype, tabC.t_hotelName);
         }
       }
       else
@@ -50,6 +50,16 @@ public class UIMainListItemExt : UI_MainListItem
         object val = tabC.GetFieldVal(title);
         gText.text = val.ToString();
       }
+      SetTooltips(title, gText.text);
+    }
+  }
+
+  private void SetTooltips(string title,string str)
+  {
+    GObject gob = GetChild(title+"_bg");
+    if(gob != null)
+    {
+      gob.tooltips = str;
     }
   }
 

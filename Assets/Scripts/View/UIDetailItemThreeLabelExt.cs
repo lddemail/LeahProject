@@ -129,22 +129,25 @@ public class UIDetailItemThreeLabelExt : UI_DetailItemThreeLabel
   {
     object val1 = AppData.currTc.GetFieldVal(fieldName1);
     m_InputCombox1.m_InputLab.text = val1 == null ? "" : val1.ToString();
+    m_InputCombox1.m_InputBg.tooltips = m_InputCombox1.m_InputLab.text;
 
     object val2 = AppData.currTc.GetFieldVal(fieldName2);
     m_InputCombox2.m_InputLab.text = val2 == null ? "" : val2.ToString();
+    m_InputCombox2.m_InputBg.tooltips = m_InputCombox2.m_InputLab.text;
 
-    if (fieldName3 == AppConfig.t_totalDebt)
-    {
-      //欠款金额=(合同总额t_productsPrice-到账总额t_totalAccount)
-      object productsPrice = AppData.currTc.GetFieldVal(AppConfig.t_productsPrice);
-      object totalAccount = AppData.currTc.GetFieldVal(AppConfig.t_totalAccount);
-      float val = (float)productsPrice - (float)totalAccount;
-      m_InputCombox3.m_InputLab.text = $"{val} = {productsPrice} - {totalAccount}";
-    }
-    else
-    {
+    //if (fieldName3 == AppConfig.t_totalDebt)
+    //{
+    //  //欠款金额=(合同总额t_productsPrice-到账总额t_totalAccount)
+    //  object productsPrice = AppData.currTc.GetFieldVal(AppConfig.t_productsPrice);
+    //  object totalAccount = AppData.currTc.GetFieldVal(AppConfig.t_totalAccount);
+    //  float val = (float)productsPrice - (float)totalAccount;
+    //  m_InputCombox3.m_InputLab.text = $"{val} = {productsPrice} - {totalAccount}";
+    //}
+    //else
+    //{
       object val3 = AppData.currTc.GetFieldVal(fieldName3);
       m_InputCombox3.m_InputLab.text = val3 == null ? "" : val3.ToString();
-    }
+    //}
+    m_InputCombox3.m_InputBg.tooltips = m_InputCombox3.m_InputLab.text;
   }
 }

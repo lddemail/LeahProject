@@ -17,6 +17,10 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
 
     m_InputLabPrice.m_InputLab.onChanged.Set(OnChangeCallBack);
     m_InputComboxName.m_ComboxBox1.onChanged.Set(ComboxBox1ChangeHandler);
+    m_InputComboxName.m_ComboxBox1.width = m_InputComboxName.m_ComboxBox1.width + 260;
+    m_InputComboxName.m_InputBg.width = m_InputComboxName.m_ComboxBox1.width;
+
+ 
   }
   private void ComboxBox1ChangeHandler(EventContext context)
   {
@@ -56,8 +60,8 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
     m_InputComboxName.m_InputLab.enabled = false;
 
     m_InputLabPrice.m_Title.text = "价格:";
-    m_InputLabfTime.m_Title.text = "开始日期:";
-    m_InputLabtTime.m_Title.text = "结束日期:";
+    m_InputLabfTime.m_Title.text = "";
+    m_InputLabtTime.m_Title.text = "-";
 
     if (pd.fTime < 1) pd.fTime = AppUtil.GetNowUnixTime();
 
@@ -75,6 +79,10 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
     m_InputLabtTime.m_InputLab.text = $"{AppUtil.TimeToString(pd.tTime)}";
     m_AdventLab.text = $"[color=#FF0000]{pd.GetAdventStr()}[/color]";
     m_InputLabRemark.m_InputLab.text = pd.remark;
+
+    //float _w = Mathf.Max(AppUtil.GetTextWidthByStr(pd.name), m_InputComboxName.m_ComboxBox1.width);
+    //m_InputComboxName.m_InputBg.width = _w;
+    m_InputComboxName.m_InputBg.tooltips = m_InputComboxName.m_InputLab.text;
   }
 
   private Action _changeCallBack;

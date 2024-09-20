@@ -1,12 +1,7 @@
-﻿using JetBrains.Annotations;
-using Mono.Data.Sqlite;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Security.Cryptography;
 using UnityEngine;
 using static ExcelSheet;
 
@@ -124,7 +119,7 @@ public class TabContract
       value = "";
       switch (name)
       {
-        case "t_products":
+        case AppConfig.t_products:
           List<ProductData> pdList = GetProductList();
           for(int i=0;i< pdList.Count;i++)
           {
@@ -135,7 +130,7 @@ public class TabContract
             }
           }
           break;
-        case "t_barter":
+        case AppConfig.t_barter:
           List<BarterData> btList = GetBarterList();
           for (int i = 0; i < btList.Count; i++)
           {
@@ -146,7 +141,7 @@ public class TabContract
             }
           }
           break;
-        case "t_accountRematk":
+        case AppConfig.t_accountRematk:
           List<AccountData> adList = GetAccountList();
           for (int i = 0; i < adList.Count; i++)
           {
@@ -393,6 +388,9 @@ public class TabContract
   {
     if (day == 0) return true;
 
+    //包含销售合同的不用处理是否到期
+    if (t_products.Contains(AppConfig.SalesContract)) return false;
+
     bool res = false;
     int d = 3600 * 24 * day;
     int unixTime = AppUtil.GetNowUnixTime();
@@ -491,6 +489,7 @@ public class TabContract
 
     //欠款金额=(合同总额t_productsPrice-到账总额t_totalAccount)
     t_totalDebt = t_productsPrice - t_totalAccount;
+    if (t_totalDebt > 0 && t_totalDebt < 1) t_totalDebt = 0;
 
     Debug.Log($"Compute:t_productsPrice={t_productsPrice} t_totalBarter={t_totalBarter} t_totalAccount={t_totalAccount} t_totalDebt={t_totalDebt}");
   }
@@ -565,29 +564,23 @@ public class TabContract
           break;
         case "PRODUCT":
           List<ProductData> pdList = new List<ProductData>();
-          string products = IsEmpty(val.val);
           //产品
-          string[] productsAry = products.Split("+");
-          if(productsAry != null && productsAry.Length > 0)
-          {
-            //时间
-            string fromTime = Find(vals, "FROM");
-            fromTime = fromTime.Replace("?", "");
-            fromTime = fromTime.Replace("？", "");
-            int fTime = AppUtil.StringToTime(fromTime);
-            string toTime = Find(vals, "TO");
-            toTime = toTime.Replace("?", "");
-            toTime = toTime.Replace("？", "");
-            int tTime = AppUtil.StringToTime(toTime);
-            //备注
-            string productsRem = Find(vals, "PRODUCT REMARK");
-
-            foreach (string str in productsAry)
-            {
-              ProductData pd = ProductData.Crete(str,0, fTime, tTime, productsRem);
-              pdList.Add(pd);
-            }
-          }
+          string products = IsEmpty(val.val);
+          //时间
+          string fromTime = Find(vals, "FROM");
+          fromTime = fromTime.Replace("?", "");
+          fromTime = fromTime.Replace("？", "");
+          int fTime = AppUtil.StringToTime(fromTime);
+          string toTime = Find(vals, "TO");
+          toTime = toTime.Replace("?", "");
+          toTime = toTime.Replace("？", "");
+          int tTime = AppUtil.StringToTime(toTime);
+          //备注
+          string productsRem = Find(vals, "PRODUCT REMARK");
+          //价格
+          string price = Find(vals, "AMOUNT");
+          ProductData pd = ProductData.Crete(products, float.Parse(price), fTime, tTime, productsRem);
+          pdList.Add(pd);
           string t_products = ProductData.ToDBStr(pdList);
           d.t_products = t_products;
           //d.t_productsPrice = val.val;这个是计算出来的
@@ -597,7 +590,7 @@ public class TabContract
           BarterData bData = BarterData.Crete(float.Parse(t_barter),0,"0");
           d.t_barter = bData.ToStr();
           break;
-        case "A/R Remark"://2022.9.20收252006.11；2022.11.23收226805.5；2023.3.1收25200.61
+        case "A/R Remark"://到账明细2022.9.20收252006.11；2022.11.23收226805.5；2023.3.1收25200.61
           string Remark = IsEmpty(val.val);
           string[] RemarkAry = Remark.Split("；");
           List<AccountData> aList = new List<AccountData>();

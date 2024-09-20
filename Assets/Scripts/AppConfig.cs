@@ -8,7 +8,7 @@ using UnityEngine;
 public class AppConfig
 {
   public static string productName = "LP";
-  public static string version = "1.1";
+  public static string version = "1.2";
 
   public static string tabKey = "t_id";
 
@@ -140,6 +140,8 @@ public class AppConfig
   public const string Update_Template = "刷新模版";
   public const string Details = "详情";
   public const string Delete = "删除";
+  public const string SalesContract = "销售合同";
+  public const string Split_1 = "|";
 
   public static List<string> mainTitles = new List<string>() {
     t_id,

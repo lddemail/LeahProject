@@ -65,10 +65,10 @@ public class AppData
 
   public static void Init()
   {
-    ReadAllTemplates();
     CheckTab();
     allTabContract = AppUtil.ReadAll4DB<TabContract>();
     OrderAllTabContract();
+    ReadAllTemplates();
   }
 
   /// <summary>
@@ -126,13 +126,16 @@ public class AppData
       allTabContract = allTabContract.OrderBy(x => x.t_index).ToList();
 
       //制作模版
-      //AppUtil.WriteToTxt(AppConfig.ProductTemplateName, allTabContractFiels[AppConfig.t_products]);
-      //AppUtil.WriteToTxt(AppConfig.HotelTemplateName, allTabContractFiels[AppConfig.t_hotelName]);
-      //AppUtil.WriteToTxt(AppConfig.HotelGroupTemplateName, allTabContractFiels[AppConfig.t_group]);
-      //AppUtil.WriteToTxt(AppConfig.HotelBrandTemplateName, allTabContractFiels[AppConfig.t_brand]);
-      //AppUtil.WriteToTxt(AppConfig.PaymentTemplateName, allTabContractFiels[AppConfig.t_payment]);
-      //AppUtil.WriteToTxt(AppConfig.SignedTemplateName, allTabContractFiels[AppConfig.t_attribution]);
-      //AppUtil.WriteToTxt(AppConfig.A_SignedTemplateName, allTabContractFiels[AppConfig.t_a_contract]);
+      if(allTabContractFiels.Count > 0)
+      {
+        //AppUtil.WriteToTxt(AppConfig.ProductTemplateName, allTabContractFiels[AppConfig.t_products]);
+        //AppUtil.WriteToTxt(AppConfig.HotelTemplateName, allTabContractFiels[AppConfig.t_hotelName]);
+        //AppUtil.WriteToTxt(AppConfig.HotelGroupTemplateName, allTabContractFiels[AppConfig.t_group]);
+        //AppUtil.WriteToTxt(AppConfig.HotelBrandTemplateName, allTabContractFiels[AppConfig.t_brand]);
+        //AppUtil.WriteToTxt(AppConfig.PaymentTemplateName, allTabContractFiels[AppConfig.t_payment]);
+        //AppUtil.WriteToTxt(AppConfig.SignedTemplateName, allTabContractFiels[AppConfig.t_attribution]);
+        //AppUtil.WriteToTxt(AppConfig.A_SignedTemplateName, allTabContractFiels[AppConfig.t_a_contract]);
+      }
     }
   }
 

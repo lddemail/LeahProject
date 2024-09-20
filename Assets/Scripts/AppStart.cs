@@ -35,4 +35,9 @@ public class AppStart : MonoBehaviour
     {
         
     }
+
+    private void OnDestroy()
+    {
+    AppUtil.AppExit();
+    }
 }

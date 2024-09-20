@@ -430,4 +430,23 @@ public class AppUtil
     return string.Compare(x, y, StringComparison.Ordinal);
   }
 
+
+  private static GTextField _textField = new GTextField();
+  /// <summary>
+  /// 根据字符串长度计算文本宽度
+  /// </summary>
+  /// <returns></returns>
+  public static float GetTextWidthByStr(string str,int fontSize=22)
+  {
+    _textField.textFormat.size = fontSize;
+    _textField.text = str;
+    return _textField.textWidth;
+  }
+
+
+  public static void AppExit()
+  {
+    Debug.Log("APP退出");
+    if (db != null) db.CloseConnection();
+  }
 }

@@ -22,6 +22,7 @@ namespace Basics
             UIObjectFactory.SetPackageItemExtension(UI_Button5Copy.URL, typeof(UI_Button5Copy));
             UIObjectFactory.SetPackageItemExtension(UI_UIDetail.URL, typeof(UI_UIDetail));
             UIObjectFactory.SetPackageItemExtension(UI_DetailItemLabel.URL, typeof(UI_DetailItemLabel));
+            UIObjectFactory.SetPackageItemExtension(UI_TipsLab.URL, typeof(UI_TipsLab));
             UIObjectFactory.SetPackageItemExtension(UI_DetailItemProduct.URL, typeof(UI_DetailItemProduct));
             UIObjectFactory.SetPackageItemExtension(UI_DetailItemBarter.URL, typeof(UI_DetailItemBarter));
             UIObjectFactory.SetPackageItemExtension(UI_DetailItemAccount.URL, typeof(UI_DetailItemAccount));
