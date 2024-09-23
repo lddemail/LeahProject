@@ -9,7 +9,7 @@ public class AppStart : MonoBehaviour
         System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         Screen.SetResolution(1920, 1080, false); // false 表示窗口模式
 
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 90;
         QualitySettings.vSyncCount = 0;
 
         EventMgr.Init();
