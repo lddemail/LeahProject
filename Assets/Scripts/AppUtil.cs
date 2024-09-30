@@ -302,24 +302,26 @@ public class AppUtil
     return index;
   }
 
+  public static bool GetInputLab_SearchEnabled(string fieldName)
+  {
+    switch (fieldName)
+    {
+      case AppConfig.t_hotelName:
+        return true;
+      default:
+        return false;
+    }
+  }
+
   public static bool GetInputLabEnabled(string fieldName)
   {
     switch (fieldName)
     {
-      case AppConfig.t_productsPrice:
-      case AppConfig.t_totalBarter:
-      case AppConfig.t_totalAccount:
-      case AppConfig.t_totalDebt:
-      case AppConfig.t_hotelName:
-      case AppConfig.t_brand:
-      case AppConfig.t_attribution:
-      case AppConfig.t_payment:
-      case AppConfig.t_group:
-      case AppConfig.t_newSales:
-      case AppConfig.t_a_contract:
-        return false;
-      default:
+      case AppConfig.t_interiorNo:
+      case AppConfig.t_contractNo:
         return true;
+      default:
+        return false;
     }
   }
 
