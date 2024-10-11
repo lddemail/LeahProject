@@ -32,7 +32,6 @@ public class UIDetailItemBarterExt : UI_DetailItemBarter
     data = bd;
 
     m_InputLabBarter.m_Title.text = "消费金额";
-    m_InputLabTime.m_Title.text = "消费日期";
 
     if (bd.time < 1) bd.time = AppUtil.GetNowUnixTime();
 

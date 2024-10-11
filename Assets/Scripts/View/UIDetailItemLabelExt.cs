@@ -18,17 +18,17 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
     base.ConstructFromXML(xml);
 
     m_InputCombox1.m_ComboxBox1.onChanged.Set(ComboxBox1ChangeHandler);
-    m_InputCombox1.m_InputLab.onChanged.Set(OnInputLabChange);
+    //m_InputCombox1.m_InputLab.onChanged.Set(OnInputLabChange);
   }
 
   private void OnInputLabChange(EventContext context)
   {
-    string val = m_InputCombox1.m_InputLab.text;
-    if (!string.IsNullOrEmpty(val))
-    {
-      AppData.currTc.SetFieldVal(fieldName1, val);
-      RefreshUI();
-    }
+    //string val = m_InputCombox1.m_InputLab.text;
+    //if (!string.IsNullOrEmpty(val))
+    //{
+    //  AppData.currTc.SetFieldVal(fieldName1, val);
+    //  RefreshUI();
+    //}
   }
 
   private void ComboxBox1ChangeHandler(EventContext context)
@@ -48,8 +48,8 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
 
     templateList1 = string.IsNullOrEmpty(template1) ? null : AppData.allTemplates[template1];
 
-    m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
-    m_InputCombox1.m_ComboxBox1.visible = m_InputCombox1.m_InputLab.enabled;
+    //m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
+    m_InputCombox1.m_ComboxBox1.visible = AppUtil.GetInputLabEnabled(fieldName1);
 
     InitInputCombox(m_InputCombox1, fieldName1, templateList1);
 
@@ -70,19 +70,20 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
 
   public void RefreshUI()
   {
+    string text = "";
     if(fieldName1 == AppConfig.t_totalDebt)
     {
       //欠款金额=(合同总额t_productsPrice-到账总额t_totalAccount)
       object productsPrice = AppData.currTc.GetFieldVal(AppConfig.t_productsPrice);
       object totalAccount = AppData.currTc.GetFieldVal(AppConfig.t_totalAccount);
       float val = (float)productsPrice - (float)totalAccount;
-      m_InputCombox1.m_InputLab.text = $"合同金额:{productsPrice} - 到账总额:{totalAccount} = 欠款金额:{val}";
+      text = $"合同金额:{productsPrice} - 到账总额:{totalAccount} = 欠款金额:{val}";
     }
     else
     {
       object val1 = AppData.currTc.GetFieldVal(fieldName1);
-      m_InputCombox1.m_InputLab.text = val1 == null ? "" : val1.ToString();
+      text = val1 == null ? "" : val1.ToString();
     }
-    m_InputCombox1.m_InputBg.tooltips = m_InputCombox1.m_InputLab.text;
+    m_InputCombox1.tooltips = text;
   }
 }

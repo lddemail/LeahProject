@@ -17,17 +17,15 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
 
     m_InputLabPrice.m_InputLab.onChanged.Set(OnChangeCallBack);
     m_InputComboxName.m_ComboxBox1.onChanged.Set(ComboxBox1ChangeHandler);
-    m_InputComboxName.m_ComboxBox1.width = m_InputComboxName.m_ComboxBox1.width + 260;
-    m_InputComboxName.m_InputBg.width = m_InputComboxName.m_ComboxBox1.width;
-
- 
+    m_InputComboxName.m_ComboxBox1.width = m_InputComboxName.m_ComboxBox1.width + 360;
+    //m_InputComboxName.m_InputBg.width = m_InputComboxName.m_InputBg.width + 160;
   }
   private void ComboxBox1ChangeHandler(EventContext context)
   {
     if (templateList1 != null)
     {
-      string val = templateList1[m_InputComboxName.m_ComboxBox1.selectedIndex];
-      m_InputComboxName.m_InputLab.text = val;
+      //string val = templateList1[m_InputComboxName.m_ComboxBox1.selectedIndex];
+      //m_InputComboxName.m_InputLab.text = val;
       OnChangeCallBack(null);
     }
   }
@@ -39,7 +37,7 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
     }  
 
     ProductData pd = (ProductData)data;
-    pd.name = m_InputComboxName.m_InputLab.text;
+    pd.name = templateList1[m_InputComboxName.m_ComboxBox1.selectedIndex];
     pd.price = float.Parse(m_InputLabPrice.m_InputLab.text);
     pd.fTime = AppUtil.StringToTime(m_InputLabfTime.m_InputLab.text);
     pd.tTime = AppUtil.StringToTime(m_InputLabtTime.m_InputLab.text);
@@ -57,11 +55,9 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
       pd.name = templateList1[0];
     }
     (m_InputComboxName as UI_InputComboxLabelCompExt).SetData("产品名字:",templateList1, pd.name);
-    m_InputComboxName.m_InputLab.enabled = false;
+    //m_InputComboxName.m_InputLab.enabled = false;
 
     m_InputLabPrice.m_Title.text = "价格:";
-    m_InputLabfTime.m_Title.text = "";
-    m_InputLabtTime.m_Title.text = "-";
 
     if (pd.fTime < 1) pd.fTime = AppUtil.GetNowUnixTime();
 
@@ -73,7 +69,7 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
   public void RefreshUI()
   {
     ProductData pd = (ProductData)data;
-    m_InputComboxName.m_InputLab.text = pd.name;
+    //m_InputComboxName.m_InputLab.text = pd.name;
     m_InputLabPrice.m_InputLab.text = pd.price.ToString();
     m_InputLabfTime.m_InputLab.text = AppUtil.TimeToString(pd.fTime);
     m_InputLabtTime.m_InputLab.text = $"{AppUtil.TimeToString(pd.tTime)}";
@@ -82,7 +78,8 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
 
     //float _w = Mathf.Max(AppUtil.GetTextWidthByStr(pd.name), m_InputComboxName.m_ComboxBox1.width);
     //m_InputComboxName.m_InputBg.width = _w;
-    m_InputComboxName.m_InputBg.tooltips = m_InputComboxName.m_InputLab.text;
+    m_InputComboxName.tooltips = pd.name;
+    m_InputLabRemark.tooltips = pd.remark;
   }
 
   private Action _changeCallBack;

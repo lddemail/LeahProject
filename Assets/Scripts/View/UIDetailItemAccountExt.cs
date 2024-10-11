@@ -38,7 +38,6 @@ public class UIDetailItemAccountExt : UI_DetailItemAccount
     data = ad;
 
     m_InputLabBarter.m_Title.text = "到账金额";
-    m_InputLabTime.m_Title.text = "到账日期";
 
     if (ad.time < 1) ad.time = AppUtil.GetNowUnixTime();
 

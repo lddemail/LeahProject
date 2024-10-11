@@ -14,6 +14,7 @@ namespace Basics
         public GTextField m_AdventLab;
         public UI_InputDescLabelComp m_InputLabRemark;
         public GButton m_BtnDel;
+        public GTextField m_AdventLab_2;
         public const string URL = "ui://z3yueri4ldks6k";
 
         public static UI_DetailItemProduct CreateInstance()
@@ -32,6 +33,7 @@ namespace Basics
             m_AdventLab = (GTextField)GetChildAt(4);
             m_InputLabRemark = (UI_InputDescLabelComp)GetChildAt(5);
             m_BtnDel = (GButton)GetChildAt(6);
+            m_AdventLab_2 = (GTextField)GetChildAt(7);
         }
     }
 }

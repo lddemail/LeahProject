@@ -8,7 +8,6 @@ namespace Basics
     public partial class UI_InputTimeLabelComp : GComponent
     {
         public Controller m_c1;
-        public GTextField m_Title;
         public GTextInput m_InputLab;
         public const string URL = "ui://z3yueri4h63l6u";
 
@@ -22,8 +21,7 @@ namespace Basics
             base.ConstructFromXML(xml);
 
             m_c1 = GetControllerAt(0);
-            m_Title = (GTextField)GetChildAt(0);
-            m_InputLab = (GTextInput)GetChildAt(2);
+            m_InputLab = (GTextInput)GetChildAt(1);
         }
     }
 }

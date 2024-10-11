@@ -24,8 +24,7 @@ public class UIDetailItemCityExt : UI_DetailItemCity
     m_ComboxBox2.onChanged.Add(ComboxBox2ChangeHandler);
 
     m_InputCombox1.m_ComboxBox1.onChanged.Add(InputComboxBox1ChangeHandler);
-    m_InputCombox1.m_ComboxBox1.width = m_InputCombox1.m_ComboxBox1.width + 250;
-    m_InputCombox1.m_InputBg.width = m_InputCombox1.m_InputBg.width + 400;
+    m_InputCombox1.m_ComboxBox1.width = m_InputCombox1.m_ComboxBox1.width + 300;
   }
   private void InputComboxBox1ChangeHandler(EventContext context)
   {
@@ -85,7 +84,7 @@ public class UIDetailItemCityExt : UI_DetailItemCity
 
     templateList1 = string.IsNullOrEmpty(template1) ? null : AppData.allTemplates[template1];
 
-    m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
+    //m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
 
     InitInputCombox(m_InputCombox1, fieldName1, templateList1);
 
@@ -111,7 +110,8 @@ public class UIDetailItemCityExt : UI_DetailItemCity
     SetCity(obj2 == null ? "" : obj2.ToString());
 
     object val1 = AppData.currTc.GetFieldVal(fieldName1);
-    m_InputCombox1.m_InputLab.text = val1 == null ? "" : val1.ToString();
+    string text = val1 == null ? "" : val1.ToString();
+    m_InputCombox1.tooltips = text;
   }
 
   public string GetProvince()

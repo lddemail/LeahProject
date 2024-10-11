@@ -15,6 +15,24 @@ public class UI_InputComboxLabelCompExt : UI_InputComboxLabelComp
     m_InputBg.onFocusOut.Add(OnFocusOutHandler);
     m_InputLab.onFocusIn.Add(OnFocusInHandler);
     m_InputLab.onFocusOut.Add(OnFocusOutHandler);
+
+    m_FilterLab.onChanged.Add(FilterLabChangeHandler);
+  }
+
+  private void FilterLabChangeHandler(EventContext context)
+  {
+    if(!string.IsNullOrEmpty(m_FilterLab.text))
+    {
+      List<string> list = templateList1.FindAll(x => x.Contains(m_FilterLab.text));
+      if(list != null)
+      {
+        m_ComboxBox1.items = list.ToArray();
+      }
+    }
+    else
+    {
+      m_ComboxBox1.items = templateList1.ToArray();
+    }
   }
 
   private void OnFocusInHandler(EventContext context)
@@ -47,6 +65,7 @@ public class UI_InputComboxLabelCompExt : UI_InputComboxLabelComp
       }
       m_ComboxBox1.selectedIndex = index;
       m_InputLab.text = templateList1[index];
+      m_FilterLab.text = "";
     }
     RefreshUI();
   }

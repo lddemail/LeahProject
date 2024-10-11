@@ -24,28 +24,28 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
 
     m_InputCombox1.m_ComboxBox1.onChanged.Set(ComboxBox1ChangeHandler);
     m_InputCombox2.m_ComboxBox1.onChanged.Set(ComboxBox2ChangeHandler);
-    m_InputCombox1.m_InputLab.onChanged.Set(OnInputLab1Change);
-    m_InputCombox2.m_InputLab.onChanged.Set(OnInputLab2Change);
+    //m_InputCombox1.m_InputLab.onChanged.Set(OnInputLab1Change);
+    //m_InputCombox2.m_InputLab.onChanged.Set(OnInputLab2Change);
 
   }
 
   private void OnInputLab1Change(EventContext context)
   {
-    string val = m_InputCombox1.m_InputLab.text;
-    if(!string.IsNullOrEmpty(val))
-    {
-      AppData.currTc.SetFieldVal(fieldName1, val);
-      RefreshUI();
-    }
+    //string val = m_InputCombox1.m_InputLab.text;
+    //if(!string.IsNullOrEmpty(val))
+    //{
+    //  AppData.currTc.SetFieldVal(fieldName1, val);
+    //  RefreshUI();
+    //}
   }
   private void OnInputLab2Change(EventContext context)
   {
-    string val = m_InputCombox2.m_InputLab.text;
-    if (!string.IsNullOrEmpty(val))
-    {
-      AppData.currTc.SetFieldVal(fieldName2, val);
-      RefreshUI();
-    }
+    //string val = m_InputCombox2.m_InputLab.text;
+    //if (!string.IsNullOrEmpty(val))
+    //{
+    //  AppData.currTc.SetFieldVal(fieldName2, val);
+    //  RefreshUI();
+    //}
   }
   private void ComboxBox1ChangeHandler(EventContext context)
   {
@@ -77,8 +77,8 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
     templateList1 = string.IsNullOrEmpty(template1) ? null : AppData.allTemplates[template1];
     templateList2 = string.IsNullOrEmpty(template2) ? null : AppData.allTemplates[template2];
 
-    m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
-    m_InputCombox2.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName2);
+    //m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
+    //m_InputCombox2.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName2);
 
     InitInputCombox(m_InputCombox1, fieldName1, templateList1);
     InitInputCombox(m_InputCombox2, fieldName2, templateList2);
@@ -99,12 +99,12 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
   public void RefreshUI()
   {
     object val1 = AppData.currTc.GetFieldVal(fieldName1);
-    m_InputCombox1.m_InputLab.text = val1 == null ? "" : val1.ToString();
-    m_InputCombox1.m_InputBg.tooltips = m_InputCombox1.m_InputLab.text;
+    string text = val1 == null ? "" : val1.ToString();
+    m_InputCombox1.tooltips = text;
 
     object val2 = AppData.currTc.GetFieldVal(fieldName2);
-    m_InputCombox2.m_InputLab.text = val2 == null ? "" : val2.ToString();
-    m_InputCombox2.m_InputBg.tooltips = m_InputCombox2.m_InputLab.text;
+    text = val2 == null ? "" : val2.ToString();
+    m_InputCombox2.tooltips = text;
   }
 
 }
