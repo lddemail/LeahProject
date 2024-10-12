@@ -23,14 +23,24 @@ public class UIMain:UIBase
   List<TabContract> _currTabContracts = new List<TabContract>();
   List<string> productList;
 
-  PopupMenu mainPop;
+  PopupMenu mainPop;//菜单项
+  PopupMenu templatePop;//模版项
   PopupMenu itemPop;
   public override void Init()
   {
     mainPop = new PopupMenu();
     mainPop.AddItem(AppConfig.Inport_Excel, _clickMenu);
     mainPop.AddItem(AppConfig.Expot_Excel, _clickMenu);
-    mainPop.AddItem(AppConfig.Update_Template, _clickMenu);
+
+    templatePop = new PopupMenu();
+    templatePop.AddItem(AppConfig.Update_Template, _clickMenu);
+    templatePop.AddItem(AppConfig.ProductTemplateName, _clickMenu);
+    templatePop.AddItem(AppConfig.HotelTemplateName, _clickMenu);
+    templatePop.AddItem(AppConfig.HotelGroupTemplateName, _clickMenu);
+    templatePop.AddItem(AppConfig.PaymentTemplateName, _clickMenu);
+    templatePop.AddItem(AppConfig.SignedTemplateName, _clickMenu);
+    templatePop.AddItem(AppConfig.SalesTemplateName, _clickMenu);
+    templatePop.AddItem(AppConfig.A_SignedTemplateName, _clickMenu);
 
     itemPop = new PopupMenu();
 
@@ -38,6 +48,10 @@ public class UIMain:UIBase
       mainPop.Show(UIPanel.m_BtnMainPop);
     });
     UIPanel.m_BtnAdd.onClick.Add(BtnAddHandler);
+
+    UIPanel.m_BtnTemplate.onClick.Add(() => {
+      templatePop.Show(UIPanel.m_BtnTemplate);
+    });
 
 
     UIPanel.m_mainList.itemRenderer = MainListRender;
@@ -66,6 +80,10 @@ public class UIMain:UIBase
       case AppConfig.Update_Template:
         AppData.ReadAllTemplates();
         UIRoot.ins.uiTips.Show($"模版刷新成功");
+        break;
+      default://模版
+        string tempPath = AppConfig.GetTemplatePath(itemObject.text);
+        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(tempPath) { UseShellExecute = true });
         break;
     }
   }

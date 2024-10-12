@@ -11,7 +11,10 @@
     <component id="n46_i6pi" name="BtnAdd" src="p5s36a" fileName="components/Button22.xml" xy="170,0" size="165,40" group="n49_phex">
       <Button title="添加合同"/>
     </component>
-    <group id="n49_phex" name="BtnGroup" xy="0,0" size="335,40"/>
+    <component id="n68_9dxp" name="BtnTemplate" src="p5s36a" fileName="components/Button22.xml" xy="345,0" size="165,40" group="n49_phex">
+      <Button title="模版管理"/>
+    </component>
+    <group id="n49_phex" name="BtnGroup" xy="0,0" size="510,40"/>
     <text id="n50_phex" name="title_id" xy="54,44" size="66,32" group="n53_phex" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="ID"/>
     <graph id="n65_rrp4" name="title_hotelNameBg" xy="150,41" size="246,40" group="n53_phex" type="rect">
       <relation target="" sidePair="width-width,height-height"/>
