@@ -49,6 +49,8 @@ public class UIMain:UIBase
     EventMgr.Add(AppConfig.UpdateQuery, QueryByTerm);
     EventMgr.Add(AppConfig.UpdateMainItem, UpdateMainItem);
 
+    UIPanel.m_VersionTxt.text = $"版本号:{AppConfig.version}";
+
   }
   private void _clickMenu(EventContext context)
   {

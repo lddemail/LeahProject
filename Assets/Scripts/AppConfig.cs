@@ -8,7 +8,7 @@ using UnityEngine;
 public class AppConfig
 {
   public static string productName = "LP";
-  public static string version = "1.2";
+  public static string version = "1.3";
 
   public static string tabKey = "t_id";
 
@@ -54,7 +54,7 @@ public class AppConfig
   //¹¤³ÌÃû×Ö
   public static string GetProductName()
   {
-    return $"{productName}_{version}";
+    return $"{productName}";
   }
 
   public static void Init()

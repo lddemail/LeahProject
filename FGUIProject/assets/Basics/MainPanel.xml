@@ -4,6 +4,7 @@
     <graph id="n41_p5s3" name="bg" xy="0,0" size="1920,1080" type="rect" lineSize="0" fillColor="#ff999999"/>
     <graph id="n28" name="n28" xy="0,40" size="1920,1038" type="rect" lineColor="#49959595" fillColor="#ff233e43"/>
     <image id="n29" name="n29" src="p5s357" fileName="images/grid_header_png.png" xy="0,40" size="1920,39"/>
+    <text id="n67_k4la" name="VersionTxt" xy="1801,5" size="116,32" fontSize="22" color="#ffffff" align="right" vAlign="middle" autoSize="none" bold="true" strokeColor="#000000" text="版本:1.2.111"/>
     <component id="n40_p5s3" name="BtnMainPop" src="p5s36a" fileName="components/Button22.xml" xy="0,0" size="160,40" group="n49_phex">
       <Button title="菜单"/>
     </component>
