@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Reflection;
 using UnityEngine;
 
@@ -455,5 +456,55 @@ public class AppUtil
   {
     Debug.Log("APP退出");
     if (db != null) db.CloseConnection();
+  }
+  
+  /// <summary>
+  /// 压缩
+  /// </summary>
+  /// <param name="folderPath"></param>
+  /// <param name="zipPath"></param>
+  public static void CompressFolder(string folderPath, string zipPath)
+  {
+    if (Directory.Exists(folderPath))
+    {
+      // 删除已存在的 zip 文件，以防止异常
+      if (File.Exists(zipPath))
+      {
+        File.Delete(zipPath);
+      }
+
+      // 压缩文件夹
+      ZipFile.CreateFromDirectory(folderPath, zipPath);
+      Debug.Log($"Folder '{folderPath}' has been compressed to '{zipPath}'");
+    }
+    else
+    {
+      Debug.LogError($"The folder '{folderPath}' does not exist.");
+    }
+  }
+
+  /// <summary>
+  /// copy
+  /// </summary>
+  /// <param name="sourceDir"></param>
+  /// <param name="destinationDir"></param>
+  public static void CopyDirectory(string sourceDir, string destinationDir)
+  {
+    // Create the destination directory if it doesn't exist
+    Directory.CreateDirectory(destinationDir);
+
+    // Copy all the files
+    foreach (var file in Directory.GetFiles(sourceDir))
+    {
+      string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
+      File.Copy(file, destFile, true);
+    }
+
+    // Copy all the subdirectories
+    foreach (var directory in Directory.GetDirectories(sourceDir))
+    {
+      string destDir = Path.Combine(destinationDir, Path.GetFileName(directory));
+      CopyDirectory(directory, destDir);
+    }
   }
 }

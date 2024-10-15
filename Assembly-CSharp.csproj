@@ -285,6 +285,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\GTextField.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\IHtmlPageContext.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\MeshColliderHitTest.cs" />
+    <Compile Include="Assets\Scripts\Data\HotelRelevanceData.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\HitTestContext.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Event\EventBridge.cs" />
   </ItemGroup>

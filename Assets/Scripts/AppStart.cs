@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class AppStart : MonoBehaviour
 {
+    public static AppStart ins;
     private void Awake()
     {
+        ins = this;
         // 注册代码页提供程序
         System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         Screen.SetResolution(1920, 1080, false); // false 表示窗口模式

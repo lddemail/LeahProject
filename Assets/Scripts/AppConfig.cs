@@ -133,15 +133,18 @@ public class AppConfig
   public const string SignedTemplateName = "签约公司模版.txt";
   public const string SalesTemplateName = "Sales模版.txt";
   public const string A_SignedTemplateName = "甲方签约公司模版.txt";
+  public const string HotelRelevanceTemplateName = "酒店关联模版.txt";
 
 
   public const string Inport_Excel = "导入Excel";
   public const string Expot_Excel = "导出Excel";
+  public const string Expot_Data = "导出Data";
   public const string Update_Template = "刷新模版";
   public const string Details = "详情";
   public const string Delete = "删除";
   public const string SalesContract = "销售合同";
   public const string Split_1 = "|";
+  public const string Split_2 = "#";
   public const string Expired = "过期";
   /// <summary>
   /// 主界面显示字段

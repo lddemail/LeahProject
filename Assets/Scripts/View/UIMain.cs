@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.IO;
 using System.Reflection;
 using UnityEngine;
 using static ExcelSheet;
@@ -31,6 +32,7 @@ public class UIMain:UIBase
     mainPop = new PopupMenu();
     mainPop.AddItem(AppConfig.Inport_Excel, _clickMenu);
     mainPop.AddItem(AppConfig.Expot_Excel, _clickMenu);
+    mainPop.AddItem(AppConfig.Expot_Data, _clickMenu);
 
     templatePop = new PopupMenu();
     templatePop.AddItem(AppConfig.Update_Template, _clickMenu);
@@ -41,6 +43,7 @@ public class UIMain:UIBase
     templatePop.AddItem(AppConfig.SignedTemplateName, _clickMenu);
     templatePop.AddItem(AppConfig.SalesTemplateName, _clickMenu);
     templatePop.AddItem(AppConfig.A_SignedTemplateName, _clickMenu);
+    templatePop.AddItem(AppConfig.HotelRelevanceTemplateName, _clickMenu);
 
     itemPop = new PopupMenu();
 
@@ -76,6 +79,9 @@ public class UIMain:UIBase
         break;
       case AppConfig.Expot_Excel:
         BtnSaveExcelHandler();
+        break;
+      case AppConfig.Expot_Data:
+        AppStart.ins.StartCoroutine(BtnExpotDataHandler());
         break;
       case AppConfig.Update_Template:
         AppData.ReadAllTemplates();
@@ -261,7 +267,35 @@ public class UIMain:UIBase
   {
 
   }
-
+  IEnumerator BtnExpotDataHandler()
+  {
+    // 选择要压缩的文件夹
+    string dataPath = AppConfig.GetDataPath();
+    string lp_data = dataPath.Replace("Data", "LP_Data");
+    yield return null;
+    try
+    {
+      AppUtil.CopyDirectory(dataPath, lp_data);
+      // 打开保存文件对话框
+      string zipFilePath = SFB.StandaloneFileBrowser.SaveFilePanel("导出LP数据", "", "LP_Data", "zip");
+      if (!string.IsNullOrEmpty(zipFilePath))
+      {
+        // 压缩文件夹
+        AppUtil.CompressFolder(lp_data, zipFilePath);
+      }
+    }
+    catch (Exception ex)
+    {
+      Debug.LogError(ex);
+    }
+    finally
+    {
+      if (Directory.Exists(lp_data))
+      {
+        Directory.Delete(lp_data, true);
+      }
+    }
+  }
   void BtnSaveExcelHandler()
   {
     List<TabContract> list = new List<TabContract>();
