@@ -223,7 +223,7 @@ public class AppConfig
     { t_province,"省"},
     { t_city,"市"},
     { t_originalFollowup,"原FOLLOWUP"},
-    { t_newSales,"新SALES"},
+    { t_newSales,"销售"},
     { t_interiorNo,"内部编号"},
     { t_contractNo,"外部编号"},
     { t_payment,"支付方式"},

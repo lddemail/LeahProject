@@ -270,14 +270,12 @@ public class UIMain:UIBase
   IEnumerator BtnExportDataHandler()
   {
     string exportName = "Export_Data";
-    // 选择要压缩的文件夹
     string dataPath = AppConfig.GetDataPath();
     string lp_data = dataPath.Replace("Data", exportName);
     yield return null;
     try
     {
       AppUtil.CopyDirectory(dataPath, lp_data);
-      // 打开保存文件对话框
       string zipFilePath = SFB.StandaloneFileBrowser.SaveFilePanel("导出LP数据", "", exportName, "zip");
       if (!string.IsNullOrEmpty(zipFilePath))
       {

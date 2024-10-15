@@ -5,6 +5,9 @@ using System.Collections;
 using UnityEngine;
 using System;
 
+/// <summary>
+/// 到账
+/// </summary>
 public class UIDetailItemAccountExt : UI_DetailItemAccount
 {
 
@@ -12,6 +15,8 @@ public class UIDetailItemAccountExt : UI_DetailItemAccount
   {
     base.ConstructFromXML(xml);
     m_InputLabBarter.m_InputLab.onChanged.Set(OnChangeCallBack);
+    m_InputLabTime.m_InputLab.onChanged.Set(OnChangeCallBack);
+    m_InputLabRemark.m_InputLab.onChanged.Set(OnChangeCallBack);
   }
   private void OnChangeCallBack(EventContext context)
   {

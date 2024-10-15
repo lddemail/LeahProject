@@ -5,6 +5,9 @@ using System.Collections;
 using UnityEngine;
 using System;
 
+/// <summary>
+/// 消费
+/// </summary>
 public class UIDetailItemBarterExt : UI_DetailItemBarter
 {
 
@@ -12,6 +15,8 @@ public class UIDetailItemBarterExt : UI_DetailItemBarter
   {
     base.ConstructFromXML(xml);
     m_InputLabBarter.m_InputLab.onChanged.Set(OnChangeCallBack);
+    m_InputLabTime.m_InputLab.onChanged.Set(OnChangeCallBack);
+    m_InputLabRemark.m_InputLab.onChanged.Set(OnChangeCallBack);
   }
   private void OnChangeCallBack(EventContext context)
   {

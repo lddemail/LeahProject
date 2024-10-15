@@ -16,6 +16,9 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
     base.ConstructFromXML(xml);
 
     m_InputLabPrice.m_InputLab.onChanged.Set(OnChangeCallBack);
+    m_InputLabfTime.m_InputLab.onChanged.Set(OnChangeCallBack);
+    m_InputLabtTime.m_InputLab.onChanged.Set(OnChangeCallBack);
+    m_InputLabRemark.m_InputLab.onChanged.Set(OnChangeCallBack);
     m_InputComboxName.m_ComboxBox1.onChanged.Set(ComboxBox1ChangeHandler);
     m_InputComboxName.m_ComboxBox1.width = m_InputComboxName.m_ComboxBox1.width + 360;
     //m_InputComboxName.m_InputBg.width = m_InputComboxName.m_InputBg.width + 160;
