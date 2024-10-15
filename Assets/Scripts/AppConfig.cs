@@ -137,8 +137,8 @@ public class AppConfig
 
 
   public const string Inport_Excel = "导入Excel";
-  public const string Expot_Excel = "导出Excel";
-  public const string Expot_Data = "导出Data";
+  public const string Export_Excel = "导出Excel";
+  public const string Export_Data = "导出Data";
   public const string Update_Template = "刷新模版";
   public const string Details = "详情";
   public const string Delete = "删除";

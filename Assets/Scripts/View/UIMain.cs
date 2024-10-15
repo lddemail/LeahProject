@@ -31,8 +31,8 @@ public class UIMain:UIBase
   {
     mainPop = new PopupMenu();
     mainPop.AddItem(AppConfig.Inport_Excel, _clickMenu);
-    mainPop.AddItem(AppConfig.Expot_Excel, _clickMenu);
-    mainPop.AddItem(AppConfig.Expot_Data, _clickMenu);
+    mainPop.AddItem(AppConfig.Export_Excel, _clickMenu);
+    mainPop.AddItem(AppConfig.Export_Data, _clickMenu);
 
     templatePop = new PopupMenu();
     templatePop.AddItem(AppConfig.Update_Template, _clickMenu);
@@ -77,11 +77,11 @@ public class UIMain:UIBase
       case AppConfig.Inport_Excel:
         BtnAddHotelHandler();
         break;
-      case AppConfig.Expot_Excel:
+      case AppConfig.Export_Excel:
         BtnSaveExcelHandler();
         break;
-      case AppConfig.Expot_Data:
-        AppStart.ins.StartCoroutine(BtnExpotDataHandler());
+      case AppConfig.Export_Data:
+        AppStart.ins.StartCoroutine(BtnExportDataHandler());
         break;
       case AppConfig.Update_Template:
         AppData.ReadAllTemplates();
@@ -267,17 +267,18 @@ public class UIMain:UIBase
   {
 
   }
-  IEnumerator BtnExpotDataHandler()
+  IEnumerator BtnExportDataHandler()
   {
+    string exportName = "Export_Data";
     // 选择要压缩的文件夹
     string dataPath = AppConfig.GetDataPath();
-    string lp_data = dataPath.Replace("Data", "LP_Data");
+    string lp_data = dataPath.Replace("Data", exportName);
     yield return null;
     try
     {
       AppUtil.CopyDirectory(dataPath, lp_data);
       // 打开保存文件对话框
-      string zipFilePath = SFB.StandaloneFileBrowser.SaveFilePanel("导出LP数据", "", "LP_Data", "zip");
+      string zipFilePath = SFB.StandaloneFileBrowser.SaveFilePanel("导出LP数据", "", exportName, "zip");
       if (!string.IsNullOrEmpty(zipFilePath))
       {
         // 压缩文件夹
