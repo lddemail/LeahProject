@@ -19,8 +19,10 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
     m_InputLabfTime.m_InputLab.onChanged.Set(OnChangeCallBack);
     m_InputLabtTime.m_InputLab.onChanged.Set(OnChangeCallBack);
     m_InputLabRemark.m_InputLab.onChanged.Set(OnChangeCallBack);
-    m_InputComboxName.m_ComboxBox1.onChanged.Set(ComboxBox1ChangeHandler);
-    m_InputComboxName.m_ComboxBox1.width = m_InputComboxName.m_ComboxBox1.width + 360;
+    m_InputComboxName.m_InputLab.onChanged.Set(OnChangeCallBack);
+
+    //m_InputComboxName.m_ComboxBox1.onChanged.Set(ComboxBox1ChangeHandler);
+    //m_InputComboxName.m_ComboxBox1.width = m_InputComboxName.m_ComboxBox1.width + 360;
     //m_InputComboxName.m_InputBg.width = m_InputComboxName.m_InputBg.width + 160;
   }
   private void ComboxBox1ChangeHandler(EventContext context)
@@ -40,7 +42,8 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
     }  
 
     ProductData pd = (ProductData)data;
-    pd.name = templateList1[m_InputComboxName.m_ComboxBox1.selectedIndex];
+    //pd.name = templateList1[m_InputComboxName.m_ComboxBox1.selectedIndex];
+    pd.name = m_InputComboxName.m_InputLab.text;
     pd.price = float.Parse(m_InputLabPrice.m_InputLab.text);
     pd.fTime = AppUtil.StringToTime(m_InputLabfTime.m_InputLab.text);
     pd.tTime = AppUtil.StringToTime(m_InputLabtTime.m_InputLab.text);
@@ -52,7 +55,7 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
   public void SetData(ProductData pd)
   {
     data = pd;
-    templateList1 = AppData.allTemplates[AppConfig.ProductTemplateName];
+    //templateList1 = AppData.allTemplates[AppConfig.ProductTemplateName];
     if(string.IsNullOrEmpty(pd.name) && templateList1 != null && templateList1.Count > 0)
     {
       pd.name = templateList1[0];

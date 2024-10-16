@@ -6,7 +6,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-public class UIDetailItemLabelExt : UI_DetailItemLabel
+public class UIDetailItemOneLabelExt : UI_DetailItemLabel
 {
   private string fieldName1;
   private string template1;
@@ -33,9 +33,9 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
 
   private void ComboxBox1ChangeHandler(EventContext context)
   {
-    if (templateList1 != null)
+    string val = (m_InputCombox1 as UI_InputComboxLabelCompExt).GetCurrVal();
+    if (!string.IsNullOrEmpty(val))
     {
-      string val = templateList1[m_InputCombox1.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName1, val);
       RefreshUI();
     }
@@ -48,14 +48,18 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
 
     templateList1 = string.IsNullOrEmpty(template1) ? null : AppData.allTemplates[template1];
 
-    //m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
+    m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
     m_InputCombox1.m_ComboxBox1.visible = AppUtil.GetInputLabEnabled(fieldName1);
 
     InitInputCombox(m_InputCombox1, fieldName1, templateList1);
 
     RefreshUI();
   }
-
+  private Action _changeCallBack;
+  public void SetChangeCallBack(Action changeCallBack)
+  {
+    _changeCallBack = changeCallBack;
+  }
   private void InitInputCombox(GComponent item, string fieldName, List<string> templateList)
   {
     UI_InputComboxLabelCompExt itemExt = item as UI_InputComboxLabelCompExt;
@@ -70,20 +74,8 @@ public class UIDetailItemLabelExt : UI_DetailItemLabel
 
   public void RefreshUI()
   {
-    string text = "";
-    if(fieldName1 == AppConfig.t_totalDebt)
-    {
-      //欠款金额=(合同总额t_productsPrice-到账总额t_totalAccount)
-      object productsPrice = AppData.currTc.GetFieldVal(AppConfig.t_productsPrice);
-      object totalAccount = AppData.currTc.GetFieldVal(AppConfig.t_totalAccount);
-      float val = (float)productsPrice - (float)totalAccount;
-      text = $"合同金额:{productsPrice} - 到账总额:{totalAccount} = 欠款金额:{val}";
-    }
-    else
-    {
-      object val1 = AppData.currTc.GetFieldVal(fieldName1);
-      text = val1 == null ? "" : val1.ToString();
-    }
+    string text = AppUtil.GetFormatVal(AppData.currTc, fieldName1);
     m_InputCombox1.tooltips = text;
+    m_InputCombox1.m_InputLab.text = text;
   }
 }

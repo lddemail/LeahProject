@@ -10,7 +10,7 @@ public class UIRoot : MonoBehaviour
   public static void FguiBinder()
   {
     BasicsBinder.BindAll();
-    UIObjectFactory.SetPackageItemExtension(UI_DetailItemLabel.URL, typeof(UIDetailItemLabelExt));
+    UIObjectFactory.SetPackageItemExtension(UI_DetailItemLabel.URL, typeof(UIDetailItemOneLabelExt));
     UIObjectFactory.SetPackageItemExtension(UI_DetailItemTwoLabel.URL, typeof(UIDetailItemTwoLabelExt));
     UIObjectFactory.SetPackageItemExtension(UI_DetailItemThreeLabel.URL, typeof(UIDetailItemThreeLabelExt));
     UIObjectFactory.SetPackageItemExtension(UI_MainListItem.URL, typeof(UIMainListItemExt));

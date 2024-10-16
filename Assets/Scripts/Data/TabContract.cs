@@ -235,6 +235,7 @@ public class TabContract
       if (fieldName == name)
       {
         field.SetValue(this,val);
+        Debug.Log($"SetFieldVal:{fieldName}={val}");
         break;
       }
     }

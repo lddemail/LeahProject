@@ -49,18 +49,19 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
   }
   private void ComboxBox1ChangeHandler(EventContext context)
   {
-    if(templateList1 != null)
+    string val = (m_InputCombox1 as UI_InputComboxLabelCompExt).GetCurrVal();
+    if (!string.IsNullOrEmpty(val))
     {
-      string val = templateList1[m_InputCombox1.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName1, val);
       RefreshUI();
+      _changeCallBack?.Invoke();
     }
   }
   private void ComboxBox2ChangeHandler(EventContext context)
   {
-    if (templateList2 != null)
+    string val = (m_InputCombox2 as UI_InputComboxLabelCompExt).GetCurrVal();
+    if (!string.IsNullOrEmpty(val))
     {
-      string val = templateList2[m_InputCombox2.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName2, val);
       RefreshUI();
     }
@@ -77,13 +78,18 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
     templateList1 = string.IsNullOrEmpty(template1) ? null : AppData.allTemplates[template1];
     templateList2 = string.IsNullOrEmpty(template2) ? null : AppData.allTemplates[template2];
 
-    //m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
-    //m_InputCombox2.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName2);
+    m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
+    m_InputCombox2.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName2);
 
     InitInputCombox(m_InputCombox1, fieldName1, templateList1);
     InitInputCombox(m_InputCombox2, fieldName2, templateList2);
 
     RefreshUI();
+  }
+  private Action _changeCallBack;
+  public void SetChangeCallBack(Action changeCallBack)
+  {
+    _changeCallBack = changeCallBack;
   }
   private void InitInputCombox(GComponent item, string fieldName, List<string> templateList)
   {
@@ -98,13 +104,13 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
   }
   public void RefreshUI()
   {
-    object val1 = AppData.currTc.GetFieldVal(fieldName1);
-    string text = val1 == null ? "" : val1.ToString();
+    string text = AppUtil.GetFormatVal(AppData.currTc, fieldName1);
     m_InputCombox1.tooltips = text;
+    m_InputCombox1.m_InputLab.text = text;
 
-    object val2 = AppData.currTc.GetFieldVal(fieldName2);
-    text = val2 == null ? "" : val2.ToString();
+    text = AppUtil.GetFormatVal(AppData.currTc, fieldName2);
     m_InputCombox2.tooltips = text;
+    m_InputCombox2.m_InputLab.text = text;
   }
 
 }

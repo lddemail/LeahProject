@@ -101,6 +101,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\MaterialManager.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GButton.cs" />
     <Compile Include="Assets\Scripts\View\UIDetail.cs" />
+    <Compile Include="Assets\Scripts\View\UIDetailItemOneLabelExt.cs" />
     <Compile Include="Assets\Scripts\Data\TabHotel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\RectMesh.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemLine.cs" />
@@ -155,7 +156,6 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\RichTextField.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_MainListItem.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Action\PlayTransitionAction.cs" />
-    <Compile Include="Assets\Scripts\View\UIDetailItemLabelExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Extensions\DragonBones\DragonBonesLoader.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_TipsLab.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\XMLIterator.cs" />

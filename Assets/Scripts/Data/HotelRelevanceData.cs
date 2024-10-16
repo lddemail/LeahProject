@@ -66,4 +66,26 @@ public class HotelRelevanceData
   {
     return $"{t_hotelName}#{t_group}#{t_brand}#{t_a_contract}#{t_province}#{t_city}";
   }
+  /// <summary>
+  /// 根据属性名获取值
+  /// </summary>
+  /// <param name="name"></param>
+  /// <returns></returns>
+  public object GetFieldVal(string name)
+  {
+    FieldInfo field = this.GetType().GetField(name);
+    if (field != null)
+    {
+      return field.GetValue(this);
+    }
+    return null;
+  }
+  /// <summary>
+  /// 获取城市
+  /// </summary>
+  /// <returns></returns>
+  public string GetCityStr()
+  {
+    return $"{t_province}/{t_city}";
+  }
 }

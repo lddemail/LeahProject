@@ -102,20 +102,26 @@ public class AppData
     }
   }
 
+  public static HotelRelevanceData GetHotelRelevanceData(TabContract currTc)
+  {
+    object hotelName = currTc.GetFieldVal(AppConfig.t_hotelName);
+    return GetHotelRelevanceData(hotelName.ToString());
+  }
   /// <summary>
   /// 根据酒店名字获取关联数据
   /// </summary>
   /// <param name="name"></param>
   /// <returns></returns>
-  public static HotelRelevanceData GetHotelRelevanceData(string name) 
+  public static HotelRelevanceData GetHotelRelevanceData(string hotelName) 
   {
+    Debug.Log($"GetHotelRelevanceData:hotelName={hotelName}");
     HotelRelevanceData data = null;
-    allHotelRelevances.TryGetValue(name,out data);
+    allHotelRelevances.TryGetValue(hotelName, out data);
     if(data == null)
     {
       foreach(HotelRelevanceData d in allHotelRelevances.Values)
       {
-        if (name.Contains(d.t_hotelName)) return d;
+        if (hotelName.Contains(d.t_hotelName)) return d;
       }
     }
     return data;

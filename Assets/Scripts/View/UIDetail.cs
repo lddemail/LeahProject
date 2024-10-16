@@ -155,13 +155,17 @@ public class UIDetail : UIBase
     UIPanel.m_DetailList.RemoveChildrenToPool();
     if (AppData.currTc != null)
     {
-      AddDetailItemThreeLabel(AppConfig.t_hotelName,AppConfig.HotelTemplateName, AppConfig.t_brand, AppConfig.HotelBrandTemplateName, AppConfig.t_group, AppConfig.HotelGroupTemplateName);
+      //酒店名 省市 
+      AddDetailItemTwoLabel(AppConfig.t_hotelName,AppConfig.HotelTemplateName, AppConfig.t_city, "");
+      //酒店品牌  酒店集团 甲方名称
+      AddDetailItemThreeLabel(AppConfig.t_brand, "", AppConfig.t_group, "",AppConfig.t_a_contract,"");
+      //签约公司  支付方式
+      AddDetailItemTwoLabel(AppConfig.t_attribution, AppConfig.SignedTemplateName,AppConfig.t_payment, AppConfig.PaymentTemplateName);
+      //内部编号  外部编号 
+      AddDetailItemTwoLabel(AppConfig.t_interiorNo, "", AppConfig.t_contractNo, "");
+      //欠款
+      AddDetailItemOneLabel(AppConfig.t_totalDebt, "");
 
-      AddDetailItemThreeLabel(AppConfig.t_attribution, AppConfig.SignedTemplateName, AppConfig.t_newSales, AppConfig.SalesTemplateName, AppConfig.t_payment, AppConfig.PaymentTemplateName);
-
-      AddDetailItemCity(AppConfig.t_province, AppConfig.t_city, AppConfig.t_a_contract, AppConfig.A_SignedTemplateName);
-
-      AddDetailItemThreeLabel(AppConfig.t_interiorNo, "", AppConfig.t_contractNo, "", AppConfig.t_totalDebt,"" );
       //产品
       productLine = AddDetailItemLine(AppConfig.t_productsPrice);
       List<ProductData> pdList = ProductData.DBStrToData(AppData.currTc.t_products);
@@ -219,22 +223,25 @@ public class UIDetail : UIBase
     return item;
   }
 
-  private UIDetailItemLabelExt AddDetailItemLabel(string name1, string template1)
+  private UIDetailItemOneLabelExt AddDetailItemOneLabel(string name1, string template1)
   {
-    UIDetailItemLabelExt item = UIPanel.m_DetailList.AddItemFromPool(UIDetailItemLabelExt.URL) as UIDetailItemLabelExt;
+    UIDetailItemOneLabelExt item = UIPanel.m_DetailList.AddItemFromPool(UIDetailItemOneLabelExt.URL) as UIDetailItemOneLabelExt;
     item.SetData(name1, template1);
+    item.SetChangeCallBack(RefreshItemUI);
     return item;
   }
   private UIDetailItemTwoLabelExt AddDetailItemTwoLabel(string name1, string template1, string name2, string template2)
   {
     UIDetailItemTwoLabelExt item = UIPanel.m_DetailList.AddItemFromPool(UIDetailItemTwoLabelExt.URL) as UIDetailItemTwoLabelExt;
     item.SetData(name1, template1, name2, template2);
+    item.SetChangeCallBack(RefreshItemUI);
     return item;
   }
   private UIDetailItemThreeLabelExt AddDetailItemThreeLabel(string name1, string template1,string name2, string template2, string name3, string template3)
   {
     UIDetailItemThreeLabelExt item = UIPanel.m_DetailList.AddItemFromPool(UIDetailItemThreeLabelExt.URL) as UIDetailItemThreeLabelExt;
     item.SetData(name1,template1,name2, template2, name3, template3);
+    item.SetChangeCallBack(RefreshItemUI);
     return item;
   }
 

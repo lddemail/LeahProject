@@ -8,6 +8,12 @@ using System.Collections.Generic;
 
 public class UI_InputComboxLabelCompExt : UI_InputComboxLabelComp
 {
+
+  /// <summary>
+  /// 当前模版 因为过滤会改
+  /// </summary>
+  public List<string> currTemplateList;
+
   public override void ConstructFromXML(XML xml)
   {
     base.ConstructFromXML(xml);
@@ -23,15 +29,15 @@ public class UI_InputComboxLabelCompExt : UI_InputComboxLabelComp
   {
     if(!string.IsNullOrEmpty(m_FilterLab.text))
     {
-      List<string> list = templateList1.FindAll(x => x.Contains(m_FilterLab.text));
-      if(list != null)
-      {
-        m_ComboxBox1.items = list.ToArray();
-      }
+      currTemplateList = templateList1.FindAll(x => x.Contains(m_FilterLab.text));
     }
     else
     {
-      m_ComboxBox1.items = templateList1.ToArray();
+      currTemplateList = templateList1;
+    }
+    if (currTemplateList != null)
+    {
+      m_ComboxBox1.items = currTemplateList.ToArray();
     }
   }
 
@@ -49,13 +55,24 @@ public class UI_InputComboxLabelCompExt : UI_InputComboxLabelComp
     m_cPos.SetSelectedIndex(index);
   }
 
+  public string GetCurrVal()
+  {
+    if (currTemplateList != null)
+    {
+      string val = currTemplateList[m_ComboxBox1.selectedIndex];
+      return val;
+    }
+    return "";
+  }
+
   private List<string> templateList1;
   public void SetData(string title,List<string> itemList,string val)
   {
     m_Title.text = title;
     Set_cPosIndex(itemList != null ? 0 : 1);
     templateList1 = itemList;
-    if(templateList1 != null)
+    currTemplateList = itemList;
+    if (templateList1 != null)
     {
       m_ComboxBox1.items = templateList1.ToArray();
       int index = 0;

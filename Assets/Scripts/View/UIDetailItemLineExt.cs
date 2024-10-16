@@ -21,18 +21,18 @@ public class UIDetailItemLineExt : UI_DetailItemLine
 
   public void RefreshUI()
   {
-    object obj = AppData.currTc.GetFieldVal(fieldName);
+    string text = AppUtil.GetFormatVal(AppData.currTc, fieldName);
     string configFieldName = AppConfig.fieldsNameDic[fieldName];
     switch (fieldName)
     {
       case AppConfig.t_productsPrice: //产品总额
-        m_title.text = $"{configFieldName}:{obj}";
+        m_title.text = $"{configFieldName}:{text}";
         break;
       case AppConfig.t_totalBarter: //酒店消费
-        m_title.text = $"{configFieldName}:{obj}";
+        m_title.text = $"{configFieldName}:{text}";
         break;
       case AppConfig.t_totalAccount: //到账
-        m_title.text = $"{configFieldName}:{obj}";
+        m_title.text = $"{configFieldName}:{text}";
         break;
     }
   }

@@ -507,4 +507,49 @@ public class AppUtil
       CopyDirectory(directory, destDir);
     }
   }
+
+  /// <summary>
+  /// 获取格式化后的显示内容
+  /// </summary>
+  /// <param name="currTc"></param>
+  /// <param name="fieldName"></param>
+  public static string GetFormatVal(TabContract currTc ,string fieldName)
+  {
+    string resVal="";
+    object _obj = null;
+    HotelRelevanceData _hrd = null;
+    switch (fieldName)
+    {
+      case AppConfig.t_province:
+      case AppConfig.t_city:
+      case AppConfig.t_brand:
+      case AppConfig.t_group:
+      case AppConfig.t_a_contract:
+        _hrd = AppData.GetHotelRelevanceData(currTc);
+        if (_hrd != null)
+        {
+          if (fieldName == AppConfig.t_province || fieldName == AppConfig.t_city)
+          {
+            resVal = _hrd.GetCityStr();
+          }
+          else
+          {
+            _obj = _hrd.GetFieldVal(fieldName);
+            resVal = _obj == null ? "" : _obj.ToString();
+          }
+        }
+        break;
+      case AppConfig.t_totalDebt:
+        object productsPrice = currTc.GetFieldVal(AppConfig.t_productsPrice);
+        object totalAccount = currTc.GetFieldVal(AppConfig.t_totalAccount);
+        float price = (float)productsPrice - (float)totalAccount;
+        resVal = $"合同总额:{productsPrice} - 到账:{totalAccount} = 欠款:{price}";
+        break;
+      default:
+        _obj = currTc.GetFieldVal(fieldName);
+        resVal = _obj == null ? "" : _obj.ToString();
+        break;
+    }
+    return resVal;
+  }
 }

@@ -2,8 +2,8 @@
 <component size="1920,50" bgColor="#33cc00">
   <displayList>
     <component id="n13_h63l" name="InputCombox1" src="h63l70" fileName="InputComboxLabelComp.xml" xy="0,4"/>
-    <component id="n14_h63l" name="InputCombox2" src="h63l70" fileName="InputComboxLabelComp.xml" xy="630,4"/>
-    <component id="n15_h63l" name="InputCombox3" src="h63l70" fileName="InputComboxLabelComp.xml" xy="1260,4"/>
+    <component id="n14_h63l" name="InputCombox2" src="h63l70" fileName="InputComboxLabelComp.xml" xy="650,4"/>
+    <component id="n15_h63l" name="InputCombox3" src="h63l70" fileName="InputComboxLabelComp.xml" xy="1300,4"/>
     <graph id="n2_gvvv" name="line" xy="0,49" size="1920,2" visible="false" type="rect" lineSize="0" fillColor="#ff00cc00"/>
   </displayList>
 </component>

@@ -63,28 +63,28 @@ public class UIDetailItemThreeLabelExt : UI_DetailItemThreeLabel
   }
   private void ComboxBox1ChangeHandler(EventContext context)
   {
-    if (templateList1 != null)
+    string val = (m_InputCombox1 as UI_InputComboxLabelCompExt).GetCurrVal();
+    if (!string.IsNullOrEmpty(val))
     {
-      string val = templateList1[m_InputCombox1.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName1, val);
       RefreshUI();
+      _changeCallBack?.Invoke();
     }
-
   }
   private void ComboxBox2ChangeHandler(EventContext context)
   {
-    if (templateList2 != null)
+    string val = (m_InputCombox2 as UI_InputComboxLabelCompExt).GetCurrVal();
+    if (!string.IsNullOrEmpty(val))
     {
-      string val = templateList2[m_InputCombox2.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName2, val);
       RefreshUI();
     }
   }
   private void ComboxBox3ChangeHandler(EventContext context)
   {
-    if (templateList3 != null)
+    string val = (m_InputCombox3 as UI_InputComboxLabelCompExt).GetCurrVal();
+    if (!string.IsNullOrEmpty(val))
     {
-      string val = templateList3[m_InputCombox3.m_ComboxBox1.selectedIndex];
       AppData.currTc.SetFieldVal(fieldName3, val);
       RefreshUI();
     }
@@ -114,6 +114,11 @@ public class UIDetailItemThreeLabelExt : UI_DetailItemThreeLabel
 
     RefreshUI();
   }
+  private Action _changeCallBack;
+  public void SetChangeCallBack(Action changeCallBack)
+  {
+    _changeCallBack = changeCallBack;
+  }
   private void InitInputCombox(GComponent item,string fieldName,List<string> templateList)
   {
     UI_InputComboxLabelCompExt itemExt = item as UI_InputComboxLabelCompExt;
@@ -127,18 +132,15 @@ public class UIDetailItemThreeLabelExt : UI_DetailItemThreeLabel
   }
   public void RefreshUI()
   {
-    object val1 = AppData.currTc.GetFieldVal(fieldName1);
-    string text = val1 == null ? "" : val1.ToString();
+    string text = AppUtil.GetFormatVal(AppData.currTc,fieldName1);
     m_InputCombox1.tooltips = text;
     m_InputCombox1.m_InputLab.text = text;
 
-    object val2 = AppData.currTc.GetFieldVal(fieldName2);
-    text = val2 == null ? "" : val2.ToString();
+    text = AppUtil.GetFormatVal(AppData.currTc, fieldName2);
     m_InputCombox2.tooltips = text;
     m_InputCombox2.m_InputLab.text = text;
 
-    object val3 = AppData.currTc.GetFieldVal(fieldName3);
-    text = val3 == null ? "" : val3.ToString();
+    text = AppUtil.GetFormatVal(AppData.currTc, fieldName3);
     m_InputCombox3.tooltips = text;
     m_InputCombox3.m_InputLab.text = text;
   }
