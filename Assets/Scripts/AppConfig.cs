@@ -125,14 +125,9 @@ public class AppConfig
   public const string t_accountRematk = "t_accountRematk";
 
   public const string RefreshUI = "RefreshUI";
-  public const string ProductTemplateName = "产品模版.txt";
   public const string HotelTemplateName = "酒店模版.txt";
-  public const string HotelGroupTemplateName = "酒店集团模版.txt";
-  public const string HotelBrandTemplateName = "酒店品牌模版.txt";
   public const string PaymentTemplateName = "支付方式模版.txt";
   public const string SignedTemplateName = "签约公司模版.txt";
-  public const string SalesTemplateName = "Sales模版.txt";
-  public const string A_SignedTemplateName = "甲方签约公司模版.txt";
   public const string HotelRelevanceTemplateName = "酒店关联模版.txt";
 
 

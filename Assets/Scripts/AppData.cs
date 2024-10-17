@@ -59,14 +59,9 @@ public class AppData
   /// 模版
   /// </summary>
   public static Dictionary<string, List<string>> allTemplates = new Dictionary<string, List<string>>() {
-    { AppConfig.ProductTemplateName,new List<string>()},
     { AppConfig.HotelTemplateName,new List<string>()},
-    { AppConfig.HotelGroupTemplateName,new List<string>()},
-    { AppConfig.HotelBrandTemplateName,new List<string>()},
     { AppConfig.PaymentTemplateName,new List<string>()},
     { AppConfig.SignedTemplateName,new List<string>()},
-    { AppConfig.SalesTemplateName,new List<string>()},
-    { AppConfig.A_SignedTemplateName,new List<string>()},
     { AppConfig.HotelRelevanceTemplateName,new List<string>()}
   };
 
@@ -75,6 +70,7 @@ public class AppData
     CheckTab();
     allTabContract = AppUtil.ReadAll4DB<TabContract>();
     OrderAllTabContract();
+    CheckOrCreateTemp();
     ReadAllTemplates();
   }
 
@@ -134,8 +130,6 @@ public class AppData
   {
     if (allTabContract != null)
     {
-      //酒店关联模版
-      Dictionary<string, string> _tempDic = new Dictionary<string, string>();
       Dictionary<string, int> hotelNamesDic = new Dictionary<string, int>();
       foreach (TabContract tc in allTabContract)
       {
@@ -159,38 +153,59 @@ public class AppData
         {
           SetAllTabContractFiels(AppConfig.t_products, pd.name);
         }
-
-        //制作酒店关联模版
-        //if (!_tempDic.ContainsKey(tc.t_hotelName))
-        //{
-        //  HotelRelevanceData _hrd = new HotelRelevanceData();
-        //  _hrd.t_hotelName = tc.t_hotelName;
-        //  _hrd.t_group = tc.t_group;
-        //  _hrd.t_brand = tc.t_brand;
-        //  _hrd.t_a_contract = tc.t_a_contract;
-        //  _hrd.t_province = tc.t_province;
-        //  _hrd.t_city = tc.t_city;
-        //  _tempDic.Add(_hrd.t_hotelName, _hrd.ToTemplateStr());
-        //}
       }
 
       //OrderBy升序
       //ThenBy降序
       //allTabContract.OrderBy(x => x.t_index).ThenBy(x => x.t_index).ToList();
       allTabContract = allTabContract.OrderBy(x => x.t_index).ToList();
+    }
+  }
 
-      //制作模版
-      if(allTabContractFiels.Count > 0)
+  /// <summary>
+  /// 检查并制作模版
+  /// </summary>
+  private static void CheckOrCreateTemp()
+  {
+    //酒店关联模版
+    List<string> _tempList = AppUtil.ReadFromTxt(AppConfig.HotelRelevanceTemplateName);
+    if(_tempList.Count < 1)
+    {
+      Dictionary<string, string> _tempDic = new Dictionary<string, string>();
+      foreach (TabContract tc in allTabContract)
       {
-        //AppUtil.WriteToTxt(AppConfig.ProductTemplateName, allTabContractFiels[AppConfig.t_products]);
-        //AppUtil.WriteToTxt(AppConfig.HotelTemplateName, allTabContractFiels[AppConfig.t_hotelName]);
-        //AppUtil.WriteToTxt(AppConfig.HotelGroupTemplateName, allTabContractFiels[AppConfig.t_group]);
-        //AppUtil.WriteToTxt(AppConfig.HotelBrandTemplateName, allTabContractFiels[AppConfig.t_brand]);
-        //AppUtil.WriteToTxt(AppConfig.PaymentTemplateName, allTabContractFiels[AppConfig.t_payment]);
-        //AppUtil.WriteToTxt(AppConfig.SignedTemplateName, allTabContractFiels[AppConfig.t_attribution]);
-        //AppUtil.WriteToTxt(AppConfig.A_SignedTemplateName, allTabContractFiels[AppConfig.t_a_contract]);
-        //AppUtil.WriteToTxt(AppConfig.HotelRelevanceTemplateName, _tempDic.Values.ToList());
+        if (!_tempDic.ContainsKey(tc.t_hotelName))
+        {
+          HotelRelevanceData _hrd = new HotelRelevanceData();
+          _hrd.t_hotelName = tc.t_hotelName;
+          _hrd.t_group = tc.t_group;
+          _hrd.t_brand = tc.t_brand;
+          _hrd.t_a_contract = tc.t_a_contract;
+          _hrd.t_province = tc.t_province;
+          _hrd.t_city = tc.t_city;
+          _tempDic.Add(_hrd.t_hotelName, _hrd.ToTemplateStr());
+        }
       }
+      AppUtil.WriteToTxt(AppConfig.HotelRelevanceTemplateName, _tempDic.Values.ToList());
+    }
+
+    //支付方式模版
+    _tempList = AppUtil.ReadFromTxt(AppConfig.PaymentTemplateName);
+    if(_tempList.Count < 1)
+    {
+      AppUtil.WriteToTxt(AppConfig.PaymentTemplateName, allTabContractFiels[AppConfig.t_payment]);
+    }
+    //酒店模版
+    _tempList = AppUtil.ReadFromTxt(AppConfig.HotelTemplateName);
+    if (_tempList.Count < 1)
+    {
+      AppUtil.WriteToTxt(AppConfig.HotelTemplateName, allTabContractFiels[AppConfig.t_hotelName]);
+    }
+    //签约公司模版
+    _tempList = AppUtil.ReadFromTxt(AppConfig.SignedTemplateName);
+    if (_tempList.Count < 1)
+    {
+      AppUtil.WriteToTxt(AppConfig.SignedTemplateName, allTabContractFiels[AppConfig.t_attribution]);
     }
   }
 

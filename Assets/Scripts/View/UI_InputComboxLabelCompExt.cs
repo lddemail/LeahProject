@@ -39,8 +39,13 @@ public class UI_InputComboxLabelCompExt : UI_InputComboxLabelComp
     {
       m_ComboxBox1.items = currTemplateList.ToArray();
     }
+    _filterChangeCallBack?.Invoke();
   }
-
+  private Action _filterChangeCallBack;
+  public void SetFilterChangeCallBack(Action changeCallBack)
+  {
+    _filterChangeCallBack = changeCallBack;
+  }
   private void OnFocusInHandler(EventContext context)
   {
     m_InputBg.color = AppConfig.selectBgColor;

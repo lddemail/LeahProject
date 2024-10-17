@@ -27,6 +27,12 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
     //m_InputCombox1.m_InputLab.onChanged.Set(OnInputLab1Change);
     //m_InputCombox2.m_InputLab.onChanged.Set(OnInputLab2Change);
 
+    (m_InputCombox1 as UI_InputComboxLabelCompExt).SetFilterChangeCallBack(InputCombox1FilterChangeCallBack);
+  }
+
+  private void InputCombox1FilterChangeCallBack()
+  {
+    ComboxBox1ChangeHandler(null);
   }
 
   private void OnInputLab1Change(EventContext context)

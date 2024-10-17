@@ -36,13 +36,9 @@ public class UIMain:UIBase
 
     templatePop = new PopupMenu();
     templatePop.AddItem(AppConfig.Update_Template, _clickMenu);
-    templatePop.AddItem(AppConfig.ProductTemplateName, _clickMenu);
     templatePop.AddItem(AppConfig.HotelTemplateName, _clickMenu);
-    templatePop.AddItem(AppConfig.HotelGroupTemplateName, _clickMenu);
     templatePop.AddItem(AppConfig.PaymentTemplateName, _clickMenu);
     templatePop.AddItem(AppConfig.SignedTemplateName, _clickMenu);
-    templatePop.AddItem(AppConfig.SalesTemplateName, _clickMenu);
-    templatePop.AddItem(AppConfig.A_SignedTemplateName, _clickMenu);
     templatePop.AddItem(AppConfig.HotelRelevanceTemplateName, _clickMenu);
 
     itemPop = new PopupMenu();
