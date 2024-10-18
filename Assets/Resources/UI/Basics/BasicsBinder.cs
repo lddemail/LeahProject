@@ -27,6 +27,9 @@ namespace Basics
             UIObjectFactory.SetPackageItemExtension(UI_DetailItemProduct.URL, typeof(UI_DetailItemProduct));
             UIObjectFactory.SetPackageItemExtension(UI_DetailItemBarter.URL, typeof(UI_DetailItemBarter));
             UIObjectFactory.SetPackageItemExtension(UI_DetailItemAccount.URL, typeof(UI_DetailItemAccount));
+            UIObjectFactory.SetPackageItemExtension(UI_PaymentTempListItem.URL, typeof(UI_PaymentTempListItem));
+            UIObjectFactory.SetPackageItemExtension(UI_SignedTempListItem.URL, typeof(UI_SignedTempListItem));
+            UIObjectFactory.SetPackageItemExtension(UI_HotelRelevanceTempListItem.URL, typeof(UI_HotelRelevanceTempListItem));
             UIObjectFactory.SetPackageItemExtension(UI_MainPanel.URL, typeof(UI_MainPanel));
             UIObjectFactory.SetPackageItemExtension(UI_MainListItem.URL, typeof(UI_MainListItem));
             UIObjectFactory.SetPackageItemExtension(UI_ComboBoxPopupCopy.URL, typeof(UI_ComboBoxPopupCopy));

@@ -107,6 +107,7 @@
     <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemLine.cs" />
     <Compile Include="Assets\Scripts\View\UITemplate.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemProduct.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_PaymentTempListItem.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GTreeNode.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\UIContentScaler.cs" />
     <Compile Include="Assets\Scripts\AppData.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="Assets\Resources\UI\Basics\UI_Tips.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemThreeLabel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\ColliderHitTest.cs" />
+    <Compile Include="Assets\Scripts\View\UI_HotelRelevanceTempListItemExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GSlider.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Tween\TweenValue.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Tree\TreeView.cs" />
@@ -159,6 +161,7 @@
     <Compile Include="Assets\Resources\UI\Basics\UI_MainListItem.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Action\PlayTransitionAction.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Extensions\DragonBones\DragonBonesLoader.cs" />
+    <Compile Include="Assets\Scripts\View\UI_SignedTempListItemExt.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_TipsLab.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\XMLIterator.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\LineMesh.cs" />
@@ -257,6 +260,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\EMRenderSupport.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\IHitTest.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_Button5Copy.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_HotelRelevanceTempListItem.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemTwoLabel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Tween\GTweener.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\MovieClip.cs" />
@@ -265,6 +269,7 @@
     <Compile Include="Assets\Scripts\View\UIDetailItemCityExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Extensions\WebGLTextInput\WebGLTextInput.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Shape.cs" />
+    <Compile Include="Assets\Scripts\View\UI_PaymentTempListItemExt.cs" />
     <Compile Include="Assets\Scripts\Data\AccountData.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlElement.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\BaseFont.cs" />
@@ -285,6 +290,7 @@
     <Compile Include="Assets\Scripts\View\UIConfirm.cs" />
     <Compile Include="Assets\Scripts\Core\EventMgr.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GTextField.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_SignedTempListItem.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\IHtmlPageContext.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\MeshColliderHitTest.cs" />
     <Compile Include="Assets\Scripts\Data\HotelRelevanceData.cs" />

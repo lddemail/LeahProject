@@ -47,8 +47,10 @@ public class UIMain:UIBase
     });
     UIPanel.m_BtnAdd.onClick.Add(BtnAddHandler);
 
+    //模版管理
     UIPanel.m_BtnTemplate.onClick.Add(() => {
-      templatePop.Show(UIPanel.m_BtnTemplate);
+      //templatePop.Show(UIPanel.m_BtnTemplate);
+      UIRoot.ins.uiTemplate.Show();
     });
 
 

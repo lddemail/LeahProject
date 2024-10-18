@@ -24,6 +24,9 @@ public class UIRoot : MonoBehaviour
     UIObjectFactory.SetPackageItemExtension(UI_InputDescLabelComp.URL, typeof(UI_InputDescLabelCompExt)); 
     UIObjectFactory.SetPackageItemExtension(UI_InputStrLabelComp.URL, typeof(UI_InputStrLabelCompExt)); 
     UIObjectFactory.SetPackageItemExtension(UI_InputComboxLabelComp.URL, typeof(UI_InputComboxLabelCompExt));
+    UIObjectFactory.SetPackageItemExtension(UI_PaymentTempListItem.URL, typeof(UI_PaymentTempListItemExt));
+    UIObjectFactory.SetPackageItemExtension(UI_SignedTempListItem.URL, typeof(UI_SignedTempListItemExt));
+    UIObjectFactory.SetPackageItemExtension(UI_HotelRelevanceTempListItem.URL, typeof(UI_HotelRelevanceTempListItemExt));
   }
 
   public static UIRoot ins;
@@ -56,6 +59,12 @@ public class UIRoot : MonoBehaviour
     get { _uiDetail ??= new UIDetail(transform); return _uiDetail; }
   }
 
+  private UITemplate _uiTemplate;
+  public UITemplate uiTemplate
+  {
+    get { _uiTemplate ??= new UITemplate(transform); return _uiTemplate; }
+  }
+
 
   public void Init()
   {
@@ -65,5 +74,6 @@ public class UIRoot : MonoBehaviour
     uiTips.Init();
     uiConfirm.Init();
     uiDetail.Init();
+    uiTemplate.Init();
   }
 }

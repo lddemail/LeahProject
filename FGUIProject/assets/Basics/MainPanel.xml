@@ -34,7 +34,7 @@
       <item/>
     </list>
     <component id="n48_i6pi" name="UIDetail" src="i6pi6i" fileName="UIDetail.xml" xy="0,0" visible="false"/>
-    <component id="n69_xtmc" name="UITemplate" src="gich77" fileName="UITemplate.xml" xy="-184,218" visible="false"/>
+    <component id="n69_xtmc" name="UITemplate" src="gich77" fileName="UITemplate.xml" xy="0,0" visible="false"/>
     <component id="n45_i6pi" name="Tips" src="i6pi6d" fileName="Tips.xml" xy="560,490" visible="false" touchable="false">
       <relation target="" sidePair="center-center,middle-middle"/>
     </component>

@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="800,600">
+<component size="1920,1024">
   <displayList>
-    <text id="n0_ofvt" name="Temp" xy="324,145" size="40,32" fontSize="22" text=""/>
+    <graph id="n5_ofvt" name="n5" xy="0,0" size="1920,1080" type="rect" fillColor="#ff999999"/>
+    <component id="n1_ofvt" name="BtnClose" src="p5s36a" fileName="components/Button22.xml" xy="0,0">
+      <Button title="关闭"/>
+    </component>
+    <component id="n9_ofvt" name="BtnSave" src="p5s36a" fileName="components/Button22.xml" xy="110,0">
+      <Button title="保存"/>
+    </component>
+    <component id="n2_ofvt" name="BtnPaymentTemp" src="p5s36a" fileName="components/Button22.xml" xy="220,0">
+      <Button title="支付方式"/>
+    </component>
+    <component id="n3_ofvt" name="BtnSignedTemp" src="p5s36a" fileName="components/Button22.xml" xy="330,0">
+      <Button title="签约公司"/>
+    </component>
+    <component id="n4_ofvt" name="BtnHotelRelevanceTemp" src="p5s36a" fileName="components/Button22.xml" xy="440,0">
+      <Button title="酒店关联"/>
+    </component>
+    <list id="n6_ofvt" name="PaymentTempList" xy="0,50" size="1920,1024" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," lineGap="5" defaultItem="ui://z3yueri4ofvt78" autoClearItems="true">
+      <item/>
+    </list>
+    <list id="n7_ofvt" name="SignedTempList" xy="0,50" size="1920,1024" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," lineGap="5" defaultItem="ui://z3yueri4ofvt79" autoClearItems="true">
+      <item/>
+    </list>
+    <list id="n8_ofvt" name="HotelRelevanceTempList" xy="0,50" size="1920,1024" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," lineGap="5" defaultItem="ui://z3yueri4ofvt7a" autoClearItems="true">
+      <item/>
+    </list>
   </displayList>
 </component>

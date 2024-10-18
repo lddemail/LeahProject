@@ -253,6 +253,9 @@
     <component id="rrp475" name="MainPopupMenuItem.xml" path="/popupmenu/"/>
     <component id="jvya76" name="TipsLab.xml" path="/" exported="true"/>
     <component id="gich77" name="UITemplate.xml" path="/" exported="true"/>
+    <component id="ofvt78" name="PaymentTempListItem.xml" path="/" exported="true"/>
+    <component id="ofvt79" name="SignedTempListItem.xml" path="/" exported="true"/>
+    <component id="ofvt7a" name="HotelRelevanceTempListItem.xml" path="/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1900,40">
+  <displayList>
+    <graph id="n0_ofvt" name="InputBg" xy="0,0" size="1900,40" type="rect">
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <text id="n1_ofvt" name="InputLab" xy="0,4" size="1900,32" fontSize="22" vAlign="middle" ubb="true" autoSize="none" bold="true" text="" input="true" prompt="0" restrict="[0-9]">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+</component>
