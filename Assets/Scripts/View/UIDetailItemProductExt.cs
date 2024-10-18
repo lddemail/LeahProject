@@ -75,7 +75,7 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
   public void RefreshUI()
   {
     ProductData pd = (ProductData)data;
-    //m_InputComboxName.m_InputLab.text = pd.name;
+    m_InputComboxName.m_InputLab.text = pd.name;
     m_InputLabPrice.m_InputLab.text = pd.price.ToString();
     m_InputLabfTime.m_InputLab.text = AppUtil.TimeToString(pd.fTime);
     m_InputLabtTime.m_InputLab.text = $"{AppUtil.TimeToString(pd.tTime)}";

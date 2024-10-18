@@ -36,7 +36,6 @@ public class UIMain:UIBase
 
     templatePop = new PopupMenu();
     templatePop.AddItem(AppConfig.Update_Template, _clickMenu);
-    templatePop.AddItem(AppConfig.HotelTemplateName, _clickMenu);
     templatePop.AddItem(AppConfig.PaymentTemplateName, _clickMenu);
     templatePop.AddItem(AppConfig.SignedTemplateName, _clickMenu);
     templatePop.AddItem(AppConfig.HotelRelevanceTemplateName, _clickMenu);
@@ -253,7 +252,7 @@ public class UIMain:UIBase
     }
   }
 
-  private void RefreshUI()
+  public override void RefreshUI()
   {
     int count = _currTabContracts == null ? 0 : _currTabContracts.Count;
     UIPanel.m_mainList.numItems = count;

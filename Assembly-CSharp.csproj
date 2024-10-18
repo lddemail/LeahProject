@@ -105,6 +105,7 @@
     <Compile Include="Assets\Scripts\Data\TabHotel.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\RectMesh.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemLine.cs" />
+    <Compile Include="Assets\Scripts\View\UITemplate.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemProduct.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GTreeNode.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\UIContentScaler.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\UI\UIPackage.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GRichTextField.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\CompositeMesh.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_UITemplate.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Event\IEventDispatcher.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Tween\GTween.cs" />
     <Compile Include="Assets\Scripts\Core\SQLiteHelper.cs" />

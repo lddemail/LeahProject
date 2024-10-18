@@ -59,7 +59,6 @@ public class AppData
   /// 模版
   /// </summary>
   public static Dictionary<string, List<string>> allTemplates = new Dictionary<string, List<string>>() {
-    { AppConfig.HotelTemplateName,new List<string>()},
     { AppConfig.PaymentTemplateName,new List<string>()},
     { AppConfig.SignedTemplateName,new List<string>()},
     { AppConfig.HotelRelevanceTemplateName,new List<string>()}
@@ -163,6 +162,25 @@ public class AppData
   }
 
   /// <summary>
+  /// 获取模版字符串
+  /// </summary>
+  /// <returns></returns>
+  public static List<string> GetTempList(string tempName)
+  {
+    List<string> res = null;
+    switch (tempName)
+    {
+      case AppConfig.HotelRelevanceTemplateName:
+        res = allHotelRelevances.Keys.ToList();
+        break;
+      default:
+        res = allTemplates[tempName];
+        break;
+    }
+    return res;
+  }
+
+  /// <summary>
   /// 检查并制作模版
   /// </summary>
   private static void CheckOrCreateTemp()
@@ -194,12 +212,6 @@ public class AppData
     if(_tempList.Count < 1)
     {
       AppUtil.WriteToTxt(AppConfig.PaymentTemplateName, allTabContractFiels[AppConfig.t_payment]);
-    }
-    //酒店模版
-    _tempList = AppUtil.ReadFromTxt(AppConfig.HotelTemplateName);
-    if (_tempList.Count < 1)
-    {
-      AppUtil.WriteToTxt(AppConfig.HotelTemplateName, allTabContractFiels[AppConfig.t_hotelName]);
     }
     //签约公司模版
     _tempList = AppUtil.ReadFromTxt(AppConfig.SignedTemplateName);

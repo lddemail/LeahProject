@@ -46,7 +46,7 @@ public class UIDetailItemOneLabelExt : UI_DetailItemLabel
     fieldName1 = _fieldName;
     template1 = _template1;
 
-    templateList1 = string.IsNullOrEmpty(template1) ? null : AppData.allTemplates[template1];
+    templateList1 = string.IsNullOrEmpty(template1) ? null : AppData.GetTempList(template1);
 
     m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
     m_InputCombox1.m_ComboxBox1.visible = AppUtil.GetInputLabEnabled(fieldName1);

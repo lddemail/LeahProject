@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
+/// <summary>
+/// 详情
+/// </summary>
 public class UIDetail : UIBase
 {
   public enum EmItemType
@@ -156,7 +159,7 @@ public class UIDetail : UIBase
     if (AppData.currTc != null)
     {
       //酒店名 省市 
-      AddDetailItemTwoLabel(AppConfig.t_hotelName,AppConfig.HotelTemplateName, AppConfig.t_city, "");
+      AddDetailItemTwoLabel(AppConfig.t_hotelName,AppConfig.HotelRelevanceTemplateName, AppConfig.t_city, "");
       //酒店品牌  酒店集团 甲方名称
       AddDetailItemThreeLabel(AppConfig.t_brand, "", AppConfig.t_group, "",AppConfig.t_a_contract,"");
       //签约公司  支付方式
@@ -205,9 +208,6 @@ public class UIDetail : UIBase
     }
   }
 
-  private void RefreshUI()
-  {
-  }
 
   private UIDetailItemLineExt AddDetailItemLine(string name)
   {

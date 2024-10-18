@@ -82,7 +82,7 @@ public class UIDetailItemCityExt : UI_DetailItemCity
 
     template1 = _template1;
 
-    templateList1 = string.IsNullOrEmpty(template1) ? null : AppData.allTemplates[template1];
+    templateList1 = string.IsNullOrEmpty(template1) ? null : AppData.GetTempList(template1);
 
     //m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
 

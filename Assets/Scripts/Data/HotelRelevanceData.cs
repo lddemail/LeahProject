@@ -2,7 +2,7 @@
 
 
 /// <summary>
-/// 酒店关联
+/// 酒店关联模版
 /// </summary>
 public class HotelRelevanceData
 {
@@ -54,6 +54,7 @@ public class HotelRelevanceData
     }
     return null;
   }
+
   private FieldInfo[] GetFields()
   {
     return GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);

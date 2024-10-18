@@ -19,4 +19,9 @@ public class UIBase:MonoBehaviour
     {
 
     }
+
+  public virtual void RefreshUI()
+  { 
+  
+  }
 }
