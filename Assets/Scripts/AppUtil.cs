@@ -517,7 +517,7 @@ public class AppUtil
   {
     string resVal="";
     object _obj = null;
-    HotelRelevanceData _hrd = null;
+    HotelRelevanceTempData _hrd = null;
     switch (fieldName)
     {
       case AppConfig.t_province:

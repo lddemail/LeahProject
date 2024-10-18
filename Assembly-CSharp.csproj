@@ -143,6 +143,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Tween\GTween.cs" />
     <Compile Include="Assets\Scripts\Core\SQLiteHelper.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GList.cs" />
+    <Compile Include="Assets\Scripts\Data\PaymentTempData.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Event\EventDispatcher.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_Tips.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_DetailItemThreeLabel.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\InputTextField.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Extensions\TextMeshPro\TMPTextFormat.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\Gears\GearDisplay.cs" />
+    <Compile Include="Assets\Scripts\Data\HotelRelevanceTempData.cs" />
     <Compile Include="Assets\Scripts\Data\ProductData.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\DragDropManager.cs" />
     <Compile Include="Assets\Scripts\View\UI_InputComboxLabelCompExt.cs" />
@@ -290,10 +292,10 @@
     <Compile Include="Assets\Scripts\View\UIConfirm.cs" />
     <Compile Include="Assets\Scripts\Core\EventMgr.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GTextField.cs" />
+    <Compile Include="Assets\Scripts\Data\SignedTempData.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_SignedTempListItem.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\IHtmlPageContext.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\MeshColliderHitTest.cs" />
-    <Compile Include="Assets\Scripts\Data\HotelRelevanceData.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\HitTest\HitTestContext.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Event\EventBridge.cs" />
   </ItemGroup>

@@ -53,16 +53,15 @@ public class AppData
   /// <summary>
   ///  所有酒店管理数据
   /// </summary>
-  public static Dictionary<string, HotelRelevanceData> allHotelRelevances = new Dictionary<string, HotelRelevanceData>();
-
+  public static Dictionary<int, HotelRelevanceTempData> allHotelRelevanceTempData = new Dictionary<int, HotelRelevanceTempData>();
   /// <summary>
-  /// 模版
+  /// 所有支付方式数据
   /// </summary>
-  public static Dictionary<string, List<string>> allTemplates = new Dictionary<string, List<string>>() {
-    { AppConfig.PaymentTemplateName,new List<string>()},
-    { AppConfig.SignedTemplateName,new List<string>()},
-    { AppConfig.HotelRelevanceTemplateName,new List<string>()}
-  };
+  public static Dictionary<int, PaymentTempData> allPaymentTempData = new Dictionary<int, PaymentTempData>();
+  /// <summary>
+  /// 所有签约公司数据
+  /// </summary>
+  public static Dictionary<int, SignedTempData> allSignedTempData = new Dictionary<int, SignedTempData>();
 
   public static void Init()
   {
@@ -78,26 +77,54 @@ public class AppData
   /// </summary>
   public static void ReadAllTemplates()
   {
-    foreach (string tempName in allTemplates.Keys)
+
+    //酒店关联模版
+    allHotelRelevanceTempData.Clear();
+    List<string> _tempList = AppUtil.ReadFromTxt(AppConfig.HotelRelevanceTemplateName);
+    if (_tempList.Count > 2)
     {
-      allTemplates[tempName].Clear();
-      List<string> _tempList = AppUtil.ReadFromTxt(tempName);
-      if (_tempList.Count > 2)
-      {
-        _tempList.Sort((x, y) => AppUtil.CompareFirstTwoCharacters(x, y));
-      }
-      allTemplates[tempName].AddRange(_tempList);
+      _tempList.Sort((x, y) => AppUtil.CompareFirstTwoCharacters(x, y));
     }
-    allHotelRelevances.Clear();
-    //进一步封装酒店关联模版
-    foreach (string str in allTemplates[AppConfig.HotelRelevanceTemplateName])
+    int id = 0;
+    foreach (string str in _tempList)
     {
-      HotelRelevanceData hrd = HotelRelevanceData.Create(str);
-      if(hrd != null) allHotelRelevances.Add(hrd.t_hotelName, hrd);
+      HotelRelevanceTempData hrd = HotelRelevanceTempData.Create(id, str);
+      if (hrd != null)
+      {
+        allHotelRelevanceTempData.Add(id, hrd);
+        id++;
+      }
+    }
+
+    //支付方式模版
+    allPaymentTempData.Clear();
+    _tempList = AppUtil.ReadFromTxt(AppConfig.PaymentTemplateName);
+    id = 0;
+    foreach (string str in _tempList)
+    {
+      PaymentTempData ptd = PaymentTempData.Create(id, str);
+      if (ptd != null)
+      {
+        allPaymentTempData.Add(id, ptd);
+        id++;
+      }
+    }
+    //签约公司模版
+    allSignedTempData.Clear();
+    _tempList = AppUtil.ReadFromTxt(AppConfig.SignedTemplateName);
+    id = 0;
+    foreach (string str in _tempList)
+    {
+      SignedTempData ptd = SignedTempData.Create(id, str);
+      if (ptd != null)
+      {
+        allSignedTempData.Add(id, ptd);
+        id++;
+      }
     }
   }
 
-  public static HotelRelevanceData GetHotelRelevanceData(TabContract currTc)
+  public static HotelRelevanceTempData GetHotelRelevanceData(TabContract currTc)
   {
     object hotelName = currTc.GetFieldVal(AppConfig.t_hotelName);
     return GetHotelRelevanceData(hotelName.ToString());
@@ -107,17 +134,13 @@ public class AppData
   /// </summary>
   /// <param name="name"></param>
   /// <returns></returns>
-  public static HotelRelevanceData GetHotelRelevanceData(string hotelName) 
+  public static HotelRelevanceTempData GetHotelRelevanceData(string hotelName) 
   {
     Debug.Log($"GetHotelRelevanceData:hotelName={hotelName}");
-    HotelRelevanceData data = null;
-    allHotelRelevances.TryGetValue(hotelName, out data);
-    if(data == null)
+    HotelRelevanceTempData data = null;
+    foreach (HotelRelevanceTempData d in allHotelRelevanceTempData.Values)
     {
-      foreach(HotelRelevanceData d in allHotelRelevances.Values)
-      {
-        if (hotelName.Contains(d.t_hotelName)) return d;
-      }
+      if (hotelName.Contains(d.t_hotelName)) return d;
     }
     return data;
   }
@@ -167,23 +190,67 @@ public class AppData
   /// <returns></returns>
   public static List<string> GetTempList(string tempName)
   {
-    List<string> res = null;
+    List<string> res = new List<string>();
     switch (tempName)
     {
       case AppConfig.HotelRelevanceTemplateName:
-        res = allHotelRelevances.Keys.ToList();
+        foreach(var rtd in allHotelRelevanceTempData.Values)
+        {
+          if (!res.Contains(rtd.t_hotelName)) res.Add(rtd.t_hotelName);
+        }
+        break;
+      case AppConfig.PaymentTemplateName:
+        foreach (var ptd in allPaymentTempData.Values)
+        {
+          if (!res.Contains(ptd.t_Name)) res.Add(ptd.t_Name);
+        }
+        break;
+      case AppConfig.SignedTemplateName:
+        foreach (var std in allSignedTempData.Values)
+        {
+          if (!res.Contains(std.t_Name)) res.Add(std.t_Name);
+        }
         break;
       default:
-        res = allTemplates[tempName];
         break;
     }
     return res;
+  }
+  public static void RemoveTemp(string tempName,int id)
+  {
+    if (id < 0) return;
+
+    switch (tempName)
+    {
+      case AppConfig.HotelRelevanceTemplateName:
+        if (allHotelRelevanceTempData.ContainsKey(id)) allHotelRelevanceTempData.Remove(id);
+        break;
+      case AppConfig.SignedTemplateName:
+        if (allSignedTempData.ContainsKey(id)) allSignedTempData.Remove(id);
+        break;
+      case AppConfig.PaymentTemplateName:
+        if (allPaymentTempData.ContainsKey(id)) allPaymentTempData.Remove(id);
+        break;
+      default:
+
+        break;
+    }
+  }
+
+  public static void SaveAllTemp()
+  {
+    //酒店关联模版
+    //AppUtil.WriteToTxt(AppConfig.HotelRelevanceTemplateName, _tempDic.Values.ToList());
+    //支付方式模版
+    //AppUtil.WriteToTxt(AppConfig.PaymentTemplateName, allTemplates[AppConfig.PaymentTemplateName]);
+    //签约公司模版
+    //AppUtil.WriteToTxt(AppConfig.SignedTemplateName, allTemplates[AppConfig.SignedTemplateName]);
   }
 
   /// <summary>
   /// 检查并制作模版
   /// </summary>
-  private static void CheckOrCreateTemp()
+  public static void CheckOrCreateTemp()
   {
     //酒店关联模版
     List<string> _tempList = AppUtil.ReadFromTxt(AppConfig.HotelRelevanceTemplateName);
@@ -194,7 +261,7 @@ public class AppData
       {
         if (!_tempDic.ContainsKey(tc.t_hotelName))
         {
-          HotelRelevanceData _hrd = new HotelRelevanceData();
+          HotelRelevanceTempData _hrd = new HotelRelevanceTempData();
           _hrd.t_hotelName = tc.t_hotelName;
           _hrd.t_group = tc.t_group;
           _hrd.t_brand = tc.t_brand;

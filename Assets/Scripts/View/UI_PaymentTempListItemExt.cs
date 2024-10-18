@@ -4,6 +4,7 @@ using FairyGUI;
 using System.Collections;
 using UnityEngine;
 using System;
+using System.Xml.Serialization;
 
 public class UI_PaymentTempListItemExt : UI_PaymentTempListItem
 {
@@ -11,6 +12,20 @@ public class UI_PaymentTempListItemExt : UI_PaymentTempListItem
   {
     base.ConstructFromXML(xml);
 
+    m_InputLab.onChanged.Set(OnInputLab1Change);
+  }
+
+  private void OnInputLab1Change(EventContext context)
+  {
+    string val = m_InputLab.text;
+    if (string.IsNullOrEmpty(val)) return;
+
+    string dataStr = data.ToString();
+    if (dataStr != val)
+    {
+      //AppData.ChangeTempVal(AppConfig.PaymentTemplateName, dataStr, val);
+      //SetData(val);
+    }
   }
 
   private void OnFocusInHandler(EventContext context)
@@ -19,9 +34,14 @@ public class UI_PaymentTempListItemExt : UI_PaymentTempListItem
   private void OnFocusOutHandler(EventContext context)
   {
   }
-  public void SetData(string val)
+  public void SetData(PaymentTempData val)
   {
     data = val;
-    m_InputLab.text = val;
+    RefreshUI();
+  }
+
+  public void RefreshUI()
+  {
+    m_InputLab.text = (data as PaymentTempData).ToTemplateShowStr();
   }
 }

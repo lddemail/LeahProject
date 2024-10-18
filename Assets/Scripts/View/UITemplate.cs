@@ -12,21 +12,10 @@ using UnityEngine;
 /// </summary>
 public class UITemplate : UIBase
 {
-  public enum EmTempType
-  {
-    None,
-    //支付模版
-    PaymentTemp,
-    //签约公司模版
-    SignedTemp,
-    //酒店关联
-    HotelRelevanceTemp
-  }
-
-  private List<string> PaymentTempData; 
-  private List<string> SignedTempData;
-  private List<HotelRelevanceData> HotelRelevanceTempData;
-  private EmTempType currTempType = EmTempType.None;
+  private List<PaymentTempData> PaymentTempData; 
+  private List<SignedTempData> SignedTempData;
+  private List<HotelRelevanceTempData> HotelRelevanceTempData;
+  private string currTempType = "";
 
   PopupMenu itemPop = new PopupMenu();
 
@@ -47,15 +36,15 @@ public class UITemplate : UIBase
 
     UIPanel.m_BtnPaymentTemp.onClick.Add(() =>
     {
-      ToggleTemp(EmTempType.PaymentTemp);
+      ToggleTemp(AppConfig.PaymentTemplateName);
     });
     UIPanel.m_BtnSignedTemp.onClick.Add(() =>
     {
-      ToggleTemp(EmTempType.SignedTemp);
+      ToggleTemp(AppConfig.SignedTemplateName);
     });
     UIPanel.m_BtnHotelRelevanceTemp.onClick.Add(() =>
     {
-      ToggleTemp(EmTempType.HotelRelevanceTemp);
+      ToggleTemp(AppConfig.HotelRelevanceTemplateName);
     });
 
     UIPanel.m_PaymentTempList.itemRenderer = PaymentTempList;
@@ -69,29 +58,26 @@ public class UITemplate : UIBase
   }
   private void PaymentTempList(int index, GObject item)
   {
-    string str= PaymentTempData[index];
+    var data = PaymentTempData[index];
     var _item = item as UI_PaymentTempListItemExt;
-    _item.SetData(str);
+    _item.SetData(data);
     _item.onRightClick.Set(MainItemRightClick);
-    //_item.onClick.Set(MainItemDoubleClick);
     //_item.onRollOut.Set(MainItemRollOut);
   }
   private void SignedTempListRender(int index, GObject item)
   {
-    string str = SignedTempData[index];
+    var data = SignedTempData[index];
     var _item = item as UI_SignedTempListItemExt;
-    _item.SetData(str);
+    _item.SetData(data);
     _item.onRightClick.Set(MainItemRightClick);
-    //_item.onClick.Set(MainItemDoubleClick);
     //_item.onRollOut.Set(MainItemRollOut);
   }
   private void HotelRelevanceTempListRender(int index, GObject item)
   {
-    HotelRelevanceData data = HotelRelevanceTempData[index];
+    var data = HotelRelevanceTempData[index];
     var _item = item as UI_HotelRelevanceTempListItemExt;
     _item.SetData(data);
     _item.onRightClick.Set(MainItemRightClick);
-    //_item.onClick.Set(MainItemDoubleClick);
     //_item.onRollOut.Set(MainItemRollOut);
   }
   private void MainItemRightClick(EventContext context)
@@ -99,9 +85,27 @@ public class UITemplate : UIBase
     GComponent obj = context.sender as GComponent;
     itemPop.ClearItems();
     itemPop.AddItem(AppConfig.Delete, () => {
-      UIRoot.ins.uiConfirm.Show($"确定要删除:{obj.data}吗?", () =>
-      {
 
+      string tips = "";
+      int id = -1;
+      switch (currTempType)
+      {
+        case AppConfig.PaymentTemplateName:
+          tips = (obj.data as PaymentTempData).t_Name;
+          id = (obj.data as PaymentTempData).t_id;
+          break;
+        case AppConfig.SignedTemplateName:
+          tips = (obj.data as SignedTempData).t_Name;
+          id = (obj.data as SignedTempData).t_id;
+          break;
+        case AppConfig.HotelRelevanceTemplateName:
+          tips = (obj.data as HotelRelevanceTempData).t_hotelName;
+          id = (obj.data as HotelRelevanceTempData).t_id;
+          break;
+      }
+      UIRoot.ins.uiConfirm.Show($"确定要删除:{tips}吗?", () =>
+      {
+        AppData.RemoveTemp(currTempType, id);
       });
     });
     itemPop.Show();
@@ -116,14 +120,17 @@ public class UITemplate : UIBase
   }
   private void BtnSaveHandler(EventContext context)
   {
+    //保存
+    AppData.SaveAllTemp();
+    UIRoot.ins.uiTips.Show($"模版保存成功");
   }
   public override void Show(object obj = null)
   {
 
     UIPanel.visible = true;
-
+    currTempType = "";
     InitUI();
-    ToggleTemp(EmTempType.PaymentTemp);
+    ToggleTemp(AppConfig.PaymentTemplateName);
   }
 
   private void InitUI()
@@ -134,28 +141,28 @@ public class UITemplate : UIBase
   /// <summary>
   /// 切换模版
   /// </summary>
-  private void ToggleTemp(EmTempType tempType)
+  private void ToggleTemp(string tempType)
   {
     if (currTempType == tempType) return;
 
     currTempType = tempType;
 
-    UIPanel.m_PaymentTempList.visible = currTempType == EmTempType.PaymentTemp;
-    UIPanel.m_SignedTempList.visible = currTempType == EmTempType.SignedTemp;
-    UIPanel.m_HotelRelevanceTempList.visible = currTempType == EmTempType.HotelRelevanceTemp;
+    UIPanel.m_PaymentTempList.visible = currTempType == AppConfig.PaymentTemplateName;
+    UIPanel.m_SignedTempList.visible = currTempType == AppConfig.SignedTemplateName;
+    UIPanel.m_HotelRelevanceTempList.visible = currTempType == AppConfig.HotelRelevanceTemplateName;
 
     switch (currTempType)
     {
-      case EmTempType.PaymentTemp:
-        PaymentTempData = AppData.GetTempList(AppConfig.PaymentTemplateName);
+      case AppConfig.PaymentTemplateName:
+        PaymentTempData = AppData.allPaymentTempData.Values.ToList();
         UIPanel.m_PaymentTempList.numItems = PaymentTempData.Count;
         break;
-      case EmTempType.SignedTemp:
-        SignedTempData = AppData.GetTempList(AppConfig.SignedTemplateName);
+      case AppConfig.SignedTemplateName:
+        SignedTempData = AppData.allSignedTempData.Values.ToList();
         UIPanel.m_SignedTempList.numItems = SignedTempData.Count;
         break;
-      case EmTempType.HotelRelevanceTemp:
-        HotelRelevanceTempData = AppData.allHotelRelevances.Values.ToList();
+      case AppConfig.HotelRelevanceTemplateName:
+        HotelRelevanceTempData = AppData.allHotelRelevanceTempData.Values.ToList();
         UIPanel.m_HotelRelevanceTempList.numItems = HotelRelevanceTempData.Count;
         break;
     }

@@ -11,6 +11,20 @@ public class UI_SignedTempListItemExt : UI_SignedTempListItem
   {
     base.ConstructFromXML(xml);
 
+    m_InputLab.onChanged.Set(OnInputLab1Change);
+  }
+
+  private void OnInputLab1Change(EventContext context)
+  {
+    string val = m_InputLab.text;
+    if (string.IsNullOrEmpty(val)) return;
+
+    string dataStr = data.ToString();
+    if (dataStr != val)
+    {
+      //AppData.ChangeTempVal(AppConfig.SignedTemplateName, dataStr, val);
+      //SetData(val);
+    }
   }
 
   private void OnFocusInHandler(EventContext context)
@@ -19,9 +33,14 @@ public class UI_SignedTempListItemExt : UI_SignedTempListItem
   private void OnFocusOutHandler(EventContext context)
   {
   }
-  public void SetData(string val)
+  public void SetData(SignedTempData val)
   {
     data = val;
-    m_InputLab.text = val;
+    RefreshUI();
+  }
+
+  public void RefreshUI()
+  {
+    m_InputLab.text = (data as SignedTempData).ToTemplateShowStr();
   }
 }
