@@ -256,6 +256,8 @@
     <component id="ofvt78" name="PaymentTempListItem.xml" path="/" exported="true"/>
     <component id="ofvt79" name="SignedTempListItem.xml" path="/" exported="true"/>
     <component id="ofvt7a" name="HotelRelevanceTempListItem.xml" path="/" exported="true"/>
+    <component id="qjfs7b" name="UILog.xml" path="/" exported="true"/>
+    <component id="qjfs7c" name="UILogListItem.xml" path="/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

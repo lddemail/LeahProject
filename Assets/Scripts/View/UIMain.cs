@@ -33,6 +33,7 @@ public class UIMain:UIBase
     mainPop.AddItem(AppConfig.Inport_Excel, _clickMenu);
     mainPop.AddItem(AppConfig.Export_Excel, _clickMenu);
     mainPop.AddItem(AppConfig.Export_Data, _clickMenu);
+    mainPop.AddItem(AppConfig.Show_Log, _clickMenu);
 
     templatePop = new PopupMenu();
     templatePop.AddItem(AppConfig.Update_Template, _clickMenu);
@@ -83,6 +84,9 @@ public class UIMain:UIBase
       case AppConfig.Update_Template:
         AppData.ReadAllTemplates();
         UIRoot.ins.uiTips.Show($"模版刷新成功");
+        break;
+      case AppConfig.Show_Log:
+        UIRoot.ins.uiLog.Show();
         break;
       default://模版
         string tempPath = AppConfig.GetTemplatePath(itemObject.text);
@@ -347,7 +351,7 @@ public class UIMain:UIBase
         log = $"读取Excel {tabc.t_hotelName} {tabc.t_interiorNo} 失败:{ex.ToString()}";
       }
       Debug.LogError(log);
-      AppUtil.AddLog(log);
+      UILog.AddLog(log);
       UIRoot.ins.uiTips.Show(log, 99);
       return;
     }
@@ -378,7 +382,7 @@ public class UIMain:UIBase
     {
       log = $"导入数据库失败:{ex.ToString()}";
       Debug.LogError(log);
-      AppUtil.AddLog(log);
+      UILog.AddLog(log);
       UIRoot.ins.uiTips.Show(log, 99);
     }
 

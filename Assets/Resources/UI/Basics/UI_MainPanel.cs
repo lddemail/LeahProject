@@ -22,6 +22,7 @@ namespace Basics
         public GList m_mainList;
         public UI_UIDetail m_UIDetail;
         public UI_UITemplate m_UITemplate;
+        public UI_UILog m_UILog;
         public UI_Tips m_Tips;
         public UI_UIConfirm m_UIConfirm;
         public const string URL = "ui://z3yueri4p5s369";
@@ -50,8 +51,9 @@ namespace Basics
             m_mainList = (GList)GetChildAt(14);
             m_UIDetail = (UI_UIDetail)GetChildAt(15);
             m_UITemplate = (UI_UITemplate)GetChildAt(16);
-            m_Tips = (UI_Tips)GetChildAt(17);
-            m_UIConfirm = (UI_UIConfirm)GetChildAt(18);
+            m_UILog = (UI_UILog)GetChildAt(17);
+            m_Tips = (UI_Tips)GetChildAt(18);
+            m_UIConfirm = (UI_UIConfirm)GetChildAt(19);
         }
     }
 }

@@ -213,7 +213,7 @@ public class AppUtil
     {
       string log = $"{dateString} 数据不符合规范";
       Debug.Log(log + ex.ToString());
-      AddLog(log);
+      UILog.AddLog(log);
       UIRoot.ins.uiTips.Show(log);
       throw new Exception(log);
     }
@@ -231,7 +231,7 @@ public class AppUtil
     {
       string log = $"{dateString} 数据不符合规范";
       Debug.Log(log);
-      AddLog(log);
+      UILog.AddLog(log);
       UIRoot.ins.uiTips.Show(log);
       throw new Exception(log);
     }
@@ -292,8 +292,8 @@ public class AppUtil
 
   public static void AddLog(string log)
   {
-    if (logWriter == null) return;
-    logWriter.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} [{log}]");
+    //if (logWriter == null) return;
+    //logWriter.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} [{log}]");
   }
 
   public static int GetIndexByList(List<string> list,string val)

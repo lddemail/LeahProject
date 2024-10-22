@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="800,600">
+  <displayList>
+    <graph id="n0_qjfs" name="n0" xy="0,0" size="800,600" type="rect" fillColor="#ff999999"/>
+    <component id="n2_qjfs" name="BtnClose" src="p5s36a" fileName="components/Button22.xml" xy="0,0">
+      <Button title="关闭"/>
+    </component>
+    <component id="n3_qjfs" name="BtnSave" src="p5s36a" fileName="components/Button22.xml" xy="112,0">
+      <Button title="保存"/>
+    </component>
+    <list id="n1_qjfs" name="LogList" xy="4,46" size="794,549" overflow="scroll" defaultItem="ui://z3yueri4qjfs7c">
+      <item/>
+    </list>
+  </displayList>
+</component>

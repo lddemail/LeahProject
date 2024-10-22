@@ -409,6 +409,7 @@ public class AppData
       }
 
       Debug.Log(log);
+      UILog.AddLog(log);
       UIRoot.ins.uiTips.Show(log);
     }
     return res;

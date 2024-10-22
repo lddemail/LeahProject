@@ -305,7 +305,7 @@ public class SQLiteHelper
     bool isOk = InsertExecuteNonQuery(sql, out lastId);
     string log = $"≤Â»Î ˝æ›:lastId:{lastId}  {sql}";
     Debug.Log(log);
-    AppUtil.AddLog(log);
+    UILog.AddLog(log);
     return isOk;
   }
 

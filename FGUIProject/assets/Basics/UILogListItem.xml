@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="800,34">
+  <displayList>
+    <graph id="n0_ofvt" name="InputBg" xy="0,0" size="800,34" type="rect">
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <text id="n3_qjfs" name="Lab" xy="0,1" size="800,32" fontSize="22" autoSize="none" text=""/>
+  </displayList>
+</component>

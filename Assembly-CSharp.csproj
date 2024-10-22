@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\Data\BarterData.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_InputTimeLabelComp.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Mesh\MeshFactory.cs" />
+    <Compile Include="Assets\Scripts\View\UILog.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\IUISource.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\Text\FontManager.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_ComboBoxPopupCopy.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Assets\Scripts\AppData.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\UI\GTree.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Tween\GPath.cs" />
+    <Compile Include="Assets\Scripts\View\UI_UILogListItemExt.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Core\CaptureCamera.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\ToolSet.cs" />
     <Compile Include="Assets\Scripts\View\UI_InputNumLabelCompExt.cs" />
@@ -247,9 +249,11 @@
     <Compile Include="Assets\FairyGUI\Scripts\Gesture\PinchGesture.cs" />
     <Compile Include="Assets\Scripts\View\UIDetailItemBarterExt.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileImage.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_UILogListItem.cs" />
     <Compile Include="Assets\Scripts\Data\DataBase.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserMac.cs" />
     <Compile Include="Assets\Resources\UI\Basics\UI_UIDetail.cs" />
+    <Compile Include="Assets\Resources\UI\Basics\UI_UILog.cs" />
     <Compile Include="Assets\Scripts\View\UIRoot.cs" />
     <Compile Include="Assets\Scripts\Data\TabContract.cs" />
     <Compile Include="Assets\FairyGUI\Scripts\Utils\Html\HtmlLink.cs" />

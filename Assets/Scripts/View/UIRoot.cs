@@ -27,6 +27,7 @@ public class UIRoot : MonoBehaviour
     UIObjectFactory.SetPackageItemExtension(UI_PaymentTempListItem.URL, typeof(UI_PaymentTempListItemExt));
     UIObjectFactory.SetPackageItemExtension(UI_SignedTempListItem.URL, typeof(UI_SignedTempListItemExt));
     UIObjectFactory.SetPackageItemExtension(UI_HotelRelevanceTempListItem.URL, typeof(UI_HotelRelevanceTempListItemExt));
+    UIObjectFactory.SetPackageItemExtension(UI_UILogListItem.URL, typeof(UI_UILogListItemExt));
   }
 
   public static UIRoot ins;
@@ -64,7 +65,11 @@ public class UIRoot : MonoBehaviour
   {
     get { _uiTemplate ??= new UITemplate(transform); return _uiTemplate; }
   }
-
+  private UILog _uiLog;
+  public UILog uiLog
+  {
+    get { _uiLog ??= new UILog(transform); return _uiLog; }
+  }
 
   public void Init()
   {
@@ -75,5 +80,6 @@ public class UIRoot : MonoBehaviour
     uiConfirm.Init();
     uiDetail.Init();
     uiTemplate.Init();
+    uiLog.Init();
   }
 }

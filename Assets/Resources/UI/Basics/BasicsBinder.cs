@@ -33,6 +33,8 @@ namespace Basics
             UIObjectFactory.SetPackageItemExtension(UI_MainPanel.URL, typeof(UI_MainPanel));
             UIObjectFactory.SetPackageItemExtension(UI_MainListItem.URL, typeof(UI_MainListItem));
             UIObjectFactory.SetPackageItemExtension(UI_ComboBoxPopupCopy.URL, typeof(UI_ComboBoxPopupCopy));
+            UIObjectFactory.SetPackageItemExtension(UI_UILog.URL, typeof(UI_UILog));
+            UIObjectFactory.SetPackageItemExtension(UI_UILogListItem.URL, typeof(UI_UILogListItem));
             UIObjectFactory.SetPackageItemExtension(UI_MainPopupMenu.URL, typeof(UI_MainPopupMenu));
             UIObjectFactory.SetPackageItemExtension(UI_MainPopupMenuItem.URL, typeof(UI_MainPopupMenuItem));
         }
