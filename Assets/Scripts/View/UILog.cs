@@ -45,8 +45,8 @@ public class UILog : UIBase
 
   public static void AddLog(string val)
   {
+    Debug.Log(val);
     UIRoot.ins.uiLog.Add(val);
-   
   }
   public void Add(string val)
   {

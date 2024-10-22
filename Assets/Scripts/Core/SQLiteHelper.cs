@@ -3,6 +3,7 @@ using Mono.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System.IO;
 
 
 #region demo
@@ -128,12 +129,15 @@ public class SQLiteHelper
   {
     try
     {
-      Debug.Log("Open db:" + connectionString);
-      connectionString = "data source=" + connectionString;
-      //构造数据库连接
-      dbConnection = new SqliteConnection(connectionString);
-      //打开数据库
-      dbConnection.Open();
+      if(CheckDBExists(connectionString))
+      {
+        Debug.Log("Open db:" + connectionString);
+        connectionString = "data source=" + connectionString;
+        //构造数据库连接
+        dbConnection = new SqliteConnection(connectionString);
+        //打开数据库
+        dbConnection.Open();
+      }
     }
     catch (Exception e)
     {
@@ -304,7 +308,6 @@ public class SQLiteHelper
 
     bool isOk = InsertExecuteNonQuery(sql, out lastId);
     string log = $"插入数据:lastId:{lastId}  {sql}";
-    Debug.Log(log);
     UILog.AddLog(log);
     return isOk;
   }
@@ -626,5 +629,21 @@ public class SQLiteHelper
     tableExists = (count > 0);
     Debug.Log($"[查询表是否存在] sql={sql}   tableExists:{tableExists}");
     return tableExists;
+  }
+
+  /// <summary>
+  /// 检查数据库是否存在
+  /// </summary>
+  /// <returns></returns>
+  public bool CheckDBExists(string path)
+  {
+
+    bool res = false;
+    if(File.Exists(path))
+    {
+      res = true;
+    }
+    UILog.AddLog($"CheckDBExists:{path} isHave:{res}");
+    return res;
   }
 }

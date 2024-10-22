@@ -65,7 +65,14 @@ public class AppData
 
   public static void Init()
   {
-    CheckTab();
+    bool isHaveTab = CheckTab();
+    if(!isHaveTab)
+    {
+      string log = "缺少数据库";
+      UILog.AddLog(log);
+      UIRoot.ins.uiTips.Show(log);
+      return;
+    }
     allTabContract = AppUtil.ReadAll4DB<TabContract>();
     OrderAllTabContract();
     CheckOrCreateTemp();
@@ -299,16 +306,22 @@ public class AppData
       allTabContractFiels[keyName].Add(val);
     }
   }
-  private static void CheckTab()
+  private static bool CheckTab()
   {
-    bool isExist = false;
+    bool isExist = AppUtil.db.CheckDBExists(AppConfig.GetDBPath());
+    if(!isExist)
+    {
+      return false;
+    }
+
     isExist = AppUtil.db.CheckTabExists("TabContract");
     if(!isExist)
     {
-      AppUtil.db.CreateTable<TabContract>(AppConfig.tabKey);
-      Debug.Log($"创建表:TabContract");
-      
+      //AppUtil.db.CreateTable<TabContract>(AppConfig.tabKey);
+      //Debug.Log($"创建表:TabContract");
+      return false;
     }
+    return true;
   }
 
   /// <summary>
@@ -383,13 +396,13 @@ public class AppData
   public static bool DelTabContract(int id)
   {
     bool res = false;
+    string log = "删除合同:";
     TabContract tab = allTabContract.Find(x => x.t_id == id);
     if(tab != null)
     {
-      string log = "";
       if(tab.t_id <= 0)
       {
-        log = $"数据id:{tab.t_id} 不正确 删除失败,如果是新加的数据需要从新打开软件才行";
+        log += $"数据id:{tab.t_id} 不正确 删除失败,如果是新加的数据需要从新打开软件才行";
       }
       else
       {
@@ -399,19 +412,21 @@ public class AppData
           allTabContract.Remove(tab);
           OrderAllTabContract();
           EventMgr.Dispatch(AppConfig.UpdateQuery);
-          log = $"{tab.t_id} 删除成功";
+          log += $"{tab.t_id} 删除成功";
           res = true;
         }
         else
         {
-          log = $"{tab.t_id} 删除失败!";
+          log += $"{tab.t_id} 删除失败!";
         }
       }
-
-      Debug.Log(log);
-      UILog.AddLog(log);
-      UIRoot.ins.uiTips.Show(log);
     }
+    else
+    {
+      log += $"{tab.t_id} 找不到数据!";
+    }
+    UILog.AddLog(log);
+    UIRoot.ins.uiTips.Show(log);
     return res;
   }
 

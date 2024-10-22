@@ -237,7 +237,7 @@ public class UIMain:UIBase
   {
     if(AppData.allTabContractFiels.Count == 0)
     {
-      UIRoot.ins.uiTips.Show($"没有合同数据");
+      UIRoot.ins.uiTips.Show($"没有合同数据或者缺少数据库");
       return;
     }
 

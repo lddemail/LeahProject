@@ -212,7 +212,6 @@ public class AppUtil
     catch (Exception ex)
     {
       string log = $"{dateString} 数据不符合规范";
-      Debug.Log(log + ex.ToString());
       UILog.AddLog(log);
       UIRoot.ins.uiTips.Show(log);
       throw new Exception(log);
@@ -230,7 +229,6 @@ public class AppUtil
     else
     {
       string log = $"{dateString} 数据不符合规范";
-      Debug.Log(log);
       UILog.AddLog(log);
       UIRoot.ins.uiTips.Show(log);
       throw new Exception(log);
