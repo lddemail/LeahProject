@@ -50,9 +50,9 @@ public class UILog : UIBase
   }
   public void Add(string val)
   {
-    string log = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} [{val}]";
+    string log = $"{DateTime.Now.ToString("MM-dd HH:mm:ss")} {val}";
     _logList.Add(log);
-    UIPanel.m_LogList.numItems = _logList.Count;
+    RefreshUI();
   }
 
   private void BtnCloseHandler(EventContext context)
@@ -85,12 +85,16 @@ public class UILog : UIBase
 
   private void InitUI()
   {
-
+    RefreshUI();
   }
 
 
   public override void RefreshUI()
   {
+    if (UIPanel.visible)
+    {
+      UIPanel.m_LogList.numItems = _logList.Count;
+    }
   }
 
   public override void Hide()
