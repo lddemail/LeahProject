@@ -261,7 +261,7 @@ public class UIMain:UIBase
 
   private void BtnInportDataHandler()
   {
-    var paths = SFB.StandaloneFileBrowser.OpenFilePanel("导入Data", "", "rar", false);
+    var paths = SFB.StandaloneFileBrowser.OpenFilePanel("导入Data", "", "zip", false);
     if (paths.Length > 0)
     {
       UILog.Log($"导入Data:{paths[0]}");
