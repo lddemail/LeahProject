@@ -4,6 +4,6 @@
     <graph id="n0_ofvt" name="InputBg" xy="0,0" size="800,34" type="rect">
       <relation target="" sidePair="width-width,height-height"/>
     </graph>
-    <text id="n3_qjfs" name="Lab" xy="0,1" size="800,32" fontSize="22" autoSize="none" text=""/>
+    <text id="n3_qjfs" name="Lab" xy="0,1" size="799,32" fontSize="22" ubb="true" autoSize="shrink" strokeColor="#333333" strokeSize="0.5" text=""/>
   </displayList>
 </component>

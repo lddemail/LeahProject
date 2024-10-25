@@ -72,7 +72,7 @@ public class ProductData: DataBase
   {
     day = 0;
       //包含销售合同的不用处理是否到期
-    if (name.Contains(AppConfig.SalesContract)) return EmProductType.None;
+    if (!string.IsNullOrEmpty(name) && name.Contains(AppConfig.SalesContract)) return EmProductType.None;
 
     if (tTime <= 0)
     {

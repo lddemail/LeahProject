@@ -308,7 +308,7 @@ public class SQLiteHelper
 
     bool isOk = InsertExecuteNonQuery(sql, out lastId);
     string log = $"≤Â»Î ˝æ›:lastId:{lastId}  {sql}";
-    UILog.AddLog(log);
+    UILog.Log(log);
     return isOk;
   }
 
@@ -643,7 +643,7 @@ public class SQLiteHelper
     {
       res = true;
     }
-    UILog.AddLog($"CheckDBExists:{path} isHave:{res}");
+    UILog.Log($"CheckDBExists:{path} isHave:{res}");
     return res;
   }
 }

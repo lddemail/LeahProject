@@ -27,16 +27,16 @@ public class UIConfirm : UIBase
 
   private void BtnCloseHandler(EventContext context)
   {
-    string log = CloseCallBack == null ? "null" : "有回调";
-    UILog.AddLog($"取消:{log}");
+    string log = CloseCallBack == null ? "null" : CloseCallBack.ToString();
+    UILog.Log($"取消:{log}");
     CloseCallBack?.Invoke();
     Hide();
   }
 
   private void BtnOkHandler(EventContext context)
   {
-    string log = OkCallBack == null ? "null" : "有回调";
-    UILog.AddLog($"确认:{log}");
+    string log = OkCallBack == null ? "null" : OkCallBack.ToString();
+    UILog.Log($"确认:{log}");
     OkCallBack?.Invoke();
     Hide();
   }
@@ -45,7 +45,7 @@ public class UIConfirm : UIBase
   {
     UIPanel.m_Message.text = obj.ToString();
     UIPanel.visible = true;
-    UILog.AddLog(UIPanel.m_Message.text);
+    UILog.Log(UIPanel.m_Message.text);
   }
 
   public void Show(object obj, Action OkCallBack, Action CloseCallBack=null)

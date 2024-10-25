@@ -133,7 +133,9 @@ public class AppConfig
   public const string Inport_Excel = "导入Excel";
   public const string Export_Excel = "导出Excel";
   public const string Export_Data = "导出Data";
+  public const string Inport_Data = "导入Data";
   public const string Show_Log = "显示日志";
+  public const string Manage_Template = "模版管理";
   public const string Update_Template = "刷新模版";
   public const string Details = "详情";
   public const string Delete = "删除";
@@ -141,6 +143,24 @@ public class AppConfig
   public const string Split_1 = "|";
   public const string Split_2 = "#";
   public const string Expired = "过期";
+
+
+  /// <summary>
+  /// 支付方式模版配置
+  /// </summary>
+  public static List<string> paymentTempList = new List<string>()
+  {
+      "按年预付", "半年支付", "按季度支付", "三次支付","无需支付"
+  };
+
+  /// <summary>
+  /// 签约公司模版配置
+  /// </summary>
+  public static List<string> signedTempList = new List<string>()
+  {
+      "北京总公司", "北海", "上海", "昆仑"
+  };
+
   /// <summary>
   /// 主界面显示字段
   /// </summary>

@@ -8,10 +8,7 @@ namespace Basics
     public partial class UI_UITemplate : GComponent
     {
         public GButton m_BtnClose;
-        public GButton m_BtnSave;
-        public GButton m_BtnPaymentTemp;
-        public GButton m_BtnSignedTemp;
-        public GButton m_BtnHotelRelevanceTemp;
+        public GButton m_BtnAdd;
         public GList m_PaymentTempList;
         public GList m_SignedTempList;
         public GList m_HotelRelevanceTempList;
@@ -27,13 +24,10 @@ namespace Basics
             base.ConstructFromXML(xml);
 
             m_BtnClose = (GButton)GetChildAt(1);
-            m_BtnSave = (GButton)GetChildAt(2);
-            m_BtnPaymentTemp = (GButton)GetChildAt(3);
-            m_BtnSignedTemp = (GButton)GetChildAt(4);
-            m_BtnHotelRelevanceTemp = (GButton)GetChildAt(5);
-            m_PaymentTempList = (GList)GetChildAt(6);
-            m_SignedTempList = (GList)GetChildAt(7);
-            m_HotelRelevanceTempList = (GList)GetChildAt(8);
+            m_BtnAdd = (GButton)GetChildAt(2);
+            m_PaymentTempList = (GList)GetChildAt(3);
+            m_SignedTempList = (GList)GetChildAt(4);
+            m_HotelRelevanceTempList = (GList)GetChildAt(5);
         }
     }
 }

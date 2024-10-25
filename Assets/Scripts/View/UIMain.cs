@@ -25,7 +25,6 @@ public class UIMain:UIBase
   List<string> productList;
 
   PopupMenu mainPop;//菜单项
-  PopupMenu templatePop;//模版项
   PopupMenu itemPop;
   public override void Init()
   {
@@ -33,13 +32,9 @@ public class UIMain:UIBase
     mainPop.AddItem(AppConfig.Inport_Excel, _clickMenu);
     mainPop.AddItem(AppConfig.Export_Excel, _clickMenu);
     mainPop.AddItem(AppConfig.Export_Data, _clickMenu);
+    mainPop.AddItem(AppConfig.Inport_Data, _clickMenu);
     mainPop.AddItem(AppConfig.Show_Log, _clickMenu);
-
-    templatePop = new PopupMenu();
-    templatePop.AddItem(AppConfig.Update_Template, _clickMenu);
-    templatePop.AddItem(AppConfig.PaymentTemplateName, _clickMenu);
-    templatePop.AddItem(AppConfig.SignedTemplateName, _clickMenu);
-    templatePop.AddItem(AppConfig.HotelRelevanceTemplateName, _clickMenu);
+    mainPop.AddItem(AppConfig.Manage_Template, _clickMenu);
 
     itemPop = new PopupMenu();
 
@@ -47,13 +42,6 @@ public class UIMain:UIBase
       mainPop.Show(UIPanel.m_BtnMainPop);
     });
     UIPanel.m_BtnAdd.onClick.Add(BtnAddHandler);
-
-    //模版管理
-    UIPanel.m_BtnTemplate.onClick.Add(() => {
-      //templatePop.Show(UIPanel.m_BtnTemplate);
-      UIRoot.ins.uiTemplate.Show();
-    });
-
 
     UIPanel.m_mainList.itemRenderer = MainListRender;
     UIPanel.m_mainList.SetVirtual();
@@ -79,18 +67,20 @@ public class UIMain:UIBase
         BtnSaveExcelHandler();
         break;
       case AppConfig.Export_Data:
-        AppStart.ins.StartCoroutine(BtnExportDataHandler());
+        BtnExportDataHandler();
         break;
-      case AppConfig.Update_Template:
-        AppData.ReadAllTemplates();
-        UIRoot.ins.uiTips.Show($"模版刷新成功");
+      case AppConfig.Inport_Data:
+        BtnInportDataHandler();
         break;
       case AppConfig.Show_Log:
         UIRoot.ins.uiLog.Show();
         break;
+      case AppConfig.Manage_Template:
+        UIRoot.ins.uiTemplate.Show();
+        break;
       default://模版
-        string tempPath = AppConfig.GetTemplatePath(itemObject.text);
-        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(tempPath) { UseShellExecute = true });
+        //string tempPath = AppConfig.GetTemplatePath(itemObject.text);
+        //System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(tempPath) { UseShellExecute = true });
         break;
     }
   }
@@ -268,12 +258,26 @@ public class UIMain:UIBase
   {
 
   }
-  IEnumerator BtnExportDataHandler()
+
+  private void BtnInportDataHandler()
+  {
+    var paths = SFB.StandaloneFileBrowser.OpenFilePanel("导入Data", "", "rar", false);
+    if (paths.Length > 0)
+    {
+      UILog.Log($"导入Data:{paths[0]}");
+      AppUtil.UnCompressFolder(paths[0], AppConfig.GetDataPath());
+
+      UIRoot.ins.uiTips.Show("导入Data成功即将关闭APP", 99);
+      Timers.inst.Add(3f, 1, (object param) => {
+        AppUtil.Quit();
+      });
+    }
+  }
+  private void BtnExportDataHandler()
   {
     string exportName = "Export_Data";
     string dataPath = AppConfig.GetDataPath();
     string lp_data = dataPath.Replace("Data", exportName);
-    yield return null;
     try
     {
       AppUtil.CopyDirectory(dataPath, lp_data);
@@ -286,6 +290,7 @@ public class UIMain:UIBase
     }
     catch (Exception ex)
     {
+      UILog.Log($"Export_Data:{ex.ToString()}");
       Debug.LogError(ex);
     }
     finally
@@ -351,7 +356,7 @@ public class UIMain:UIBase
         log = $"读取Excel {tabc.t_hotelName} {tabc.t_interiorNo} 失败:{ex.ToString()}";
       }
       Debug.LogError(log);
-      UILog.AddLog(log);
+      UILog.Log(log);
       UIRoot.ins.uiTips.Show(log, 99);
       return;
     }
@@ -363,7 +368,6 @@ public class UIMain:UIBase
       {
 
         log = $"读取到数据:{list.Count}条 开始导入数据库导入完成后会自动关闭";
-        Debug.Log(log);
         UIRoot.ins.uiTips.Show(log, 99);
         foreach (TabContract contract in list)
         {
@@ -371,7 +375,6 @@ public class UIMain:UIBase
         }
 
         log = $"导入数据完成即将关闭";
-        Debug.Log(log);
         UIRoot.ins.uiTips.Show(log, 99);
         Timers.inst.Add(1f, 1, (object param) => {
           AppUtil.Quit();
@@ -382,7 +385,7 @@ public class UIMain:UIBase
     {
       log = $"导入数据库失败:{ex.ToString()}";
       Debug.LogError(log);
-      UILog.AddLog(log);
+      UILog.Log(log);
       UIRoot.ins.uiTips.Show(log, 99);
     }
 

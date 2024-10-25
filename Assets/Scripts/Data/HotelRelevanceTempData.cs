@@ -95,6 +95,24 @@ public class HotelRelevanceTempData
     return null;
   }
   /// <summary>
+  /// 根据属性名设置值
+  /// </summary>
+  /// <param name="name"></param>
+  /// <returns></returns>
+  public void SetFieldVal(string name, object val)
+  {
+    FieldInfo[] fields = GetFields();
+    foreach (FieldInfo field in fields)
+    {
+      string fieldName = field.Name;
+      if (fieldName == name)
+      {
+        field.SetValue(this, val);
+        break;
+      }
+    }
+  }
+  /// <summary>
   /// 获取城市
   /// </summary>
   /// <returns></returns>

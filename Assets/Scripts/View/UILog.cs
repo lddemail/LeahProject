@@ -34,6 +34,22 @@ public class UILog : UIBase
     UIPanel.m_LogList.itemRenderer = ItemRendererLogList;
     UIPanel.m_LogList.SetVirtual();
 
+    Application.logMessageReceived += HandleLog;
+
+  }
+  void HandleLog(string logString, string stackTrace, LogType type)
+  {
+    string log = "";
+    if (!string.IsNullOrEmpty(logString)) log += logString;
+
+    switch(type)
+    {
+      case LogType.Error:
+      case LogType.Exception:
+        if (!string.IsNullOrEmpty(stackTrace)) log += stackTrace;
+        break;
+    }
+    AddLog(log);
   }
 
   private void ItemRendererLogList(int index, GObject item)
@@ -43,14 +59,17 @@ public class UILog : UIBase
     _item.SetData(val);
   }
 
-  public static void AddLog(string val)
+  public static void Log(string val)
   {
     Debug.Log(val);
-    UIRoot.ins.uiLog.Add(val);
+    if (UIRoot.ins != null)
+    {
+      //UIRoot.ins.uiLog.AddLog(val);
+    }
   }
-  public void Add(string val)
+  public void AddLog(string val)
   {
-    string log = $"{DateTime.Now.ToString("MM-dd HH:mm:ss")} {val}";
+    string log = $"{DateTime.Now.ToString("HH:mm:ss")} {val}";
     _logList.Add(log);
     RefreshUI();
   }
@@ -80,14 +99,8 @@ public class UILog : UIBase
   {
 
     UIPanel.visible = true;
-    InitUI();
-  }
-
-  private void InitUI()
-  {
     RefreshUI();
   }
-
 
   public override void RefreshUI()
   {

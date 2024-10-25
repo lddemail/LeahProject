@@ -11,21 +11,25 @@ public class UI_HotelRelevanceTempListItemExt : UI_HotelRelevanceTempListItem
   {
     base.ConstructFromXML(xml);
 
-    m_InputLab.onChanged.Set(OnInputLab1Change);
+    m_hotelNameInputLab.onChanged.Add(OnInputLabChange);
+    m_groupInputLab.onChanged.Add(OnInputLabChange);
+    m_brandInputLab.onChanged.Add(OnInputLabChange);
+    m_contractInputLab.onChanged.Add(OnInputLabChange);
+    m_provinceInputLab.onChanged.Add(OnInputLabChange);
+    m_cityInputLab.onChanged.Add(OnInputLabChange);
   }
 
-  private void OnInputLab1Change(EventContext context)
+  private void OnInputLabChange(EventContext context)
   {
-    string val = m_InputLab.text;
+    GTextField Gtext = (GTextField)context.sender;
+    string val = Gtext.text;
     if (string.IsNullOrEmpty(val)) return;
 
-    string dataStr = data.ToString();
-    if (dataStr != val)
-    {
-      data = val;
-      //AppData.ChangeTempVal(AppConfig.HotelRelevanceTemplateName, dataStr, val);
-      //RefreshUI();
-    }
+    HotelRelevanceTempData hrtd = data as HotelRelevanceTempData;
+    hrtd.SetFieldVal(Gtext.data.ToString(), val);
+    RefreshUI();
+
+    _changeCallBack?.Invoke();
   }
 
   private void OnFocusInHandler(EventContext context)
@@ -34,6 +38,11 @@ public class UI_HotelRelevanceTempListItemExt : UI_HotelRelevanceTempListItem
   private void OnFocusOutHandler(EventContext context)
   {
   }
+  private Action _changeCallBack;
+  public void SetChangeCallBack(Action changeCallBack)
+  {
+    _changeCallBack = changeCallBack;
+  }
   public void SetData(HotelRelevanceTempData val)
   {
     data = val;
@@ -41,6 +50,20 @@ public class UI_HotelRelevanceTempListItemExt : UI_HotelRelevanceTempListItem
   }
   public void RefreshUI()
   {
-    m_InputLab.text = (data as HotelRelevanceTempData).ToTemplateShowStr();
+    SetObj(m_t_id, AppConfig.t_id);
+    SetObj(m_hotelNameInputLab, AppConfig.t_hotelName);
+    SetObj(m_groupInputLab, AppConfig.t_group);
+    SetObj(m_brandInputLab, AppConfig.t_brand);
+    SetObj(m_contractInputLab, AppConfig.t_a_contract);
+    SetObj(m_provinceInputLab, AppConfig.t_province);
+    SetObj(m_cityInputLab, AppConfig.t_city);
+  }
+  private void SetObj(GTextField Gtext,string fieldName)
+  {
+    HotelRelevanceTempData hrtd = data as HotelRelevanceTempData;
+    object obj = hrtd.GetFieldVal(fieldName);
+    string val =  obj == null ? "" : obj.ToString();
+    Gtext.text = val;
+    Gtext.data = fieldName;
   }
 }

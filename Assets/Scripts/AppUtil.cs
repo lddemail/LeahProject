@@ -212,7 +212,7 @@ public class AppUtil
     catch (Exception ex)
     {
       string log = $"{dateString} 数据不符合规范";
-      UILog.AddLog(log);
+      UILog.Log(log);
       UIRoot.ins.uiTips.Show(log);
       throw new Exception(log);
     }
@@ -229,7 +229,7 @@ public class AppUtil
     else
     {
       string log = $"{dateString} 数据不符合规范";
-      UILog.AddLog(log);
+      UILog.Log(log);
       UIRoot.ins.uiTips.Show(log);
       throw new Exception(log);
     }
@@ -482,27 +482,81 @@ public class AppUtil
   }
 
   /// <summary>
+  /// 解压缩到目录
+  /// </summary>
+  public static void UnCompressFolder(string zipPath, string extractDir)
+  {
+    UILog.Log($"解压缩到目录:{zipPath}  {extractDir}");
+    // 如果目标目录不存在，则创建
+    if (!Directory.Exists(extractDir))
+    {
+      Directory.CreateDirectory(extractDir);
+    }
+    // 使用临时目录来避免直接覆盖
+    string tempDirectory = Path.Combine(extractDir, "temp");
+    if (Directory.Exists(tempDirectory))
+    {
+      Directory.Delete(tempDirectory, true);
+    }
+    Directory.CreateDirectory(tempDirectory);
+
+    // 解压到临时目录
+    ZipFile.ExtractToDirectory(zipPath, tempDirectory);
+
+    // 移动文件并覆盖
+    foreach (string file in Directory.GetFiles(tempDirectory, "*", SearchOption.AllDirectories))
+    {
+      string relativePath = file.Substring(tempDirectory.Length + 1);
+      string destinationPath = Path.Combine(extractDir, relativePath);
+
+      // 创建目录结构
+      string destinationDir = Path.GetDirectoryName(destinationPath);
+      if (!Directory.Exists(destinationDir))
+      {
+        Directory.CreateDirectory(destinationDir);
+      }
+
+      // 移动文件并覆盖
+      File.Copy(file, destinationPath, true);
+    }
+
+    // 删除临时目录
+    Directory.Delete(tempDirectory, true);
+  }
+
+  /// <summary>
   /// copy
   /// </summary>
   /// <param name="sourceDir"></param>
   /// <param name="destinationDir"></param>
   public static void CopyDirectory(string sourceDir, string destinationDir)
   {
-    // Create the destination directory if it doesn't exist
-    Directory.CreateDirectory(destinationDir);
-
-    // Copy all the files
-    foreach (var file in Directory.GetFiles(sourceDir))
+    try
     {
-      string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
-      File.Copy(file, destFile, true);
+      if (Directory.Exists(destinationDir))
+      {
+        Directory.Delete(destinationDir, true);
+      }
+      // Create the destination directory if it doesn't exist
+      Directory.CreateDirectory(destinationDir);
+
+      // Copy all the files
+      foreach (var file in Directory.GetFiles(sourceDir))
+      {
+        string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
+        File.Copy(file, destFile, true);
+      }
+
+      // Copy all the subdirectories
+      foreach (var directory in Directory.GetDirectories(sourceDir))
+      {
+        string destDir = Path.Combine(destinationDir, Path.GetFileName(directory));
+        CopyDirectory(directory, destDir);
+      }
     }
-
-    // Copy all the subdirectories
-    foreach (var directory in Directory.GetDirectories(sourceDir))
+    catch(Exception ex)
     {
-      string destDir = Path.Combine(destinationDir, Path.GetFileName(directory));
-      CopyDirectory(directory, destDir);
+      UILog.Log($"CopyDirectory:{ex.ToString()}");
     }
   }
 

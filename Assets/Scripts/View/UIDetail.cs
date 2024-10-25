@@ -130,6 +130,10 @@ public class UIDetail : UIBase
     });
   }
 
+
+  private UIDetailItemLineExt productLine;
+  private UIDetailItemLineExt barterLine;
+  private UIDetailItemLineExt accountLine;
   List<ObjectVal> objectVals;
   bool isAddTab = false;
   public override void Show(object obj = null)
@@ -146,24 +150,15 @@ public class UIDetail : UIBase
     }
     UIPanel.visible = true;
 
-    InitUI();
-  }
-
-
-  private UIDetailItemLineExt productLine;
-  private UIDetailItemLineExt barterLine;
-  private UIDetailItemLineExt accountLine;
-  private void InitUI()
-  {
     UIPanel.m_DetailList.RemoveChildrenToPool();
     if (AppData.currTc != null)
     {
       //酒店名 省市 
-      AddDetailItemTwoLabel(AppConfig.t_hotelName,AppConfig.HotelRelevanceTemplateName, AppConfig.t_city, "");
+      AddDetailItemTwoLabel(AppConfig.t_hotelName, AppConfig.HotelRelevanceTemplateName, AppConfig.t_city, "");
       //酒店品牌  酒店集团 甲方名称
-      AddDetailItemThreeLabel(AppConfig.t_brand, "", AppConfig.t_group, "",AppConfig.t_a_contract,"");
+      AddDetailItemThreeLabel(AppConfig.t_brand, "", AppConfig.t_group, "", AppConfig.t_a_contract, "");
       //签约公司  支付方式
-      AddDetailItemTwoLabel(AppConfig.t_attribution, AppConfig.SignedTemplateName,AppConfig.t_payment, AppConfig.PaymentTemplateName);
+      AddDetailItemTwoLabel(AppConfig.t_attribution, AppConfig.SignedTemplateName, AppConfig.t_payment, AppConfig.PaymentTemplateName);
       //内部编号  外部编号 
       AddDetailItemTwoLabel(AppConfig.t_interiorNo, "", AppConfig.t_contractNo, "");
       //欠款

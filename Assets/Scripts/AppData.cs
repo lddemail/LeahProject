@@ -53,15 +53,15 @@ public class AppData
   /// <summary>
   ///  所有酒店管理数据
   /// </summary>
-  public static Dictionary<int, HotelRelevanceTempData> allHotelRelevanceTempData = new Dictionary<int, HotelRelevanceTempData>();
+  public static List<HotelRelevanceTempData> allHotelRelevanceTempData = new List<HotelRelevanceTempData>();
   /// <summary>
   /// 所有支付方式数据
   /// </summary>
-  public static Dictionary<int, PaymentTempData> allPaymentTempData = new Dictionary<int, PaymentTempData>();
+  public static List<PaymentTempData> allPaymentTempData = new List<PaymentTempData>();
   /// <summary>
   /// 所有签约公司数据
   /// </summary>
-  public static Dictionary<int, SignedTempData> allSignedTempData = new Dictionary<int, SignedTempData>();
+  public static List<SignedTempData> allSignedTempData = new List<SignedTempData>();
 
   public static void Init()
   {
@@ -69,7 +69,7 @@ public class AppData
     if(!isHaveTab)
     {
       string log = "缺少数据库";
-      UILog.AddLog(log);
+      UILog.Log(log);
       UIRoot.ins.uiTips.Show(log);
       return;
     }
@@ -98,34 +98,35 @@ public class AppData
       HotelRelevanceTempData hrd = HotelRelevanceTempData.Create(id, str);
       if (hrd != null)
       {
-        allHotelRelevanceTempData.Add(id, hrd);
+        allHotelRelevanceTempData.Add(hrd);
         id++;
       }
     }
 
     //支付方式模版
     allPaymentTempData.Clear();
-    _tempList = AppUtil.ReadFromTxt(AppConfig.PaymentTemplateName);
-    id = 0;
+    //_tempList = AppUtil.ReadFromTxt(AppConfig.PaymentTemplateName);
+    _tempList = AppConfig.paymentTempList;
     foreach (string str in _tempList)
     {
       PaymentTempData ptd = PaymentTempData.Create(id, str);
       if (ptd != null)
       {
-        allPaymentTempData.Add(id, ptd);
+        allPaymentTempData.Add(ptd);
         id++;
       }
     }
     //签约公司模版
     allSignedTempData.Clear();
-    _tempList = AppUtil.ReadFromTxt(AppConfig.SignedTemplateName);
+    //_tempList = AppUtil.ReadFromTxt(AppConfig.SignedTemplateName);
+    _tempList = AppConfig.signedTempList;
     id = 0;
     foreach (string str in _tempList)
     {
       SignedTempData ptd = SignedTempData.Create(id, str);
       if (ptd != null)
       {
-        allSignedTempData.Add(id, ptd);
+        allSignedTempData.Add(ptd);
         id++;
       }
     }
@@ -145,7 +146,7 @@ public class AppData
   {
     Debug.Log($"GetHotelRelevanceData:hotelName={hotelName}");
     HotelRelevanceTempData data = null;
-    foreach (HotelRelevanceTempData d in allHotelRelevanceTempData.Values)
+    foreach (HotelRelevanceTempData d in allHotelRelevanceTempData)
     {
       if (hotelName.Contains(d.t_hotelName)) return d;
     }
@@ -201,19 +202,19 @@ public class AppData
     switch (tempName)
     {
       case AppConfig.HotelRelevanceTemplateName:
-        foreach(var rtd in allHotelRelevanceTempData.Values)
+        foreach(var rtd in allHotelRelevanceTempData)
         {
           if (!res.Contains(rtd.t_hotelName)) res.Add(rtd.t_hotelName);
         }
         break;
       case AppConfig.PaymentTemplateName:
-        foreach (var ptd in allPaymentTempData.Values)
+        foreach (var ptd in allPaymentTempData)
         {
           if (!res.Contains(ptd.t_Name)) res.Add(ptd.t_Name);
         }
         break;
       case AppConfig.SignedTemplateName:
-        foreach (var std in allSignedTempData.Values)
+        foreach (var std in allSignedTempData)
         {
           if (!res.Contains(std.t_Name)) res.Add(std.t_Name);
         }
@@ -223,6 +224,30 @@ public class AppData
     }
     return res;
   }
+
+  /// <summary>
+  /// 添加一条模版数据
+  /// </summary>
+  /// <param name="tempName"></param>
+  /// <param name="obj"></param>
+  public static void AddTemp(string tempName,object obj)
+  {
+    if (obj == null) return;
+
+    switch (tempName)
+    {
+      case AppConfig.HotelRelevanceTemplateName:
+        allHotelRelevanceTempData.Add(obj as HotelRelevanceTempData);
+        break;
+      default:
+        break;
+    }
+  }
+  /// <summary>
+  /// 删除一条模版数据
+  /// </summary>
+  /// <param name="tempName"></param>
+  /// <param name="id"></param>
   public static void RemoveTemp(string tempName,int id)
   {
     if (id < 0) return;
@@ -230,28 +255,35 @@ public class AppData
     switch (tempName)
     {
       case AppConfig.HotelRelevanceTemplateName:
-        if (allHotelRelevanceTempData.ContainsKey(id)) allHotelRelevanceTempData.Remove(id);
+        HotelRelevanceTempData hrtd = allHotelRelevanceTempData.Find(x => x.t_id == id);
+        if (hrtd != null) allHotelRelevanceTempData.Remove(hrtd);
         break;
       case AppConfig.SignedTemplateName:
-        if (allSignedTempData.ContainsKey(id)) allSignedTempData.Remove(id);
+        SignedTempData std = allSignedTempData.Find(x => x.t_id == id);
+        if (std != null) allSignedTempData.Remove(std);
         break;
       case AppConfig.PaymentTemplateName:
-        if (allPaymentTempData.ContainsKey(id)) allPaymentTempData.Remove(id);
+        PaymentTempData ptd = allPaymentTempData.Find(x => x.t_id == id);
+        if (ptd != null) allPaymentTempData.Remove(ptd);
         break;
       default:
-
         break;
     }
   }
 
+  /// <summary>
+  /// 保存模版数据到本地
+  /// </summary>
   public static void SaveAllTemp()
   {
     //酒店关联模版
-    //AppUtil.WriteToTxt(AppConfig.HotelRelevanceTemplateName, _tempDic.Values.ToList());
-    //支付方式模版
-    //AppUtil.WriteToTxt(AppConfig.PaymentTemplateName, allTemplates[AppConfig.PaymentTemplateName]);
-    //签约公司模版
-    //AppUtil.WriteToTxt(AppConfig.SignedTemplateName, allTemplates[AppConfig.SignedTemplateName]);
+    List<string> _tempList = new List<string>();
+    foreach (HotelRelevanceTempData d in allHotelRelevanceTempData)
+    {
+      string str = d.ToTemplateStr();
+      if(!_tempList.Contains(str)) _tempList.Add(str);
+    }
+    AppUtil.WriteToTxt(AppConfig.HotelRelevanceTemplateName, _tempList);
   }
 
   /// <summary>
@@ -282,17 +314,17 @@ public class AppData
     }
 
     //支付方式模版
-    _tempList = AppUtil.ReadFromTxt(AppConfig.PaymentTemplateName);
-    if(_tempList.Count < 1)
-    {
-      AppUtil.WriteToTxt(AppConfig.PaymentTemplateName, allTabContractFiels[AppConfig.t_payment]);
-    }
+    //_tempList = AppUtil.ReadFromTxt(AppConfig.PaymentTemplateName);
+    //if(_tempList.Count < 1)
+    //{
+    //  AppUtil.WriteToTxt(AppConfig.PaymentTemplateName, allTabContractFiels[AppConfig.t_payment]);
+    //}
     //签约公司模版
-    _tempList = AppUtil.ReadFromTxt(AppConfig.SignedTemplateName);
-    if (_tempList.Count < 1)
-    {
-      AppUtil.WriteToTxt(AppConfig.SignedTemplateName, allTabContractFiels[AppConfig.t_attribution]);
-    }
+    //_tempList = AppUtil.ReadFromTxt(AppConfig.SignedTemplateName);
+    //if (_tempList.Count < 1)
+    //{
+    //  AppUtil.WriteToTxt(AppConfig.SignedTemplateName, allTabContractFiels[AppConfig.t_attribution]);
+    //}
   }
 
   private static void SetAllTabContractFiels(string keyName, string val)
@@ -397,36 +429,46 @@ public class AppData
   {
     bool res = false;
     string log = "删除合同:";
-    TabContract tab = allTabContract.Find(x => x.t_id == id);
-    if(tab != null)
+    try
     {
-      if(tab.t_id <= 0)
+      TabContract tab = allTabContract.Find(x => x.t_id == id);
+      if (tab != null)
       {
-        log += $"数据id:{tab.t_id} 不正确 删除失败,如果是新加的数据需要从新打开软件才行";
-      }
-      else
-      {
-        bool isOk = AppUtil.Delete2DB<TabContract>(tab);
-        if (isOk)
+        if (tab.t_id <= 0)
         {
-          allTabContract.Remove(tab);
-          OrderAllTabContract();
-          EventMgr.Dispatch(AppConfig.UpdateQuery);
-          log += $"{tab.t_id} 删除成功";
-          res = true;
+          log += $"数据id:{tab.t_id} 不正确 删除失败,如果是新加的数据需要从新打开软件才行";
         }
         else
         {
-          log += $"{tab.t_id} 删除失败!";
+          bool isOk = AppUtil.Delete2DB<TabContract>(tab);
+          if (isOk)
+          {
+            allTabContract.Remove(tab);
+            OrderAllTabContract();
+            EventMgr.Dispatch(AppConfig.UpdateQuery);
+            log += $"{tab.t_id} 删除成功";
+            res = true;
+          }
+          else
+          {
+            log += $"{tab.t_id} 删除失败!";
+          }
         }
       }
+      else
+      {
+        log += $"{tab.t_id} 找不到数据!";
+      }
+      UILog.Log(log);
+      UIRoot.ins.uiTips.Show(log);
     }
-    else
+    catch (System.Exception ex)
     {
-      log += $"{tab.t_id} 找不到数据!";
+      log += $"{id} 发生错误:{ex.ToString()}";
+      UILog.Log(log);
+      UIRoot.ins.uiTips.Show(log);
     }
-    UILog.AddLog(log);
-    UIRoot.ins.uiTips.Show(log);
+
     return res;
   }
 
