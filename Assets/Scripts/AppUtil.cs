@@ -16,13 +16,12 @@ public class AppUtil
   {
     db = new SQLiteHelper(AppConfig.GetDBPath());
 
-    if(!Application.isEditor)
-    {
-      logWriter = new StreamWriter(AppConfig.GetLogPath(), true);
-      logWriter.AutoFlush = true;
-      logWriter.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} version:[{AppConfig.version}]");
-    }
-    //AddFguiPackage("Main");
+    //if(!Application.isEditor)
+    //{
+    //  logWriter = new StreamWriter(AppConfig.GetLogPath(), true);
+    //  logWriter.AutoFlush = true;
+    //  logWriter.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} version:[{AppConfig.version}]");
+    //}
   }
   /// <summary>
   /// 删除数据文件
