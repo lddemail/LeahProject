@@ -225,7 +225,8 @@ public class UIMain:UIBase
 
   public override void Show(object obj=null)
   {
-    if(AppData.allTabContractFiels.Count == 0)
+    base.Show();
+    if (AppData.allTabContractFiels.Count == 0)
     {
       UIRoot.ins.uiTips.Show($"没有合同数据或者缺少数据库");
       return;
@@ -256,7 +257,7 @@ public class UIMain:UIBase
 
   public override void Hide()
   {
-
+    base.Hide();
   }
 
   private void BtnInportDataHandler()

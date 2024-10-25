@@ -44,12 +44,12 @@ public class UIConfirm : UIBase
   public override void Show(object obj = null)
   {
     UIPanel.m_Message.text = obj.ToString();
-    UIPanel.visible = true;
     UILog.Log(UIPanel.m_Message.text);
   }
 
   public void Show(object obj, Action OkCallBack, Action CloseCallBack=null)
   {
+    base.Show();
     Show(obj);
     this.OkCallBack = OkCallBack;
     this.CloseCallBack = CloseCallBack;
@@ -59,7 +59,7 @@ public class UIConfirm : UIBase
   {
     OkCallBack = null;
     CloseCallBack = null;
-    UIPanel.visible = false;
+    base.Hide();
   }
 
 }

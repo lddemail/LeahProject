@@ -138,6 +138,7 @@ public class UIDetail : UIBase
   bool isAddTab = false;
   public override void Show(object obj = null)
   {
+    base.Show();
     if(obj != null)
     {
       isAddTab = false;
@@ -148,7 +149,6 @@ public class UIDetail : UIBase
       isAddTab = true;
       AppData.currTc = new TabContract();
     }
-    UIPanel.visible = true;
 
     UIPanel.m_DetailList.RemoveChildrenToPool();
     if (AppData.currTc != null)
@@ -387,7 +387,7 @@ public class UIDetail : UIBase
   public override void Hide()
   {
     UIPanel.m_DetailList.RemoveChildrenToPool();
-    UIPanel.visible = false;
+    base.Hide();
   }
 
 }

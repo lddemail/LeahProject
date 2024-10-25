@@ -97,8 +97,7 @@ public class UILog : UIBase
 
   public override void Show(object obj = null)
   {
-
-    UIPanel.visible = true;
+    base.Show();
     RefreshUI();
   }
 
@@ -112,8 +111,7 @@ public class UILog : UIBase
 
   public override void Hide()
   {
-    UIPanel.visible = false;
-
+    base.Hide();
   }
 
 }

@@ -26,8 +26,8 @@ public class UITips : UIBase
 
   public override void Show(object obj=null)
   {
+    base.Show();
     UILog.Log(obj.ToString());
-    UIPanel.visible = true;
     UIPanel.m_title.text = obj.ToString();
     Timers.inst.Add(5, 1, (object param) => {
       Hide();
@@ -36,8 +36,8 @@ public class UITips : UIBase
 
   public void Show(string text,float delayTime=3)
   {
+    base.Show();
     UILog.Log(text);
-    UIPanel.visible = true;
     UIPanel.m_title.text = text;
     Timers.inst.Add(delayTime, 1, (object param) => {
       Hide();
@@ -52,7 +52,7 @@ public class UITips : UIBase
 
   public override void Hide()
   {
-    UIPanel.visible = false;
+    base.Hide();
   }
 
 }

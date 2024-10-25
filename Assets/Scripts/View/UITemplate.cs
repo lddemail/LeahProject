@@ -82,8 +82,8 @@ public class UITemplate : UIBase
   }
   public override void Show(object obj = null)
   {
+    base.Show();
     isSave = false;
-    UIPanel.visible = true;
     currTempType = "";
     ToggleTemp(AppConfig.HotelRelevanceTemplateName);
   }
@@ -156,19 +156,6 @@ public class UITemplate : UIBase
     }
   }
 
-  private void RefreshItemUI()
-  {
-    //GObject[] gobs = UIPanel.m_DetailList.GetChildren();
-    //foreach (GObject gob in gobs)
-    //{
-    //  MethodInfo RefreshUI = gob.GetType().GetMethod(AppConfig.RefreshUI);
-    //  if (RefreshUI != null)
-    //  {
-    //    RefreshUI.Invoke(gob, null);
-    //  }
-    //}
-  }
-
   public override void RefreshUI()
   {
   }
@@ -184,6 +171,6 @@ public class UITemplate : UIBase
       UIRoot.ins.uiTips.Show($"模版刷新成功");
     }
     UIPanel.m_HotelRelevanceTempList.RemoveChildrenToPool();
-    UIPanel.visible = false;
+    base.Hide();
   }
 }
