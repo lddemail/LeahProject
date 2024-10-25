@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO;
 using UnityEngine;
 
 public class AppStart : MonoBehaviour
@@ -14,7 +15,17 @@ public class AppStart : MonoBehaviour
         Application.targetFrameRate = 90;
         QualitySettings.vSyncCount = 0;
 
-        EventMgr.Init();
+
+    string dataPath = AppConfig.GetDataPath();
+    string[] files = Directory.GetFiles(dataPath);
+    if(files == null || files.Length < 1)
+    {
+      string dataPath2 = AppConfig.GetOldDataPath();
+      AppUtil.CopyDirectory(dataPath2, dataPath);
+      Debug.Log($"Copy:{dataPath2}->{dataPath}");
+    }
+
+    EventMgr.Init();
         AppConfig.Init();
         AppUtil.Init();
         UIRoot.FguiBinder();

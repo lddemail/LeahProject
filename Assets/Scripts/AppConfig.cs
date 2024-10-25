@@ -38,17 +38,22 @@ public class AppConfig
     string path = Path.Combine(GetDataPath(), name);
     return path;
   }
+  public static string GetOldDataPath()
+  {
+    string rootPath = Directory.GetParent(Application.dataPath).FullName;
+    return Path.Combine(rootPath, "Data");
+  }
   public static string GetDataPath()
   {
     if(string.IsNullOrEmpty(dataPath))
     {
-      string rootPath = Directory.GetParent(Application.dataPath).FullName;
-      dataPath = Path.Combine(rootPath, "Data");
+      dataPath = Path.Combine(Application.persistentDataPath, "Data");
     }
     if (!Directory.Exists(dataPath))
     {
       Directory.CreateDirectory(dataPath);
     }
+    Debug.Log($"dataPath:{dataPath}");
     return dataPath;
   }
   //¹¤³ÌÃû×Ö

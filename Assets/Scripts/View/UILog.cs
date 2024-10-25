@@ -46,7 +46,11 @@ public class UILog : UIBase
     {
       case LogType.Error:
       case LogType.Exception:
-        if (!string.IsNullOrEmpty(stackTrace)) log += stackTrace;
+        if (!string.IsNullOrEmpty(stackTrace))
+        {
+          log += stackTrace;
+          UIRoot.ins.uiTips.Show(log);
+        }
         break;
     }
     AddLog(log);
