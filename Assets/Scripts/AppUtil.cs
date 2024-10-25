@@ -604,4 +604,17 @@ public class AppUtil
     }
     return resVal;
   }
+
+  /// <summary>
+  /// 打开目录
+  /// </summary>
+  public static void OpenFolder(string path)
+  {
+    if (!Directory.Exists(path))
+    {
+      Debug.LogError($"目录不存在:{path}");
+      return;
+    }
+    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(path) { UseShellExecute = true });
+  }
 }

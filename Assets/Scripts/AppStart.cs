@@ -25,7 +25,7 @@ public class AppStart : MonoBehaviour
       Debug.Log($"Copy:{dataPath2}->{dataPath}");
     }
 
-    EventMgr.Init();
+        EventMgr.Init();
         AppConfig.Init();
         AppUtil.Init();
         UIRoot.FguiBinder();

@@ -48,12 +48,12 @@ public class AppConfig
     if(string.IsNullOrEmpty(dataPath))
     {
       dataPath = Path.Combine(Application.persistentDataPath, "Data");
+      Debug.Log($"dataPath:{dataPath}");
+      if (!Directory.Exists(dataPath))
+      {
+        Directory.CreateDirectory(dataPath);
+      }
     }
-    if (!Directory.Exists(dataPath))
-    {
-      Directory.CreateDirectory(dataPath);
-    }
-    Debug.Log($"dataPath:{dataPath}");
     return dataPath;
   }
   //工程名字
@@ -139,6 +139,7 @@ public class AppConfig
   public const string Export_Excel = "导出Excel";
   public const string Export_Data = "导出Data";
   public const string Inport_Data = "导入Data";
+  public const string Open_Data = "打开Data目录";
   public const string Show_Log = "显示日志";
   public const string Manage_Template = "模版管理";
   public const string Update_Template = "刷新模版";

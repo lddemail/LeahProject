@@ -33,6 +33,7 @@ public class UIMain:UIBase
     mainPop.AddItem(AppConfig.Export_Excel, _clickMenu);
     mainPop.AddItem(AppConfig.Export_Data, _clickMenu);
     mainPop.AddItem(AppConfig.Inport_Data, _clickMenu);
+    mainPop.AddItem(AppConfig.Open_Data, _clickMenu);
     mainPop.AddItem(AppConfig.Show_Log, _clickMenu);
     mainPop.AddItem(AppConfig.Manage_Template, _clickMenu);
 
@@ -72,6 +73,9 @@ public class UIMain:UIBase
       case AppConfig.Inport_Data:
         BtnInportDataHandler();
         break;
+      case AppConfig.Open_Data:
+        AppUtil.OpenFolder(AppConfig.GetDataPath());
+        break;
       case AppConfig.Show_Log:
         UIRoot.ins.uiLog.Show();
         break;
@@ -80,7 +84,7 @@ public class UIMain:UIBase
         break;
       default://模版
         //string tempPath = AppConfig.GetTemplatePath(itemObject.text);
-        //System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(tempPath) { UseShellExecute = true });
+        //AppUtil.OpenFolder(tempPath);
         break;
     }
   }
