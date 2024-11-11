@@ -25,8 +25,14 @@ public class UIDetailItemAccountExt : UI_DetailItemAccount
       m_InputLabBarter.m_InputLab.text = "0";
     }
 
+    int index = m_InputLabBarter.m_InputLab.text.LastIndexOf(".");
+    if (index == (m_InputLabBarter.m_InputLab.text.Length - 1))
+    {
+      return;
+    }
+
     AccountData ad = data as AccountData;
-    ad.barter = float.Parse(m_InputLabBarter.m_InputLab.text);
+    float.TryParse(m_InputLabBarter.m_InputLab.text,out ad.barter);
     ad.time = AppUtil.StringToTime(m_InputLabTime.m_InputLab.text);
     ad.remark = m_InputLabRemark.m_InputLab.text;
 

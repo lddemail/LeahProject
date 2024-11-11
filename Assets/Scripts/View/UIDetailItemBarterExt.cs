@@ -25,8 +25,14 @@ public class UIDetailItemBarterExt : UI_DetailItemBarter
       m_InputLabBarter.m_InputLab.text = "0";
     }
 
+    int index = m_InputLabBarter.m_InputLab.text.LastIndexOf(".");
+    if (index == (m_InputLabBarter.m_InputLab.text.Length - 1))
+    {
+      return;
+    }
+
     BarterData bd = data as BarterData;
-    bd.barter = float.Parse(m_InputLabBarter.m_InputLab.text);
+    float.TryParse(m_InputLabBarter.m_InputLab.text, out bd.barter);
     bd.time = AppUtil.StringToTime(m_InputLabTime.m_InputLab.text);
     bd.remark = m_InputLabRemark.m_InputLab.text;
 

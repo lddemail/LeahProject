@@ -144,7 +144,7 @@ public class AppData
   /// <returns></returns>
   public static HotelRelevanceTempData GetHotelRelevanceData(string hotelName) 
   {
-    Debug.Log($"GetHotelRelevanceData:hotelName={hotelName}");
+    //Debug.Log($"GetHotelRelevanceData:hotelName={hotelName}");
     HotelRelevanceTempData data = null;
     foreach (HotelRelevanceTempData d in allHotelRelevanceTempData)
     {

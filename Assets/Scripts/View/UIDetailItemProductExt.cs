@@ -39,16 +39,21 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
     if(string.IsNullOrEmpty(m_InputLabPrice.m_InputLab.text))
     {
       m_InputLabPrice.m_InputLab.text = "0";
-    }  
+    }
+    int index = m_InputLabPrice.m_InputLab.text.LastIndexOf(".");
+    if (index == (m_InputLabPrice.m_InputLab.text.Length - 1))
+    {
+      return;
+    }
 
     ProductData pd = (ProductData)data;
     //pd.name = templateList1[m_InputComboxName.m_ComboxBox1.selectedIndex];
     pd.name = m_InputComboxName.m_InputLab.text;
-    pd.price = float.Parse(m_InputLabPrice.m_InputLab.text);
+    float.TryParse(m_InputLabPrice.m_InputLab.text,out pd.price);
     pd.fTime = AppUtil.StringToTime(m_InputLabfTime.m_InputLab.text);
     pd.tTime = AppUtil.StringToTime(m_InputLabtTime.m_InputLab.text);
     pd.remark = m_InputLabRemark.m_InputLab.text;
-
+    Debug.Log("OnChangeCallBack:"+pd.ToStr());
     _changeCallBack?.Invoke();
   }
 
@@ -86,6 +91,7 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
     //m_InputComboxName.m_InputBg.width = _w;
     m_InputComboxName.tooltips = pd.name;
     m_InputLabRemark.tooltips = pd.remark;
+    Debug.Log("RefreshUI:"+pd.ToStr());
   }
 
   private Action _changeCallBack;
