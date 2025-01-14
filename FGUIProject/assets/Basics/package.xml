@@ -258,6 +258,7 @@
     <component id="qjfs7b" name="UILog.xml" path="/" exported="true"/>
     <component id="qjfs7c" name="UILogListItem.xml" path="/" exported="true"/>
     <component id="oh1s7d" name="HotelRelevanceTempListItem.xml" path="/" exported="true"/>
+    <image id="g7ah7e" name="workshop-common-bg-sd-20px 拷贝.png" path="/wwrImages/" scale="9grid" scale9grid="38,38,20,20"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

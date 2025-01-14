@@ -21,9 +21,9 @@ namespace Basics
         {
             base.ConstructFromXML(xml);
 
-            m_BtnOk = (GButton)GetChildAt(1);
-            m_BtnClose = (UI_Button5Copy)GetChildAt(2);
-            m_Message = (GTextField)GetChildAt(3);
+            m_BtnOk = (GButton)GetChildAt(2);
+            m_BtnClose = (UI_Button5Copy)GetChildAt(3);
+            m_Message = (GTextField)GetChildAt(4);
         }
     }
 }

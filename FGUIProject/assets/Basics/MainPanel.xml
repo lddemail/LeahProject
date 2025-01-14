@@ -33,7 +33,7 @@
     <component id="n48_i6pi" name="UIDetail" src="i6pi6i" fileName="UIDetail.xml" xy="0,0" visible="false"/>
     <component id="n69_xtmc" name="UITemplate" src="gich77" fileName="UITemplate.xml" xy="0,0" visible="false"/>
     <component id="n70_qjfs" name="UILog" src="qjfs7b" fileName="UILog.xml" xy="560,240" visible="false"/>
-    <component id="n45_i6pi" name="Tips" src="i6pi6d" fileName="Tips.xml" xy="560,490" visible="false" touchable="false">
+    <component id="n45_i6pi" name="Tips" src="i6pi6d" fileName="Tips.xml" xy="560,952" visible="false" touchable="false">
       <relation target="" sidePair="center-center,middle-middle"/>
     </component>
     <component id="n47_i6pi" name="UIConfirm" src="i6pi6f" fileName="UIConfirm.xml" xy="0,0" visible="false"/>

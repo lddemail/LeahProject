@@ -384,7 +384,7 @@ public class AppData
     bool isOk = AppUtil.Update2DB<TabContract>(data);
     if(isOk)
     {
-      log = $"{data.t_id} 更新成功";
+      log = $"ID:{data.t_id} 更新数据库成功";
       res = true;
       EventMgr.Dispatch(AppConfig.UpdateMainItem, data);
     }

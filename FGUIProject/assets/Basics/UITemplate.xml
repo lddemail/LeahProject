@@ -14,7 +14,7 @@
     <list id="n7_ofvt" name="SignedTempList" xy="0,50" size="1920,1024" visible="false" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," lineGap="5" defaultItem="ui://z3yueri4ofvt79" autoClearItems="true">
       <item/>
     </list>
-    <list id="n8_ofvt" name="HotelRelevanceTempList" xy="0,42" size="1920,1018" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," lineGap="5" defaultItem="ui://z3yueri4oh1s7d" autoClearItems="true">
+    <list id="n8_ofvt" name="HotelRelevanceTempList" xy="0,51" size="1920,1018" overflow="scroll" scrollBarRes="ui://z3yueri4p5s35g," lineGap="10" defaultItem="ui://z3yueri4oh1s7d" autoClearItems="true">
       <item/>
       <item/>
       <item/>
