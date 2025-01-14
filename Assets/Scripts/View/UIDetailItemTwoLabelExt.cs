@@ -24,8 +24,8 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
 
     m_InputCombox1.m_ComboxBox1.onChanged.Set(ComboxBox1ChangeHandler);
     m_InputCombox2.m_ComboxBox1.onChanged.Set(ComboxBox2ChangeHandler);
-    //m_InputCombox1.m_InputLab.onChanged.Set(OnInputLab1Change);
-    //m_InputCombox2.m_InputLab.onChanged.Set(OnInputLab2Change);
+    m_InputCombox1.m_InputLab.onChanged.Set(OnInputLab1Change);
+    m_InputCombox2.m_InputLab.onChanged.Set(OnInputLab2Change);
 
     (m_InputCombox1 as UI_InputComboxLabelCompExt).SetFilterChangeCallBack(InputCombox1FilterChangeCallBack);
   }
@@ -35,23 +35,42 @@ public class UIDetailItemTwoLabelExt : UI_DetailItemTwoLabel
     ComboxBox1ChangeHandler(null);
   }
 
+  /// <summary>
+  /// 是否可以保存文本输入
+  /// </summary>
+  /// <returns></returns>
+  private bool IsCanInputSave(string fieldName)
+  {
+    switch (fieldName)
+    {
+      case AppConfig.t_interiorNo:
+      case AppConfig.t_contractNo:
+        return true;
+    }
+    return false;
+  }
+
   private void OnInputLab1Change(EventContext context)
   {
-    //string val = m_InputCombox1.m_InputLab.text;
-    //if(!string.IsNullOrEmpty(val))
-    //{
-    //  AppData.currTc.SetFieldVal(fieldName1, val);
-    //  RefreshUI();
-    //}
+    if (!IsCanInputSave(fieldName1)) return;
+
+    string val = m_InputCombox1.m_InputLab.text;
+    if (!string.IsNullOrEmpty(val))
+    {
+      AppData.currTc.SetFieldVal(fieldName1, val);
+      RefreshUI();
+    }
   }
   private void OnInputLab2Change(EventContext context)
   {
-    //string val = m_InputCombox2.m_InputLab.text;
-    //if (!string.IsNullOrEmpty(val))
-    //{
-    //  AppData.currTc.SetFieldVal(fieldName2, val);
-    //  RefreshUI();
-    //}
+    if (!IsCanInputSave(fieldName2)) return;
+
+    string val = m_InputCombox2.m_InputLab.text;
+    if (!string.IsNullOrEmpty(val))
+    {
+      AppData.currTc.SetFieldVal(fieldName2, val);
+      RefreshUI();
+    }
   }
   private void ComboxBox1ChangeHandler(EventContext context)
   {
