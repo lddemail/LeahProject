@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -362,7 +363,7 @@ public class TabContract
 
   private FieldInfo[] GetFields()
   {
-    return GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+    return GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
   }
 
   public List<ObjectVal> GetObjectVals()
@@ -490,6 +491,20 @@ public class TabContract
     return res;
   }
 
+  public int GetProductExpirationTime() { return _ProductExpirationTime; }
+  private int _ProductExpirationTime = 0;
+  /// <summary> 实施计算产品的到期时间用于排序 </summary>
+  public void ComputeProductExpirationTime()
+  {
+    _ProductExpirationTime = 0;
+    ProductData pd = GetRecentlyPD();
+    if (pd != null)
+    {
+      pd.GetProductType(out _ProductExpirationTime);
+    }
+    Debug.Log($"ComputeProductExpirationTime: {t_hotelName}:{_ProductExpirationTime}");
+  }
+
   public void Compute()
   {
     // (合同总额)所有产品的总价格
@@ -517,7 +532,8 @@ public class TabContract
     }
 
     //欠款金额=(合同总额t_productsPrice-到账总额t_totalAccount)
-    t_totalDebt = t_productsPrice - t_totalAccount;
+    decimal dl = (decimal)t_productsPrice - (decimal)t_totalAccount;
+    t_totalDebt = (float)dl;
     if (t_totalDebt > 0 && t_totalDebt < 1) t_totalDebt = 0;
 
     Debug.Log($"Compute:t_productsPrice={t_productsPrice} t_totalBarter={t_totalBarter} t_totalAccount={t_totalAccount} t_totalDebt={t_totalDebt}");
@@ -533,6 +549,7 @@ public class TabContract
     string res = IsEmpty(obj.val);
     return res;
   }
+
   /// <summary>
   /// excel导入原始数据
   /// </summary>

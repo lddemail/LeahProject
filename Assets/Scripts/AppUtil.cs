@@ -57,7 +57,7 @@ public class AppUtil
       T data = new T();
       res.Add(data);
 
-      FieldInfo[] fields = data.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+      FieldInfo[] fields = data.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
       foreach (FieldInfo field in fields)
       {
         string name = field.Name;
@@ -98,7 +98,7 @@ public class AppUtil
     SqliteDataReader reader = db.SelectData(Ttype.Name, new string[] { "*" }, new string[] { AppConfig.tabKey, id.ToString() });
     while (reader.Read())
     {
-      FieldInfo[] fields = data.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+      FieldInfo[] fields = data.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
       foreach (FieldInfo field in fields)
       {
         string name = field.Name;
@@ -134,7 +134,7 @@ public class AppUtil
   {
     List<string> keys = new List<string>();
     List<string> vals = new List<string>();
-    FieldInfo[] fields = t.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+    FieldInfo[] fields = t.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
     object id = 0;
     foreach (FieldInfo field in fields)
     {

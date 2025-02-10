@@ -170,6 +170,18 @@ public class UIMain:UIBase
         _currTabContracts.Add(tab);
       }
     }
+    //选择了临期筛选的话按照临期排序
+    if (adventTerm > 0)
+    {
+      foreach (var tab in _currTabContracts)
+      {
+        tab.ComputeProductExpirationTime();
+      }
+
+      //排序从小到大
+      _currTabContracts.Sort((x, y) => x.GetProductExpirationTime().CompareTo(y.GetProductExpirationTime()));
+    }
+
     int count = _currTabContracts == null ? 0 : _currTabContracts.Count;
     UIRoot.ins.uiTips.Show($"检索到{count}条数据");
     Debug.Log($"检索条件 :{adventTerm},{hotelNameTerm} 检索到{count}条数据");

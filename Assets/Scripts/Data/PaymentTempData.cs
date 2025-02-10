@@ -31,7 +31,7 @@ public class PaymentTempData
 
   private FieldInfo[] GetFields()
   {
-    return GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+    return GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
   }
   /// <summary>
   /// 返回模版格式字符串
