@@ -46,6 +46,13 @@ public class UIMainListItemExt : UI_MainListItem
         }
         gText.text = products;
       }
+      else if(title == AppConfig.t_totalDebt)
+      {
+        object val = tabC.GetFieldVal(title);
+        float fval = float.Parse(val.ToString());
+        if (fval < 0) fval = 0;
+        gText.text = fval.ToString();
+      }
       else
       {
         object val = tabC.GetFieldVal(title);
