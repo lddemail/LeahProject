@@ -9,7 +9,7 @@ public class AccountData:DataBase
   /// <summary>
    /// 金额
    /// </summary>
-  public float barter;
+  public decimal barter;
 
   /// <summary>
   /// 时间
@@ -21,7 +21,7 @@ public class AccountData:DataBase
   /// </summary>
   public string remark;
 
-  public static AccountData Crete(float barter, int time, string remark)
+  public static AccountData Crete(decimal barter, int time, string remark)
   {
  
 
@@ -63,7 +63,7 @@ public class AccountData:DataBase
         switch (ary2[0])
         {
           case "barter":
-           d.barter = float.Parse(ary2[1]);
+           d.barter = decimal.Parse(ary2[1]);
             break;
           case "time":
             d.time = int.Parse(ary2[1]);

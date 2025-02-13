@@ -32,7 +32,7 @@ public class UIDetailItemAccountExt : UI_DetailItemAccount
     }
 
     AccountData ad = data as AccountData;
-    float.TryParse(m_InputLabBarter.m_InputLab.text,out ad.barter);
+    decimal.TryParse(m_InputLabBarter.m_InputLab.text,out ad.barter);
     ad.time = AppUtil.StringToTime(m_InputLabTime.m_InputLab.text);
     ad.remark = m_InputLabRemark.m_InputLab.text;
 

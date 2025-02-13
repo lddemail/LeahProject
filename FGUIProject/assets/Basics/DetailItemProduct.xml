@@ -2,7 +2,7 @@
 <component size="1920,50">
   <displayList>
     <component id="n25_p2mo" name="InputComboxName" src="h63l70" fileName="InputComboxLabelComp.xml" xy="0,4" size="789,40"/>
-    <component id="n20_h63l" name="InputLabPrice" src="h63l6v" fileName="InputNumLabelComp.xml" xy="786,4" size="211,40"/>
+    <component id="n20_h63l" name="InputLabPrice" src="h63l6v" fileName="InputNumLabelComp.xml" xy="767,4" size="250,40"/>
     <component id="n18_h63l" name="InputLabfTime" src="h63l6u" fileName="InputTimeLabelComp.xml" xy="1027,4"/>
     <component id="n19_h63l" name="InputLabtTime" src="h63l6u" fileName="InputTimeLabelComp.xml" xy="1185,4"/>
     <text id="n23_h63l" name="AdventLab" xy="1328,8" size="130,32" fontSize="20" color="#ffffff" align="center" ubb="true" autoSize="none" bold="true" text="[color=#FF0000](000天后过期)[/color]"/>

@@ -67,9 +67,17 @@ public class AppUtil
         {
           value = reader.GetInt32(reader.GetOrdinal(name));
         }
-        else if (type == typeof(double) || type == typeof(float))
+        else if (type == typeof(float))
         {
           value = reader.GetFloat(reader.GetOrdinal(name));
+        }
+        else if (type == typeof(double))
+        {
+          value = reader.GetDouble(reader.GetOrdinal(name));
+        }
+        else if(type == typeof(decimal))
+        {
+          value = reader.GetDecimal(reader.GetOrdinal(name));
         }
         else
         {
@@ -108,9 +116,17 @@ public class AppUtil
         {
           value = reader.GetInt32(reader.GetOrdinal(name));
         }
-        else if (type == typeof(double) || type == typeof(float))
+        else if (type == typeof(float))
         {
           value = reader.GetFloat(reader.GetOrdinal(name));
+        }
+        else if (type == typeof(double))
+        {
+          value = reader.GetDouble(reader.GetOrdinal(name));
+        }
+        else if (type == typeof(decimal))
+        {
+          value = reader.GetDecimal(reader.GetOrdinal(name));
         }
         else
         {
@@ -593,8 +609,8 @@ public class AppUtil
       case AppConfig.t_totalDebt:
         object productsPrice = currTc.GetFieldVal(AppConfig.t_productsPrice);
         object totalAccount = currTc.GetFieldVal(AppConfig.t_totalAccount);
-        float price = (float)productsPrice - (float)totalAccount;
-        resVal = $"合同总额:{productsPrice} - 到账:{totalAccount} = 欠款:{price}";
+        decimal price = (decimal)productsPrice - (decimal)totalAccount;
+        resVal = $"总额:{productsPrice} - 到账:{totalAccount} = 欠款:{price}";
         break;
       default:
         _obj = currTc.GetFieldVal(fieldName);

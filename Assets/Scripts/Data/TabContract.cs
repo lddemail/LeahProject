@@ -77,7 +77,7 @@ public class TabContract
   /// <summary>
   /// (合同总额)所有产品的总价格
   /// </summary>
-  public float t_productsPrice;
+  public decimal t_productsPrice;
 
   /// <summary>
   /// 酒店消费明细(时间,金额,备注)
@@ -86,7 +86,7 @@ public class TabContract
   /// <summary>
   /// 酒店消费总额
   /// </summary>
-  public float t_totalBarter;
+  public decimal t_totalBarter;
 
   /// <summary>
   /// 到账明细(时间,金额,备注)
@@ -95,12 +95,12 @@ public class TabContract
   /// <summary>
   /// 到账总额
   /// </summary>
-  public float t_totalAccount;
+  public decimal t_totalAccount;
 
   /// <summary>
   /// 欠款金额=(合同总额t_productsPrice-到账总额t_totalAccount)
   /// </summary>
-  public float t_totalDebt;
+  public decimal t_totalDebt;
 
 
   /// <summary>
@@ -533,7 +533,7 @@ public class TabContract
 
     //欠款金额=(合同总额t_productsPrice-到账总额t_totalAccount)
     decimal dl = (decimal)t_productsPrice - (decimal)t_totalAccount;
-    t_totalDebt = (float)dl;
+    t_totalDebt = (decimal)dl;
     if (t_totalDebt > 0 && t_totalDebt < 1) t_totalDebt = 0;
 
     Debug.Log($"Compute:t_productsPrice={t_productsPrice} t_totalBarter={t_totalBarter} t_totalAccount={t_totalAccount} t_totalDebt={t_totalDebt}");
@@ -625,7 +625,7 @@ public class TabContract
           string productsRem = Find(vals, "PRODUCT REMARK");
           //价格
           string price = Find(vals, "AMOUNT");
-          ProductData pd = ProductData.Crete(products, float.Parse(price), fTime, tTime, productsRem);
+          ProductData pd = ProductData.Crete(products, decimal.Parse(price), fTime, tTime, productsRem);
           pdList.Add(pd);
           string t_products = ProductData.ToDBStr(pdList);
           d.t_products = t_products;
@@ -633,7 +633,7 @@ public class TabContract
           break;
         case "Barter":
           string t_barter = IsEmpty(val.val);
-          BarterData bData = BarterData.Crete(float.Parse(t_barter),0,"0");
+          BarterData bData = BarterData.Crete(decimal.Parse(t_barter),0,"0");
           d.t_barter = bData.ToStr();
           break;
         case "A/R Remark"://到账明细2022.9.20收252006.11；2022.11.23收226805.5；2023.3.1收25200.61
@@ -649,8 +649,8 @@ public class TabContract
               {
                 string time = remAry[0].Trim().Replace(".","/");
                 int _time = AppUtil.StringToTime(time);
-                float _pri = 0;
-                float.TryParse(remAry[1].Trim(),out _pri);
+                decimal _pri = 0;
+                decimal.TryParse(remAry[1].Trim(),out _pri);
                 AccountData aData = AccountData.Crete(_pri, _time,"");
                 aList.Add(aData);
               }

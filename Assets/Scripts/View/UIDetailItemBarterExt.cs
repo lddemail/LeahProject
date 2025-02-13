@@ -32,7 +32,7 @@ public class UIDetailItemBarterExt : UI_DetailItemBarter
     }
 
     BarterData bd = data as BarterData;
-    float.TryParse(m_InputLabBarter.m_InputLab.text, out bd.barter);
+    decimal.TryParse(m_InputLabBarter.m_InputLab.text, out bd.barter);
     bd.time = AppUtil.StringToTime(m_InputLabTime.m_InputLab.text);
     bd.remark = m_InputLabRemark.m_InputLab.text;
 

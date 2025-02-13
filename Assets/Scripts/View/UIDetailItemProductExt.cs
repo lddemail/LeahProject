@@ -49,7 +49,7 @@ public class UIDetailItemProductExt : UI_DetailItemProduct
     ProductData pd = (ProductData)data;
     //pd.name = templateList1[m_InputComboxName.m_ComboxBox1.selectedIndex];
     pd.name = m_InputComboxName.m_InputLab.text;
-    float.TryParse(m_InputLabPrice.m_InputLab.text,out pd.price);
+    decimal.TryParse(m_InputLabPrice.m_InputLab.text,out pd.price);
     pd.fTime = AppUtil.StringToTime(m_InputLabfTime.m_InputLab.text);
     pd.tTime = AppUtil.StringToTime(m_InputLabtTime.m_InputLab.text);
     pd.remark = m_InputLabRemark.m_InputLab.text;

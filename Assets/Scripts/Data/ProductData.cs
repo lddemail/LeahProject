@@ -17,7 +17,7 @@ public class ProductData: DataBase
   /// <summary>
   /// 产品价格
   /// </summary>
-  public float price;
+  public decimal price;
 
   /// <summary>
   /// 开始时间
@@ -34,7 +34,7 @@ public class ProductData: DataBase
   /// </summary>
   public string remark;
 
-  public static ProductData Crete(string name,float price,int formTime,int toTime, string remark)
+  public static ProductData Crete(string name, decimal price,int formTime,int toTime, string remark)
   {
     ProductData d = new ProductData();
     d.name = name;
@@ -145,7 +145,7 @@ public class ProductData: DataBase
             d.name = ary2[1];
             break;
           case "price":
-            d.price = float.Parse(ary2[1]);
+            d.price = decimal.Parse(ary2[1]);
             break;
           case "fTime":
             d.fTime = int.Parse(ary2[1]);
