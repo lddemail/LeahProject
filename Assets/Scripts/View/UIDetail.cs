@@ -138,6 +138,16 @@ public class UIDetail : UIBase
   bool isAddTab = false;
   public override void Show(object obj = null)
   {
+    if(obj != null && obj is TabContract)
+    {
+      var hotelR = AppData.GetHotelRelevanceData(obj as TabContract);
+      if(hotelR == null)//缺少模版
+      {
+        UIRoot.ins.uiTips.Show($"缺少模版无法打开详情");
+        return;
+      }
+    }
+
     base.Show();
     if(obj != null)
     {

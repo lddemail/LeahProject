@@ -148,7 +148,7 @@ public class AppData
     HotelRelevanceTempData data = null;
     foreach (HotelRelevanceTempData d in allHotelRelevanceTempData)
     {
-      if (hotelName.Contains(d.t_hotelName)) return d;
+      if (hotelName == d.t_hotelName) return d;
     }
     return data;
   }
