@@ -163,10 +163,12 @@ public class UIDetail : UIBase
     UIPanel.m_DetailList.RemoveChildrenToPool();
     if (AppData.currTc != null)
     {
-      //酒店名 省市 
-      AddDetailItemTwoLabel(AppConfig.t_hotelName, AppConfig.HotelRelevanceTemplateName, AppConfig.t_city, "");
-      //酒店品牌  酒店集团 甲方名称
-      AddDetailItemThreeLabel(AppConfig.t_brand, "", AppConfig.t_group, "", AppConfig.t_a_contract, "");
+      //酒店名 
+      AddDetailItemOneLabel(AppConfig.t_hotelName, AppConfig.HotelRelevanceTemplateName);
+      //省市   甲方名称
+      AddDetailItemTwoLabel(AppConfig.t_city, "", AppConfig.t_a_contract, "");
+      //酒店品牌  酒店集团 
+      AddDetailItemTwoLabel(AppConfig.t_brand, "", AppConfig.t_group, "");
       //签约公司  支付方式
       AddDetailItemTwoLabel(AppConfig.t_attribution, AppConfig.SignedTemplateName, AppConfig.t_payment, AppConfig.PaymentTemplateName);
       //内部编号  外部编号 

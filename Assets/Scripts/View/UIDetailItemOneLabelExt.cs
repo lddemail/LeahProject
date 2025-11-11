@@ -19,6 +19,7 @@ public class UIDetailItemOneLabelExt : UI_DetailItemLabel
 
     m_InputCombox1.m_ComboxBox1.onChanged.Set(ComboxBox1ChangeHandler);
     //m_InputCombox1.m_InputLab.onChanged.Set(OnInputLabChange);
+    m_InputCombox1.m_ComboxBox1.width = m_InputCombox1.m_ComboxBox1.width + 390;
   }
 
   private void OnInputLabChange(EventContext context)
@@ -49,7 +50,7 @@ public class UIDetailItemOneLabelExt : UI_DetailItemLabel
     templateList1 = string.IsNullOrEmpty(template1) ? null : AppData.GetTempList(template1);
 
     m_InputCombox1.m_InputLab.enabled = AppUtil.GetInputLabEnabled(fieldName1);
-    m_InputCombox1.m_ComboxBox1.visible = AppUtil.GetInputLabEnabled(fieldName1);
+    //m_InputCombox1.m_ComboxBox1.visible = AppUtil.GetInputLabEnabled(fieldName1);
 
     InitInputCombox(m_InputCombox1, fieldName1, templateList1);
 
