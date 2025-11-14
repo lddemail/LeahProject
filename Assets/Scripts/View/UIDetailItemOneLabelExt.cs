@@ -18,18 +18,14 @@ public class UIDetailItemOneLabelExt : UI_DetailItemLabel
     base.ConstructFromXML(xml);
 
     m_InputCombox1.m_ComboxBox1.onChanged.Set(ComboxBox1ChangeHandler);
-    //m_InputCombox1.m_InputLab.onChanged.Set(OnInputLabChange);
     m_InputCombox1.m_ComboxBox1.width = m_InputCombox1.m_ComboxBox1.width + 390;
+
+    (m_InputCombox1 as UI_InputComboxLabelCompExt).SetFilterChangeCallBack(InputCombox1FilterChangeCallBack);
   }
 
-  private void OnInputLabChange(EventContext context)
+  private void InputCombox1FilterChangeCallBack()
   {
-    //string val = m_InputCombox1.m_InputLab.text;
-    //if (!string.IsNullOrEmpty(val))
-    //{
-    //  AppData.currTc.SetFieldVal(fieldName1, val);
-    //  RefreshUI();
-    //}
+    ComboxBox1ChangeHandler(null);
   }
 
   private void ComboxBox1ChangeHandler(EventContext context)
@@ -39,6 +35,7 @@ public class UIDetailItemOneLabelExt : UI_DetailItemLabel
     {
       AppData.currTc.SetFieldVal(fieldName1, val);
       RefreshUI();
+      _changeCallBack?.Invoke();
     }
   }
 
